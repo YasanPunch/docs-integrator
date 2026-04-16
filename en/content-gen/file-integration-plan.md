@@ -71,9 +71,9 @@ Rationale: maintainability — no existing links or image references break.
 |---|---|---|---|
 | `csv-fault-tolerance.md` | How `failSafe` parser output combines with `@ftp:FunctionConfig` `afterProcess`/`afterError` to auto-route files, zero-records-check pattern, `do/on fail` pattern. Cross-links to `transform/csv-flat-file.md`. | Adapted from `tutorials/walkthroughs/csv-ftp-processing.md` | High |
 | `file-dependency-triggers.md` | `fileNamePattern`, `fileAgeFilter` (minAge/maxAge), `fileDependencyConditions` (targetPattern, requiredFiles, capture groups `$1`, matchingMode) | Adapted from `tutorials/walkthroughs/ftp-listener-with-age-filter-and-file-dependency.md` | High |
-| `streaming-large-files.md` | **REVISED:** Binding `stream<RecordType, error?>` directly as the first parameter of `onFileCsv`/`onFile*` handlers. When to stream vs buffer. No `caller`-based streaming — streams are first-class handler parameters. | Needs confirmation from team (see 1.7 Q1) | Medium — pending confirmation |
-| `resiliency.md` | Error recovery for transient failures (connection drops, polling timeouts), retry behavior, listener continuation after failure | Ballerina spec PR #1421 (pending access) | Blocked on source |
-| `high-availability.md` | Multi-instance listener coordination, lease management, watchdog, how to enable coordination, preventing duplicate file processing across nodes | Ballerina spec PR #1419 and/or #1423 (pending access) | Blocked on source |
+| `streaming-large-files.md` | **RESOLVED:** Binding `stream<RecordType, error?>` as first param of `onFileCsv`. `onFile` supports `stream<byte[], error?>`. Other formats (JSON/XML) do NOT have streamed variants. Error terminates stream (except CSV fault-tolerance: corrupted rows skip if failSafe enabled). `afterProcess`/`afterError` fire based on handler return value (nil vs error). | Confirmed by team | High |
+| `resiliency.md` | **Client-side** retry with exponential backoff (`RetryConfig`) for read operations + circuit breaker (`CircuitBreakerConfig`) with CLOSED/OPEN/HALF_OPEN states, failure categories, rolling window. Both on `ftp:ClientConfiguration`. | BEP #1420 (retry) + BEP #1422 (circuit breaker) — specs fetched | High |
+| `high-availability.md` | **Listener-side** distributed coordination via `CoordinationConfig`. Active-passive (warm standby). Database-backed (MySQL/PostgreSQL) leader election, heartbeat, liveness check. Only active node polls. Automatic failover. | BEP #1418 — spec fetched | High |
 
 ### 1.5 Corrections to existing `ftp-sftp.md`
 
@@ -95,55 +95,30 @@ Everything else in `ftp-sftp.md` is accepted as-is.
 - **No link fixes required** in `local-files.md`, `csv-ftp-processing.md`, or
   `content-gen/02-develop.md` since `ftp-sftp.md` stays put.
 
-### 1.7 Open questions — resolved and new
+### 1.7 Open questions — all resolved
 
 | # | Question | Resolution |
 |---|---|---|
-| 1 | Source for `resiliency.md` and `high-availability.md` | **Spec PRs provided:** ballerina-spec #1419, #1421, #1423. **Blocker:** all three return 401/403 over anonymous WebFetch — they appear private. Need team to either (a) grant access, (b) paste diff/spec text, or (c) confirm public-once-merged URL. |
+| 1 | Source for `resiliency.md` and `high-availability.md` | **Resolved.** Specs fetched from niveathika/ballerina-spec fork branches: `coordination`, `ftp-retry`, `ftp-circuit-breaker`. BEP #1418 (coordination), #1420 (retry), #1422 (circuit breaker). |
 | 2 | Sidebar label | **"Remote Servers (FTP/SFTP)"** |
 | 3 | Overview filename | **Keep `ftp-sftp.md`** (no rename) |
 | 4 | Tutorial restructure | **Defer to round 2** |
 
-### 1.7.1 New questions raised (streaming)
+### 1.7.1 Streaming semantics — resolved
 
-**Q (to confirm before drafting `streaming-large-files.md`):**
-The team stated: "onFileCsv should be able to bind to `stream<record{}, error>`
-as first param." To draft accurately, I need to confirm:
+| # | Question | Answer |
+|---|---|---|
+| 1 | Typed record stream for CSV | **Yes.** `stream<Order, error?>` where `Order` is a user record. Rows bound per-element as stream is consumed. |
+| 2 | Other formats | **Only** `onFile` (`stream<byte[], error?>`) and `onFileCsv`. JSON/XML do NOT have streamed variants. |
+| 3 | Error behaviour | Error element **terminates** the stream. **Exception:** CSV with `failSafe` enabled — corrupted row structure is skipped and stream continues. |
+| 4 | Post-processing | Depends on handler return value: `nil` → `afterProcess`, `error` → `afterError`. Stream consumption itself doesn't affect this. |
 
-1. **Typed record stream for CSV.** Is the expected signature
-   ```ballerina
-   remote function onFileCsv(stream<Order, error?> content, ftp:FileInfo fileInfo) returns error?
-   ```
-   where `Order` is a user-defined closed record and rows are bound/validated
-   per-element as the stream is consumed?
+### 1.7.2 ftp-sftp.md corrections — resolved
 
-2. **Other formats.** Does the same pattern extend to:
-   - `onFile` with `stream<byte[], error?>` (binary chunks)?
-   - `onFileJson` / `onFileXml` — are streamed variants supported for these,
-     and if so, what's the stream element type?
-
-3. **Error behaviour.** When a row fails to bind mid-stream, does the stream
-   surface an error element (`error?` in the stream type) that the handler
-   iterates past, or does it terminate the stream? This affects how the
-   fault-tolerance guidance is written vs. the streaming guidance.
-
-4. **Post-processing.** Do `@ftp:FunctionConfig` `afterProcess` / `afterError`
-   actions still fire correctly when the handler consumes a stream rather
-   than a buffered value? (Assumption: yes, based on handler return value
-   alone — please confirm.)
-
-### 1.7.2 New questions raised (corrections to ftp-sftp.md)
-
-1. For **"Writing output files"**, replacing the top-level `ftp:Client`
-   example with a `caller->put*` example means write-outside-handler is not
-   documented. Is that intentional? (i.e., is `ftp:Client` still a valid
-   public API, just de-emphasised for this page? Or should it be removed
-   entirely and we direct users to define a separate connection artifact
-   when they need an outbound-only client?)
-2. For **"Caller operations"**, should the de-emphasis be a note at the
-   top of the section ("use this only when you need more control than
-   `afterProcess`/`afterError` provides"), or should the section move to
-   an "Advanced" subsection?
+| # | Question | Answer |
+|---|---|---|
+| 1 | Drop `ftp:Client` from page? | **Yes, drop it for now.** |
+| 2 | Caller de-emphasis style | Go with overall tone of the page (no strong preference). |
 
 ---
 
@@ -218,20 +193,18 @@ this round):** rename to `csv.md` in a future cleanup. Flagging only.
 
 ## 4. Execution order (revised)
 
-Unblocked now:
-1. [ ] Fix `ftp-sftp.md` — "Caller operations" framing + "Writing output files" section (§1.5)
-2. [ ] Draft `csv-fault-tolerance.md` (integration pattern only; cross-link to `csv-flat-file.md`)
+All unblocked:
+1. [ ] Fix `ftp-sftp.md` — reframe Caller, drop Writing output files `ftp:Client`
+2. [ ] Draft `csv-fault-tolerance.md` (integration pattern; cross-link to `csv-flat-file.md`)
 3. [ ] Draft `file-dependency-triggers.md`
-4. [ ] Update `sidebars.ts` — convert `ftp-sftp` single entry to "Remote Servers (FTP/SFTP)" nested category
-
-Blocked / needs team input:
-5. [ ] Draft `streaming-large-files.md` — blocked on §1.7.1 confirmation
-6. [ ] Draft `resiliency.md` — blocked on spec PR #1421 access
-7. [ ] Draft `high-availability.md` — blocked on spec PR #1419 / #1423 access
-
-Close-out:
+4. [ ] Draft `streaming-large-files.md` (stream binding for onFileCsv + onFile)
+5. [ ] Draft `resiliency.md` (BEP #1420 retry + BEP #1422 circuit breaker)
+6. [ ] Draft `high-availability.md` (BEP #1418 listener coordination)
+7. [ ] Update `sidebars.ts` — nested "Remote Servers (FTP/SFTP)" category
 8. [ ] Commit and push
-9. [ ] Round 2: tutorial survey, Transform rename
+
+Round 2 (separate):
+9. [ ] Tutorial survey, Transform rename
 
 ---
 

@@ -543,7 +543,7 @@ Each handler receives an `ftp:FileInfo` parameter with metadata about the incomi
 
 ### Caller operations
 
-The `ftp:Caller` parameter provides typed read and write operations on the connected server.
+For most use cases, the typed handler parameters (`string`, `json`, `xml`, records, streams) and `@ftp:FunctionConfig` post-processing actions are sufficient. When you need additional control — such as reading a related file, writing output to a different path, or managing files manually — add the `ftp:Caller` parameter to your handler. It provides typed read and write operations on the connected server using the same session.
 
 **Reading files:**
 
@@ -608,37 +608,26 @@ service on ftpListener {
 
 ## Writing output files
 
-Use `ftp:Client` to write results back to an FTP or SFTP server from within an integration flow.
+Use `ftp:Caller` inside your file handler to write results back to the same FTP or SFTP server. The caller reuses the existing connection — no separate client configuration is needed.
 
 ```ballerina
-import ballerina/ftp;
+@ftp:ServiceConfig {
+    path: "/incoming"
+}
+service on ftpListener {
 
-configurable string outHost = "ftp.partner.com";
-configurable string outUser = ?;
-configurable string outPassword = ?;
+    remote function onFileJson(json content, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
+        // Process the incoming JSON file
+        json result = check transform(content);
 
-final ftp:Client ftpClient = check new ({
-    protocol: ftp:FTP,
-    host: outHost,
-    port: 21,
-    auth: {credentials: {username: outUser, password: outPassword}}
-});
-
-function uploadResult(string filePath, string content) returns error? {
-    check ftpClient->putText(filePath, content);
+        // Write the result to an output directory on the same server
+        string outPath = string `/outgoing/${fileInfo.name}`;
+        check caller->putJson(outPath, result);
+    }
 }
 ```
 
-`ftp:ClientConfiguration` fields:
-
-| Field | Type | Default | Description |
-|---|---|---|---|
-| `protocol` | `ftp:Protocol` | `ftp:FTP` | Connection protocol |
-| `host` | `string` | `"127.0.0.1"` | Remote server hostname or IP address |
-| `port` | `int` | `21` | Remote server port |
-| `auth` | `ftp:AuthConfiguration?` | — | Authentication credentials or private key |
-| `userDirIsRoot` | `boolean` | `false` | Treat login home as root |
-| `laxDataBinding` | `boolean` | `false` | Allow null and missing fields when binding XML/JSON responses |
+See [Caller operations](#caller-operations) for the full list of `caller->put*` write methods and `ftp:FileWriteOption` (overwrite or append).
 
 ## What's next
 

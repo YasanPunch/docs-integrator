@@ -127,7 +127,18 @@ const sidebars: SidebarsConfig = {
               type: 'category', label: 'File Integration',
               collapsed: true,
               items: [
-                'develop/integration-artifacts/file/ftp-sftp',
+                {
+                  type: 'category', label: 'Remote Servers (FTP/SFTP)',
+                  collapsed: true,
+                  link: { type: 'doc', id: 'develop/integration-artifacts/file/ftp-sftp' },
+                  items: [
+                    'develop/integration-artifacts/file/csv-fault-tolerance',
+                    'develop/integration-artifacts/file/file-dependency-triggers',
+                    'develop/integration-artifacts/file/streaming-large-files',
+                    'develop/integration-artifacts/file/resiliency',
+                    'develop/integration-artifacts/file/high-availability',
+                  ],
+                },
                 'develop/integration-artifacts/file/local-files',
               ],
             },
