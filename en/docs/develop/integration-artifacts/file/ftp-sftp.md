@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # FTP / SFTP
 
-FTP, SFTP, and FTPS services poll remote file servers for new files and process them as they arrive. Use them for ETL pipelines, batch processing, and B2B integrations where partners exchange data as CSV, XML, JSON, or binary files.
+FTP, SFTP, and FTPS [file processors](/docs/get-started/key-concepts#file-processors) poll remote file servers for new files and process them as they arrive. Use them for ETL pipelines, batch processing, and B2B integrations where partners exchange data as CSV, XML, JSON, or binary files.
 
 | Protocol | Description | Transport security | Authentication |
 |---|---|---|---|

@@ -34,7 +34,7 @@ Reactive integrations triggered by messages from Kafka, RabbitMQ, NATS, or MQTT.
 
 ## File processors
 
-Integrations triggered by file arrival on FTP, SFTP, or local directories. Process CSV, JSON, XML, or fixed-width files in batch or one at a time.
+Integrations triggered by file arrival on remote servers (FTP, SFTP, FTPS) or local directories. A listener connects to the server and polls for new files, while a service defines which directory to monitor and how to process incoming files — as CSV, JSON, XML, text, or binary. Multiple services can share a single listener to monitor different directories on the same server. For more information, see [Remote Servers (FTP/SFTP)](/docs/develop/integration-artifacts/file/ftp-sftp) and [Local Files](/docs/develop/integration-artifacts/file/local-files).
 
 ## AI agents
 
