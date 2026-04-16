@@ -20,21 +20,31 @@ A reusable piece of business logic that connects systems, transforms data, or or
 
 A shareable collection of reusable components, functions, and connectors packaged for distribution. Libraries let you build once and use across multiple projects or share with your team. For more information, see [Organize code](/docs/develop/organize-code/).
 
-## Services
+## Services and listeners
 
-Expose your integrations over HTTP, GraphQL, gRPC, WebSocket, or TCP. Services are the most common artifact—they define endpoints that external systems call.
+A **listener** is a Ballerina construct that manages a connection to an external I/O source — an HTTP port, a message broker, a remote file server, or a local directory. It handles protocol details, authentication, and event detection (such as polling for new files or consuming messages).
+
+A **service** is a Ballerina construct that defines the application logic for handling incoming events. A service attaches to a listener using the `on` keyword. The listener delivers events to the service, and the service processes them.
+
+Multiple services can attach to the same listener. For example, two services can share one FTP listener to monitor different directories on the same server, or share one HTTP listener to serve different API paths on the same port.
+
+This listener/service pattern is the foundation for all inbound integration types: [API services](#integration-as-api), [event integrations](#event-integrations), and [file integrations](#file-integrations). For the language-level details, see [Integration-specific features](/docs/reference/language/integration-features).
+
+## Integration as API
+
+Expose your integrations over HTTP, GraphQL, gRPC, WebSocket, or TCP. The listener binds to a network port and the service defines the API endpoints that external systems call. This is the most common integration artifact.
 
 ## Automations
 
 Scheduled or manually triggered integrations that run without an external request. Use automations for periodic data synchronization, cleanup tasks, or report generation.
 
-## Event handlers
+## Event integrations
 
-Reactive integrations triggered by messages from Kafka, RabbitMQ, NATS, or MQTT. Event handlers process streaming data in real time.
+Reactive integrations where the listener connects to a message broker — Kafka, RabbitMQ, NATS, MQTT, Azure Service Bus, or Solace — and the service processes messages as they arrive. Use event integrations for real-time streaming data and event-driven architectures.
 
-## File processors
+## File integrations
 
-Integrations triggered by file arrival on remote servers (FTP, SFTP, FTPS) or local directories. A listener connects to the server and polls for new files, while a service defines which directory to monitor and how to process incoming files — as CSV, JSON, XML, text, or binary. Multiple services can share a single listener to monitor different directories on the same server. For more information, see [Remote Servers (FTP/SFTP)](/docs/develop/integration-artifacts/file/ftp-sftp) and [Local Files](/docs/develop/integration-artifacts/file/local-files).
+Integrations where the listener connects to a remote file server (FTP, SFTP, FTPS) or monitors a local directory, polling for new files. The service defines which directory to watch, which files to match, and how to process incoming content — as CSV, JSON, XML, text, or binary. For more information, see [Remote Servers (FTP/SFTP)](/docs/develop/integration-artifacts/file/ftp-sftp) and [Local Files](/docs/develop/integration-artifacts/file/local-files).
 
 ## AI agents
 
