@@ -1903,6 +1903,8 @@ const sidebars: SidebarsConfig = {
             'tutorials/walkthroughs/edi-ftp-processing',
             'tutorials/walkthroughs/csv-ftp-processing',
             'tutorials/walkthroughs/ftp-listener-with-age-filter-and-file-dependency',
+            'tutorials/walkthroughs/local-file-watcher',
+            'tutorials/walkthroughs/streaming-csv-sftp',
             'tutorials/data-reconciliation',
           ],
         },
