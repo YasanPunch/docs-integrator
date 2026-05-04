@@ -35,7 +35,7 @@ flowchart TD
     DB ----> Execute
 ```
 
-## Step 1: Create the Project
+## Step 1: Create the project
 
 ```toml
 # Ballerina.toml
@@ -67,7 +67,7 @@ dbPassword = "password"
 dbName = "analytics_db"
 ```
 
-## Step 2: Define the Database Schema Description
+## Step 2: Define the database schema description
 
 Give the agent knowledge of the database structure so it can generate accurate SQL.
 
@@ -92,7 +92,7 @@ Notes:
 `;
 ```
 
-## Step 3: Create the Agent Tools
+## Step 3: Create the agent tools
 
 ```ballerina
 // tools.bal
@@ -224,7 +224,7 @@ function convertToCSV(json[] rows) returns string {
 }
 ```
 
-## Step 4: Create the Data Agent
+## Step 4: Create the data agent
 
 ```ballerina
 // agent.bal
@@ -265,7 +265,7 @@ Rules:
 );
 ```
 
-## Step 5: Build the HTTP Service
+## Step 5: Build the HTTP service
 
 ```ballerina
 // service.bal
@@ -292,7 +292,7 @@ service /data on new http:Listener(8090) {
 }
 ```
 
-## Step 6: Run and Test
+## Step 6: Run and test
 
 1. Start the service:
    ```bash
@@ -332,7 +332,7 @@ service /data on new http:Listener(8090) {
      -d '{"message": "Can you explain the SQL query you used for the last question?", "sessionId": "<session-id>"}'
    ```
 
-## Step 7: Add Guardrails
+## Step 7: Add guardrails
 
 Protect against SQL injection and excessive queries.
 
@@ -356,7 +356,7 @@ final agent:ChatAgent guardedDataAgent = check new (
 );
 ```
 
-## What You Built
+## What you built
 
 You now have a conversational data pipeline that:
 - Translates natural language questions into SQL queries
@@ -366,7 +366,7 @@ You now have a conversational data pipeline that:
 - Maintains conversation context for follow-up questions
 - Protects against SQL injection through validation
 
-## What's Next
+## What's next
 
 - [Prompt Engineering](/docs/genai/llm-connectivity/prompt-engineering) -- Improve query generation accuracy
 - [Input/Output Guardrails](/docs/genai/guardrails/input-output-guardrails) -- Advanced input validation

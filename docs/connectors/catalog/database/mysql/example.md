@@ -23,11 +23,11 @@ flowchart LR
 
 ## Setting up the MySQL integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
 ## Adding the MySQL connector
 
-### Step 1: Open the Add Connection palette
+### Step 1: Open the add connection palette
 
 Click the **+ Add Connection** button on the WSO2 Integrator canvas to open the connector palette. The palette displays a search field at the top and a list of pre-built connectors including MySQL, MongoDB, PostgreSQL, and others.
 
@@ -70,17 +70,17 @@ Click **Save Connection** to save the connector. The canvas returns to the integ
 
 ## Configuring the MySQL execute operation
 
-### Step 5: Add an Automation entry point
+### Step 5: Add an automation entry point
 
 Click **+ Add Artifact** on the canvas and select **Automation**. In the Automation creation form, click **Create** to create a new automation with the default settings. The automation flow canvas opens, showing a **Start** node and an **Error Handler** node with an empty step slot between them.
 
-### Step 6: Expand the MySQL connection node and select the Execute operation
+### Step 6: Expand the MySQL connection node and select the execute operation
 
 Click the empty step placeholder in the flow to open the step addition panel. In the right-hand panel, locate the **Connections** section, click **mysqlClient** to expand its available operations, and then click **Execute** to select it.
 
 ![MySQL connection node expanded showing all available operations before selection](/img/connectors/catalog/database/mysql/mysql_screenshot_04_operations_panel.png)
 
-### Step 7: Configure the Execute operation parameters and save
+### Step 7: Configure the execute operation parameters and save
 
 Fill in the operation fields, then click **Save** to add the step to the automation flow.
 
@@ -93,6 +93,6 @@ Fill in the operation fields, then click **Save** to add the step to the automat
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/mysql_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/mysql_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/mysql_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/mysql_connector_sample)

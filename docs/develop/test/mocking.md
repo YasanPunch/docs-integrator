@@ -163,7 +163,7 @@ test:assertEquals(addValues(11, 6), 17); // calls real function
 
 ## What's next
 
-- [Test Services & Clients](test-services-clients.md) — end-to-end service testing using real HTTP clients
+- [Test Services & Clients](services-clients.md) — end-to-end service testing using real HTTP clients
 - [Unit Testing](unit-testing.md) — test framework fundamentals and assertions
 - [Execute Tests](execute-tests.md) — all options for running and filtering tests
 - [Ballerina — Mocking](https://ballerina.io/learn/test-ballerina-code/mocking/) — Ballerina language reference for mocking

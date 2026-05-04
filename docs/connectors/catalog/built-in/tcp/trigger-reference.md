@@ -51,11 +51,14 @@ import ballerina/tcp;
 
 listener tcp:Listener tcpListener = new (3000, secureSocket = {
     key: {
-        certFile: "./certs/server.crt",
-        keyFile: "./certs/server.key"
+        certFile: "/path/to/server.crt",
+        keyFile: "/path/to/server.key"
     }
 });
 ```
+
+:::tip Generating certificates
+For instructions on generating certificates using `keytool`, see [Keystores and Truststores](../../../../deploy-operate/secure/keystore-truststore.md).
 
 ---
 

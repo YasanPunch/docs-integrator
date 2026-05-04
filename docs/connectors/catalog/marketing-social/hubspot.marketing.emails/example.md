@@ -19,19 +19,19 @@ flowchart LR
 
 - A HubSpot account with a valid Bearer Token (Private App token with `marketing-email` scope)
 
-## Setting up the HubSpot Marketing Emails integration
+## Setting up the HubSpot marketing emails integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
-## Adding the HubSpot Marketing Emails connector
+## Adding the HubSpot marketing emails connector
 
-### Step 1: Open the Add connection dialog
+### Step 1: Open the add connection dialog
 
 Select the **+** (Add Connection) button in the **Connections** section of the WSO2 Integrator side panel to open the connector palette.
 
 ![HubSpot Marketing Emails connector palette open with search field before any selection](/img/connectors/catalog/marketing-social/hubspot.marketing.emails/hubspot_marketing_emails_screenshot_01_palette.png)
 
-## Configuring the HubSpot Marketing Emails connection
+## Configuring the HubSpot marketing emails connection
 
 ### Step 2: Configure the connection auth token
 
@@ -61,9 +61,9 @@ Verify the completed connection form and select **Save Connection** to persist t
 - **hubspotBearerToken** (string) : Your HubSpot Private App token with the `marketing-email` read scope
 - **hubspotServiceUrl** (string) : The HubSpot marketing emails API base URL, for example `https://api.hubapi.com/marketing/v3/emails`
 
-## Configuring the HubSpot Marketing Emails get operation
+## Configuring the HubSpot marketing emails get operation
 
-### Step 6: Add an Automation entry point
+### Step 6: Add an automation entry point
 
 Select **+ Add Artifact** on the canvas, then select **Automation** from the artifact panel and select **Create**. The automation flow canvas opens with a `main` function.
 
@@ -83,9 +83,9 @@ Select the **+** node in the flow to open the node panel, then expand **emailsCl
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/hubspot.marketing.emails_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/hubspot.marketing.emails_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/hubspot.marketing.emails_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/hubspot.marketing.emails_connector_sample)
 
 ## More code examples
 

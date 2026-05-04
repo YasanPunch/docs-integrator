@@ -16,7 +16,7 @@ MQTT event integrations subscribe to one or more MQTT topics and trigger an `onM
 
    | Field | Description | Default |
    |---|---|---|
-   | **Service URI** | URI of the MQTT broker (e.g., `mqtt://localhost:1883`). | Required |
+   | **Service URI** | URI of the MQTT broker (e.g., `tcp://localhost:1883`). | Required |
    | **Client ID** | Unique identifier for this client as recognised by the MQTT broker. | Required |
    | **Subscriptions** | Topic or topics to subscribe to. | Required |
 
@@ -35,23 +35,20 @@ MQTT event integrations subscribe to one or more MQTT topics and trigger an `onM
 6. Click **+ Add Handler** to add the `onMessage` handler.
 
 ```ballerina
-import ballerinax/mqtt;
+import ballerina/mqtt;
 import ballerina/log;
 
-configurable string serverUri = "mqtt://localhost:1883";
+configurable string serverUri = "tcp://localhost:1883";
 configurable string clientId = "unique_client_001";
 configurable string subscription = "topic1";
 
-listener mqtt:Listener mqttListener = new (serverUri, clientId);
+listener mqtt:Listener mqttListener = new (serverUri, clientId, subscription);
 
-@mqtt:ServiceConfig {
-    topics: [subscription]
-}
-service on mqttListener {
+service mqtt:Service on mqttListener {
 
     remote function onMessage(mqtt:Message message) returns error? {
         log:printInfo("Message received", topic = message.topic,
-                      content = message.content.toString());
+                      content = check string:fromBytes(message.payload));
     }
 }
 ```
@@ -65,42 +62,32 @@ In the **Service Designer**, click the **Configure** icon in the header to open 
 | Field | Description | Default |
 |---|---|---|
 | **Name** | Identifier for the listener. | `mqttListener` |
-| **Server Uri** | URI of the remote MQTT server (e.g., `mqtt://localhost:1883`). | Required |
+| **Server URI** | URI of the remote MQTT server (e.g., `tcp://localhost:1883`). | Required |
 | **Client Id** | Unique client ID to identify this listener to the broker. | Required |
 | **Subscriptions** | Topics to subscribe to. | Required |
 | **Connection Config** | Additional connection configuration as a record expression (e.g., credentials, keep-alive settings). | `{}` |
-| **Manual Acks** | When set to `true`, messages must be manually acknowledged. When `false`, messages are automatically acknowledged. | — |
+| **Manual Acks** | When set to `true`, messages must be manually acknowledged. When `false`, messages are automatically acknowledged. | `false` |
 
 Click **+ Attach Listener** to attach an additional listener to the same service.
 
 Click **Save Changes** to apply updates.
 
 ```ballerina
-listener mqtt:Listener mqttListener = new (
-    serverUri = "mqtt://localhost:1883",
-    clientId = "unique_client_001",
-    connectionConfig = {
-        username: "device",
-        password: "secret"
-    }
-);
+listener mqtt:Listener mqttListener = new ("tcp://localhost:1883", "unique_client_001", "topic1",
+    config = {
+        connectionConfig: {
+            username: "device",
+            password: "secret"
+        }
+    });
 ```
 
 `mqtt:ListenerConfiguration` fields:
 
 | Field | Type | Default | Description |
 |---|---|---|---|
-| `serverUri` | `string` | Required | URI of the MQTT broker |
-| `clientId` | `string` | Required | Unique client identifier |
-| `connectionConfig` | `mqtt:ConnectionConfiguration?` | — | Broker credentials and connection settings |
+| `connectionConfig?` | `mqtt:ConnectionConfiguration?` | — | The related connection configuration |
 | `manualAcks` | `boolean` | `false` | When `true`, messages must be manually acknowledged |
-
-`@mqtt:ServiceConfig` fields:
-
-| Field | Type | Description |
-|---|---|---|
-| `topics` | `string[]` | Topics to subscribe to |
-| `qualityOfService` | `mqtt:QosLevel` | Message delivery guarantee level. See [QoS levels](#qos-levels). |
 
 ## Event handlers
 
@@ -111,6 +98,10 @@ MQTT services support a single handler type — `onMessage` — which is called 
 In the **Service Designer**, click **+ Add Handler**. The **Select Handler to Add** panel lists `onMessage`. Click it to add the handler directly — no additional configuration is required.
 
 ```ballerina
+import ballerina/mqtt;
+import ballerina/lang.value;
+import ballerina/log;
+
 type SensorReading record {|
     string sensorId;
     float temperature;
@@ -118,18 +109,13 @@ type SensorReading record {|
     string timestamp;
 |};
 
-@mqtt:ServiceConfig {
-    topics: ["sensors/+/readings"],
-    qualityOfService: mqtt:EXACTLY_ONCE
-}
-service on mqttListener {
+listener mqtt:Listener mqttListener = new ("tcp://localhost:1883", "unique_client_001", {topic: "sensors/+/readings", qos: 0});
 
+service mqtt:Service on mqttListener {
     remote function onMessage(mqtt:Message message) returns error? {
-        SensorReading reading = check (check message.content.ensureType(json)).fromJsonWithType();
-        log:printInfo("Sensor reading",
-                      sensorId = reading.sensorId,
+        SensorReading reading = check value:fromJsonStringWithType(check string:fromBytes(message.payload));
+        log:printInfo("Sensor reading", sensorId = reading.sensorId,
                       temperature = reading.temperature);
-        check storeSensorReading(reading);
     }
 }
 ```
@@ -140,19 +126,21 @@ The `onMessage` handler receives an `mqtt:Message` parameter with the message co
 
 | Field | Type | Description |
 |---|---|---|
-| `topic` | `string` | Topic the message was published to |
-| `content` | `byte[]` | Raw message payload. Use `ensureType(json)` or `ensureType(string)` to cast to a usable type. |
-| `qos` | `mqtt:QosLevel` | Quality of service level of the received message |
-| `retained` | `boolean` | `true` if the message was a retained message from the broker |
-| `duplicate` | `boolean` | `true` if the broker is redelivering the message |
+| `payload` | `byte[]` | The payload of the message as a byte array |
+| `qos` | `int` | Quality of service. 0 - at most once, 1 - at least once, 2 - exactly once |
+| `retained` | `boolean` | Indicates whether this message should/is retained by the server |
+| `duplicate` | `boolean` | Indicates whether or not this message might be a duplicate |
+| `messageId` | `int?` | The message ID of the message. This is only set on messages received from the server |
+| `topic` | `string?` | The topic this message was received on. This is only set on messages received from the server |
+| `properties` | `mqtt:MessageProperties?` | The properties of the message |
 
 ### QoS levels
 
-| Level | Constant | Guarantee |
-|---|---|---|
-| `0` | `mqtt:AT_MOST_ONCE` | Fire and forget — no acknowledgment |
-| `1` | `mqtt:AT_LEAST_ONCE` | Acknowledged delivery — possible duplicates |
-| `2` | `mqtt:EXACTLY_ONCE` | Four-step handshake — no duplicates |
+| Level | Guarantee |
+|---|---|
+| `0` | Fire and forget — no acknowledgment |
+| `1` | Acknowledged delivery — possible duplicates |
+| `2` | Four-step handshake — no duplicates |
 
 ## What's next
 

@@ -20,24 +20,24 @@ flowchart LR
 
 - A HubSpot account with API access and a valid Bearer Token (Private App token)
 
-## Setting up the HubSpot Marketing Campaigns integration
+## Setting up the HubSpot marketing campaigns integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
-## Adding the HubSpot Marketing Campaigns connector
+## Adding the HubSpot marketing campaigns connector
 
-### Step 1: Open the Add Connection panel
+### Step 1: Open the add connection panel
 
 Select the **+** button next to the **Connections** section in the WSO2 Integrator side panel to open the **Add Connection** panel.
 
 ![HubSpot Marketing Campaigns connector palette open with search field before any selection](/img/connectors/catalog/marketing-social/hubspot.marketing.campaigns/hubspot_marketing_campaigns_screenshot_01_palette.png)
 
-### Step 2: Search for and select the HubSpot Marketing Campaigns connector
+### Step 2: Search for and select the HubSpot marketing campaigns connector
 
 1. In the search box, enter `hubspot` to filter available connectors.
 2. Select **ballerinax/hubspot.marketing.campaigns** from the results to open the connection form.
 
-## Configuring the HubSpot Marketing Campaigns connection
+## Configuring the HubSpot marketing campaigns connection
 
 ### Step 3: Fill in connection parameters and save
 
@@ -59,13 +59,13 @@ The connection `campaignsClient` now appears under the **Connections** section i
 
 - **hubspotBearerToken** (string) : Your HubSpot Private App Bearer Token (e.g., `pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`)
 
-## Configuring the HubSpot Marketing Campaigns create a campaign operation
+## Configuring the HubSpot marketing campaigns create a campaign operation
 
-### Step 5: Add an Automation entry point
+### Step 5: Add an automation entry point
 
 Select **Add Artifact** in the WSO2 Integrator side panel and choose **Automation**. Accept the default name `main` and select **Create**. The automation flow canvas opens showing a **Start** node and an **Error Handler** node.
 
-### Step 6: Select and configure the Create a campaign operation
+### Step 6: Select and configure the create a campaign operation
 
 1. On the automation canvas, select the **+** (Add Step) button between the **Start** node and the **Error Handler** node.
 2. In the node panel, locate the **Connections** section and expand **campaignsClient** to reveal all available operations.
@@ -88,9 +88,9 @@ Select **Save** to add the step to the canvas.
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/hubspot.marketing.campaigns_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/hubspot.marketing.campaigns_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/hubspot.marketing.campaigns_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/hubspot.marketing.campaigns_connector_sample)
 
 ## More code examples
 

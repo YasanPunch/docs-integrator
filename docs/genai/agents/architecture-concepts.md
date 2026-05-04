@@ -8,9 +8,9 @@ AI agents in WSO2 Integrator are autonomous programs that use large language mod
 
 Understanding the agent architecture helps you design robust, predictable integrations that leverage LLM intelligence without sacrificing reliability.
 
-## Core Concepts
+## Core concepts
 
-### What Is an Agent?
+### What is an agent?
 
 An agent is an integration component that combines an LLM with tools, memory, and a reasoning loop. Unlike a simple LLM API call, an agent can:
 
@@ -19,7 +19,7 @@ An agent is an integration component that combines an LLM with tools, memory, an
 - **Observe** the results of its actions and decide what to do next
 - **Remember** previous interactions to maintain conversational context
 
-### The Agent Loop
+### The agent loop
 
 Every agent in WSO2 Integrator follows the **Reason-Act-Observe** loop:
 
@@ -35,7 +35,7 @@ flowchart TD
 
 This loop can repeat multiple times per request. For example, an agent might look up a customer record (first tool call), then check their order history (second tool call), and finally compose a response using both pieces of information.
 
-### Agent Components
+### Agent components
 
 ```ballerina
 import ballerinax/ai.agent;
@@ -63,9 +63,9 @@ final agent:ChatAgent myAgent = check new (
 | **Tools** | Functions the agent can call during reasoning | No (but recommended) |
 | **Memory** | Stores conversation history for multi-turn interactions | No |
 
-## Agent Types
+## Agent types
 
-### Chat Agent
+### Chat agent
 
 A conversational agent that maintains a session with a user across multiple messages. Best for interactive support, data exploration, and guided workflows.
 
@@ -81,7 +81,7 @@ final agent:ChatAgent chatAgent = check new (
 string response = check chatAgent.chat("What's my order status?", "session-123");
 ```
 
-### Task Agent
+### Task agent
 
 A single-turn agent that completes a specific task and returns a structured result. Best for data extraction, classification, and automated processing.
 
@@ -97,7 +97,7 @@ TicketClassification result = check classifierAgent.run("I can't connect to the 
 // result.category == "technical"
 ```
 
-## Tool Architecture
+## Tool architecture
 
 Tools are the bridge between the agent's LLM reasoning and your integration logic. The LLM sees the tool's name, description, and parameter schema, then decides whether and how to call it.
 
@@ -117,7 +117,7 @@ isolated function getWeather(
 
 The LLM **never** executes code directly. It produces a structured tool call request, and the agent runtime executes the actual function safely within your integration environment.
 
-## Memory Architecture
+## Memory architecture
 
 Memory determines how much conversation context the agent retains between turns.
 
@@ -139,9 +139,9 @@ new agent:TokenWindowChatMemory(maxTokens: 4000)
 new agent:SummaryChatMemory(summarizeAfter: 10, keepRecent: 5)
 ```
 
-## Design Patterns
+## Design patterns
 
-### Sequential Tool Calls
+### Sequential tool calls
 
 The agent calls tools one at a time, using each result to inform the next decision.
 
@@ -152,7 +152,7 @@ User: "Transfer $50 from my checking to savings"
   → Agent responds: "Done! Transferred $50. Your checking balance is now $1,150."
 ```
 
-### Parallel Tool Calls
+### Parallel tool calls
 
 When the LLM determines that multiple tool calls are independent, it can request them in parallel.
 
@@ -162,7 +162,7 @@ User: "Compare the weather in NYC and London"
   → Agent responds with comparison
 ```
 
-### Fallback and Retry
+### Fallback and retry
 
 Design tools to return informative errors so the agent can reason about what went wrong.
 
@@ -183,7 +183,7 @@ isolated function getCustomer(string id) returns json|error {
 }
 ```
 
-## Execution Model
+## Execution model
 
 Agents in WSO2 Integrator run within the Ballerina runtime, which provides:
 
@@ -192,9 +192,9 @@ Agents in WSO2 Integrator run within the Ballerina runtime, which provides:
 - **Error handling** — Ballerina's typed error model propagates through the agent loop
 - **Observability** — Agent actions emit traces and metrics through the Ballerina observability framework
 
-## What's Next
+## What's next
 
-- [Chat Agents](chat-agents.md) — Build interactive conversational agents
+- [Chat Agents](build-chat.md) — Build interactive conversational agents
 - [Tool Binding](tool-binding.md) — Advanced tool patterns and function calling
-- [Memory Configuration](memory-configuration.md) — Customize conversation history management
-- [Multi-Agent Orchestration](multi-agent-orchestration.md) — Coordinate multiple agents
+- [Memory Configuration](configure-memory.md) — Customize conversation history management
+- [Multi-Agent Orchestration](multi-orchestration.md) — Coordinate multiple agents

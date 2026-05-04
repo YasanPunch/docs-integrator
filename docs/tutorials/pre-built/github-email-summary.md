@@ -13,7 +13,7 @@ Generate and send a daily email digest summarizing activity across your GitHub r
 - SMTP email credentials (Gmail, Outlook, or any SMTP server)
 - One or more GitHub repositories to monitor
 
-## Quick Run
+## Quick run
 
 ```bash
 # Clone the samples repository
@@ -46,9 +46,9 @@ toAddresses = ["team@example.com"]
 subject = "Daily GitHub Activity Summary"
 ```
 
-## Code Walkthrough
+## Code walkthrough
 
-### Project Structure
+### Project structure
 
 ```
 github-to-email-summary/
@@ -61,7 +61,7 @@ github-to-email-summary/
 └── types.bal
 ```
 
-### Defining the Data Types
+### Defining the data types
 
 ```ballerina
 // Summary of a single repository's activity
@@ -83,7 +83,7 @@ type DailySummary record {|
 |};
 ```
 
-### Fetching GitHub Activity
+### Fetching GitHub activity
 
 The `github_client.bal` file queries the GitHub REST API for events that occurred in the last 24 hours:
 
@@ -133,7 +133,7 @@ function fetchRepoSummary(string repoFullName) returns RepoSummary|error {
 }
 ```
 
-### Building the Email Content
+### Building the email content
 
 The `email_builder.bal` file compiles repo summaries into a formatted HTML email:
 
@@ -166,7 +166,7 @@ function buildEmailBody(DailySummary summary) returns string {
 }
 ```
 
-### Scheduling and Sending
+### Scheduling and sending
 
 The `main.bal` file ties everything together with a daily schedule:
 
@@ -234,21 +234,21 @@ function generateAndSendSummary() returns error? {
 }
 ```
 
-### Key Points
+### Key points
 
 - **Scheduled execution**: The job runs every 24 hours (86400 seconds) and queries events from the past 24 hours.
 - **Multi-repo support**: Configure multiple repositories in the `repos` array to get a consolidated summary.
 - **HTML formatting**: The email body is built as HTML for clear, readable summaries in any email client.
 
-## Customization Notes
+## Customization notes
 
 - **Change the schedule**: Modify the frequency parameter to run hourly (`3600`) or weekly (`604800`) instead of daily.
 - **Add Slack notifications**: Replace or supplement email delivery with a Slack webhook using the `ballerinax/slack` connector.
 - **Filter event types**: Modify `fetchRepoSummary` to focus on specific event types, such as only security-related issues or release tags.
 - **Include release notes**: Extend the GitHub client to also fetch recent releases and include release notes in the digest.
 
-## What's Next
+## What's next
 
-- [Google Sheets to Salesforce Contacts](google-sheets-salesforce.md) -- Sync spreadsheet rows to CRM contacts
+- [Google Sheets to Salesforce Contacts](google-sheets-salesforce-contacts.md) -- Sync spreadsheet rows to CRM contacts
 - [HubSpot to Google Contacts](hubspot-google-contacts.md) -- Sync CRM contacts across platforms
 - [Connectors Reference](../../connectors/overview) -- Explore all available connectors

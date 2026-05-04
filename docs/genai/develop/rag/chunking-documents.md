@@ -6,9 +6,9 @@ title: Chunking Documents
 
 Chunking determines how your documents are divided into searchable units for a RAG pipeline. The strategy you choose directly impacts retrieval quality -- the right chunks mean the LLM gets exactly the context it needs.
 
-## Chunking Strategies
+## Chunking strategies
 
-### Fixed-Size Chunking
+### Fixed-Size chunking
 
 Split text into chunks of a fixed token or character count. Simple and predictable.
 
@@ -31,7 +31,7 @@ string[] chunks = check rag:chunk(documentText, fixedConfig);
 | `maxChunkSize` | 300-500 tokens | Smaller for precise retrieval, larger for more context |
 | `overlap` | 10-20% of chunk size | Too much wastes space; too little misses boundary content |
 
-### Paragraph-Based Chunking
+### Paragraph-Based chunking
 
 Split at natural paragraph boundaries. Preserves the document's logical structure.
 
@@ -53,7 +53,7 @@ Chunk 1: "## Return Policy\nItems may be returned within 30 days of delivery..."
 Chunk 2: "## Return Policy\nRefunds are processed within 5-7 business days..."
 ```
 
-### Sentence-Based Chunking
+### Sentence-Based chunking
 
 Split at sentence boundaries and group sentences up to the chunk size limit.
 
@@ -66,7 +66,7 @@ rag:ChunkConfig sentenceConfig = {
 };
 ```
 
-### Semantic Chunking
+### Semantic chunking
 
 Group semantically related sentences together by measuring embedding similarity between consecutive sentences. Produces more coherent chunks than fixed-size splitting.
 
@@ -87,7 +87,7 @@ string[] chunks = check rag:chunk(documentText, semanticConfig);
 
 Semantic chunking is more expensive (it requires embedding calls during chunking) but produces higher-quality chunks, especially for documents that cover multiple topics.
 
-### Recursive Chunking
+### Recursive chunking
 
 Try multiple splitting strategies in order of preference. First try to split by headings, then paragraphs, then sentences, then fixed-size as a fallback.
 
@@ -100,7 +100,7 @@ rag:ChunkConfig recursiveConfig = {
 };
 ```
 
-## Choosing a Chunking Strategy
+## Choosing a chunking strategy
 
 | Strategy | Quality | Cost | Best For |
 |----------|---------|------|----------|
@@ -110,7 +110,7 @@ rag:ChunkConfig recursiveConfig = {
 | **Semantic** | Best | High | Mixed-topic documents, highest quality needs |
 | **Recursive** | Good | Low | Documents with varying structure |
 
-## Contextual Chunking
+## Contextual chunking
 
 Prepend document-level context to each chunk to improve retrieval quality.
 
@@ -128,7 +128,7 @@ function contextualChunk(string document, string title, string summary) returns 
 
 This technique helps the embedding model understand the broader context of each chunk, leading to better retrieval for ambiguous queries.
 
-## What's Next
+## What's next
 
 - [Generating Embeddings](/docs/genai/develop/rag/generating-embeddings) -- Convert chunks to vector embeddings
 - [Connecting to Vector Databases](/docs/genai/develop/rag/connecting-vector-dbs) -- Store and query your embeddings

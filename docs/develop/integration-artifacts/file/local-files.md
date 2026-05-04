@@ -161,28 +161,78 @@ Each handler receives a `file:FileEvent` parameter with details about the file s
 | `addedFiles` | `file:FileInfo[]` | List of files added in this event cycle (available in `onCreate`) |
 | `lastModifiedTimestamp` | `int` | Last-modified time of the file as UNIX epoch milliseconds |
 
+## Reading file content
+
+Use the `ballerina/io` module to read the content of the file that triggered a handler. The path of the file is available as `event.name` on the `file:FileEvent` parameter.
+
+In the **Service Designer**, open the handler and build the flow with two nodes — a Variable that captures the file content and a Log that prints it:
+
+1. Click **+** on the handler canvas to add a node, pick **Declare Variable**, and fill in:
+
+   | Field | Value |
+   |---|---|
+   | **Type** | `string` |
+   | **Name** | `content` (or any identifier) |
+   | **Expression** | `check io:fileReadString(event.name)` |
+
+   Open the helper panel and click `fileReadString()` under the **Functions** tab to insert the call — this also imports the `ballerina/io` module for you. Save the node.
+
+2. Click **+** after the Variable, pick **Log** → **Log Info**, switch the **Msg** field to **Expression** mode, and enter `content`. Save the node.
+
+```ballerina
+import ballerina/file;
+import ballerina/io;
+import ballerina/log;
+
+service on fileListener {
+
+    remote function onCreate(file:FileEvent event) returns error? {
+        string content = check io:fileReadString(event.name);
+        log:printInfo("File received", path = event.name, size = content.length());
+    }
+}
+```
+
+`io` read functions:
+
+| Function | Description |
+|---|---|
+| `io:fileReadString(path)` | Read the file as a single UTF-8 string |
+| `io:fileReadBytes(path)` | Read the file as a byte array |
+| `io:fileReadLines(path)` | Read the file as a `string[]`, one entry per line |
+| `io:fileReadJson(path)` | Read and parse the file as a `json` value |
+| `io:fileReadXml(path)` | Read and parse the file as an `xml` value |
+| `io:fileReadCsv(path)` | Read and parse CSV content as `string[][]` or a record array |
+
 ## Writing output files
 
 Use the `ballerina/io` module to write results to the local file system from within a handler.
 
+The `io` write functions return `error?`, so the same Variable-node pattern as reading works — capture the result and log a confirmation:
+
+1. Click **+** on the handler canvas to add a node, pick **Declare Variable**, and fill in:
+
+   | Field | Value |
+   |---|---|
+   | **Type** | `error?` |
+   | **Name** | `writeResult` |
+   | **Expression** | `io:fileWriteString("/data/outgoing/report.txt", "Processing complete.")` |
+
+   Open the helper panel and click `fileWriteString()` under the **Functions** tab to insert the call and import `ballerina/io`. Save the node.
+
+2. Click **+** after the Variable, pick **Log** → **Log Info**, and enter a confirmation message such as `"Output written"`. Save the node.
+
 ```ballerina
+import ballerina/file;
 import ballerina/io;
 import ballerina/log;
 
-type OrderSummary record {|
-    string orderId;
-    decimal total;
-    string status;
-|};
+service on fileListener {
 
-function writeResults(OrderSummary[] summaries) returns error? {
-    // Write a CSV file
-    check io:fileWriteCsv("/data/outgoing/summary.csv", summaries);
-
-    // Write a plain text file
-    check io:fileWriteString("/data/outgoing/report.txt", "Processing complete.");
-
-    log:printInfo("Output files written", count = summaries.length());
+    remote function onCreate(file:FileEvent event) returns error? {
+        check io:fileWriteString("/data/outgoing/report.txt", "Processing complete.");
+        log:printInfo("Output written", trigger = event.name);
+    }
 }
 ```
 

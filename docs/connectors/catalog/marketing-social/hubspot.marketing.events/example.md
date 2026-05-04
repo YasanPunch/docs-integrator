@@ -20,11 +20,11 @@ flowchart LR
 
 - A HubSpot developer account with a Private App bearer token that has the `crm.objects.marketing_events.write` scope
 
-## Setting up the HubSpot Marketing Events integration
+## Setting up the HubSpot marketing events integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
-## Adding the HubSpot Marketing Events connector
+## Adding the HubSpot marketing events connector
 
 ### Step 1: Open the connector palette
 
@@ -37,7 +37,7 @@ Select **+ Add Artifact → Connection** from the Integration overview canvas to
 1. Enter `hubspot marketing events` in the search box.
 2. Select the connector card labelled **"Events / ballerinax / hubspot.marketing.events"**.
 
-## Configuring the HubSpot Marketing Events connection
+## Configuring the HubSpot marketing events connection
 
 ### Step 3: Fill in the connection parameters
 
@@ -66,9 +66,9 @@ Select **Save Connection** to persist the connection. The integration canvas sho
 
 - **hubspotBearerToken** (string) : Your HubSpot Private App bearer token with the `crm.objects.marketing_events.write` scope
 
-## Configuring the HubSpot Marketing Events postEventsCreate operation
+## Configuring the HubSpot marketing events postEventsCreate operation
 
-### Step 6: Add an Automation entry point
+### Step 6: Add an automation entry point
 
 1. Select **+ Add Artifact** on the canvas.
 2. Select **Automation** from the artifact picker.
@@ -99,9 +99,9 @@ The automation flow is created with a **Start** node and an **Error Handler** no
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/hubspot.marketing.events_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/hubspot.marketing.events_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/hubspot.marketing.events_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/hubspot.marketing.events_connector_sample)
 
 ## More code examples
 

@@ -21,11 +21,11 @@ flowchart LR
 - A Zoom account with an OAuth app configured in the Zoom Marketplace developer portal
 - Zoom OAuth 2.0 credentials: Client ID, Client Secret, and Refresh Token
 
-## Setting up the Zoom Meetings integration
+## Setting up the Zoom meetings integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
-## Adding the Zoom Meetings connector
+## Adding the Zoom meetings connector
 
 ### Step 1: Open the connector palette
 
@@ -33,13 +33,13 @@ In the project tree, hover over **Connections** and select the **+** (Add Connec
 
 ![Zoom Meetings connector palette open with search field before any selection](/img/connectors/catalog/communication/zoom.meetings/zoom_meetings_screenshot_01_palette.png)
 
-### Step 2: Search for and select the Zoom Meetings connector
+### Step 2: Search for and select the Zoom meetings connector
 
 1. In the search field at the top of the palette, enter `zoom`.
 2. Locate **Meetings** (package `ballerinax/zoom.meetings`).
 3. Select the connector card to open the **Configure Meetings** form.
 
-## Configuring the Zoom Meetings connection
+## Configuring the Zoom meetings connection
 
 ### Step 3: Fill in the connection parameters
 
@@ -71,9 +71,9 @@ Select **Save Connection** to persist the connection. The **meetingsClient** nod
 - **zoomRefreshUrl** (string) : The Zoom token endpoint, for example `https://zoom.us/oauth/token`
 - **zoomServiceUrl** (string) : The Zoom API base URL, for example `https://api.zoom.us/v2`
 
-## Configuring the Zoom Meetings listMeetings operation
+## Configuring the Zoom meetings listMeetings operation
 
-### Step 6: Add an Automation entry point
+### Step 6: Add an automation entry point
 
 1. On the integration canvas, select **+ Add Artifact**.
 2. Under **Automation**, select the **Automation** tile.
@@ -102,9 +102,9 @@ Select **Save Connection** to persist the connection. The **meetingsClient** nod
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/zoom_meetings_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/zoom_meetings_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/zoom_meetings_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/zoom_meetings_connector_sample)
 
 ## More code examples
 

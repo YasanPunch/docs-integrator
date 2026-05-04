@@ -73,4 +73,4 @@ Use a tool like [Postman](https://www.postman.com/) or `curl` to perform the tok
 
 ## Next steps
 
-- [Actions Reference](action-reference.md) - Available operations
+- [Actions Reference](actions.md) - Available operations

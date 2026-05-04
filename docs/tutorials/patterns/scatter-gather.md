@@ -33,7 +33,7 @@ The gather phase can use different strategies:
 - **Wait for quorum**: Proceed after N out of M responses arrive.
 - **Best effort with timeout**: Wait up to a deadline and use whatever responses are available.
 
-## When to Use It
+## When to use it
 
 - You need data from **multiple independent sources** to build a composite response.
 - The sources have **no dependencies** on each other (the result of one does not affect the request to another).
@@ -44,7 +44,7 @@ Avoid this pattern when calls have sequential dependencies -- use [API Gateway &
 
 ## Implementation
 
-### Using Ballerina Workers (Wait for All)
+### Using Ballerina workers (Wait for all)
 
 ```ballerina
 import ballerina/http;
@@ -130,7 +130,7 @@ service /api on new http:Listener(8090) {
 }
 ```
 
-### Dynamic Scatter-Gather (Variable Number of Backends)
+### Dynamic Scatter-Gather (Variable number of backends)
 
 When the number of backends is not fixed at compile time, use `fork`/`join` or a loop with futures:
 
@@ -190,8 +190,8 @@ function searchEndpoint(SearchEndpoint ep, string query) returns SearchResult? {
 - **Load on backends**: Scatter-gather multiplies the load. If you have 10 backends and 100 requests/second, each backend receives 100 requests/second. Combine with circuit breakers.
 - **Ordering**: Worker results arrive in completion order, not invocation order. Attach metadata (source name, index) to each result for proper aggregation.
 
-## Related Patterns
+## Related patterns
 
 - [API Gateway & Orchestration](api-gateway-orchestration.md) -- For sequential multi-service calls with dependencies.
 - [Publish-Subscribe](publish-subscribe.md) -- For fire-and-forget fan-out without waiting for responses.
-- [Circuit Breaker & Retry](circuit-breaker.md) -- Apply to individual scatter branches to handle backend failures.
+- [Circuit Breaker & Retry](circuit-breaker-retry.md) -- Apply to individual scatter branches to handle backend failures.

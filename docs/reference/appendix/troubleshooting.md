@@ -6,9 +6,9 @@ title: Troubleshooting
 
 This guide covers common issues encountered when developing, building, and running WSO2 Integrator projects powered by Ballerina, along with diagnostic tools and resolution steps.
 
-## Common Build Errors
+## Common build errors
 
-### Package Resolution Failures
+### Package resolution failures
 
 **Symptom:** Build fails with "cannot resolve module" or "package not found" errors.
 
@@ -32,7 +32,7 @@ rm Dependencies.toml
 bal build --sticky=false
 ```
 
-### Type Checking Errors
+### Type checking errors
 
 **Symptom:** Compile errors related to type mismatches, incompatible types, or missing fields.
 
@@ -50,7 +50,7 @@ ERROR: incompatible types: expected 'string', found 'string?'
 | `missing required field 'X'` | Incomplete record literal | Add the required field to the record value |
 | `undeclared field 'X'` | Closed record does not have the field | Add the field to the record type or use an open record |
 
-### Compilation Performance
+### Compilation performance
 
 **Symptom:** `bal build` takes excessively long.
 
@@ -61,9 +61,9 @@ ERROR: incompatible types: expected 'string', found 'string?'
 | Insufficient memory | Increase JVM heap: `export BAL_JAVA_OPTS="-Xmx2g"` |
 | Cold cache | First build is slower; subsequent builds reuse cached artifacts |
 
-## Runtime Errors
+## Runtime errors
 
-### Port Conflicts
+### Port conflicts
 
 **Symptom:** Service fails to start with "address already in use" error.
 
@@ -100,7 +100,7 @@ service /api on new http:Listener(port) {
 port = 9090
 ```
 
-### Out of Memory Errors
+### Out of memory errors
 
 **Symptom:** Application crashes with `java.lang.OutOfMemoryError`.
 
@@ -117,7 +117,7 @@ export BAL_JAVA_OPTS="-Xms256m -Xmx1g -XX:MaxMetaspaceSize=256m"
 bal run
 ```
 
-### Connection Timeouts
+### Connection timeouts
 
 **Symptom:** HTTP client calls fail with timeout errors.
 
@@ -145,13 +145,13 @@ http:Client client = check new ("https://api.example.com", {
 });
 ```
 
-## Diagnostic Tools
+## Diagnostic tools
 
-### Strand Dump Tool
+### Strand dump tool
 
 The strand dump tool captures the state of all active strands in a running Ballerina application, similar to a thread dump in Java. It is useful for diagnosing deadlocks, stuck operations, and concurrency issues.
 
-#### Generating a Strand Dump
+#### Generating a strand dump
 
 ```bash
 # Find the PID of the running Ballerina process
@@ -164,7 +164,7 @@ kill -SIGTRAP
 bal strand-dump
 ```
 
-#### Strand Dump Output
+#### Strand dump output
 
 The dump shows each strand's status, current function, and call stack:
 
@@ -192,7 +192,7 @@ Waiting: 1
 Blocked: 1
 ```
 
-#### Strand States
+#### Strand states
 
 | State | Description |
 |-------|-------------|
@@ -202,11 +202,11 @@ Blocked: 1
 | `COMPLETED` | Strand has finished execution |
 | `FAILED` | Strand terminated with an error |
 
-### Ballerina Profiler
+### Ballerina profiler
 
 The Ballerina profiler identifies performance bottlenecks by recording CPU and memory usage during execution.
 
-#### Running with Profiler
+#### Running with profiler
 
 ```bash
 # Profile a Ballerina program
@@ -216,7 +216,7 @@ bal profile <ballerina-file-or-package>
 bal profile --cpu --memory myservice.bal
 ```
 
-#### Profiler Output
+#### Profiler output
 
 The profiler generates an HTML report at `target/profiler/index.html` containing:
 
@@ -228,7 +228,7 @@ The profiler generates an HTML report at `target/profiler/index.html` containing
 | Strand Activity | Timeline of strand creation, execution, and completion |
 | I/O Wait Times | Time spent waiting for network and file I/O |
 
-### Debug Logging
+### Debug logging
 
 Enable detailed debug logging to diagnose issues:
 
@@ -240,7 +240,7 @@ bal run -- -Cballerina.log.level=DEBUG
 bal run -- -Cballerina.http.log.level=DEBUG
 ```
 
-#### Log Levels
+#### Log levels
 
 | Level | Description | Use Case |
 |-------|-------------|----------|
@@ -251,9 +251,9 @@ bal run -- -Cballerina.http.log.level=DEBUG
 | `DEBUG` | Detailed debug information | Development troubleshooting |
 | `TRACE` | Very detailed trace output | Deep debugging (high overhead) |
 
-## Dependency Issues
+## Dependency issues
 
-### Version Conflicts
+### Version conflicts
 
 **Symptom:** Build fails due to incompatible transitive dependency versions.
 
@@ -278,7 +278,7 @@ name = "io"
 version = "1.6.0"
 ```
 
-### Missing Platform Dependencies
+### Missing platform dependencies
 
 **Symptom:** Runtime error about missing Java classes or native libraries.
 
@@ -296,9 +296,9 @@ artifactId = "mysql-connector-java"
 version = "8.0.33"
 ```
 
-## VS Code Extension Issues
+## VS code extension issues
 
-### Language Server Not Starting
+### Language server not starting
 
 **Symptom:** VS Code shows "Ballerina Language Server: Not Running" in the status bar.
 
@@ -310,7 +310,7 @@ version = "8.0.33"
 | Extension conflict | Disable other Ballerina-related extensions |
 | Corrupted cache | Delete `~/.ballerina/` and restart VS Code |
 
-### IntelliSense Not Working
+### IntelliSense not working
 
 **Symptom:** No code completions, hover information, or diagnostics.
 
@@ -325,9 +325,9 @@ rm -rf ~/.ballerina/ballerina-language-server/
 bal clean && bal build
 ```
 
-## Docker and Deployment Issues
+## Docker and deployment issues
 
-### Container Build Failures
+### Container build failures
 
 **Symptom:** `bal build --cloud=docker` fails.
 
@@ -338,7 +338,7 @@ bal clean && bal build
 | Missing `Cloud.toml` | Create a `Cloud.toml` with container configuration |
 | Build context too large | Add a `.dockerignore` file to exclude unnecessary files |
 
-### Container Runtime Issues
+### Container runtime issues
 
 **Symptom:** Container starts but service is not accessible.
 
@@ -349,7 +349,7 @@ bal clean && bal build
 | Environment variables missing | Pass variables: `docker run -e DB_HOST=localhost myservice` |
 | Config.toml not found | Mount config: `docker run -v ./Config.toml:/home/ballerina/Config.toml myservice` |
 
-## Getting Help
+## Getting help
 
 | Resource | URL |
 |----------|-----|
@@ -359,7 +359,7 @@ bal clean && bal build
 | Stack Overflow | [stackoverflow.com/questions/tagged/ballerina](https://stackoverflow.com/questions/tagged/ballerina) |
 | WSO2 Support | [wso2.com/support/](https://wso2.com/support/) |
 
-## See Also
+## See also
 
 - [System Requirements](system-requirements.md) -- Platform and version requirements
 - [Installation Guide](/docs/get-started/install) -- Installation instructions

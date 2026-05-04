@@ -8,7 +8,7 @@ GitHub event integration is currently in **Beta**.
 
 GitHub event integrations receive webhook callbacks from GitHub and trigger handler functions as repository events occur. Use them to automate CI/CD workflows, sync issue trackers, enforce code review policies, and react to repository activity in real time.
 
-## Creating a GitHub Events service
+## Creating a GitHub events service
 
 1. Click **+ Add Artifact** in the canvas or click **+** next to **Entry Points** in the sidebar.
 2. In the **Artifacts** panel, select **GitHub** under **Event Integration**.
@@ -244,4 +244,4 @@ When a GitHub Events service is created, WSO2 Integrator adds all handlers for t
 - [Kafka](kafka.md) — consume messages from Apache Kafka topics
 - [Salesforce Events](salesforce-events.md) — listen to Salesforce Change Data Capture events
 - [Connections](../supporting/connections.md) — reuse GitHub credentials across services
-- [GitHub connector reference](../../../connectors/catalog/developer-tools/github/overview.md) — full connector API reference
+- [GitHub connector reference](../../../connectors/catalog/developer-tools/github/connector-overview.md) — full connector API reference

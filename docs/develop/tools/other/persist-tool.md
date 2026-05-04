@@ -2,7 +2,7 @@
 title: Persist tool
 ---
 
-# Persist tool
+# Persist Tool
 
 The `bal persist` tool generates type-safe client APIs for data persistence across multiple data stores. You define your data model using Ballerina record types, and the tool generates the client code to perform CRUD operations without writing store-specific queries.
 

@@ -20,24 +20,24 @@ flowchart LR
 
 - A HubSpot account with a valid Bearer token (OAuth 2.0 access token or private app token)
 
-## Setting up the HubSpot Marketing Forms integration
+## Setting up the HubSpot marketing forms integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
-## Adding the HubSpot Marketing Forms connector
+## Adding the HubSpot marketing forms connector
 
-### Step 1: Open the Add Connection panel
+### Step 1: Open the add connection panel
 
 Select **Add Connection** (or the **+** next to **Connections** in the side panel) to open the connector search palette.
 
 ![HubSpot Marketing Forms connector palette open with search field before any selection](/img/connectors/catalog/marketing-social/hubspot.marketing.forms/hubspot_marketing_forms_screenshot_01_palette.png)
 
-### Step 2: Search for and select the HubSpot Marketing Forms connector
+### Step 2: Search for and select the HubSpot marketing forms connector
 
 1. In the search box, enter `hubspot.marketing.forms`.
 2. Select **ballerinax/hubspot.marketing.forms** from the results to open the **Connection Configuration** form.
 
-## Configuring the HubSpot Marketing Forms connection
+## Configuring the HubSpot marketing forms connection
 
 ### Step 3: Fill in the connection parameters
 
@@ -61,9 +61,9 @@ Select **Save** to persist the connection. The `formsClient` connection node app
 
 - **hubspotBearerToken** (string) : Your HubSpot Bearer token (OAuth 2.0 access token or private app token)
 
-## Configuring the HubSpot Marketing Forms getForms operation
+## Configuring the HubSpot marketing forms getForms operation
 
-### Step 6: Add an Automation entry point
+### Step 6: Add an automation entry point
 
 1. On the canvas overview, select **Add Artifact**.
 2. Select **Automation** from the artifact type list.
@@ -93,9 +93,9 @@ Select **Save** to add the step to the flow.
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/hubspot.marketing.forms_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/hubspot.marketing.forms_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/hubspot.marketing.forms_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/hubspot.marketing.forms_connector_sample)
 
 ## More code examples
 

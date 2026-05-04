@@ -23,7 +23,7 @@ flowchart LR
 
 ## Setting up the SAP integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
 ## Adding the SAP connector
 
@@ -62,14 +62,14 @@ Select **Save** to create the connection. The `sapClient` connection appears in 
 
 - **sapUrl** (string) : The base URL of the SAP system
 
-## Configuring the SAP Post operation
+## Configuring the SAP post operation
 
-### Step 5: Add an Automation entry point
+### Step 5: Add an automation entry point
 
 1. In the WSO2 Integrator side panel, select **Add Artifact**.
 2. Select **Automation** as the entry point type.
 
-### Step 6: Select and configure the Post operation
+### Step 6: Select and configure the post operation
 
 Expand the **sapClient** connection node in the right-side panel to view available operations, then select **Post**.
 
@@ -92,9 +92,9 @@ Select **Save** to add the operation to the automation flow.
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/sap_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/sap_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/sap_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/sap_connector_sample)
 
 ## More code examples
 

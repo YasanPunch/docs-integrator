@@ -44,7 +44,7 @@ flowchart TD
     Router ---->|general| General
 ```
 
-## Step 1: Create the Project
+## Step 1: Create the project
 
 ```toml
 # Ballerina.toml
@@ -67,7 +67,7 @@ name = "ai.provider.openai"
 openaiKey = "<your-openai-api-key>"
 ```
 
-## Step 2: Define the Router Agent
+## Step 2: Define the router agent
 
 The router agent uses a cheap, fast model to classify requests and route them.
 
@@ -103,7 +103,7 @@ Return the category and a brief reason for your classification.`,
 );
 ```
 
-## Step 3: Define Specialist Agent Tools
+## Step 3: Define specialist agent tools
 
 ```ballerina
 // billing_tools.bal
@@ -197,7 +197,7 @@ isolated function submitFeedback(
 }
 ```
 
-## Step 4: Create Specialist Agents
+## Step 4: Create specialist agents
 
 ```ballerina
 // agents.bal
@@ -254,7 +254,7 @@ Guidelines:
 );
 ```
 
-## Step 5: Build the Routing Service
+## Step 5: Build the routing service
 
 ```ballerina
 // service.bal
@@ -309,7 +309,7 @@ service /support on new http:Listener(8090) {
 }
 ```
 
-## Step 6: Run and Test
+## Step 6: Run and test
 
 1. Start the service:
    ```bash
@@ -341,7 +341,7 @@ service /support on new http:Listener(8090) {
      -d '{"message": "Yes, please process the refund for the full amount.", "sessionId": "<session-id-from-billing-request>"}'
    ```
 
-## Step 7: Add Observability
+## Step 7: Add observability
 
 Track routing decisions and agent performance.
 
@@ -360,7 +360,7 @@ resource function post chat(@http:Payload ChatRequest request) returns ChatRespo
 }
 ```
 
-## What You Built
+## What you built
 
 You now have a multi-agent system that:
 - Routes requests to the appropriate specialist using a fast classifier
@@ -368,9 +368,9 @@ You now have a multi-agent system that:
 - Maintains per-session conversation history within each specialist
 - Logs routing decisions for debugging and analysis
 
-## What's Next
+## What's next
 
 - [Multi-Agent Orchestration](/docs/genai/agents/multi-agent-orchestration) -- Advanced patterns (pipeline, supervisor, fan-out)
 - [Agent Tracing](/docs/genai/agent-observability/agent-tracing) -- Trace across agent boundaries
-- [AI Customer Support Agent](ai-customer-support.md) -- Simpler single-agent version
+- [AI Customer Support Agent](ai-customer-support-agent.md) -- Simpler single-agent version
 - [Token & Cost Management](/docs/genai/guardrails/token-cost-management) -- Optimize costs across agents

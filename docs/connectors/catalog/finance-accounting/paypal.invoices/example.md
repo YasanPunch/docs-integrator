@@ -20,19 +20,19 @@ flowchart LR
 
 - A PayPal developer account with an app configured for OAuth2 (Client ID and Client Secret)
 
-## Setting up the PayPal Invoices integration
+## Setting up the PayPal invoices integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
-## Adding the PayPal Invoices connector
+## Adding the PayPal invoices connector
 
-### Step 1: Open the Add Connection palette
+### Step 1: Open the add connection palette
 
 Select the **+** button in the Connections panel to open the **Add Connection** palette.
 
 ![PayPal Invoices connector palette open with search field before any selection](/img/connectors/catalog/finance-accounting/paypal.invoices/paypal_invoices_screenshot_01_palette.png)
 
-## Configuring the PayPal Invoices connection
+## Configuring the PayPal invoices connection
 
 ### Step 2: Fill in the connection parameters
 
@@ -56,9 +56,9 @@ In the left panel, select **Configurations**. Set a value for each configurable 
 - **paypalClientId** (string) : Your PayPal app's OAuth2 client ID
 - **paypalClientSecret** (string) : Your PayPal app's OAuth2 client secret
 
-## Configuring the PayPal Invoices List invoices operation
+## Configuring the PayPal invoices list invoices operation
 
-### Step 5: Add an Automation entry point and select the List invoices operation
+### Step 5: Add an automation entry point and select the list invoices operation
 
 1. Navigate to the **Automation** canvas under **Entry Points**.
 2. Select the **+** add button on the canvas flow line to open the node panel.
@@ -67,7 +67,7 @@ In the left panel, select **Configurations**. Set a value for each configurable 
 
 ![PayPal Invoices connection node expanded showing all available operations before selection](/img/connectors/catalog/finance-accounting/paypal.invoices/paypal_invoices_screenshot_04_operations_panel.png)
 
-### Step 6: Configure the List invoices operation and add a log step
+### Step 6: Configure the list invoices operation and add a log step
 
 1. In the **List invoices** form, set the **Result Variable** to `result` so the API response is bound for downstream use.
 2. Select **Save**.
@@ -84,9 +84,9 @@ In the left panel, select **Configurations**. Set a value for each configurable 
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/paypal.invoices_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/paypal.invoices_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/paypal.invoices_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/paypal.invoices_connector_sample)
 
 ## More code examples
 

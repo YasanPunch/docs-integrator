@@ -6,7 +6,7 @@ title: bal graphql CLI
 
 The `bal graphql` tool generates Ballerina source code from GraphQL Schema Definition Language (SDL) files. It can produce service skeletons for implementing a GraphQL API or generate client code for consuming an existing GraphQL endpoint.
 
-## Commands Overview
+## Commands overview
 
 | Command | Description |
 |---------|-------------|
@@ -28,17 +28,17 @@ bal graphql -i <schema-file-or-url> [options]
 | `-s`, `--service` | No | — | — | Service base path for service generation |
 | `--use-records-for-objects` | — | No | `false` | Generate Ballerina records instead of service classes for object types |
 
-### Client Mode Additional Flags
+### Client mode additional flags
 
 | Flag | Required | Default | Description |
 |------|----------|---------|-------------|
 | `-d`, `--documents` | Yes (client mode) | — | Path to a file containing GraphQL queries and mutations |
 
-## Generate a GraphQL Service
+## Generate a GraphQL service
 
 Generate a Ballerina service skeleton from a GraphQL SDL schema file.
 
-### Example SDL Schema
+### Example SDL schema
 
 ```graphql
 # schema.graphql
@@ -65,7 +65,7 @@ input BookInput {
 }
 ```
 
-### Generate Service
+### Generate service
 
 ```bash
 # Generate service skeleton from SDL
@@ -78,14 +78,14 @@ bal graphql -i schema.graphql --mode service -o src/
 bal graphql -i schema.graphql --mode service -s /api
 ```
 
-### Generated Service Output
+### Generated service output
 
 ```
 service.bal           # Service skeleton with resolver stubs
 types.bal             # Ballerina types from the schema
 ```
 
-### Generated Service Example
+### Generated service example
 
 ```ballerina
 import ballerina/graphql;
@@ -106,11 +106,11 @@ service /graphql on new graphql:Listener(9090) {
 }
 ```
 
-## Generate a GraphQL Client
+## Generate a GraphQL client
 
 Generate a type-safe Ballerina client from a GraphQL schema and a set of query/mutation documents.
 
-### Example Query Document
+### Example query document
 
 ```graphql
 # queries.graphql
@@ -137,7 +137,7 @@ mutation AddBook($input: BookInput!) {
 }
 ```
 
-### Generate Client
+### Generate client
 
 ```bash
 # Generate client from schema and query documents
@@ -147,7 +147,7 @@ bal graphql -i schema.graphql --mode client -d queries.graphql
 bal graphql -i http://localhost:9090/graphql --mode client -d queries.graphql
 ```
 
-### Generated Client Output
+### Generated client output
 
 ```
 client.bal            # GraphQL client with typed operations
@@ -156,7 +156,7 @@ utils.bal             # Utility functions
 config_types.bal      # Client configuration types
 ```
 
-### Generated Client Usage
+### Generated client usage
 
 ```ballerina
 import myapp.graphql_client;
@@ -178,7 +178,7 @@ public function main() returns error? {
 }
 ```
 
-## Export Schema from Service
+## Export schema from service
 
 Generate a GraphQL SDL schema file from an existing Ballerina GraphQL service.
 
@@ -190,7 +190,7 @@ bal graphql -i service.bal --mode schema
 bal graphql -i service.bal --mode schema -o specs/
 ```
 
-## GraphQL to Ballerina Type Mapping
+## GraphQL to Ballerina type mapping
 
 | GraphQL Type | Ballerina Type |
 |-------------|----------------|
@@ -208,7 +208,7 @@ bal graphql -i service.bal --mode schema -o specs/
 | `union` | Union type |
 | `interface` | `distinct service class` |
 
-## See Also
+## See also
 
-- [bal Command Reference](bal-commands.md) -- All bal subcommands
+- [bal Command Reference](bal-command-reference.md) -- All bal subcommands
 - [Ballerina by Example](/docs/reference/by-example) -- Runnable examples

@@ -24,7 +24,7 @@ flowchart LR
 
 ## Setting up the aws.s3 integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
 ## Adding the aws.s3 connector
 
@@ -71,7 +71,7 @@ In the left panel of WSO2 Integrator, select **Configurations** (listed at the b
 
 ## Configuring the aws.s3 createBucket operation
 
-### Step 6: Add an Automation entry point
+### Step 6: Add an automation entry point
 
 1. On the low-code canvas, select **+ Add Artifact** and select **Automation** from the artifact list.
 2. If a configuration dialog appears, accept the default trigger settings and select **Create** to add the automation block to the canvas.
@@ -96,6 +96,6 @@ In the left panel of WSO2 Integrator, select **Configurations** (listed at the b
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/aws.s3_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/aws.s3_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/aws.s3_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/aws.s3_connector_sample)

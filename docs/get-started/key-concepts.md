@@ -6,13 +6,13 @@ title: Key Concepts
 
 This page introduces every major product component in 2–3 sentences. Think of it as your vocabulary guide—it gives you the map. The [Develop](/docs/develop/integration-artifacts/overview) section is the territory.
 
-## Integration
-
-A reusable piece of business logic that connects systems, transforms data, or orchestrates workflows. Integrations are the core building blocks in WSO2 Integrator and are composed using [Services](#services-and-listeners), [Automations](#automations), [Event handlers](#event-integrations), and more.
-
 ## Project
 
 A workspace that contains your integration code, dependencies, configuration, and deployment artifacts. Each project is self-contained with its own `Ballerina.toml` file. For more information, see [Project structure](/docs/develop/project-views/overview).
+
+## Integration
+
+A reusable piece of business logic that connects systems, transforms data, or orchestrates workflows. Integrations are the core building blocks in WSO2 Integrator—you compose them from [Automations](#automations), [AI agents](#ai-agents), [Services](#services), [Event handlers](#event-handlers), and [File processors](#file-processors).
 
 ## Library
 
@@ -36,6 +36,14 @@ Expose your integrations over HTTP, GraphQL, gRPC, WebSocket, or TCP. The listen
 
 Scheduled or manually triggered integrations that run without an external request. Use automations for periodic data synchronization, cleanup tasks, or report generation.
 
+## AI agents
+
+Intelligent artifacts backed by large language models (LLMs). Agents can reason, use tools, maintain conversation memory, and orchestrate multi-step workflows.
+
+## Services
+
+Expose your integrations over HTTP, GraphQL, gRPC, WebSocket, or TCP. Services are the most common artifact—they define endpoints that external systems call.
+
 ## Event integrations
 
 Reactive integrations where the listener connects to a message broker — Kafka, RabbitMQ, NATS, MQTT, Azure Service Bus, or Solace — and the service processes messages as they arrive. Use event integrations for real-time streaming data and event-driven architectures.
@@ -44,13 +52,9 @@ Reactive integrations where the listener connects to a message broker — Kafka,
 
 Integrations where the listener connects to a remote file server (FTP, SFTP, FTPS) or monitors a local directory, polling for new files. The service defines which directory to watch, which files to match, and how to process incoming content — as CSV, JSON, XML, text, or binary. For more information, see [Remote Servers (FTP/SFTP)](/docs/develop/integration-artifacts/file/ftp-sftp) and [Local Files](/docs/develop/integration-artifacts/file/local-files).
 
-## AI agents
-
-Intelligent artifacts backed by large language models (LLMs). Agents can reason, use tools, maintain conversation memory, and orchestrate multi-step workflows.
-
 ## Connectors
 
-Pre-built modules for connecting to external systems such as SaaS applications, databases, messaging systems, and AI services. Each connector handles authentication, serialization, and error handling. For more information, see [Connectors](/docs/connectors/overview).
+Pre-built modules for connecting to external systems—Salesforce, databases, Kafka, OpenAI, and 200+ more. Each connector handles authentication, serialization, and error handling. For more information, see [Connectors](/docs/connectors/overview).
 
 ## Visual data mapper
 
@@ -60,9 +64,9 @@ A visual data transformation tool in the WSO2 Integrator design view. Map fields
 
 LLM calls treated as typed function calls in your integration code. Define an input type and output type, and the platform handles the prompt, API call, and response parsing.
 
-## Configurations
+## Config.toml
 
-The `Config.toml` is the file where you define environment-specific configuration, such as database URLs and API keys. Different environments (dev, test, prod) have different `Config.toml` files.
+The file where you define environment-specific configuration—database URLs, API keys, and feature flags. Different environments (dev, test, prod) have different `Config.toml` files.
 
 ## Integration control plane (ICP)
 

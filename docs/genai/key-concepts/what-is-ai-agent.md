@@ -6,7 +6,7 @@ title: What is an AI Agent?
 
 An AI agent is an integration component that combines an LLM with tools, memory, and a reasoning loop. Unlike a simple LLM API call, an agent can reason about what steps to take, call tools to gather data or perform actions, observe the results, and decide what to do next.
 
-## The Agent Loop
+## The agent loop
 
 Every agent in WSO2 Integrator follows the **Reason-Act-Observe** loop:
 
@@ -34,7 +34,7 @@ Final Response (or loop again)
 
 This loop can repeat multiple times per request. For example, an agent might look up a customer record (first tool call), then check their order history (second tool call), and finally compose a response using both pieces of information.
 
-## Agent Components
+## Agent components
 
 An agent has four components:
 
@@ -63,9 +63,9 @@ final agent:ChatAgent myAgent = check new (
 | **Tools** | Functions the agent can call during reasoning | No (but recommended) |
 | **Memory** | Stores conversation history for multi-turn interactions | No |
 
-## Agent Types
+## Agent types
 
-### Chat Agent
+### Chat agent
 
 Maintains a session with a user across multiple messages. Best for interactive support, data exploration, and guided workflows.
 
@@ -80,7 +80,7 @@ final agent:ChatAgent chatAgent = check new (
 string response = check chatAgent.chat("What's my order status?", "session-123");
 ```
 
-### Task Agent
+### Task agent
 
 Completes a specific task and returns a structured result. Best for data extraction, classification, and automated processing.
 
@@ -94,8 +94,8 @@ final agent:TaskAgent classifierAgent = check new (
 TicketClassification result = check classifierAgent.run("I can't connect to the API");
 ```
 
-## What's Next
+## What's next
 
 - [What are Tools?](what-are-tools.md) -- Understand how agents interact with external systems
-- [What is AI Agent Memory?](what-is-agent-memory.md) -- How agents maintain conversation context
+- [What is AI Agent Memory?](what-is-ai-agent-memory.md) -- How agents maintain conversation context
 - [Creating an AI Agent](/docs/genai/develop/agents/creating-agent) -- Build your first agent

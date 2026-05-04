@@ -6,7 +6,7 @@ title: IP Whitelisting
 
 Restrict access to your integration services by allowing only trusted IP addresses or CIDR ranges.
 
-## HTTP Interceptor Approach
+## HTTP interceptor approach
 
 Implement IP filtering using a request interceptor:
 
@@ -52,7 +52,7 @@ allowedIps = [
 ]
 ```
 
-## CIDR Range Support
+## CIDR range support
 
 The IP filter supports both individual addresses and CIDR notation:
 
@@ -64,7 +64,7 @@ The IP filter supports both individual addresses and CIDR notation:
 | /24 range | `192.168.1.0/24` | 192.168.1.0 — 192.168.1.255 |
 | /32 range | `203.0.113.50/32` | Single host (same as no prefix) |
 
-## Infrastructure-Level Whitelisting
+## Infrastructure-Level whitelisting
 
 For production deployments, combine application-level filtering with infrastructure controls:
 
@@ -87,11 +87,11 @@ spec:
             cidr: 203.0.113.0/24
 ```
 
-### Cloud Load Balancer Rules
+### Cloud load balancer rules
 
 Configure IP allowlists at the load balancer level (AWS ALB, Azure Application Gateway, GCP Cloud Load Balancing) for network-level filtering before requests reach your application.
 
-## Best Practices
+## Best practices
 
 1. **Layer defenses** — combine infrastructure and application-level filtering.
 2. **Use CIDR ranges** instead of individual IPs where possible.
@@ -99,7 +99,7 @@ Configure IP allowlists at the load balancer level (AWS ALB, Azure Application G
 4. **Log denied requests** for security monitoring and incident response.
 5. **Consider X-Forwarded-For** header parsing when behind a reverse proxy.
 
-## What's Next
+## What's next
 
 - [Authentication](authentication.md) — Add authentication on top of IP filtering
-- [API Security](api-security.md) — Rate limiting and request validation
+- [API Security](api-security-rate-limiting.md) — Rate limiting and request validation

@@ -22,11 +22,11 @@ flowchart LR
 - Your Mailchimp **username** and **API key** (used as the HTTP Basic Auth password)
 - A Mailchimp **List ID** (also called Audience ID) for the target mailing list
 
-## Setting up the Mailchimp Marketing integration
+## Setting up the Mailchimp marketing integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
-## Adding the Mailchimp Marketing connector
+## Adding the Mailchimp marketing connector
 
 ### Step 1: Open the connector palette
 
@@ -39,7 +39,7 @@ In the left sidebar, hover over **Connections** to reveal the **+** button, then
 1. In the **Search** field, enter `mailchimp` to filter the results.
 2. Select **Marketing** (the `ballerinax/mailchimp.marketing` connector) from the search results.
 
-## Configuring the Mailchimp Marketing connection
+## Configuring the Mailchimp marketing connection
 
 ### Step 3: Fill in the connection parameters
 
@@ -65,9 +65,9 @@ Select **Save** to create the connection. The `marketingClient` connection node 
 - **mailchimpUsername** (string) : Your Mailchimp account username
 - **mailchimpPassword** (string) : Your Mailchimp API key, used as the HTTP Basic Auth password
 
-## Configuring the Mailchimp Marketing add member to list operation
+## Configuring the Mailchimp marketing add member to list operation
 
-### Step 6: Add an Automation entry point
+### Step 6: Add an automation entry point
 
 1. Select **+ Add Artifact** in the design canvas area.
 2. Under **Automation**, select **Automation**.
@@ -99,9 +99,9 @@ Select **Save** to add the operation to the automation flow.
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/mailchimp.marketing_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/mailchimp.marketing_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/mailchimp.marketing_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/mailchimp.marketing_connector_sample)
 
 ## More code examples
 

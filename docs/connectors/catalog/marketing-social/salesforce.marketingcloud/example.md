@@ -21,11 +21,11 @@ flowchart LR
 - A Salesforce Marketing Cloud account with an OAuth 2.0 Client Credentials app created
 - Your app's `clientId`, `clientSecret`, and `subDomain` values ready
 
-## Setting up the Salesforce Marketing Cloud integration
+## Setting up the Salesforce marketing cloud integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
-## Adding the Salesforce Marketing Cloud connector
+## Adding the Salesforce marketing cloud connector
 
 ### Step 1: Open the connector palette
 
@@ -33,12 +33,12 @@ In the **Connections** section of the left panel, select **Add Connection** to o
 
 ![Salesforce Marketing Cloud connector palette open with search field before any selection](/img/connectors/catalog/marketing-social/salesforce.marketingcloud/salesforce_marketingcloud_screenshot_01_palette.png)
 
-### Step 2: Search for and select the Marketing Cloud connector
+### Step 2: Search for and select the marketing cloud connector
 
 1. In the search field, enter `marketingcloud`.
 2. Locate **Marketingcloud** (`ballerinax/salesforce.marketingcloud`) and select **Add**.
 
-## Configuring the Salesforce Marketing Cloud connection
+## Configuring the Salesforce marketing cloud connection
 
 ### Step 3: Fill in the connection parameters
 
@@ -65,9 +65,9 @@ Select **Save Connection** to persist the connection. The `marketingcloudClient`
 - **marketingCloudClientId** (string) : The OAuth 2.0 client ID of your Marketing Cloud app
 - **marketingCloudClientSecret** (string) : The OAuth 2.0 client secret of your Marketing Cloud app
 
-## Configuring the Salesforce Marketing Cloud Send Email Message operation
+## Configuring the Salesforce marketing cloud send email message operation
 
-### Step 6: Add an Automation entry point
+### Step 6: Add an automation entry point
 
 1. On the design canvas, select **+ Add Artifact**.
 2. Select **Automation** in the artifacts panel.
@@ -75,7 +75,7 @@ Select **Save Connection** to persist the connection. The `marketingcloudClient`
 
 The `main` automation is created and the flow canvas opens, showing a **Start** node and an **Error Handler**.
 
-### Step 7: Select the Send Email Message operation and configure its parameters
+### Step 7: Select the send email message operation and configure its parameters
 
 1. Select the **+** placeholder node between **Start** and **Error Handler**.
 2. Under **Connections**, expand **`marketingcloudClient`** to see all available operations.
@@ -98,9 +98,9 @@ The `main` automation is created and the flow canvas opens, showing a **Start** 
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/salesforce.marketingcloud_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/salesforce.marketingcloud_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/salesforce.marketingcloud_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/salesforce.marketingcloud_connector_sample)
 
 ## More code examples
 

@@ -8,7 +8,7 @@ Natural functions let you call an LLM as if it were a regular typed Ballerina fu
 
 This is the simplest way to add LLM intelligence to your integrations without building a full agent.
 
-## What Are Natural Functions?
+## What are natural functions?
 
 A natural function is a Ballerina function where:
 - The **function signature** defines the input and output types
@@ -40,7 +40,7 @@ SentimentResult result = check classifySentiment("This product exceeded my expec
 // result.explanation == "The text expresses strong satisfaction with the product."
 ```
 
-## Defining Natural Functions
+## Defining natural functions
 
 ### Simple Text-to-Text
 
@@ -58,7 +58,7 @@ string french = check translate("Hello, how are you?", "French");
 // "Bonjour, comment allez-vous?"
 ```
 
-### Text to Structured Type
+### Text to structured type
 
 ```ballerina
 type ContactInfo record {|
@@ -80,7 +80,7 @@ ContactInfo contact = check extractContact(
 // contact == {name: "Jane Smith", email: "jane@acme.com", phone: "555-0123", company: "Acme Corp"}
 ```
 
-### Structured Input and Output
+### Structured input and output
 
 ```ballerina
 type Invoice record {|
@@ -113,7 +113,7 @@ type InvoiceSummary record {|
 isolated function analyzeInvoice(Invoice invoice) returns InvoiceSummary|error = external;
 ```
 
-### Enum and Union Types
+### Enum and union types
 
 Natural functions work with Ballerina's type system for constrained outputs.
 
@@ -134,9 +134,9 @@ type TicketClassification record {|
 isolated function classifyTicket(string ticketText) returns TicketClassification|error = external;
 ```
 
-## Configuring the Underlying Model
+## Configuring the underlying model
 
-### Model Selection
+### Model selection
 
 Specify which LLM provider and model to use for a natural function.
 
@@ -152,7 +152,7 @@ Specify which LLM provider and model to use for a natural function.
 isolated function summarize(string document) returns string|error = external;
 ```
 
-### Global Model Configuration
+### Global model configuration
 
 Set a default model for all natural functions in a module.
 
@@ -165,9 +165,9 @@ apiKey = "sk-your-key-here"
 temperature = 0.2
 ```
 
-## Using Natural Functions in Integrations
+## Using natural functions in integrations
 
-### In HTTP Services
+### In HTTP services
 
 ```ballerina
 import ballerina/http;
@@ -191,7 +191,7 @@ service /api on new http:Listener(8090) {
 }
 ```
 
-### In Event Handlers
+### In event handlers
 
 ```ballerina
 import ballerinax/kafka;
@@ -218,7 +218,7 @@ service on feedbackListener {
 }
 ```
 
-### In Data Pipelines
+### In data pipelines
 
 ```ballerina
 // Process a batch of documents with natural functions
@@ -233,7 +233,7 @@ function processBatch(Document[] documents) returns ProcessedDocument[]|error {
 }
 ```
 
-## Natural Functions vs. Agents
+## Natural functions vs. agents
 
 | Feature | Natural Functions | Agents |
 |---------|-------------------|--------|
@@ -246,7 +246,7 @@ function processBatch(Document[] documents) returns ProcessedDocument[]|error {
 
 Use natural functions when you need a simple LLM-powered transformation. Use agents when you need reasoning, tool calling, or multi-turn interaction.
 
-## What's Next
+## What's next
 
 - [Natural Expressions](/docs/genai/llm-connectivity/natural-expressions) — Use natural language inline in Ballerina expressions
 - [Prompt Engineering](/docs/genai/llm-connectivity/prompt-engineering) — Optimize your natural function descriptions

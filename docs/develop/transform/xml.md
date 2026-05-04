@@ -6,7 +6,7 @@ title: XML Processing
 
 Work with XML data -- common in enterprise and legacy system integrations. Ballerina provides `xml` as a first-class type with native literal syntax, navigation, iteration, and conversion capabilities.
 
-## XML Literals and Construction
+## XML literals and construction
 
 Create XML values directly in Ballerina code using backtick templates. The `xml` type covers elements, text nodes, comments, and processing instructions.
 
@@ -120,7 +120,7 @@ public function main() {
 }
 ```
 
-## XML Namespaces
+## XML namespaces
 
 Handle namespaced XML using `xmlns` declarations in Ballerina.
 
@@ -145,7 +145,7 @@ public function main() {
 }
 ```
 
-## Iterating Over XML
+## Iterating over XML
 
 Use `foreach` or query expressions to process XML sequences.
 
@@ -188,7 +188,7 @@ public function main() {
 }
 ```
 
-## XML Mutation
+## XML mutation
 
 Modify XML structures by setting children or attributes.
 
@@ -219,7 +219,7 @@ Use the `ballerina/data.xmldata` module to convert XML into typed Ballerina reco
 
    ![Flow designer showing the xmldata parseAsType variable step and mapOrder transformation in the processXml resource](/img/develop/transform/xml/flow-xml-parse-step.png)
 
-3. **Map fields visually** — To transform the parsed record into another type, use the [Visual Data Mapper](data-mapper.md).
+3. **Map fields visually** — To transform the parsed record into another type, use the [Visual Data Mapper](visual-data-mapper.md).
 
    ![Data Mapper showing PurchaseOrder input fields on the left and OrderSummary output fields on the right](/img/develop/transform/xml/data-mapper-xml-to-record.png)
 
@@ -311,7 +311,7 @@ Convert between XML and JSON using `xmldata:toJson()` and `xmldata:fromJson()`.
 
    ![Flow designer showing the XML parse, mapOrder, and toJson return steps in sequence](/img/develop/transform/xml/flow-xml-parse-step.png)
 
-3. **Map fields visually** — To map fields between the parsed XML record and a target record before converting to JSON, use the [Visual Data Mapper](data-mapper.md).
+3. **Map fields visually** — To map fields between the parsed XML record and a target record before converting to JSON, use the [Visual Data Mapper](visual-data-mapper.md).
 
 ```ballerina
 import ballerina/data.xmldata;
@@ -334,13 +334,13 @@ public function main() returns error? {
 }
 ```
 
-## Best Practices
+## Best practices
 
 - **Use typed records** for XML processing whenever the schema is known -- this catches mapping errors at compile time
 - **Prefer `data.xmldata` over manual navigation** for complex documents to reduce boilerplate
 - **Handle namespaces explicitly** -- declare `xmlns` bindings at the top of functions that work with namespaced XML
 - **Use query expressions** for filtering and transforming XML sequences instead of manual loops
 
-## What's Next
+## What's next
 
-- [CSV & Flat File Processing](csv-flat-file.md) -- Tabular data formats
+- [CSV & Flat File Processing](csv-flat-file-processing.md) -- Tabular data formats

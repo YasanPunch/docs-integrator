@@ -99,4 +99,4 @@ version = "2.0.0"
 
 ## Next steps
 
-- [Actions Reference](action-reference.md) - Available operations
+- [Actions Reference](actions.md) - Available operations

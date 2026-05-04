@@ -8,9 +8,9 @@ Deploying AI integrations in an enterprise requires clear policies around data h
 
 These guidelines help your team adopt AI integrations without introducing compliance risk or data exposure.
 
-## Data Handling Policies
+## Data handling policies
 
-### Data Classification for LLM Usage
+### Data classification for LLM usage
 
 Not all enterprise data should be sent to external LLM APIs. Classify your data before building integrations.
 
@@ -21,7 +21,7 @@ Not all enterprise data should be sent to external LLM APIs. Classify your data 
 | **Confidential** | Sensitive business data | No | Evaluate | Financial reports, strategy docs |
 | **Restricted** | Regulated or highly sensitive | No | Evaluate | PII, PHI, payment data, credentials |
 
-### Preventing Sensitive Data in LLM Calls
+### Preventing sensitive data in LLM calls
 
 Use input guardrails to enforce data classification policies in code.
 
@@ -40,7 +40,7 @@ final guardrails:InputGuardrail dataClassificationGuard = new guardrails:Sensiti
 });
 ```
 
-### Data Residency Requirements
+### Data residency requirements
 
 For organizations with data residency requirements, use providers that offer regional deployments.
 
@@ -60,7 +60,7 @@ final ollama:Client localLlm = check new ({
 });
 ```
 
-## Regulatory Compliance
+## Regulatory compliance
 
 ### Healthcare (HIPAA)
 
@@ -83,7 +83,7 @@ Compliance Requirements:
 );
 ```
 
-### Financial Services (SOX, PCI-DSS)
+### Financial services (SOX, PCI-DSS)
 
 ```ballerina
 final agent:ChatAgent financeAgent = check new (
@@ -101,7 +101,7 @@ Compliance Requirements:
 );
 ```
 
-### General Data Protection (GDPR)
+### General data protection (GDPR)
 
 ```ballerina
 // Ensure right to erasure compliance
@@ -117,9 +117,9 @@ function handleDataDeletionRequest(string userId) returns error? {
 }
 ```
 
-## Acceptable Use Policies
+## Acceptable use policies
 
-### Defining Agent Boundaries
+### Defining agent boundaries
 
 Clearly document what each agent should and should not do.
 
@@ -144,7 +144,7 @@ You SHOULD NOT:
 );
 ```
 
-### Rate Limiting Per User
+### Rate limiting per user
 
 Enforce fair use limits to prevent individual users from monopolizing AI resources.
 
@@ -158,9 +158,9 @@ final guardrails:SpendingLimit fairUseLimit = new ({
 });
 ```
 
-## Logging and Audit
+## Logging and audit
 
-### What to Log
+### What to log
 
 | Data Point | Purpose | Retention |
 |-----------|---------|-----------|
@@ -172,7 +172,7 @@ final guardrails:SpendingLimit fairUseLimit = new ({
 | Guardrail triggers | Security monitoring | 90 days |
 | Response latency | Performance monitoring | 30 days |
 
-### Audit Log Implementation
+### Audit log implementation
 
 ```ballerina
 import ballerina/log;
@@ -188,14 +188,14 @@ function auditLog(string userId, string action, json details) {
 }
 ```
 
-### What NOT to Log
+### What NOT to log
 
 - Full conversation content (unless required by regulation)
 - Raw PII or PHI
 - API keys or credentials
 - Full LLM prompts containing sensitive context
 
-## Organizational AI Policy Template
+## Organizational AI policy template
 
 Use this as a starting point for your organization's AI usage policy:
 
@@ -208,9 +208,9 @@ Use this as a starting point for your organization's AI usage policy:
 7. **Human oversight** -- Define which actions require human approval
 8. **Regular review** -- Schedule periodic reviews of AI integration behavior
 
-## What's Next
+## What's next
 
 - [Responsible AI](responsible-ai.md) -- Ethical practices for AI integrations
-- [Input/Output Guardrails](input-output-guardrails.md) -- Enforce policies in code
+- [Input/Output Guardrails](inputoutput.md) -- Enforce policies in code
 - [Content Filtering](content-filtering.md) -- Filter inappropriate AI content
 - [Conversation Logging](/docs/genai/agent-observability/conversation-logging) -- Implement audit logging

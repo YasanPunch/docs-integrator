@@ -22,7 +22,7 @@ flowchart LR
 
 ## Setting up the Discord integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
 ## Adding the Discord connector
 
@@ -58,7 +58,7 @@ Select **Update Connection** to save the connection. The `discordClient` connect
 
 ## Configuring the Discord createMessage operation
 
-### Step 5: Add an Automation entry point
+### Step 5: Add an automation entry point
 
 Select **+ Add Artifact** and select **Automation** under the Automation category. Select **Create** to generate the automation entry point named `main`.
 
@@ -86,9 +86,9 @@ Select **+ Add Artifact** and select **Automation** under the Automation categor
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/discord_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/discord_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/discord_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/discord_connector_sample)
 
 ## More code examples
 

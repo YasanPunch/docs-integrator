@@ -24,7 +24,7 @@ Query Pipeline:
 Question → Embed → Vector Search → Top-K Chunks → LLM + Context → Answer
 ```
 
-## Step 1: Create the Project
+## Step 1: Create the project
 
 ```toml
 # Ballerina.toml
@@ -49,7 +49,7 @@ pineconeApiKey = "<your-pinecone-api-key>"
 pineconeHost = "https://your-index.svc.pinecone.io"
 ```
 
-## Step 2: Define Data Types
+## Step 2: Define data types
 
 ```ballerina
 // types.bal
@@ -74,7 +74,7 @@ type KnowledgeBaseResponse record {|
 |};
 ```
 
-## Step 3: Build the Embedding Client
+## Step 3: Build the embedding client
 
 ```ballerina
 // embeddings.bal
@@ -98,7 +98,7 @@ function generateEmbeddings(string[] texts) returns float[][]|error {
 }
 ```
 
-## Step 4: Build the Chunking Pipeline
+## Step 4: Build the chunking pipeline
 
 ```ballerina
 // chunking.bal
@@ -150,7 +150,7 @@ function ingestFile(string filePath) returns DocumentChunk[]|error {
 }
 ```
 
-## Step 5: Build the Vector Store Client
+## Step 5: Build the vector store client
 
 ```ballerina
 // vectorstore.bal
@@ -197,7 +197,7 @@ function searchSimilar(string query, int topK = 5) returns SearchResult[]|error 
 }
 ```
 
-## Step 6: Build the Question-Answering Service
+## Step 6: Build the Question-Answering service
 
 ```ballerina
 // service.bal
@@ -268,7 +268,7 @@ ${context}`
 }
 ```
 
-## Step 7: Run and Test
+## Step 7: Run and test
 
 1. Start the service:
    ```bash
@@ -297,7 +297,7 @@ ${context}`
      -d '{"question": "How do I set up the wireless headphones?"}'
    ```
 
-## Step 8: Integrate with an Agent
+## Step 8: Integrate with an agent
 
 Connect the knowledge base to a chat agent as a tool.
 
@@ -323,7 +323,7 @@ final agent:ChatAgent ragSupportAgent = check new (
 );
 ```
 
-## What You Built
+## What you built
 
 You now have a RAG-powered knowledge base that:
 - Ingests documents by chunking and embedding them
@@ -332,9 +332,9 @@ You now have a RAG-powered knowledge base that:
 - Cites sources so users can verify information
 - Can be integrated with agents as a tool
 
-## What's Next
+## What's next
 
 - [Chunking & Embedding](/docs/genai/rag/chunking-embedding) -- Optimize chunking strategies
 - [Vector Databases](/docs/genai/rag/vector-databases) -- Compare vector store options
-- [AI Customer Support Agent](ai-customer-support.md) -- Combine RAG with a support agent
+- [AI Customer Support Agent](ai-customer-support-agent.md) -- Combine RAG with a support agent
 - [Multi-Agent Workflow](multi-agent-workflow.md) -- Add RAG to a multi-agent system

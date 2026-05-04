@@ -36,7 +36,7 @@ Click the **+ Add Artifacts** button at the top right of the canvas to add a new
 
 ![Add artifacts menu](/img/develop/project-views/library-view/add-artifacts.png)
 
-For detailed information on configuring each specific artifact type, see the [Integration Artifacts](../integration-artifacts/overview.md) documentation.
+For detailed information on configuring each specific artifact type, see the [Integration Artifacts](../integration-artifacts/integration-artifacts.md) documentation.
 
 ## Artifact management
 

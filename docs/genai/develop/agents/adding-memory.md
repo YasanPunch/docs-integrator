@@ -8,7 +8,7 @@ Agent memory controls how your AI agent retains and manages conversation history
 
 Choosing the right memory strategy depends on conversation length, cost constraints, and whether sessions need to survive service restarts.
 
-## Message Window Memory
+## Message window memory
 
 Keeps the most recent N messages in the conversation. This is the simplest and most commonly used strategy.
 
@@ -31,7 +31,7 @@ When the conversation exceeds the configured limit, the oldest messages are drop
 
 **Best for:** General-purpose chat agents, help desk bots, and interactive data exploration where conversations are relatively short.
 
-## Token Window Memory
+## Token window memory
 
 Keeps messages that fit within a token budget rather than a message count. This gives you precise control over costs and ensures you stay within the model's context window.
 
@@ -54,7 +54,7 @@ final agent:ChatAgent costAwareAgent = check new (
 
 **Best for:** Cost-sensitive production deployments and long conversations where you need to stay within a fixed token budget.
 
-## Summary Memory
+## Summary memory
 
 Compresses older messages into a running summary while keeping recent messages verbatim. This gives the agent a sense of the full conversation history without consuming excessive tokens.
 
@@ -86,7 +86,7 @@ The summary is regenerated each time older messages are compressed, so it always
 
 **Best for:** Long-running advisory sessions, project planning, and multi-hour conversations where losing early context would degrade quality.
 
-## Redis-Backed Persistent Memory
+## Redis-Backed persistent memory
 
 Store conversation history in Redis for sessions that need to survive service restarts and deployments.
 
@@ -115,7 +115,7 @@ Redis-backed memory serializes each message to a Redis list keyed by session ID.
 
 **Best for:** Multi-day workflows, agents that must survive restarts, and environments with compliance requirements for conversation retention.
 
-## Database-Backed Persistent Memory
+## Database-Backed persistent memory
 
 For teams that prefer a relational database, store conversation history in PostgreSQL or MySQL.
 
@@ -143,7 +143,7 @@ The agent creates and manages the required table schema automatically on first u
 
 **Best for:** Organizations that want conversation logs in a queryable relational store for auditing, analytics, or compliance.
 
-## Combining Memory with Context Injection
+## Combining memory with context injection
 
 Add external context to individual turns without it counting toward the conversation history.
 
@@ -169,7 +169,7 @@ service /agent on new http:Listener(8090) {
 
 The injected context appears in this turn's message but is not stored separately in memory. On future turns, it will be part of the message history like any other message.
 
-## Conversation Handoff Between Agents
+## Conversation handoff between agents
 
 Transfer conversation history from one agent to another when escalating or routing.
 
@@ -194,7 +194,7 @@ function escalateToSpecialist(string sessionId) returns string|error {
 }
 ```
 
-## Session Cleanup
+## Session cleanup
 
 Clear session memory when a conversation ends to free resources.
 
@@ -213,7 +213,7 @@ service /helpdesk on new http:Listener(8090) {
 }
 ```
 
-## Choosing the Right Memory Strategy
+## Choosing the right memory strategy
 
 | Scenario | Recommended Memory | Why |
 |----------|-------------------|-----|
@@ -224,7 +224,7 @@ service /helpdesk on new http:Listener(8090) {
 | Compliance and audit requirements | `PersistentChatMemory` (Database) | Queryable, persistent logs |
 | Single-turn task processing | No memory | Stateless by design |
 
-## What's Next
+## What's next
 
 - [Creating an AI Agent](/docs/genai/develop/agents/creating-agent) -- Build your first agent
 - [Adding Tools](/docs/genai/develop/agents/adding-tools) -- Connect agents to functions and APIs

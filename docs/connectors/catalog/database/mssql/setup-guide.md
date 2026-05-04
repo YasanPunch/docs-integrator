@@ -30,7 +30,7 @@ This guide walks you through setting up a Microsoft SQL Server instance and enab
 
 For production environments, grant only the minimum required permissions instead of `db_owner`.
 
-## Step 2: Enable tCP/IP connectivity
+## Step 2: Enable TCP/IP connectivity
 
 1. Open **SQL Server Configuration Manager**.
 2. Navigate to **SQL Server Network Configuration** > **Protocols for [your instance]**.
@@ -64,7 +64,7 @@ If you plan to use the CDC listener for real-time event streaming, enable CDC on
 
 CDC requires SQL Server Enterprise, Developer, or Standard edition. It is not available in Express edition.
 
-## Step 4: Configure sSL/TLS (optional)
+## Step 4: Configure SSL/TLS (optional)
 
 To encrypt connections between your Ballerina application and SQL Server:
 

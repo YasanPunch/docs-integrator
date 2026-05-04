@@ -43,7 +43,7 @@ The agent loop:
 5. **Observe** the results and decide whether more steps are needed.
 6. **Respond** with the final answer once the task is complete.
 
-## When to Use It
+## When to use it
 
 - The set of possible operations is known, but the **order and combination** depend on runtime context.
 - The input is unstructured (natural language) and requires interpretation before routing.
@@ -133,7 +133,7 @@ In this example, if a user asks "Do you have wireless chargers in stock?", the a
 - **Security**: Validate tool arguments before execution. The LLM may hallucinate invalid inputs (e.g., SQL injection in a query parameter).
 - **Observability**: Log each step of the agent loop (tool selected, arguments, result) for debugging and auditing.
 
-## Related Patterns
+## Related patterns
 
 - [RAG Pipeline](rag-pipeline.md) -- When the agent needs to retrieve knowledge from a vector store before answering.
 - [Scatter-Gather](scatter-gather.md) -- When you need parallel fan-out without LLM reasoning.

@@ -20,11 +20,11 @@ flowchart LR
 
 - A PayPal developer account with OAuth2 client credentials (Client ID and Client Secret)
 
-## Setting up the PayPal Subscriptions integration
+## Setting up the PayPal subscriptions integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
-## Adding the PayPal Subscriptions connector
+## Adding the PayPal subscriptions connector
 
 ### Step 1: Open the connector palette
 
@@ -35,7 +35,7 @@ flowchart LR
 
 ![PayPal Subscriptions connector palette open with search field before any selection](/img/connectors/catalog/finance-accounting/paypal.subscriptions/paypal_subscriptions_screenshot_01_palette.png)
 
-## Configuring the PayPal Subscriptions connection
+## Configuring the PayPal subscriptions connection
 
 ### Step 2: Fill in the connection parameters
 
@@ -61,9 +61,9 @@ Select **Save** to create the connection. The `subscriptionsClient` connection a
 - **paypalClientId** (string) : Your PayPal OAuth2 client ID from the PayPal developer dashboard
 - **paypalClientSecret** (string) : Your PayPal OAuth2 client secret from the PayPal developer dashboard
 
-## Configuring the PayPal Subscriptions listPlans operation
+## Configuring the PayPal subscriptions listPlans operation
 
-### Step 5: Add an Automation entry point
+### Step 5: Add an automation entry point
 
 1. Select **Add Artifact** in the WSO2 Integrator sidebar.
 2. Select **Automation** as the entry point type.
@@ -92,9 +92,9 @@ The Automation entry point `main` is created and appears under **Entry Points** 
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/paypal.subscriptions_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/paypal.subscriptions_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/paypal.subscriptions_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/paypal.subscriptions_connector_sample)
 
 ## More code examples
 

@@ -6,9 +6,9 @@ title: Debugging Agent Behavior
 
 AI agents can exhibit unexpected behavior -- wrong tool selection, hallucinated data, infinite loops, or inconsistent responses. Unlike traditional software bugs, agent failures are often probabilistic and depend on the combination of prompt, context, tools, and model. This guide covers systematic approaches to diagnosing and fixing agent issues.
 
-## Common Issues
+## Common issues
 
-### Wrong Tool Selection
+### Wrong tool selection
 
 The agent calls the wrong tool or no tool at all.
 
@@ -64,7 +64,7 @@ function debugToolSelection(string message) returns error? {
 }
 ```
 
-### Hallucinated Data
+### Hallucinated data
 
 The agent generates information that does not exist in the tools or context.
 
@@ -100,7 +100,7 @@ function debugHallucination(string message, string sessionId) returns error? {
 - Lower the temperature to reduce creative output
 - Require the agent to cite which tool provided the data
 
-### Infinite Tool Loops
+### Infinite tool loops
 
 The agent repeatedly calls the same tool or cycles between tools.
 
@@ -148,7 +148,7 @@ final agent:ChatAgent loopSafeAgent = check new (
 );
 ```
 
-### Inconsistent Responses
+### Inconsistent responses
 
 The agent gives different answers to the same question.
 
@@ -179,11 +179,11 @@ function testResponseConsistency() returns error? {
 - Use few-shot examples for questions that need consistent answers
 - Ground responses in tool data rather than LLM knowledge
 
-## Debugging Workflow
+## Debugging workflow
 
 Follow this systematic process when investigating agent issues:
 
-### 1. Reproduce the Issue
+### 1. reproduce the issue
 
 ```ballerina
 // Create a test case that reproduces the exact scenario
@@ -197,7 +197,7 @@ function testReproduction() returns error? {
 }
 ```
 
-### 2. Enable Verbose Logging
+### 2. enable verbose logging
 
 ```toml
 # Config.toml — Debug configuration
@@ -210,7 +210,7 @@ capturePrompts = true
 captureResponses = true
 ```
 
-### 3. Inspect the Full Trace
+### 3. inspect the full trace
 
 Review the complete trace to understand the agent's decision flow:
 - What was in the system prompt?
@@ -219,7 +219,7 @@ Review the complete trace to understand the agent's decision flow:
 - What was the LLM's raw response?
 - What tool results were returned?
 
-### 4. Isolate the Cause
+### 4. isolate the cause
 
 | Symptom | Likely Cause | Investigation |
 |---------|--------------|---------------|
@@ -230,7 +230,7 @@ Review the complete trace to understand the agent's decision flow:
 | Slow response | Too many tool calls or large context | Check trace for bottlenecks |
 | Inconsistent output | High temperature or vague prompt | Lower temperature, add specifics |
 
-### 5. Fix and Verify
+### 5. fix and verify
 
 ```ballerina
 // After applying the fix, verify with a test suite
@@ -247,7 +247,7 @@ function testFixedBehavior() returns error? {
 }
 ```
 
-## Comparing Model Behavior
+## Comparing model behavior
 
 When an issue might be model-specific, test the same scenario across models.
 
@@ -278,7 +278,7 @@ function compareModels(string message) returns error? {
 }
 ```
 
-## What's Next
+## What's next
 
 - [Agent Tracing](agent-tracing.md) -- Use traces to visualize agent behavior
 - [Conversation Logging](conversation-logging.md) -- Review full conversation history

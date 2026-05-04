@@ -11,7 +11,7 @@ For event-driven integration, see the [Trigger Reference](trigger-reference.md).
 
 ---
 
-## Subscription Client
+## Subscription client
 
 Sends subscription and unsubscription requests to a WebSub hub.
 
@@ -107,7 +107,7 @@ websub:SubscriptionChangeResponse response = check subscriptionClient->unsubscri
 
 ---
 
-## Discovery Service
+## Discovery service
 
 Discovers WebSub hub and topic URLs from a resource URL via HTTP Link headers.
 

@@ -38,7 +38,7 @@ The pipeline has two phases:
 
 **Query** (online): The user's question is embedded, similar chunks are retrieved, and they are passed to the LLM as context.
 
-## When to Use It
+## When to use it
 
 - Your AI agent needs to answer questions about **private or frequently changing data**.
 - You want to reduce LLM hallucination by grounding answers in actual source documents.
@@ -49,7 +49,7 @@ Avoid this pattern for tasks that do not require domain-specific knowledge (e.g.
 
 ## Implementation
 
-### Document Ingestion Pipeline
+### Document ingestion pipeline
 
 ```ballerina
 import ballerina/http;
@@ -126,7 +126,7 @@ function ingestDocument(string filePath) returns error? {
 }
 ```
 
-### Query Pipeline
+### Query pipeline
 
 ```ballerina
 // rag_query.bal
@@ -204,7 +204,7 @@ function ragQuery(string question) returns record {|string answer; string[] sour
 }
 ```
 
-### HTTP Service
+### HTTP service
 
 ```ballerina
 // main.bal
@@ -233,7 +233,7 @@ service /rag on new http:Listener(8090) {
 - **Hallucination control**: Instruct the LLM to only use the provided context and to say "I don't know" when the context is insufficient.
 - **Freshness**: Re-ingest documents when they change. Consider tracking document versions and updating only modified chunks.
 
-## Related Patterns
+## Related patterns
 
 - [Agent-Tool Orchestration](agent-tool-orchestration.md) -- An agent can use RAG retrieval as one of its tools alongside other data sources.
 - [Scatter-Gather](scatter-gather.md) -- Search multiple vector databases or knowledge bases in parallel and combine results.

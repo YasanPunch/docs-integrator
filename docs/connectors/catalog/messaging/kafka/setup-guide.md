@@ -61,10 +61,10 @@ If your Kafka cluster requires authentication, configure SASL credentials:
 
 Managed Kafka services (Confluent Cloud, Amazon MSK, Azure Event Hubs) provide their own authentication setup. Consult your provider's documentation for connection details.
 
-## Step 4: Configure sSL/TLS (optional)
+## Step 4: Configure SSL/TLS (optional)
 
 For encrypted connections:
 
-1. Generate or obtain SSL certificates for your Kafka cluster (CA certificate, server certificate, and key).
+1. Generate a CA certificate, server certificate, and key — or obtain them from your PKI. See [Keystores and Truststores](../../../../deploy-operate/secure/keystore-truststore.md) for step-by-step instructions using `keytool`.
 2. Configure the broker's `server.properties` with the keystore and truststore paths.
-3. Note the **truststore/certificate file path** and **keystore credentials** for use in the connector configuration.
+3. Note the **truststore/certificate file path** and **keystore credentials** — you will use these when configuring the Ballerina connector.

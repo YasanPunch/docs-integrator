@@ -20,19 +20,19 @@ flowchart LR
 
 - A running WSO2 API Manager instance (v4.x) with valid access credentials
 
-## Setting up the WSO2 APIM Catalog integration
+## Setting up the WSO2 APIM catalog integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
-## Adding the WSO2 APIM Catalog connector
+## Adding the WSO2 APIM catalog connector
 
-### Step 1: Open the Add connection panel
+### Step 1: Open the add connection panel
 
 Select the **+** (Add) icon in the **Connections** section of the side panel to open the Add Connection palette.
 
 ![WSO2 APIM Catalog connector palette open with search field before any selection](/img/connectors/catalog/developer-tools/wso2.apim.catalog/wso2_apim_catalog_screenshot_01_palette.png)
 
-## Configuring the WSO2 APIM Catalog connection
+## Configuring the WSO2 APIM catalog connection
 
 ### Step 2: Fill in connection parameters
 
@@ -57,15 +57,15 @@ Select **Save Connection** to persist the connection. The `catalogClient` entry 
 - **apimUsername** (string) : The WSO2 API Manager admin username
 - **apimPassword** (string) : The WSO2 API Manager admin password
 
-## Configuring the WSO2 APIM Catalog Import a service operation
+## Configuring the WSO2 APIM catalog import a service operation
 
-### Step 5: Add an Automation entry point
+### Step 5: Add an automation entry point
 
 1. In the side panel, navigate to **Entry Points**.
 2. Select **+** to add a new entry point.
 3. Select **Automation** as the entry point type and name it `main`.
 
-### Step 6: Select and configure the Import a service operation
+### Step 6: Select and configure the import a service operation
 
 Expand the **catalogClient** node in the node panel to reveal all available operations, then select **Import a service** and fill in the required fields.
 
@@ -82,9 +82,9 @@ Expand the **catalogClient** node in the node panel to reveal all available oper
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/wso2.apim.catalog_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/wso2.apim.catalog_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/wso2.apim.catalog_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/wso2.apim.catalog_connector_sample)
 
 ## More code examples
 

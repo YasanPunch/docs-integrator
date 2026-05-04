@@ -6,7 +6,7 @@ title: Java Interoperability
 
 Ballerina runs on the JVM and provides first-class interoperability with Java. You can call any Java library from your integration code -- legacy enterprise libraries, open-source frameworks, or your organization's internal Java packages. WSO2 Integrator supports two approaches: **direct FFI bindings** for precise control and the **BindGen tool** for automatic wrapper generation.
 
-## When to Use Java Interop
+## When to use Java interop
 
 Common scenarios for calling Java from Ballerina:
 
@@ -15,11 +15,11 @@ Common scenarios for calling Java from Ballerina:
 - **Performance-critical code** -- Leverage optimized Java implementations for cryptography, compression, or math.
 - **In-house libraries** -- Call your organization's internal Java SDKs directly.
 
-## Adding Java Dependencies
+## Adding Java dependencies
 
 Add Java JAR files to your Ballerina project using the `Ballerina.toml` manifest.
 
-### Local JAR Files
+### Local JAR files
 
 Place JARs in a `libs/` directory and reference them in `Ballerina.toml`:
 
@@ -36,7 +36,7 @@ path = "libs/my-library-2.1.0.jar"
 path = "libs/commons-codec-1.15.jar"
 ```
 
-### Maven Dependencies
+### Maven dependencies
 
 Pull JARs directly from Maven Central:
 
@@ -52,11 +52,11 @@ artifactId = "gson"
 version = "2.10.1"
 ```
 
-## Direct FFI Bindings
+## Direct FFI bindings
 
 Use `@java:Method`, `@java:FieldGet`, `@java:FieldSet`, and `@java:Constructor` annotations to bind Ballerina functions directly to Java methods.
 
-### Calling Static Methods
+### Calling static methods
 
 ```ballerina
 import ballerina/jballerina.java;
@@ -81,7 +81,7 @@ function base64Encode(byte[] input) returns byte[] = @java:Method {
 } external;
 ```
 
-### Calling Instance Methods
+### Calling instance methods
 
 ```ballerina
 import ballerina/jballerina.java;
@@ -110,7 +110,7 @@ function example() {
 }
 ```
 
-### Accessing Fields
+### Accessing fields
 
 ```ballerina
 import ballerina/jballerina.java;
@@ -128,7 +128,7 @@ function setFieldValue(handle obj, handle value) = @java:FieldSet {
 } external;
 ```
 
-### Mapping Java Types to Ballerina
+### Mapping Java types to Ballerina
 
 | Java Type | Ballerina Type |
 |---|---|
@@ -140,7 +140,7 @@ function setFieldValue(handle obj, handle value) = @java:FieldSet {
 | `byte[]` | `byte[]` |
 | Any object | `handle` |
 
-### Converting Strings
+### Converting strings
 
 Java strings and Ballerina strings are different types. Use conversion functions:
 
@@ -154,11 +154,11 @@ handle javaString = java:fromString("Hello from Ballerina");
 string? ballerinaString = java:toString(javaString);
 ```
 
-## The BindGen Tool
+## The BindGen tool
 
 The `bal bindgen` command automatically generates Ballerina wrapper classes for Java libraries, saving you from writing FFI bindings manually.
 
-### Basic Usage
+### Basic usage
 
 ```bash
 # Generate bindings for a specific class
@@ -175,7 +175,7 @@ bal bindgen --mvn org.apache.commons:commons-lang3:3.14.0 \
     -o generated/ org.apache.commons.lang3.StringUtils
 ```
 
-### Using Generated Bindings
+### Using generated bindings
 
 After running `bindgen`, you get Ballerina classes that mirror the Java API:
 
@@ -192,7 +192,7 @@ function processText(string input) returns string|error {
 }
 ```
 
-### BindGen Options
+### BindGen options
 
 | Flag | Description |
 |---|---|
@@ -201,11 +201,11 @@ function processText(string input) returns string|error {
 | `--mvn <coords>` | Maven coordinate (`groupId:artifactId:version`) |
 | `--public` | Generate `public` wrapper classes |
 
-## Wrapping Java Libraries
+## Wrapping Java libraries
 
 For cleaner integration, wrap Java interop calls behind idiomatic Ballerina functions.
 
-### Example: Apache POI for Excel
+### Example: Apache POI for excel
 
 ```toml
 # Ballerina.toml
@@ -256,7 +256,7 @@ public function generateExcelReport(ReportData data) returns byte[]|error {
 }
 ```
 
-### Example: Custom Encryption Library
+### Example: Custom encryption library
 
 ```ballerina
 import ballerina/jballerina.java;
@@ -293,7 +293,7 @@ public function decrypt(byte[] ciphertext) returns string|error {
 }
 ```
 
-## Error Handling with Java Interop
+## Error handling with Java interop
 
 Java exceptions are mapped to Ballerina errors. Use `check` or `do/on fail` to handle them:
 
@@ -315,7 +315,7 @@ function safeParsing(string input) returns string {
 }
 ```
 
-## Best Practices
+## Best practices
 
 1. **Wrap Java calls** -- Always expose Java interop through idiomatic Ballerina functions rather than using `handle` types in your integration logic.
 2. **Use BindGen for large APIs** -- For libraries with many classes, `bal bindgen` saves significant effort.
@@ -323,7 +323,7 @@ function safeParsing(string input) returns string {
 4. **Handle nulls** -- Java methods can return `null`. Use `handle?` or check for nil after conversion.
 5. **Test interop code** -- Write unit tests for your Java wrappers to catch type mapping issues early.
 
-## What's Next
+## What's next
 
 - [Functions](functions.md) -- Organize Java interop wrappers as reusable functions
 - [Ballerina Pro-Code](ballerina-pro-code.md) -- Combine Java interop with advanced Ballerina features

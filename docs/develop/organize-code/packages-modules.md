@@ -6,7 +6,7 @@ title: Packages & Modules
 
 Organize your integration code into packages and modules for clear separation of concerns, independent testing, and reuse across projects. A Ballerina package is the unit of compilation, versioning, and distribution, while modules are the logical subdivisions within a package.
 
-## Package Structure
+## Package structure
 
 A Ballerina package is defined by its `Ballerina.toml` file. Every file in the package root directory belongs to the default module.
 
@@ -51,7 +51,7 @@ observabilityIncluded = true
 
 Modules let you organize code within a package into logical groups. Each module has its own namespace, visibility rules, and test directory.
 
-### Default Module
+### Default module
 
 Files in the package root directory (next to `Ballerina.toml`) belong to the default module. This is where your main service or entry point lives.
 
@@ -100,7 +100,7 @@ order-service/
     └── integration_test.bal
 ```
 
-### Creating a Submodule
+### Creating a submodule
 
 ```bash
 # Create a new submodule
@@ -111,7 +111,7 @@ bal add notifications
 # Creates: modules/notifications/notifications.bal
 ```
 
-## Visibility and Access Control
+## Visibility and access control
 
 Ballerina uses access modifiers to control what is visible outside a module.
 
@@ -146,7 +146,7 @@ type ConnectionConfig record {|
 |};
 ```
 
-### Importing Submodules
+### Importing submodules
 
 ```ballerina
 // Import a submodule from the same package
@@ -159,7 +159,7 @@ db:OrderRecord order = check db:insertOrder(payload);
 check notifications:sendOrderConfirmation(order);
 ```
 
-### Import Aliases
+### Import aliases
 
 Use aliases to shorten long module names or resolve conflicts.
 
@@ -172,9 +172,9 @@ check notify:sendEmail(to, subject, body);
 pg:Client dbClient = check new (...);
 ```
 
-## Organizing Source Files
+## Organizing source files
 
-### File Organization Patterns
+### File organization patterns
 
 Split code across files by concern within a module.
 
@@ -211,7 +211,7 @@ public function insertOrder(json order) returns json|error {
 }
 ```
 
-## Resource Files
+## Resource files
 
 Store static files (schemas, templates, config files) in the `resources/` directory.
 
@@ -225,7 +225,7 @@ public function loadSchema() returns json|error {
 }
 ```
 
-## Multi-File Type Definitions
+## Multi-File type definitions
 
 For large projects, centralize shared types in a dedicated file or module.
 
@@ -257,7 +257,7 @@ public enum OrderStatus {
 }
 ```
 
-## Best Practices
+## Best practices
 
 - **One service per package** -- each integration service should be its own package for independent deployment
 - **Use submodules for internal boundaries** -- separate database, notification, and transformation logic into modules
@@ -266,8 +266,8 @@ public enum OrderStatus {
 - **Name files by content** -- `order_queries.bal` is clearer than `utils.bal`
 - **Create `Module.md`** for each submodule to document its purpose
 
-## What's Next
+## What's next
 
-- [Package References & Imports](package-references.md) -- Import external packages
-- [Manage Dependencies](manage-dependencies.md) -- Lock and update dependency versions
+- [Package References & Imports](package-references-imports.md) -- Import external packages
+- [Manage Dependencies](dependencies.md) -- Lock and update dependency versions
 - [Workspaces](workspaces.md) -- Work with multiple packages together

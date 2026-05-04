@@ -286,4 +286,4 @@ function safeInitialize() returns error? {
 
 - [Expressions](expressions.md) — Write conditions for error handling branches
 - [Configuration Management](configuration-management.md) — Configure retry and circuit breaker settings per environment
-- [Connections](connections.md) — Configure resilient connections
+- [Connections](managing-connections.md) — Configure resilient connections

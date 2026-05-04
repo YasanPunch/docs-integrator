@@ -18,7 +18,7 @@ LLMs are powerful but have limitations:
 
 RAG addresses all three by grounding LLM responses in your actual documents, databases, and APIs.
 
-## Architecture Overview
+## Architecture overview
 
 A RAG pipeline consists of two main phases: **ingestion** (offline) and **retrieval + generation** (online).
 
@@ -37,9 +37,9 @@ flowchart TD
     end
 ```
 
-## Pipeline Components
+## Pipeline components
 
-### 1. Document Sources
+### 1. document sources
 
 RAG pipelines can ingest data from multiple sources:
 
@@ -51,7 +51,7 @@ RAG pipelines can ingest data from multiple sources:
 | APIs | REST, GraphQL responses | HTTP/GraphQL clients |
 | Messaging | Kafka, RabbitMQ messages | Event handlers |
 
-### 2. Chunking
+### 2. chunking
 
 Documents are split into smaller passages (chunks) that can be individually retrieved. The chunking strategy directly impacts retrieval quality.
 
@@ -73,7 +73,7 @@ rag:ChunkConfig semanticChunking = {
 };
 ```
 
-### 3. Embedding
+### 3. embedding
 
 Each chunk is converted into a vector (array of numbers) that captures its semantic meaning. Similar content produces similar vectors.
 
@@ -94,7 +94,7 @@ function embed(string text) returns float[]|error {
 }
 ```
 
-### 4. Vector Database
+### 4. vector database
 
 Stores embeddings alongside the original text for fast similarity search. WSO2 Integrator supports multiple vector databases.
 
@@ -106,7 +106,7 @@ Stores embeddings alongside the original text for fast similarity search. WSO2 I
 | pgvector | Yes | Yes | Existing PostgreSQL users |
 | Qdrant | Yes | Yes | High-performance search |
 
-### 5. Retrieval
+### 5. retrieval
 
 When a user query arrives, it is embedded and compared against stored vectors to find the most relevant chunks.
 
@@ -129,7 +129,7 @@ function retrieveContext(string query, int topK = 3) returns string[]|error {
 }
 ```
 
-### 6. Generation
+### 6. generation
 
 The retrieved chunks are assembled into a prompt context and passed to the LLM alongside the user's question.
 
@@ -199,9 +199,9 @@ rag:Response answer = check ragPipeline.query("What is the return policy?");
 // answer.text, answer.sources, answer.confidence
 ```
 
-## Design Considerations
+## Design considerations
 
-### Chunk Size vs. Retrieval Quality
+### Chunk size vs. retrieval quality
 
 | Chunk Size | Pros | Cons |
 |------------|------|------|
@@ -209,7 +209,7 @@ rag:Response answer = check ragPipeline.query("What is the return policy?");
 | Medium (300-500 tokens) | Good balance | Standard choice |
 | Large (500-1000 tokens) | Rich context per chunk | Less precise matching |
 
-### Embedding Model Selection
+### Embedding model selection
 
 | Model | Dimensions | Quality | Cost |
 |-------|------------|---------|------|
@@ -218,7 +218,7 @@ rag:Response answer = check ragPipeline.query("What is the return policy?");
 | `embed-english-v3.0` (Cohere) | 1024 | Good | Low |
 | Vertex AI `text-embedding-004` | 768 | Good | Low |
 
-### When to Use RAG vs. Fine-Tuning
+### When to use RAG vs. Fine-Tuning
 
 | Approach | Best For | Data Requirements |
 |----------|----------|-------------------|
@@ -226,9 +226,9 @@ rag:Response answer = check ragPipeline.query("What is the return policy?");
 | **Fine-tuning** | Changing model behavior or style | Curated training examples |
 | **RAG + Fine-tuning** | Domain-specific behavior with dynamic knowledge | Both |
 
-## What's Next
+## What's next
 
-- [Vector Databases](vector-databases.md) — Connect to and configure vector stores
-- [Document Ingestion](document-ingestion.md) — Build ingestion pipelines for various formats
-- [Chunking & Embedding](chunking-embedding.md) — Optimize your chunking and embedding strategy
-- [Building a RAG Service](building-rag-service.md) — End-to-end RAG service implementation
+- [Vector Databases](vector-database-connectivity.md) — Connect to and configure vector stores
+- [Document Ingestion](document-ingestion-pipelines.md) — Build ingestion pipelines for various formats
+- [Chunking & Embedding](chunking-embedding-strategies.md) — Optimize your chunking and embedding strategy
+- [Building a RAG Service](build-a-service-end-end.md) — End-to-end RAG service implementation

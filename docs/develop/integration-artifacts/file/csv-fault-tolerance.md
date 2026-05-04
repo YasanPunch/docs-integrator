@@ -4,127 +4,141 @@ title: CSV Fault Tolerance
 
 # CSV Fault Tolerance
 
-Real-world CSV files often contain malformed rows — missing columns, wrong data types, or corrupted values. By default, a single bad row fails the entire file. Fault-tolerant processing skips invalid rows, logs errors, and continues with valid data.
+Real-world CSV files rarely arrive perfectly clean. A single bad row — a stray comma, a wrong data type, a trailing blank — would normally fail the whole file. With **CSV fault tolerance** enabled, the listener treats malformed rows as a per-row issue instead of a per-file one. It skips rows that don't fit your schema and hands the rest to the handler as if nothing happened.
 
-This page covers the **integration pattern** for wiring fail-safe CSV parsing into an FTP/SFTP file handler. For the parser configuration itself (`csv:parseList`, `failSafe` options, `enableConsoleLogs`, `fileOutputMode`), see [CSV processing](../../transform/csv-flat-file.md).
+## What the handler sees
 
-## How it works
+| Feature state | Bad row encountered | Handler receives | File outcome (default) |
+|---|---|---|---|
+| **Off** (default) | The first malformed row trips data binding | An `error` instead of content | Moves to the **After Error** destination |
+| **On** | The row is dropped before the handler is called | Only valid rows, as usual | Moves to the **After Success** destination |
 
-The fault-tolerance pattern combines three mechanisms:
+:::note[Fault tolerance needs a typed row schema]
+Fault tolerance only skips rows that fail **typed binding**. If your handler is generated with the default `string[][]` content type, every row is valid as a string array and nothing is ever dropped.
 
-1. **Fail-safe parsing** — `csv:parseList` with the `failSafe` option skips rows that cannot be bound to the target record type, instead of returning an error.
-2. **Zero-records check** — After parsing, verify that at least one valid record exists. If all rows were skipped, explicitly return an error so the file routes to the error path.
-3. **Automatic file routing** — `@ftp:FunctionConfig` with `afterProcess` and `afterError` moves files to `/processed` or `/errors` based on whether the handler returns `nil` or `error`.
+On the **Add File Handler** form, click **+ Define Row Schema** and describe each column as a field on a Ballerina record. This flips the handler parameter to a typed array (for example `Order[]`), and rows that don't match trigger binding errors that fault tolerance can skip. See the [row-schema step in Streaming large files](streaming-large-files.md#enabling-streaming) for a walkthrough.
 
-```mermaid
-flowchart LR
-    File["Incoming CSV"]
-    Parse["Parse CSV<br/>(failSafe)"]
-    Check{"Valid rows > 0?"}
-    Process["Process records"]
-    Success["/processed"]
-    Errors["/errors"]
+Fault tolerance combines cleanly with:
 
-    File --> Parse
-    Parse --> Check
-    Check -- "yes" --> Process --> Success
-    Check -- "no (all skipped)" --> Errors
-    Parse -- "unrecoverable error" --> Errors
-```
+- **Streaming** — works with [streamed CSV](streaming-large-files.md). A bad row no longer terminates the stream; processing continues through the rest of the file.
+- **Move / Delete post-processing** — because the handler completes successfully, the file follows the **After Success** action as it would for a clean run.
 
-## Example
+## Configuration
 
-The handler receives CSV content as `string[][]` (raw rows), parses them into typed records with `failSafe`, and lets `@ftp:FunctionConfig` handle file routing.
+Fault tolerance is a **listener-level** setting. Turn it on once per listener and every CSV handler attached to that service inherits the behaviour. It is part of the listener's regular configuration, not tucked under Advanced.
 
-1. Create an FTP/SFTP service following the steps in [Creating an FTP service](ftp-sftp.md#creating-an-ftp-service).
-2. Add a file handler with **File Format** set to **CSV** and **Rows** selected. Under **After File Processing**, set **Success** to **Move** with destination `/processed` and **Error** to **Move** with destination `/errors`.
-3. In the handler logic, use a **CSV Parse** step with fail-safe enabled to parse rows into your target record type.
+1. Open the listener by clicking its name under **Listeners** in the sidebar, or under **Attached Listeners** in the **FTP Integration Configuration** panel.
+2. Scroll to the **Csv Fail Safe** field and click **Record** to open the builder.
+3. In the side **Record Configuration** panel, tick the top-level **FailSafeOptions** checkbox to include the record, tick **contentType**, and pick an enum value:
+
+   | `contentType` value | What gets logged for a dropped row |
+   |---|---|
+   | **METADATA** *(default)* | Row number, column, and the binding error. |
+   | **RAW** | The raw row text as it appeared in the source file. |
+   | **RAW_AND_METADATA** | Both. |
+
+4. Close the side panel and click **Save**. Every CSV handler on every service attached to this listener now skips malformed rows.
+
+Add a `csvFailSafe` field to the listener constructor:
 
 ```ballerina
-import ballerina/data.csv;
 import ballerina/ftp;
-import ballerina/log;
-
-type InventoryRecord record {|
-    string warehouseId;
-    string sku;
-    string productName;
-    int quantity;
-    decimal unitPrice;
-    string lastUpdated;
-|};
 
 listener ftp:Listener ftpListener = new (
     protocol = ftp:FTP,
-    host = ftpHost,
-    port = ftpPort,
+    host = "ftp.example.com",
+    port = 21,
     auth = {credentials: {username: ftpUser, password: ftpPassword}},
-    pollingInterval = 10
+    csvFailSafe = {
+        contentType: ftp:RAW_AND_METADATA
+    }
 );
 
-@ftp:ServiceConfig {
-    path: "/incoming",
-    fileNamePattern: ".*\\.csv"
-}
+@ftp:ServiceConfig { path: "/incoming" }
 service on ftpListener {
-
-    @ftp:FunctionConfig {
-        afterProcess: {moveTo: "/processed"},
-        afterError: {moveTo: "/errors"}
-    }
-    remote function onFileCsv(string[][] content, ftp:FileInfo fileInfo) returns error? {
-        log:printInfo(string `Processing file: ${fileInfo.name}`);
-
-        do {
-            InventoryRecord[] records = check csv:parseList(content, {
-                customHeaders: ["warehouseId", "sku", "productName",
-                                "quantity", "unitPrice", "lastUpdated"],
-                failSafe: {
-                    enableConsoleLogs: true,
-                    fileOutputMode: {
-                        filePath: "./logs/csv-errors.log",
-                        contentType: csv:METADATA,
-                        fileWriteOption: csv:APPEND
-                    }
-                }
-            });
-
-            // Zero-records check — if every row was skipped, route to /errors
-            if records.length() == 0 {
-                return error(string `No valid records in ${fileInfo.name}`);
-            }
-
-            // Process valid records
-            foreach InventoryRecord item in records {
-                log:printInfo(string `SKU: ${item.sku}, Qty: ${item.quantity}`);
-            }
-        } on fail error err {
-            log:printError(string `Failed: ${fileInfo.name}`, 'error = err);
-            return err;
-        }
+    remote function onFileCsv(Order[] orders, ftp:FileInfo fileInfo) returns error? {
+        // `orders` contains only rows that parsed successfully.
     }
 }
 ```
 
-### Key points
+## Dropped-row log
 
-- **`onFileCsv(string[][] content, ...)`** — Receives rows as a raw string array. This gives you control over parsing with fail-safe options rather than relying on automatic data binding.
-- **`failSafe`** — Malformed rows (for example, `"INVALID"` in an `int` column) are skipped. Errors are logged to the console and written to an error log file.
-- **`customHeaders`** — Maps positional columns to record field names since `string[][]` content does not include header names.
-- **Zero-records check** — Without this, the handler would succeed with an empty array and the file would move to `/processed` instead of `/errors`.
-- **`do/on fail`** — Catches unrecoverable errors during parsing or processing and re-returns them so `afterError` triggers.
+When fault tolerance is on, the listener writes each dropped row to a side log file. The filename is the source CSV's basename with its extension replaced by `_error.log`, and the file is created in the integration's working directory:
 
-## When to use
+```text
+incoming/orders-2026.csv   →   <working-dir>/orders-2026_error.log
+```
 
-| Scenario | Approach |
+Each dropped row becomes one JSON line. The `contentType` setting picked above controls which fields appear:
+
+| `contentType` value | `time` | `location.{row,column}` | `offendingRow` | `message` |
+|---|:---:|:---:|:---:|:---:|
+| `METADATA` *(default)* | &check; | &check; | — | &check; |
+| `RAW` | &check; | &check; | &check; | — |
+| `RAW_AND_METADATA` | &check; | &check; | &check; | &check; |
+
+Example entry with `RAW_AND_METADATA`:
+
+```json
+{"time":"2026-04-19T05:17:27.239Z","location":{"row":3,"column":3},"offendingRow":"2,sprocket,five,4.75","message":"value 'five' cannot be cast into 'int'"}
+```
+
+The file is opened in **append** mode, so repeated drops for files whose names share a prefix accumulate in the same log.
+
+The `_error.log` filename, location, and JSON layout are the built-in defaults for the `onFileCsv` handler. If you need a different file name, a different directory, or a custom log format, switch to an `onFileText` handler and parse the CSV yourself with `csv:parseString` — you control every aspect of error handling from there. See [CSV & Flat File Processing](../transform/csv-flat-file.md) for the parser reference and the handler pattern.
+
+## Routing files with dropped rows
+
+:::note[Dropped rows don't flip the file to After Error]
+The listener's **After Success** and **After Error** branches are picked based on whether the handler returned an error. A dropped row is not itself an error — even if every row in the file gets dropped, the handler still receives an empty typed array and the file takes the **After Success** path by default.
+
+If your flow needs a file with dropped rows to go to the error directory instead, the handler has to detect the condition and route the file explicitly. The reliable signal is the presence of the `_error.log` side file described above.
+
+1. On the **Add File Handler** form, open **Advanced Parameters** and tick **FTP Connection (caller)**. The handler now receives an extra `ftp:Caller` argument you can use to move the file programmatically.
+2. In the handler flow, add an **If** node that branches on `orders.length() == 0`.
+3. In the `true` branch, add an **Action** node to call `file:test` for `<prefix>_error.log`. When the log exists, either:
+
+   - add a **Return** node that returns an `error(...)` — this fires **After Error** and moves the original via the listener's configured `/error` destination; or
+   - call `caller->rename(fileInfo.path, "/error/" + fileInfo.name)` and return `()` — useful when you want the handler, not the listener, to pick the destination.
+
+4. Leave the `false` branch to process the valid rows.
+
+```ballerina
+import ballerina/file;
+import ballerina/ftp;
+
+remote function onFileCsv(Order[] orders, ftp:FileInfo fileInfo, ftp:Caller caller) returns error? {
+    if orders.length() > 0 {
+        // Valid rows present — process normally.
+        return;
+    }
+
+    string name = fileInfo.name;
+    int? dot = name.lastIndexOf(".");
+    string prefix = dot is int ? name.substring(0, dot) : name;
+
+    if check file:test(prefix + "_error.log", file:EXISTS) {
+        // Every row was dropped by fault tolerance.
+        return error("all CSV rows were dropped", path = fileInfo.path);
+    }
+}
+```
+
+The simpler alternative is to leave fault tolerance **off** entirely. The first bad row then trips data binding, the handler receives an `error`, and the file takes the **After Error** branch with no custom code.
+
+## When to leave it off
+
+| Scenario | Recommendation |
 |---|---|
-| Most rows are valid, occasional bad data | Enable `failSafe`, log errors, process the rest |
-| Bad data must block the entire file | Don't use `failSafe`; the handler returns an error and `afterError` routes the file |
-| Every row must be accounted for | Use `failSafe` with a log file, then compare `records.length()` against `content.length()` |
+| Partner agreement says every row must be accounted for | Leave fault tolerance **off**. A single bad row should fail the file and route it to the error directory for replay. |
+| The feed is known-dirty and most rows are usable | Turn it **on**. Clean rows proceed and dropped rows are logged. |
+| You need files with any dropped rows to go to **After Error** | Leave fault tolerance **off**, or add the dropped-row check shown in [Routing files with dropped rows](#routing-files-with-dropped-rows). |
+| You need a different log format, filename, or location | Switch to `onFileText` and parse with [`csv:parseString`](../transform/csv-flat-file.md). |
 
 ## What's next
 
-- [CSV processing](../../transform/csv-flat-file.md) — fail-safe parser configuration, custom delimiters, projections
-- [Streaming large files](streaming-large-files.md) — process CSV files row-by-row without loading into memory
-- [FTP / SFTP](ftp-sftp.md) — service configuration, authentication, and post-processing reference
-- [CSV FTP processing tutorial](../../../tutorials/walkthroughs/csv-ftp-processing.md) — end-to-end walkthrough with sample data and Docker FTP server
+- [Streaming large files](streaming-large-files.md) — combine fault tolerance with row-by-row streaming for large CSVs
+- [CSV & flat file processing](../transform/csv-flat-file.md) — parse, transform, and write CSV when you need control beyond what the handler offers
+- [FTP / SFTP](ftp-sftp.md) — listener and handler configuration reference
+- [`ftp:Listener` reference](https://central.ballerina.io/ballerina/ftp/latest#Listener) — the full `csvFailSafe` field schema

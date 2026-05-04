@@ -24,7 +24,7 @@ flowchart LR
 
 ## Setting up the Asana integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
 ## Adding the Asana connector
 
@@ -58,15 +58,15 @@ Select **Save Connection** to persist the Asana connection configuration. The `a
 
 - **asanaToken** (string) : Your Asana Personal Access Token from `https://app.asana.com/0/my-apps`
 
-## Configuring the Asana Get multiple workspaces operation
+## Configuring the Asana get multiple workspaces operation
 
-### Step 6: Add an Automation entry point
+### Step 6: Add an automation entry point
 
 1. In the low-code canvas, select **Add Artifact** in the Design section.
 2. Select **Automation** in the artifact selection panel.
 3. Accept the default schedule settings and select **Create** to add the automation to the canvas.
 
-### Step 7: Expand the Asana connection and select the Get multiple workspaces operation
+### Step 7: Expand the Asana connection and select the get multiple workspaces operation
 
 1. In the automation flow body on the canvas, select the **+** (Add Step) button between the Start and Error Handler nodes to open the step-addition panel.
 2. Under **Connections** in the step panel, select the **asanaClient** connection node to expand it and reveal all available Asana API operations.
@@ -88,9 +88,9 @@ The completed canvas flow shows the Automation entry point → asana : get (Get 
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/asana_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/asana_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/asana_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/asana_connector_sample)
 
 ## More code examples
 

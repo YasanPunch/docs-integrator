@@ -80,6 +80,6 @@ Wildcard patterns also work — `fruitsDataProviderTest#"b*"` runs all cases who
 
 ## What's next
 
-- [Test Groups](test-groups.md) — run subsets of tests by group tag
+- [Test Groups](groups.md) — run subsets of tests by group tag
 - [Execute Tests](execute-tests.md) — all options for running tests and viewing results
 - [Ballerina — Data-Driven Tests](https://ballerina.io/learn/test-ballerina-code/define-data-driven-tests/) — Ballerina language reference for data providers

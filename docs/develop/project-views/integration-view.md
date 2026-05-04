@@ -214,7 +214,7 @@ Package your integration as a [Docker container](/docs/deploy-operate/deploy/doc
 
 Generate a runnable artifact and [deploy it directly on a virtual machine](/docs/deploy-operate/deploy/vm-based) or bare-metal server.
 
-### Integration Control Plane
+### Integration control plane
 
 Connect your integration to the [Integration Control Plane (ICP)](/docs/deploy-operate/observe/icp) for centralized observability, monitoring, and management across all your deployed integrations.
 

@@ -8,11 +8,11 @@ Connection artifacts centralize the configuration for external systems. Define c
 
 ## Adding a connection
 
-1. Open the **WSO2 Integrator: BI** sidebar in VS Code.
+1. Open an integration/library in **WSO2 Integrator**.
 
    ![WSO2 Integrator sidebar showing the project structure with Connections listed](/img/develop/integration-artifacts/supporting/connections/step-1.png)
 
-2. Click **+** next to **Connections** in the sidebar.
+2. Click **+ Add Artifact** in the canvas or click **+** next to **Connections** in the sidebar.
 
 3. In the **Add Connection** panel, select how to define the connector:
 
@@ -22,18 +22,20 @@ Connection artifacts centralize the configuration for external systems. Define c
 
    | Option | Description |
    |---|---|
-   | **Connect via API Specification** | Import an OpenAPI or WSDL file to generate a typed HTTP client connector. |
+   | **Connect via API Specification** | Import an OpenAPI or WSDL file to generate a typed HTTP client connector. For more information, see the [OpenAPI tool](../../tools/openapi-tool.md) and [WSDL tool](../../tools/wsdl-tool.md). |
    | **Connect to a Database** | Enter database credentials to introspect schema and create a typed database connector. Supports MySQL, MSSQL, and PostgreSQL. |
 
    **Pre-built Connectors**
 
-   Browse the connector library using the **All**, **Standard**, or **Organization** tabs. Available connectors include HTTP, GraphQL, WebSocket, TCP, UDP, FTP, and many more. Use the search box to filter by name.
+   Browse the connector library using the **All**, **Standard**, or **Organization** tabs. Available connectors include HTTP, GraphQL, WebSocket, TCP, UDP, FTP, and many more. Use the search box to filter by name. For the full list, see the [Connector Catalog](../../../connectors/catalog/index.mdx).
 
 4. Select a connector type. A configuration form appears with fields specific to that connector (for example, base URL and authentication for HTTP, or host, port, and credentials for a database).
 
 5. Fill in the required fields and click **Create** (or **Save**).
 
 6. The new connection appears under **Connections** in the sidebar and is available for use in any service, function, or event handler in your project.
+
+Import the appropriate connector module and declare the client as a module-level `final` variable. For the complete list of available modules, see the [Connector Catalog](../../../connectors/catalog/index.mdx).
 
 ```ballerina
 // connections.bal
@@ -84,18 +86,37 @@ final kafka:Producer kafkaProducer = check new ({
 
 The **Add Connection** panel organizes connectors into two categories:
 
-- **Create New Connector** — generate a connector from an API spec or by introspecting a database.
-- **Pre-built Connectors** — select from the connector library. Use the **Standard** tab to see connectors from the Ballerina standard library, or **Organization** for connectors from your organization's registry.
+**Create New Connector**
 
-| Connection Type | Module | Use Case |
+Generate a new connector locally when a pre-built connector isn't available for the system you need to integrate with:
+
+- **Connect via API Specification** — generate a typed HTTP client from an OpenAPI or WSDL file. See the [OpenAPI tool](../../tools/openapi-tool.md) and [WSDL tool](../../tools/wsdl-tool.md).
+- **Connect to a Database** — generate a typed database client by introspecting the schema of a MySQL, MSSQL, or PostgreSQL database.
+
+Connectors created this way are added directly to your project. To make one reusable across projects, publish it to an organization registry — see [Build your own connector](../../../connectors/build-your-own/index.md) and [Publish to Central](../../../connectors/publish-to-central.md).
+
+**Pre-built Connectors**
+
+Select an already-published connector from the connector library. The panel provides three tabs to filter the catalog by source:
+
+| Tab | What it shows | Sources |
 |---|---|---|
-| **MySQL** | `ballerinax/mysql` | Relational database queries and persistence |
-| **PostgreSQL** | `ballerinax/postgresql` | Relational database queries and persistence |
-| **MSSQL** | `ballerinax/mssql` | SQL Server database access |
-| **HTTP Client** | `ballerina/http` | REST API calls to external services |
-| **Kafka Producer** | `ballerinax/kafka` | Publishing messages to Kafka topics |
-| **RabbitMQ Client** | `ballerinax/rabbitmq` | Publishing messages to RabbitMQ |
-| **FTP Client** | `ballerinax/ftp` | File transfer operations |
+| **All** | Every connector available to your project — standard, extended, WSO2, and your organization's private connectors in one combined list. | `ballerina/*`, `ballerinax/*`, `wso2/*`, `<your-org>/*` |
+| **Standard** | Connectors maintained as part of the Ballerina platform and its extended library for popular third-party systems. | `ballerina/*` (for example, `ballerina/http`, `ballerina/graphql`, `ballerina/tcp`)<br/>`ballerinax/*` (for example, `ballerinax/mysql`, `ballerinax/kafka`, `ballerinax/rabbitmq`, `ballerinax/ftp`) |
+| **Organization** | Connectors published by WSO2 and connectors developed in-house by your organization and published to your private registry. | `wso2/*`, `<your-org>/*` |
+
+For the complete list of available connectors, see the [Connector Catalog](../../../connectors/catalog/index.mdx).
+
+Connector modules are distributed under different organizations on [Ballerina Central](https://central.ballerina.io/):
+
+| Organization | Import prefix | Description |
+|---|---|---|
+| **Ballerina standard library** | `ballerina/*` | Core protocol and platform modules maintained with the language (for example, `ballerina/http`, `ballerina/graphql`, `ballerina/tcp`). |
+| **Ballerina extended library** | `ballerinax/*` | Connectors for popular third-party systems (for example, `ballerinax/mysql`, `ballerinax/kafka`, `ballerinax/rabbitmq`, `ballerinax/ftp`). |
+| **WSO2** | `wso2/*` | Connectors published by WSO2 for enterprise systems and WSO2 products. |
+| **Organization** | `<your-org>/*` | Connectors developed in-house and published to your organization's registry, or generated from an OpenAPI or WSDL spec. |
+
+For the complete list of modules and their APIs, see the [Connector Catalog](../../../connectors/catalog/index.mdx). To build and publish your own, see [Build your own connector](../../../connectors/build-your-own/index.md).
 
 ## Best practices
 

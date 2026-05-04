@@ -12,7 +12,7 @@ For event-driven integration, see the [Trigger Reference](trigger-reference.md).
 
 ---
 
-## SMTP Client
+## SMTP client
 
 Sends emails via SMTP with support for text/HTML bodies, attachments, and custom headers.
 
@@ -108,7 +108,7 @@ check smtpClient->send(
 
 ---
 
-## IMAP Client
+## IMAP client
 
 Receives emails from an IMAP server with configurable folder and timeout.
 
@@ -184,7 +184,7 @@ check imapClient->close();
 
 ---
 
-## POP Client
+## POP client
 
 Receives emails from a POP3 server with configurable folder and timeout.
 

@@ -60,4 +60,4 @@ The HubSpot token refresh endpoint used by this connector is `https://api.hubapi
 
 ## Next steps
 
-- [Actions Reference](action-reference.md) - Available operations
+- [Actions Reference](actions.md) - Available operations

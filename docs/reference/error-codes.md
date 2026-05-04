@@ -6,7 +6,7 @@ title: Error Code Reference
 
 This page catalogs common error codes and error types encountered when developing and running integrations with WSO2 Integrator. Errors are organized by category to help you quickly identify the source and resolution.
 
-## HTTP Errors
+## HTTP errors
 
 These errors originate from `ballerina/http` client and server operations.
 
@@ -29,7 +29,7 @@ These errors originate from `ballerina/http` client and server operations.
 | `http:CircuitBreakerError` | -- | Circuit breaker is in open state | Wait for the reset period. Check backend health and circuit breaker thresholds. |
 | `http:NoContentError` | -- | No response body returned | Check that the endpoint returns the expected content type and body. |
 
-## Database (SQL) Errors
+## Database (SQL) errors
 
 These errors originate from `ballerina/sql` and database connector packages (`ballerinax/mysql`, `ballerinax/postgresql`, etc.).
 
@@ -44,7 +44,7 @@ These errors originate from `ballerina/sql` and database connector packages (`ba
 | `sql:PoolError` | Connection pool exhausted | Increase `maxOpenConnections` in the client configuration, or investigate connection leaks (unclosed clients). |
 | `sql:BatchExecuteError` | One or more statements in a batch operation failed | Inspect the `detail()` record for per-statement error information. |
 
-## Connector Errors
+## Connector errors
 
 These errors occur when communicating with external systems through Ballerina connectors.
 
@@ -59,7 +59,7 @@ These errors occur when communicating with external systems through Ballerina co
 | `websocket:Error` | Connection upgrade failure, message send failure | Verify the WebSocket URL and ensure the server supports WebSocket protocol upgrade. |
 | `mqtt:Error` | Broker connection failure, subscription error | Verify broker URL, client ID uniqueness, and topic filter syntax. |
 
-## Build and Compilation Errors
+## Build and compilation errors
 
 These errors appear during `bal build` or `bal run`.
 
@@ -75,7 +75,7 @@ These errors appear during `bal build` or `bal run`.
 | `error: listener startup failed` | Port already in use or TLS configuration error | Check port availability and verify certificate file paths. |
 | `PANIC: ...` | Unrecoverable runtime error | Check the panic message. Usually caused by configuration or initialization failure. |
 
-## Configuration Errors
+## Configuration errors
 
 These errors occur when providing values to configurable variables.
 
@@ -86,7 +86,7 @@ These errors occur when providing values to configurable variables.
 | `missing required configurable` | A required configurable variable (`= ?`) has no value | Provide the value through `Config.toml`, `BAL_CONFIG_DATA`, `BAL_CONFIG_VAR_*`, or `-C` flag. |
 | `invalid config file path` | `BAL_CONFIG_FILES` points to a nonexistent file | Verify the file path exists and is readable. |
 
-## Handling Errors in Code
+## Handling errors in code
 
 Use Ballerina's `do`/`on fail` pattern to handle specific error types differently:
 
@@ -111,7 +111,7 @@ function callApi() returns json|error {
 }
 ```
 
-## What's Next
+## What's next
 
 - [Error Handling Guide](/docs/develop/design-logic/error-handling) -- Error handling patterns and best practices
 - [Troubleshooting](/docs/reference/appendix/troubleshooting) -- Resolve common development issues

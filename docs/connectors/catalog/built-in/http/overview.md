@@ -53,6 +53,8 @@ See the **[Trigger Reference](trigger-reference.md)** for listener configuration
 
 * **[Trigger Reference](trigger-reference.md)**: Listener configuration, service resource methods, parameter binding, and interceptors.
 
+* **[Example](example.md)**: Learn how to build and configure an integration using the **HTTP** connector, including connection setup, operation configuration, execution flow, and event-driven trigger setup.
+
 ## How to contribute
 
 As an open source project, WSO2 welcomes contributions from the community.

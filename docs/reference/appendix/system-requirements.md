@@ -6,7 +6,7 @@ title: System Requirements
 
 This page lists the minimum and recommended system requirements for developing, building, and running WSO2 Integrator projects powered by Ballerina.
 
-## Operating System Support
+## Operating system support
 
 | Operating System | Architecture | Development | Runtime | Notes |
 |-----------------|-------------|-------------|---------|-------|
@@ -28,7 +28,7 @@ This page lists the minimum and recommended system requirements for developing, 
 | Windows Server 2019+ | x86_64 | — | Supported | Runtime only |
 | Alpine Linux 3.16+ | x86_64 | — | Supported | Container runtime only |
 
-## JDK Requirements
+## JDK requirements
 
 Ballerina runs on the Java Virtual Machine (JVM). A compatible JDK is bundled with the Ballerina installer, but you can also use a separately installed JDK.
 
@@ -38,7 +38,7 @@ Ballerina runs on the Java Virtual Machine (JVM). A compatible JDK is bundled wi
 | JDK (external) | 17 | 21 (LTS) | Set via `JAVA_HOME` environment variable |
 | JRE (runtime only) | 17 | 21 (LTS) | Sufficient for running compiled programs |
 
-### Supported JDK Distributions
+### Supported JDK distributions
 
 | Distribution | Supported | Notes |
 |-------------|-----------|-------|
@@ -50,9 +50,9 @@ Ballerina runs on the Java Virtual Machine (JVM). A compatible JDK is bundled wi
 | Azul Zulu | Yes | — |
 | Red Hat OpenJDK | Yes | — |
 
-## IDE and Editor Requirements
+## IDE and editor requirements
 
-### VS Code (Recommended)
+### VS code (Recommended)
 
 | Component | Minimum Version | Recommended Version | Notes |
 |-----------|----------------|-------------------|-------|
@@ -60,7 +60,7 @@ Ballerina runs on the Java Virtual Machine (JVM). A compatible JDK is bundled wi
 | WSO2 Integrator Extension | 1.0.0 | Latest | Install from VS Code Marketplace |
 | Ballerina Extension | 4.0.0 | Latest | Installed as dependency of WSO2 Integrator extension |
 
-### VS Code Extension System Requirements
+### VS code extension system requirements
 
 | Requirement | Specification |
 |-------------|--------------|
@@ -68,7 +68,7 @@ Ballerina runs on the Java Virtual Machine (JVM). A compatible JDK is bundled wi
 | Disk space | 500 MB for extension and language server |
 | Network | Internet access for Ballerina Central package resolution |
 
-### Other Supported Editors
+### Other supported editors
 
 | Editor | Support Level | Plugin/Extension |
 |--------|-------------|-----------------|
@@ -77,9 +77,9 @@ Ballerina runs on the Java Virtual Machine (JVM). A compatible JDK is bundled wi
 | Emacs | LSP support | Via Ballerina Language Server |
 | Sublime Text | Syntax highlighting | Ballerina syntax package |
 
-## Hardware Requirements
+## Hardware requirements
 
-### Development Machine
+### Development machine
 
 | Resource | Minimum | Recommended | Notes |
 |----------|---------|-------------|-------|
@@ -88,7 +88,7 @@ Ballerina runs on the Java Virtual Machine (JVM). A compatible JDK is bundled wi
 | Disk Space | 2 GB | 5 GB+ | For Ballerina, dependencies, and build artifacts |
 | Network | Internet access | Broadband | Required for package resolution from Central |
 
-### Production Runtime
+### Production runtime
 
 | Resource | Minimum | Recommended | Notes |
 |----------|---------|-------------|-------|
@@ -96,7 +96,7 @@ Ballerina runs on the Java Virtual Machine (JVM). A compatible JDK is bundled wi
 | RAM | 256 MB | 512 MB+ | Per service instance; JVM heap configuration |
 | Disk Space | 100 MB | 500 MB | For application, JRE, and logs |
 
-## Docker and Container Requirements
+## Docker and container requirements
 
 | Component | Minimum Version | Recommended Version | Notes |
 |-----------|----------------|-------------------|-------|
@@ -106,7 +106,7 @@ Ballerina runs on the Java Virtual Machine (JVM). A compatible JDK is bundled wi
 | Container base image | — | `ballerina/ballerina:latest` | Official Ballerina runtime image |
 | Container base image (distroless) | — | `ballerina/ballerina-runtime:latest` | Minimal runtime image |
 
-### Kubernetes Requirements
+### Kubernetes requirements
 
 | Component | Minimum Version | Recommended Version | Notes |
 |-----------|----------------|-------------------|-------|
@@ -114,7 +114,7 @@ Ballerina runs on the Java Virtual Machine (JVM). A compatible JDK is bundled wi
 | kubectl | 1.25 | 1.28+ | CLI tool matching cluster version |
 | Helm | 3.10 | 3.13+ | For chart-based deployments |
 
-### Container Image Sizes
+### Container image sizes
 
 | Image | Approximate Size | Use Case |
 |-------|-----------------|----------|
@@ -123,7 +123,7 @@ Ballerina runs on the Java Virtual Machine (JVM). A compatible JDK is bundled wi
 | Custom distroless | ~120 MB | Minimal production deployment |
 | GraalVM native image | ~50-80 MB | Optimized startup and memory |
 
-## Network Requirements
+## Network requirements
 
 | Purpose | Protocol | Port | Required |
 |---------|----------|------|----------|
@@ -134,7 +134,7 @@ Ballerina runs on the Java Virtual Machine (JVM). A compatible JDK is bundled wi
 | Debug port | TCP | 5005 (default) | For remote debugging |
 | Language Server | TCP | Managed by VS Code | For IDE features |
 
-## GraalVM Native Image (Optional)
+## GraalVM native image (Optional)
 
 For ahead-of-time compilation to native executables:
 
@@ -145,7 +145,7 @@ For ahead-of-time compilation to native executables:
 | `native-image` tool | Included with GraalVM | Installed via `gu install native-image` |
 | Additional RAM | 8 GB+ | Native image compilation is memory-intensive |
 
-## See Also
+## See also
 
 - [Installation Guide](/docs/get-started/install) -- Step-by-step installation instructions
 - [Docker and Kubernetes Deployment](/docs/deploy-operate/deploy/docker-kubernetes) -- Container deployment guide

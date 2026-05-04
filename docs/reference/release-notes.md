@@ -20,7 +20,7 @@ title: Release Notes
 - **Integration Control Plane (ICP)** -- Monitor and manage deployed integrations
 - **Migration Tools** -- Migrate from MuleSoft, TIBCO, Azure Integration Services, and WSO2 MI
 
-### What's New
+### What's new
 
 #### AI and GenAI
 
@@ -30,7 +30,7 @@ title: Release Notes
 - **AI-Assisted Data Mapping** -- AI suggests field mappings in the visual data mapper
 - **AI Test Generation** -- Generate test cases from integration code using AI
 
-#### Development Tools
+#### Development tools
 
 - **Visual Flow Designer** -- Two modes: Flow Diagram and Sequence Diagram with bidirectional code sync
 - **Pro-Code Editor** -- Full Ballerina IDE support with IntelliSense, diagnostics, and debugging
@@ -39,7 +39,7 @@ title: Release Notes
 - **Ballerina Shell** -- Interactive REPL for prototyping expressions and testing transformations
 - **Code Generation** -- OpenAPI, GraphQL, gRPC, AsyncAPI, and EDI tools for generating client/server code
 
-#### Integration Capabilities
+#### Integration capabilities
 
 - **HTTP/REST Services** -- Build RESTful APIs with typed request/response handling
 - **GraphQL Services** -- Schema-first and code-first GraphQL endpoint development
@@ -52,7 +52,7 @@ title: Release Notes
 - **File Integrations** -- FTP, SFTP, and local file system operations
 - **Email** -- SMTP, IMAP, and POP3 support
 
-#### Deployment and Operations
+#### Deployment and operations
 
 - **Cloud-Native Deployment** -- Docker and Kubernetes artifact generation via `Cloud.toml`
 - **GraalVM Native Compilation** -- Build native executables for fast startup and low memory footprint
@@ -60,7 +60,7 @@ title: Release Notes
 - **Observability** -- Built-in support for Prometheus metrics and Jaeger distributed tracing
 - **CI/CD Integration** -- GitHub Actions, Jenkins, and Azure DevOps pipeline templates
 
-### Supported Platforms
+### Supported platforms
 
 | Component | Version |
 |-----------|---------|
@@ -71,7 +71,7 @@ title: Release Notes
 | **Docker** | 20.10+ (for container deployment) |
 | **Kubernetes** | 1.25+ (for Kubernetes deployment) |
 
-### System Requirements
+### System requirements
 
 | Requirement | Minimum | Recommended |
 |-------------|---------|-------------|
@@ -80,14 +80,14 @@ title: Release Notes
 | **OS** | Linux (x64/ARM64), macOS (x64/ARM64), Windows (x64) | -- |
 | **VS Code** | 1.85+ | Latest stable |
 
-### Known Issues
+### Known issues
 
 - GraalVM native image compilation may require additional configuration for some connector packages. Check the connector documentation for GraalVM compatibility before enabling native builds.
 - The visual designer does not yet support `worker` message passing constructs. These are displayed as code blocks in the flow diagram.
 - Hot reload during `bal run` may not detect changes to platform JAR dependencies. Restart the application after updating JARs in the `libs/` directory.
 - The `bal persist` tool does not yet support all data store types in migration mode. Check the [persist documentation](https://ballerina.io/learn/bal-persist-overview) for supported stores.
 
-### Breaking Changes
+### Breaking changes
 
 This is the first GA release of WSO2 Integrator. There are no breaking changes from prior versions.
 
@@ -107,11 +107,11 @@ If you are considering adopting WSO2 Integrator for new projects or migrating ex
 | Connectors | Synapse connectors | Ballerina Central packages |
 | Registry | Carbon registry | Config.toml / environment variables |
 
-## Previous Releases
+## Previous releases
 
 See the [WSO2 documentation archive](https://docs.wso2.com) for previous product releases.
 
-## What's Next
+## What's next
 
 - [Install WSO2 Integrator](/docs/get-started/install) -- Get started with the latest release
-- [Quick Start Guide](/docs/get-started/quick-start-api) -- Build your first integration
+- [Build an API Integration](/docs/get-started/build-api-integration) -- Build your first integration

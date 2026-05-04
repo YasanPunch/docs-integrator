@@ -14,7 +14,7 @@ For event-driven integration, see the [Trigger Reference](trigger-reference.md).
 
 ---
 
-## Model Provider
+## Model provider
 
 Unified abstraction for interacting with LLMs — supports multi-turn chat and structured output generation.
 
@@ -38,7 +38,7 @@ final ai:ModelProvider model = check new openai:ModelProvider(openAiApiKey, mode
 
 ### Operations
 
-#### Chat & Generation
+#### Chat and generation
 
 <details>
 <summary>chat</summary>
@@ -154,7 +154,7 @@ final ai:Agent mathAgent = check new (
 
 ### Operations
 
-#### Agent Execution
+#### Agent execution
 
 <details>
 <summary>run</summary>
@@ -191,7 +191,7 @@ string answer = check mathAgent.run(
 
 ---
 
-## Chat Client
+## Chat client
 
 HTTP client for sending chat messages to an ai:Listener-based chat service endpoint.
 
@@ -212,7 +212,7 @@ ai:ChatClient chatClient = check new ("http://localhost:9090");
 
 ### Operations
 
-#### Chat Operations
+#### Chat operations
 
 <details>
 <summary>Send chat message</summary>
@@ -248,7 +248,7 @@ ai:ChatRespMessage response = check chatClient->/chat.post({
 
 ---
 
-## Vector Knowledge Base
+## Vector knowledge base
 
 High-level RAG abstraction for document ingestion, chunking, embedding, vector storage, and retrieval.
 
@@ -358,7 +358,7 @@ check knowledgeBase.deleteByFilter({
 
 ---
 
-## Tool Store
+## Tool store
 
 Manages tool registration and execution for agents. Typically used internally by the Agent, but can be used standalone for custom agent implementations.
 
@@ -381,7 +381,7 @@ ai:ToolStore toolStore = check new (greet);
 
 ### Operations
 
-#### Tool Execution
+#### Tool execution
 
 <details>
 <summary>execute</summary>

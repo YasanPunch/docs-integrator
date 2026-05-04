@@ -23,11 +23,11 @@ flowchart LR
 
 ## Setting up the Jira integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
 ## Adding the Jira connector
 
-### Step 1: Open the Add Connection palette
+### Step 1: Open the add connection palette
 
 In the **WSO2 Integrator** sidebar, hover over the **Connections** tree item and select the **Add Connection** (➕) button to open the connector palette.
 
@@ -64,9 +64,9 @@ In the left panel, select **Configurations** and set a value for each configurab
 - **jiraToken** (string) : Your Jira API token.
 - **jiraServiceUrl** (string) : Your Jira Cloud REST API base URL (for example, `https://your-domain.atlassian.net/rest`)
 
-## Configuring the Jira Create issue operation
+## Configuring the Jira create issue operation
 
-### Step 6: Add an Automation entry point
+### Step 6: Add an automation entry point
 
 1. Select **+ Add Artifact** on the canvas.
 2. Select **Automation** from the artifact picker.
@@ -74,7 +74,7 @@ In the left panel, select **Configurations** and set a value for each configurab
 
 The Automation (`main`) appears under **Entry Points** in the sidebar and the flow canvas opens, showing **Start → [empty step] → Error Handler → End**.
 
-### Step 7: Select the Create issue operation and configure its parameters
+### Step 7: Select the create issue operation and configure its parameters
 
 1. Select the **+** (add step) button between **Start** and **Error Handler** on the canvas.
 2. The node panel opens on the right, showing all available connections and statement types.
@@ -102,9 +102,9 @@ Select **Save**. The canvas updates to show the completed automation flow with *
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/jira_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/jira_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/jira_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/jira_connector_sample)
 
 ## More code examples
 

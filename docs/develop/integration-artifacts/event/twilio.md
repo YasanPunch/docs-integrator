@@ -6,7 +6,7 @@ title: Twilio
 
 Twilio event integrations receive webhook callbacks from the Twilio platform and trigger handler functions as call or message status changes occur. Use them to track call progress, monitor SMS delivery, and build real-time communication workflows without polling the Twilio API.
 
-## Creating a Twilio Events service
+## Creating a Twilio events service
 
 1. Click **+ Add Artifact** in the canvas or click **+** next to **Entry Points** in the sidebar.
 2. In the **Artifacts** panel, select **Twilio** under **Event Integration**.

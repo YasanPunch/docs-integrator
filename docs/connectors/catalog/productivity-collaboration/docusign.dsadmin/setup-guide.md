@@ -55,7 +55,7 @@ Use a tool like Postman or curl to perform the token exchange.
 
 The scopes requested above (organization_read, group_read, account_read, permission_read, user_read, user_write) cover Admin API operations. Adjust scopes based on your use case.
 
-## Step 4: Prepare for production (go live)
+## Step 4: Prepare for production (Go live)
 
 The steps above use the DocuSign developer (demo) environment. When your application is
 ready for production, follow the [DocuSign Go Live](https://developers.docusign.com/docs/admin-api/go-live/)

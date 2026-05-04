@@ -37,7 +37,7 @@ flowchart TD
     Step3 -- Failure ----> Comp2 ----> Comp1 ----> Fail
 ```
 
-## When to Use It
+## When to use it
 
 - A business operation involves **multiple services** that each manage their own data.
 - You need **consistency guarantees** across services without distributed transactions.
@@ -186,8 +186,8 @@ service /orders on new http:Listener(8090) {
 - **Persistence**: For long-running sagas, persist the saga state to a database so it survives process restarts. Resume compensation from the persisted state.
 - **Choreography alternative**: Instead of a central orchestrator, each service can publish events that trigger the next step. This reduces coupling but makes the overall flow harder to understand and debug.
 
-## Related Patterns
+## Related patterns
 
 - [API Gateway & Orchestration](api-gateway-orchestration.md) -- Sagas are often coordinated by a gateway or orchestration service.
-- [Circuit Breaker & Retry](circuit-breaker.md) -- Apply circuit breakers to individual saga steps to detect persistent failures quickly.
+- [Circuit Breaker & Retry](circuit-breaker-retry.md) -- Apply circuit breakers to individual saga steps to detect persistent failures quickly.
 - [Publish-Subscribe](publish-subscribe.md) -- In choreography-based sagas, services communicate via pub/sub events.

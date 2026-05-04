@@ -6,7 +6,7 @@ title: Static Code Analysis
 
 Catch bugs, security vulnerabilities, and best practice violations before they reach production using the Ballerina Scan tool. Static analysis examines your source code without executing it, identifying issues ranging from unused variables to potential security flaws in your integrations.
 
-## Running the Scan Tool
+## Running the scan tool
 
 ```bash
 # Scan the current package
@@ -21,7 +21,7 @@ bal scan --report
 
 The scan results appear in the console and optionally as an HTML report.
 
-## Understanding Scan Results
+## Understanding scan results
 
 ```
 Scanning myorg/order_service:1.0.0
@@ -35,7 +35,7 @@ Scanning myorg/order_service:1.0.0
 Scan complete: 1 error, 3 warnings, 1 info
 ```
 
-### Severity Levels
+### Severity levels
 
 | Level | Meaning | Action |
 |-------|---------|--------|
@@ -43,9 +43,9 @@ Scan complete: 1 error, 3 warnings, 1 info
 | **WARNING** | Potential problem that may cause issues | Fix before release |
 | **INFO** | Suggestion for improvement | Fix when convenient |
 
-## Rule Categories
+## Rule categories
 
-### Security Rules
+### Security rules
 
 Detect security vulnerabilities in your integration code.
 
@@ -84,7 +84,7 @@ function getUser(string userId) returns json|error {
 }
 ```
 
-### Maintainability Rules
+### Maintainability rules
 
 Identify code that is hard to maintain.
 
@@ -140,7 +140,7 @@ public function categorize(Order order) returns string {
 }
 ```
 
-### Documentation Rules
+### Documentation rules
 
 Ensure public APIs are documented.
 
@@ -161,7 +161,7 @@ public function calculateTotal(Order order) returns decimal {
 }
 ```
 
-### Best Practice Rules
+### Best practice rules
 
 Enforce Ballerina best practices.
 
@@ -193,9 +193,9 @@ function riskyOperation() {
 }
 ```
 
-## Configuring Scan Rules
+## Configuring scan rules
 
-### Suppressing Individual Warnings
+### Suppressing individual warnings
 
 Suppress a specific warning when you have a valid reason.
 
@@ -204,7 +204,7 @@ Suppress a specific warning when you have a valid reason.
 string testToken = "test-token-for-unit-tests";
 ```
 
-### Configuration File
+### Configuration file
 
 Create a `ScanConfig.toml` to configure rules project-wide.
 
@@ -229,7 +229,7 @@ paths = ["generated/", "tests/resources/"]
 
 ## Integrating with CI/CD
 
-### GitHub Actions
+### GitHub actions
 
 ```yaml
 - name: Run static analysis
@@ -248,7 +248,7 @@ paths = ["generated/", "tests/resources/"]
     bal scan
 ```
 
-### Pre-Commit Hook
+### Pre-Commit hook
 
 ```bash
 #!/bin/bash
@@ -263,7 +263,7 @@ if [ $? -ne 0 ]; then
 fi
 ```
 
-## IDE Integration
+## IDE integration
 
 The WSO2 Integrator VS Code extension shows scan results inline as you type.
 
@@ -272,7 +272,7 @@ The WSO2 Integrator VS Code extension shows scan results inline as you type.
 - Hover over the underline to see the rule description and suggested fix
 - Use the Quick Fix action (`Ctrl+.`) to apply automated fixes
 
-## Custom Rules
+## Custom rules
 
 Write custom scan rules for organization-specific standards.
 
@@ -283,7 +283,7 @@ Write custom scan rules for organization-specific standards.
 // "require-health-check" = "warning"
 ```
 
-## Best Practices
+## Best practices
 
 - **Run scans in CI** -- make static analysis a required check before merging
 - **Fix errors immediately** -- treat scan errors like compilation errors
@@ -292,7 +292,7 @@ Write custom scan rules for organization-specific standards.
 - **Start with defaults** -- use the built-in rules before customizing
 - **Review scan reports in PRs** -- include scan results in code review
 
-## What's Next
+## What's next
 
 - [Style Guide](style-guide.md) -- Coding conventions and formatting rules
 - [Generate Documentation](generate-documentation.md) -- Produce API docs from source code

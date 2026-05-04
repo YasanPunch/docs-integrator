@@ -20,19 +20,19 @@ flowchart LR
 
 - An Elastic Cloud API key (obtainable from the [Elastic Cloud console](https://cloud.elastic.co/))
 
-## Setting up the Elastic Cloud integration
+## Setting up the Elastic cloud integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
-## Adding the Elastic Cloud connector
+## Adding the Elastic cloud connector
 
-### Step 1: Open the Add Connection palette
+### Step 1: Open the add connection palette
 
 Select **+ Add Artifact** on the canvas toolbar, then select **Connection** to open the Add Connection search palette.
 
 ![Elastic Cloud connector palette open with search field before any selection](/img/connectors/catalog/cloud-infrastructure/elastic.elasticcloud/elastic_elasticcloud_screenshot_01_palette.png)
 
-## Configuring the Elastic Cloud connection
+## Configuring the Elastic cloud connection
 
 ### Step 2: Fill in the connection parameters
 
@@ -56,9 +56,9 @@ In the left panel, select **Configurations**. Set a value for each configurable 
 - **elasticApiKey** (string) : Your Elastic Cloud API key, obtainable from the Elastic Cloud console
 - **elasticServiceUrl** (string) : The base service URL for the Elastic Cloud API, for example `https://api.elastic-cloud.com/api/v1`
 
-## Configuring the Elastic Cloud listDeployments operation
+## Configuring the Elastic cloud listDeployments operation
 
-### Step 5: Add an Automation entry point
+### Step 5: Add an automation entry point
 
 Select **+ Add Artifact** on the canvas toolbar, select **Automation**, then select **Create** in the form that appears. A new `main` Automation entry point is added under **Entry Points** and the Automation flow canvas opens.
 
@@ -78,9 +78,9 @@ The **List Deployments** operation form opens. This operation requires no mandat
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/elastic.elasticcloud_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/elastic.elasticcloud_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/elastic.elasticcloud_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/elastic.elasticcloud_connector_sample)
 
 ## More code examples
 

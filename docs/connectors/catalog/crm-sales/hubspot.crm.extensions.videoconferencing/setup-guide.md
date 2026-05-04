@@ -50,4 +50,4 @@ All webhook URLs must use HTTPS. HTTP URLs are not accepted by the HubSpot API.
 
 ## Next steps
 
-- [Actions Reference](action-reference.md) - Available operations
+- [Actions Reference](actions.md) - Available operations

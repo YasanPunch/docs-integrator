@@ -23,11 +23,11 @@ flowchart LR
 
 ## Setting up the MPM integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
 ## Adding the MPM connector
 
-### Step 1: Open the Add Connection palette
+### Step 1: Open the add connection palette
 
 In the left sidebar, hover over the **Connections** section and select the **Add Connection** button that appears in the toolbar. The connector palette opens with a search field at the top.
 
@@ -66,9 +66,9 @@ Select **Save Connection** to persist the connection. The **mpmClient** connecti
 - **awsAccessKeyId** (string) : Your AWS access key ID with Marketplace Metering permissions
 - **awsSecretAccessKey** (string) : Your AWS secret access key with Marketplace Metering permissions
 
-## Configuring the MPM Batch Meter Usage operation
+## Configuring the MPM batch meter usage operation
 
-### Step 6: Add an Automation entry point
+### Step 6: Add an automation entry point
 
 Select **+ Add Artifact** on the canvas toolbar and select **Automation** from the artifact palette. In the **Create New Automation** panel, select **Create**. A `main` Automation entry point appears under **Entry Points** and the canvas switches to the Automation flow view.
 
@@ -95,6 +95,6 @@ Select **Save** to add the operation to the flow.
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/aws.marketplace.mpm_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/aws.marketplace.mpm_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/aws.marketplace.mpm_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/aws.marketplace.mpm_connector_sample)

@@ -30,7 +30,7 @@ flowchart TD
     HALF_OPEN ---->|failures < threshold| CLOSED
 ```
 
-## When to Use It
+## When to use it
 
 - Calling external REST APIs, databases, or third-party services that may become temporarily unavailable.
 - You want to **fail fast** rather than wait for timeouts when a dependency is known to be down.
@@ -159,7 +159,7 @@ isolated function callWithCircuitBreaker(function () returns anydata|error fn) r
 - **Monitoring**: Emit metrics for circuit state transitions (open/close events) so operations teams can react quickly.
 - **Granularity**: Apply circuit breakers per endpoint or per operation, not per entire service, to avoid blocking healthy endpoints when only one path is failing.
 
-## Related Patterns
+## Related patterns
 
 - [API Gateway & Orchestration](api-gateway-orchestration.md) -- Circuit breakers are commonly applied within gateway orchestration flows.
 - [Saga / Compensation](saga-compensation.md) -- Use circuit breakers on individual saga steps to detect unrecoverable failures early.

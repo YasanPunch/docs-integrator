@@ -21,11 +21,11 @@ flowchart LR
 - A DocuSign account with Admin API access
 - A valid OAuth 2.0 bearer token from the DocuSign Identity Provider
 
-## Setting up the DS Admin integration
+## Setting up the DS admin integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
-## Adding the DS Admin connector
+## Adding the DS admin connector
 
 ### Step 1: Open the connector palette
 
@@ -33,12 +33,12 @@ Select **+ Add Connection** in the **Connections** section to open the connector
 
 ![DS Admin connector palette open with search field before any selection](/img/connectors/catalog/productivity-collaboration/docusign.dsadmin/docusign_dsadmin_screenshot_01_palette.png)
 
-### Step 2: Search for and select the DS Admin connector
+### Step 2: Search for and select the DS admin connector
 
 1. Enter `docusign` in the search field.
 2. Select the **DS Admin** card (`ballerinax/docusign.dsadmin`) to open the connection form.
 
-## Configuring the DS Admin connection
+## Configuring the DS admin connection
 
 ### Step 3: Fill in the connection parameters
 
@@ -64,9 +64,9 @@ Select **Save Connection** to persist the connection. The `dsadminClient` node a
 - **docusignServiceUrl** (string) : The DocuSign Admin API base URL, for example `https://api.docusign.net/Management`
 - **docusignBearerToken** (string) : A valid OAuth 2.0 bearer token obtained from the DocuSign Identity Provider
 
-## Configuring the DS Admin get operation
+## Configuring the DS admin get operation
 
-### Step 6: Add an Automation entry point
+### Step 6: Add an automation entry point
 
 1. Select **+ Add Artifact** on the canvas toolbar.
 2. Select **Automation** from the artifact type list.
@@ -92,9 +92,9 @@ Select **Save Connection** to persist the connection. The `dsadminClient` node a
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/docusign.dsadmin_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/docusign.dsadmin_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/docusign.dsadmin_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/docusign.dsadmin_connector_sample)
 
 ## More code examples
 

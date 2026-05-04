@@ -21,13 +21,13 @@ flowchart LR
 - An AWS account with Marketplace access
 - AWS credentials: Access Key ID and Secret Access Key
 
-## Setting up the AWS Marketplace MPE integration
+## Setting up the AWS marketplace MPE integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
-## Adding the AWS Marketplace MPE connector
+## Adding the AWS marketplace MPE connector
 
-### Step 1: Open the Add Connection palette
+### Step 1: Open the add connection palette
 
 Select the **+** (Add Connection) button in the Design canvas to open the **Add Connection** palette, which lists available connectors.
 
@@ -38,7 +38,7 @@ Select the **+** (Add Connection) button in the Design canvas to open the **Add 
 1. In the search box, enter `mpe` or `aws marketplace`.
 2. Select **Aws Marketplace Mpe** from the results to open the **Configure Mpe** connection form.
 
-## Configuring the AWS Marketplace MPE connection
+## Configuring the AWS marketplace MPE connection
 
 ### Step 3: Configure connection parameters
 
@@ -66,9 +66,9 @@ Select **Save Connection** to persist the connection. The `mpeClient` connection
 - **awsAccessKeyId** (string) : Your AWS IAM Access Key ID
 - **awsSecretAccessKey** (string) : Your AWS IAM Secret Access Key
 
-## Configuring the AWS Marketplace MPE getEntitlements operation
+## Configuring the AWS marketplace MPE getEntitlements operation
 
-### Step 6: Add an Automation entry point
+### Step 6: Add an automation entry point
 
 In the sidebar, select **Entry Points** → **+ Add Entry Point** → **Automation** to open the Automation flow canvas.
 
@@ -95,6 +95,6 @@ Select **Save** to add the `mpe : getEntitlements` step to the flow canvas. The 
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/aws.marketplace.mpe_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/aws.marketplace.mpe_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/aws.marketplace.mpe_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/aws.marketplace.mpe_connector_sample)

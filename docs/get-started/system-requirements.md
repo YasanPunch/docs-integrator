@@ -1,12 +1,12 @@
 ---
-title: System Requirements & Prerequisites
+title: System Requirements and Prerequisites
 ---
 
-# System Requirements & Prerequisites
+# System Requirements and Prerequisites
 
 Before you install WSO2 Integrator, make sure your development environment meets these requirements.
 
-## Hardware Requirements
+## Hardware requirements
 
 | Component | Minimum | Recommended |
 |-----------|---------|-------------|
@@ -14,7 +14,7 @@ Before you install WSO2 Integrator, make sure your development environment meets
 | **Memory (Heap)** | 512 MB | 1 GB+ |
 | **Disk Space** | 2 GB free | 5+ GB free |
 
-## Supported Operating Systems
+## Supported operating systems
 
 | OS | Minimum Version |
 |---|---|
@@ -27,7 +27,7 @@ Before you install WSO2 Integrator, make sure your development environment meets
 
 WSO2 Integrator is compatible with ARM processors. It can run on ARM-based systems, such as those with Apple Silicon or ARM-based Linux distributions.
 
-### Supported Java Distributions
+### Supported Java distributions
 
 A compatible JRE version will be automatically installed during the WSO2 Integrator installation process.
 Any JRE 21 distribution works. Tested distributions:
@@ -39,7 +39,37 @@ Any JRE 21 distribution works. Tested distributions:
 | OpenJRE | 21 |
 | Oracle JRE | 21 |
 
-## Network Requirements
+### Java setup
+
+Install a supported JDK/JRE:
+
+```bash
+# macOS (Homebrew)
+brew install openjdk@21
+
+# Ubuntu / Debian
+sudo apt install openjdk-21-jdk
+
+# Windows (winget)
+winget install Microsoft.OpenJDK.21
+```
+
+Verify the installation:
+
+```bash
+java -version
+```
+
+Set `JAVA_HOME` if it's not already configured:
+
+```bash
+# macOS
+export JAVA_HOME=$(/usr/libexec/java_home -v 21)
+
+# Linux
+export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+```
+## Network requirements
 
 The development environment needs internet access for:
 
@@ -48,6 +78,6 @@ The development environment needs internet access for:
 
 If you're behind a corporate proxy, configure proxy settings in VS Code and in your terminal environment.
 
-## What's Next
+## What's next
 
 - [Install WSO2 Integrator](install.md)

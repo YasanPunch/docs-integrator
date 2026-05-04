@@ -21,7 +21,7 @@ This guide walks you through configuring your email server credentials and setti
 
 If you are using a different email provider, consult their documentation for enabling IMAP/POP3 access.
 
-## Generate an App Password (Gmail example)
+## Generate an app password (Gmail example)
 
 If your account has two-factor authentication enabled, you need an App Password instead of your regular password:
 

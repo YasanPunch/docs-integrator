@@ -6,7 +6,7 @@ title: YAML & TOML Processing
 
 Work with YAML and TOML configuration formats commonly used in cloud-native deployments, CI/CD pipelines, and application configuration management. Ballerina provides native support for reading, writing, and transforming both formats through dedicated library modules.
 
-## YAML Processing
+## YAML processing
 
 YAML is widely used for Kubernetes manifests, CI/CD configurations, and application settings. Ballerina's `ballerina/yaml` module handles parsing and serialization.
 
@@ -55,7 +55,7 @@ public function main() returns error? {
 }
 ```
 
-### Parsing YAML Strings
+### Parsing YAML strings
 
 Parse YAML content directly from a string value.
 
@@ -154,7 +154,7 @@ public function main() returns error? {
 }
 ```
 
-## TOML Processing
+## TOML processing
 
 TOML is the standard configuration format for Ballerina projects (`Ballerina.toml`, `Dependencies.toml`) and many modern tools. The `ballerina/toml` module provides parsing and writing support.
 
@@ -238,7 +238,7 @@ public function main() returns error? {
 }
 ```
 
-## YAML-to-JSON and TOML-to-JSON Conversion
+## YAML-to-JSON and TOML-to-JSON conversion
 
 Convert between configuration formats for systems that expect different inputs.
 
@@ -266,7 +266,7 @@ public function jsonToYaml(json data, string outputPath) returns error? {
 }
 ```
 
-## Integration Example: Dynamic Configuration Loader
+## Integration example: Dynamic configuration loader
 
 Build a configuration loader that reads from YAML or TOML based on file extension.
 
@@ -322,14 +322,14 @@ public function main() returns error? {
 }
 ```
 
-## Best Practices
+## Best practices
 
 - **Use typed records** for parsing -- define Ballerina record types that match your YAML/TOML structure for compile-time safety
 - **Validate early** -- parse configuration at startup and fail fast on missing or invalid values
 - **Handle multi-document YAML carefully** -- Kubernetes manifests often contain multiple documents in a single file
 - **Prefer TOML for Ballerina configs** -- TOML aligns with Ballerina's native configuration format (`Ballerina.toml`)
 
-## What's Next
+## What's next
 
-- [JSON Processing](json.md) -- Work with JSON data
-- [CSV & Flat File Processing](csv-flat-file.md) -- Handle tabular data formats
+- [JSON Processing](json-processing.md) -- Work with JSON data
+- [CSV & Flat File Processing](csv-flat-file-processing.md) -- Handle tabular data formats

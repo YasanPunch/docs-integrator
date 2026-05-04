@@ -23,27 +23,27 @@ flowchart LR
 - The OAuth2 Client ID, Client Secret, and Token URL for your SAP Commerce Cloud OAuth2 client.
 - The base URL of your SAP Commerce Cloud OCC REST API.
 
-## Setting up the SAP Commerce Web Services integration
+## Setting up the SAP commerce web services integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
-## Adding the SAP Commerce Web Services connector
+## Adding the SAP commerce web services connector
 
-### Step 1: Open the Add Connection palette
+### Step 1: Open the add connection palette
 
 Select **Add Connection** (or the **+** icon in the **Connections** section of the sidebar) to open the connector palette, which displays a search field and a list of available connectors.
 
 ![SAP Commerce Web Services connector palette open before search](/img/connectors/catalog/ecommerce/sap.commerce.webservices/sap_commerce_webservices_screenshot_01_palette.png)
 
-### Step 2: Search for and select the SAP Commerce Web Services connector
+### Step 2: Search for and select the SAP commerce web services connector
 
 1. In the palette search box, enter `sap.commerce.webservices` to filter the connector list.
 2. Locate the `ballerinax/sap.commerce.webservices` connector card in the results.
 3. Select the connector card to open the inline connection configuration form.
 
-## Configuring the SAP Commerce Web Services connection
+## Configuring the SAP commerce web services connection
 
-### Step 3: Bind SAP Commerce Web Services connection parameters to configurables
+### Step 3: Bind SAP commerce web services connection parameters to configurables
 
 For each connection field, open the configurables panel, navigate to the **Configurables** tab, select **+ New Configurable**, enter the variable name and type, and select **Save** to automatically inject the configurable reference into the field.
 
@@ -53,7 +53,7 @@ For each connection field, open the configurables panel, navigate to the **Confi
 
 ![SAP Commerce Web Services connection form with all parameters bound to configurable variables](/img/connectors/catalog/ecommerce/sap.commerce.webservices/sap_commerce_webservices_screenshot_02_connection_form.png)
 
-### Step 4: Save the SAP Commerce Web Services connection
+### Step 4: Save the SAP commerce web services connection
 
 Select **Save Connection** to persist the connection configuration. The SAP Commerce Web Services connector node now appears in the **Connections** panel on the low-code canvas.
 
@@ -68,9 +68,9 @@ In the left panel of WSO2 Integrator, select **Configurations** (listed at the b
 - **sapCommerceClientId** (string) : your OAuth2 client ID registered in SAP Commerce Cloud
 - **sapCommerceClientSecret** (string) : your OAuth2 client secret — keep this value secure
 
-## Configuring the SAP Commerce Web Services getBaseSites operation
+## Configuring the SAP commerce web services getBaseSites operation
 
-### Step 6: Add an Automation entry point
+### Step 6: Add an automation entry point
 
 1. On the low-code canvas, select **+ Add Entry Point** in the **Entry Points** section, then select **Automation** to add a scheduled automation trigger.
 2. Select **Create** to confirm.
@@ -98,9 +98,9 @@ In the left panel of WSO2 Integrator, select **Configurations** (listed at the b
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/sap.commerce.webservices_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/sap.commerce.webservices_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/sap.commerce.webservices_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/sap.commerce.webservices_connector_sample)
 
 ## More code examples
 

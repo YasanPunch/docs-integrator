@@ -6,7 +6,7 @@ title: Metrics (Prometheus, Grafana)
 
 Monitor the health and performance of your WSO2 Integrator services using Prometheus metrics and Grafana dashboards.
 
-## Enabling Prometheus Metrics
+## Enabling Prometheus metrics
 
 Ballerina has built-in support for exposing metrics in Prometheus format. Enable the metrics endpoint by adding the `ballerina/observe` dependency and configuring it in `Config.toml`:
 
@@ -33,11 +33,11 @@ version = "1.0.0"
 
 When the application starts, a Prometheus-compatible metrics endpoint is available at `http://localhost:9797/metrics`.
 
-## Default Metrics Exposed
+## Default metrics exposed
 
 Ballerina automatically collects and exposes the following metrics without any additional code:
 
-### HTTP Service Metrics
+### HTTP service metrics
 
 | Metric | Type | Description |
 |---|---|---|
@@ -46,7 +46,7 @@ Ballerina automatically collects and exposes the following metrics without any a
 | `http_requests_in_flight` | Gauge | Number of requests currently being processed |
 | `http_response_status_total` | Counter | Response count by HTTP status code |
 
-### HTTP Client Metrics
+### HTTP client metrics
 
 | Metric | Type | Description |
 |---|---|---|
@@ -54,7 +54,7 @@ Ballerina automatically collects and exposes the following metrics without any a
 | `http_client_request_duration_seconds` | Histogram | Outbound request duration |
 | `http_client_response_status_total` | Counter | Outbound response count by status code |
 
-### JVM Metrics
+### JVM metrics
 
 | Metric | Type | Description |
 |---|---|---|
@@ -62,7 +62,7 @@ Ballerina automatically collects and exposes the following metrics without any a
 | `jvm_threads_current` | Gauge | Current number of JVM threads |
 | `jvm_gc_collection_seconds_total` | Counter | Time spent in garbage collection |
 
-## Custom Metrics
+## Custom metrics
 
 Create application-specific metrics using the `ballerina/observe` module:
 
@@ -108,7 +108,7 @@ service /orders on new http:Listener(9090) {
 }
 ```
 
-## Prometheus Scrape Configuration
+## Prometheus scrape configuration
 
 Configure Prometheus to scrape metrics from your Ballerina services.
 
@@ -155,7 +155,7 @@ spec:
     app: wso2-integrator-app
 ```
 
-### Static Prometheus Configuration
+### Static Prometheus configuration
 
 For non-Kubernetes environments, add a scrape target to `prometheus.yml`:
 
@@ -171,17 +171,17 @@ scrape_configs:
           service: "order-service"
 ```
 
-## Grafana Dashboard Setup
+## Grafana dashboard setup
 
 Create a Grafana dashboard to visualize your integration metrics.
 
-### Data Source Configuration
+### Data source configuration
 
 1. In Grafana, navigate to **Configuration > Data Sources**
 2. Add a Prometheus data source pointing to your Prometheus server
 3. Set the URL (e.g., `http://prometheus:9090`)
 
-### Dashboard Panels
+### Dashboard panels
 
 Create panels for the following key metrics:
 
@@ -216,7 +216,7 @@ http_requests_in_flight{job="wso2-integrator"}
 rate(orders_processed_total{status="success"}[5m])
 ```
 
-### Alerting Rules
+### Alerting rules
 
 Define Prometheus alerting rules for critical conditions:
 
@@ -243,7 +243,7 @@ groups:
           summary: "High P99 latency on {{ $labels.service }}"
 ```
 
-## What's Next
+## What's next
 
 - [Distributed Tracing](tracing.md) -- Trace requests across services
 - [Logging](logging.md) -- Configure structured logging

@@ -72,4 +72,4 @@ Private app tokens are used with the Bearer Token or API Keys authentication met
 
 ## Next steps
 
-- [Actions Reference](action-reference.md) - Available operations
+- [Actions Reference](actions.md) - Available operations

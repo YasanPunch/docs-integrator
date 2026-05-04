@@ -23,7 +23,7 @@ flowchart LR
 
 ## Setting up the MongoDB integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
 ## Adding the MongoDB connector
 
@@ -68,7 +68,7 @@ Click **Save Connection** to persist the connection. The `mongodbClient` node ap
 - **mongoPassword**: string : password for MongoDB authentication
 - **mongoDatabase**: string : name of the authentication database
 
-## Configuring the MongoDB Get Database operation
+## Configuring the MongoDB get database operation
 
 ### Step 5: Add an automation entry point
 
@@ -76,7 +76,7 @@ Click **Save Connection** to persist the connection. The `mongodbClient` node ap
 2. Choose **Automation** under the Automation heading.
 3. Leave all defaults and click **Create**.
 
-### Step 6: Select and configure the Get Database operation
+### Step 6: Select and configure the get database operation
 
 1. Click the **+** button between the Start and Error Handler nodes in the flow.
 2. Under **Connections**, expand **mongodbClient** to reveal available operations.
@@ -98,9 +98,9 @@ Click **Save Connection** to persist the connection. The `mongodbClient` node ap
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/mongodb_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/mongodb_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/mongodb_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/mongodb_connector_sample)
 
 ## More code examples
 

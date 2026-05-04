@@ -11,7 +11,7 @@ This guide walks you through obtaining SAP S/4HANA system access and enabling th
 - An SAP S/4HANA system (on-premise or private cloud) with Sales and Distribution (SD) configured.
 - An SAP user account with sufficient authorization to access the API_SALES_INQUIRY_SRV OData service.
 
-## Step 1: Verify or activate the aPI_SALES_INQUIRY_SRV OData service
+## Step 1: Verify or activate the API_SALES_INQUIRY_SRV OData service
 
 1. Log on to the SAP S/4HANA back-end system (via SAP GUI or SAP Fiori Launchpad as an administrator).
 2. Run transaction **SOAMANAGER** (for older systems) or navigate to **API Management** in the Fiori Launchpad.

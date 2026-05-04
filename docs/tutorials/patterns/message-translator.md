@@ -23,7 +23,7 @@ flowchart LR
     SysA ----> Translator ----> SysB
 ```
 
-## When to Use It
+## When to use it
 
 - **System integration** -- Connect systems with different data models
 - **API versioning** -- Translate between API v1 and v2 formats
@@ -33,7 +33,7 @@ flowchart LR
 
 ## Implementation
 
-### Basic Field Mapping
+### Basic field mapping
 
 Translate between two record types with different field names and structures:
 
@@ -93,7 +93,7 @@ function translateShippingMethod(string code) returns ShippingMethod {
 }
 ```
 
-### Using the Data Mapper
+### Using the data mapper
 
 WSO2 Integrator provides a visual Data Mapper for defining translations:
 
@@ -107,7 +107,7 @@ function translateWithMapper(json sourceJson) returns ModernOrder|error {
 }
 ```
 
-### JSON to XML Translation
+### JSON to XML translation
 
 Translate between JSON and XML representations:
 
@@ -136,7 +136,7 @@ function xmlToCustomer(xml customerXml) returns Customer|error {
 }
 ```
 
-### Translator as a Service
+### Translator as a service
 
 Expose the translator as a reusable HTTP service:
 
@@ -168,7 +168,7 @@ service /translate on new http:Listener(8090) {
 }
 ```
 
-### Canonical Data Model
+### Canonical data model
 
 When integrating many systems, translate all formats to and from a canonical (shared) model:
 
@@ -232,7 +232,7 @@ function toSystemB(CanonicalOrder canonical) returns ModernOrder {
 - **Performance** -- For high-throughput scenarios, avoid unnecessary intermediate representations
 - **Testing** -- Test translators with edge cases: null fields, empty arrays, maximum-length strings
 
-## Related Patterns
+## Related patterns
 
 - [Content-Based Router](content-based-router.md) -- Often combined with translator to route-then-translate
 - [Message Filter](message-filter.md) -- Remove fields or entire messages before translation

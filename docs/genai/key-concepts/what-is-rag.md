@@ -16,11 +16,11 @@ LLMs have three key limitations that RAG addresses:
 | **Hallucination** -- Models can generate plausible but incorrect information | RAG grounds responses in actual documents |
 | **Domain specificity** -- General models lack deep knowledge of your data | RAG provides your proprietary data as context |
 
-## How RAG Works
+## How RAG works
 
 A RAG pipeline has two phases: **ingestion** (offline) and **querying** (online).
 
-### Ingestion: Preparing Your Data
+### Ingestion: Preparing your data
 
 Documents are split into chunks, converted to vector embeddings, and stored in a vector database.
 
@@ -30,7 +30,7 @@ Documents  -->  Chunking  -->  Embedding  -->  Vector Database
  JSON, etc.)    passages)      vectors)       similarity search)
 ```
 
-### Querying: Answering Questions
+### Querying: Answering questions
 
 When a user asks a question, it is embedded and compared against stored vectors to find relevant chunks, which are then passed to the LLM.
 
@@ -40,7 +40,7 @@ User Query  -->  Embed Query  -->  Vector Search  -->  LLM + Context  -->  Answe
                                    chunks)            from context)
 ```
 
-## Key Concepts
+## Key concepts
 
 ### Chunking
 
@@ -54,7 +54,7 @@ Documents are split into smaller passages (chunks) that can be individually retr
 
 Each chunk is converted into a vector (an array of numbers) that captures its semantic meaning. Similar content produces similar vectors, enabling semantic search.
 
-### Vector Databases
+### Vector databases
 
 Specialized databases that store embeddings and perform fast similarity search. WSO2 Integrator supports ChromaDB, Pinecone, Weaviate, pgvector, and Qdrant.
 
@@ -93,7 +93,7 @@ rag:Response answer = check ragPipeline.query("What is the return policy?");
 | **Fine-tuning** | Changing model behavior or style | Curated training examples |
 | **RAG + Fine-tuning** | Domain-specific behavior with dynamic knowledge | Both |
 
-## What's Next
+## What's next
 
 - [Chunking Documents](/docs/genai/develop/rag/chunking-documents) -- Chunking strategies for RAG
 - [Generating Embeddings](/docs/genai/develop/rag/generating-embeddings) -- Embedding model selection

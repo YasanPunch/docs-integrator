@@ -6,11 +6,11 @@ title: Email
 
 Email artifacts enable integrations that send notifications, process incoming messages, and automate email-based workflows. WSO2 Integrator supports SMTP for sending, POP3 for basic retrieval, and IMAP4 for advanced inbox management with folder operations.
 
-## Sending Email via SMTP
+## Sending email via SMTP
 
 Use the SMTP client to send plain text, HTML, and attachment-based emails.
 
-### Basic Email Sending
+### Basic email sending
 
 ```ballerina
 import ballerina/email;
@@ -44,7 +44,7 @@ Thank you for your purchase.`,
 }
 ```
 
-### HTML Email with Attachments
+### HTML email with attachments
 
 ```ballerina
 function sendInvoiceEmail(string recipientEmail, Invoice invoice, byte[] pdfAttachment) returns error? {
@@ -79,7 +79,7 @@ function sendInvoiceEmail(string recipientEmail, Invoice invoice, byte[] pdfAtta
 }
 ```
 
-### Sending to Multiple Recipients
+### Sending to multiple recipients
 
 ```ballerina
 function sendBroadcast(string[] recipients, string subject, string body) returns error? {
@@ -99,7 +99,7 @@ function sendBroadcast(string[] recipients, string subject, string body) returns
 }
 ```
 
-## Receiving Email via POP3
+## Receiving email via POP3
 
 POP3 is a simple protocol for downloading emails from a mail server. Use the POP3 listener to poll for new messages.
 
@@ -147,7 +147,7 @@ service "emailProcessor" on popListener {
 }
 ```
 
-## Receiving Email via IMAP4
+## Receiving email via IMAP4
 
 IMAP4 provides richer inbox management than POP3, including folder operations, message flags, and search capabilities.
 
@@ -193,7 +193,7 @@ service "imapProcessor" on imapListener {
 }
 ```
 
-### IMAP Client Operations
+### IMAP client operations
 
 Use the IMAP client for programmatic inbox management beyond the listener:
 
@@ -212,11 +212,11 @@ function readFromFolder(string folder) returns email:Message[]|error {
 }
 ```
 
-## Email-Triggered Integrations
+## Email-Triggered integrations
 
 Combine email receiving with other integration artifacts for complete workflows.
 
-### Support Ticket Creation
+### Support ticket creation
 
 ```ballerina
 import ballerina/email;
@@ -273,9 +273,9 @@ function determinePriority(string subject, string body) returns string {
 | **Message flags** | Not supported | Read/unread, flagged, etc. |
 | **Best for** | Simple retrieval | Advanced inbox management |
 
-## Configuration Reference
+## Configuration reference
 
-### SMTP Settings
+### SMTP settings
 
 ```toml
 # Config.toml
@@ -285,7 +285,7 @@ smtpUser = "user@gmail.com"
 smtpPassword = "app-password"
 ```
 
-### IMAP/POP3 Settings
+### IMAP/POP3 settings
 
 ```toml
 # Config.toml
@@ -295,8 +295,8 @@ imapUser = "user@gmail.com"
 imapPassword = "app-password"
 ```
 
-## What's Next
+## What's next
 
 - [Automation](../automation/automation.md) -- Schedule email-related tasks
-- [HTTP Service](../service/http-service.md) -- Expose email processing as an HTTP API
+- [HTTP Service](../service/http.md) -- Expose email processing as an HTTP API
 - [Error Handling](/docs/develop/design-logic/error-handling) -- Handle email delivery failures

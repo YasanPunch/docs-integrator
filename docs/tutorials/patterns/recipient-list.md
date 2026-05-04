@@ -28,7 +28,7 @@ flowchart LR
     Lookup ----> RecipientA & RecipientB & RecipientC
 ```
 
-## When to Use It
+## When to use it
 
 - **Multi-channel notifications** -- Send alerts to different channels (email, Slack, SMS) based on severity
 - **Regional routing** -- Forward orders to the appropriate regional warehouses
@@ -37,7 +37,7 @@ flowchart LR
 
 ## Implementation
 
-### Static Recipient List from Configuration
+### Static recipient list from configuration
 
 The simplest form: recipients come from configuration that can change without redeployment.
 
@@ -82,7 +82,7 @@ service /events on new http:Listener(8090) {
 }
 ```
 
-### Dynamic Recipient List from Message Content
+### Dynamic recipient list from message content
 
 Determine recipients based on the message content:
 
@@ -145,7 +145,7 @@ service /orders on new http:Listener(8090) {
 }
 ```
 
-### Parallel Recipient Delivery
+### Parallel recipient delivery
 
 Use Ballerina's concurrency to deliver to all recipients in parallel:
 
@@ -181,7 +181,7 @@ function deliverToOne(string endpoint, OrderEvent event) returns json|error {
 
 ## Variations
 
-### Recipient List from Database
+### Recipient list from database
 
 Look up recipients from a subscriber registry:
 
@@ -225,7 +225,7 @@ function deliverAllOrNothing(OrderEvent event, string[] recipients) returns erro
 - **Idempotency** -- Recipients should be idempotent since retry logic may deliver the same message twice
 - **Recipient health** -- Monitor recipient health and remove unhealthy recipients from the list temporarily
 
-## Related Patterns
+## Related patterns
 
 - [Scatter-Gather](scatter-gather.md) -- Sends to multiple recipients and aggregates responses
 - [Publish-Subscribe](publish-subscribe.md) -- Static fan-out to all subscribers

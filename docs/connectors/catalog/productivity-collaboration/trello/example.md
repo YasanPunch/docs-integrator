@@ -22,11 +22,11 @@ flowchart LR
 
 ## Setting up the Trello integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
 ## Adding the Trello connector
 
-### Step 1: Open the Add Connection panel
+### Step 1: Open the add connection panel
 
 In the WSO2 Integrator sidebar, expand your project and select **Connections → + Add Connection** to open the connector palette.
 
@@ -64,7 +64,7 @@ Select **Save Connection** to persist the connection. Confirm that `trelloClient
 
 ## Configuring the Trello post operation
 
-### Step 6: Add an Automation entry point
+### Step 6: Add an automation entry point
 
 1. In the sidebar, select **Entry Points → + Add Entry Point**.
 2. Select **Automation** as the entry point type.
@@ -94,9 +94,9 @@ Select **Save** to add the operation to the canvas flow.
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/trello_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/trello_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/trello_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/trello_connector_sample)
 
 ## More code examples
 

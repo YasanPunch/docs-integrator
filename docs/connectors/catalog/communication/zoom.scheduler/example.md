@@ -20,19 +20,19 @@ flowchart LR
 
 - Zoom OAuth2 credentials: `clientId`, `clientSecret`, `refreshToken`, and `refreshUrl` from a Zoom OAuth app
 
-## Setting up the Zoom Scheduler integration
+## Setting up the Zoom scheduler integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
-## Adding the Zoom Scheduler connector
+## Adding the Zoom scheduler connector
 
-### Step 1: Open the Add connection palette
+### Step 1: Open the add connection palette
 
 In the project tree, expand your project and select the **+** icon next to **Connections** to open the **Add Connection** palette.
 
 ![Zoom Scheduler connector palette open with search field before any selection](/img/connectors/catalog/communication/zoom.scheduler/zoom_scheduler_screenshot_01_palette.png)
 
-## Configuring the Zoom Scheduler connection
+## Configuring the Zoom scheduler connection
 
 ### Step 2: Fill in the connection parameters
 
@@ -64,9 +64,9 @@ Select **Save Connection** to persist the configuration. The designer returns to
 - **zoomClientId** (string) : Your Zoom OAuth2 client ID
 - **zoomClientSecret** (string) : Your Zoom OAuth2 client secret
 
-## Configuring the Zoom Scheduler List schedules operation
+## Configuring the Zoom scheduler list schedules operation
 
-### Step 5: Add and configure the List schedules operation
+### Step 5: Add and configure the list schedules operation
 
 1. Under **Entry Points**, select **main** (or create a new Automation via **Add Artifact → Automation**).
 2. On the canvas, expand the **Connections** section in the node panel and select **zoomSchedulerClient** to reveal the available operations.
@@ -83,9 +83,9 @@ Select **List schedules** from the operations panel. The configuration form open
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/zoom.scheduler_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/zoom.scheduler_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/zoom.scheduler_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/zoom.scheduler_connector_sample)
 
 ## More code examples
 

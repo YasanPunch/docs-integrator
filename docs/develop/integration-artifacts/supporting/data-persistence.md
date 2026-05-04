@@ -6,7 +6,7 @@ title: Data Persistence
 
 Data persistence artifacts let you store and retrieve data directly from your integrations using `bal persist` -- Ballerina's built-in ORM-like persistence layer. Define your data model declaratively, and `bal persist` generates type-safe client code for CRUD operations against your chosen data store.
 
-## Supported Data Stores
+## Supported data stores
 
 `bal persist` supports seven data stores out of the box:
 
@@ -20,9 +20,9 @@ Data persistence artifacts let you store and retrieve data directly from your in
 | **Redis** | `ballerinax/persist.redis` | Cache, session store, high-speed key-value |
 | **In-Memory** | `ballerina/persist` | Testing, prototyping, ephemeral state |
 
-## Setting Up Data Persistence
+## Setting up data persistence
 
-### Step 1: Define the Data Model
+### Step 1: Define the data model
 
 Create a `persist/model.bal` file in your project that defines entities using Ballerina record types.
 
@@ -69,7 +69,7 @@ type OrderItem record {|
 |};
 ```
 
-### Step 2: Generate the Persistence Client
+### Step 2: Generate the persistence client
 
 Run the `bal persist generate` command to generate type-safe client code:
 
@@ -90,7 +90,7 @@ This generates a `generated/` directory with:
 - `persist_types.bal` -- Generated types for queries and inserts
 - `script.sql` -- Database migration script (for SQL data stores)
 
-### Step 3: Configure the Data Store
+### Step 3: Configure the data store
 
 Add connection details to `Config.toml`:
 
@@ -104,7 +104,7 @@ password = ""
 database = "integration_db"
 ```
 
-### Step 4: Run the Migration
+### Step 4: Run the migration
 
 Apply the generated SQL script to create tables:
 
@@ -113,7 +113,7 @@ Apply the generated SQL script to create tables:
 mysql -u root integration_db < generated/script.sql
 ```
 
-## CRUD Operations
+## CRUD operations
 
 The generated client provides type-safe methods for all CRUD operations.
 
@@ -178,9 +178,9 @@ function deleteOrder(int id) returns error? {
 }
 ```
 
-## Data Store Specific Examples
+## Data store specific examples
 
-### MySQL Persistence
+### MySQL persistence
 
 ```ballerina
 // Ballerina.toml
@@ -208,7 +208,7 @@ function queryWithNativeSQL() returns Customer[]|error {
 }
 ```
 
-### PostgreSQL Persistence
+### PostgreSQL persistence
 
 ```ballerina
 // PostgreSQL supports JSONB columns for flexible schema
@@ -223,7 +223,7 @@ type Product record {|
 |};
 ```
 
-### Google Sheets Persistence
+### Google sheets persistence
 
 Use Google Sheets as a lightweight data store, useful for business user-accessible data and prototyping.
 
@@ -250,7 +250,7 @@ clientSecret = "your-client-secret"
 refreshToken = "your-refresh-token"
 ```
 
-### Redis Persistence
+### Redis persistence
 
 Use Redis for high-speed key-value storage, caching, and session management.
 
@@ -279,7 +279,7 @@ port = 6379
 password = ""
 ```
 
-### In-Memory Persistence
+### In-Memory persistence
 
 Ideal for testing and prototyping without external dependencies.
 
@@ -371,7 +371,7 @@ mysql -u root integration_db < generated/script.sql
 :::info Migration Strategy
 For production databases, use a dedicated migration tool (such as Flyway or Liquibase) rather than applying generated scripts directly. The generated `script.sql` serves as a reference for creating proper migration files.
 
-## What's Next
+## What's next
 
 - [Supporting Artifacts](functions.md) -- Types, connections, configurations, functions, and data mappers
 - [Query Expressions](/docs/develop/design-logic/query-expressions) -- Use SQL-like queries to filter and transform persist results

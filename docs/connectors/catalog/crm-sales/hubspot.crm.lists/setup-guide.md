@@ -71,4 +71,4 @@ Store credentials securely. Use Ballerina's `configurable` feature and a `Config
 
 ## Next steps
 
-- [Actions Reference](action-reference.md) - Available operations
+- [Actions Reference](actions.md) - Available operations

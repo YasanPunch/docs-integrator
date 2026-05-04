@@ -22,13 +22,13 @@ flowchart LR
 - A Shopify Admin API access token with the necessary permissions for the operation being called (e.g., `read_products`).
 - The Shopify store's base URL in the format `https://{your-store}.myshopify.com/admin/api/{api-version}`.
 
-## Setting up the Shopify Admin integration
+## Setting up the Shopify admin integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
-## Adding the Shopify Admin connector
+## Adding the Shopify admin connector
 
-### Step 1: Open the Add Connection palette
+### Step 1: Open the add connection palette
 
 Select the **+ Add Connection** button in the **Connections** section of the low-code canvas sidebar to open the connector search palette.
 
@@ -40,9 +40,9 @@ Select the **+ Add Connection** button in the **Connections** section of the low
 2. Locate the **Admin** connector card (labelled `ballerinax / shopify.admin`) in the search results.
 3. Select the connector card to open the connection configuration form.
 
-## Configuring the Shopify Admin connection
+## Configuring the Shopify admin connection
 
-### Step 3: Bind Shopify Admin connection parameters to configurables
+### Step 3: Bind Shopify admin connection parameters to configurables
 
 For each connection field, use the **Configurables** tab to create a new configurable variable and auto-inject the reference into the field.
 
@@ -65,7 +65,7 @@ Select **Save Connection** to persist the connection configuration. The shopify.
 - **shopifyAccessToken** (string) : Your Shopify Admin API access token (found in your Shopify Partner dashboard or app settings)
 - **shopifyServiceUrl** (string) : The full base URL of your Shopify Admin API, e.g., `https://your-store.myshopify.com/admin/api/2024-01`
 
-## Configuring the Shopify Admin getProducts operation
+## Configuring the Shopify admin getProducts operation
 
 ### Step 6: Add an automation entry point
 
@@ -93,6 +93,6 @@ Select **Save Connection** to persist the connection configuration. The shopify.
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/shopify.admin_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/shopify.admin_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/shopify.admin_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/shopify.admin_connector_sample)

@@ -20,11 +20,11 @@ flowchart LR
 
 - A PayPal developer account with a **Client ID** and **Client Secret** for OAuth2 authentication
 
-## Setting up the PayPal Orders integration
+## Setting up the PayPal orders integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
-## Adding the PayPal Orders connector
+## Adding the PayPal orders connector
 
 ### Step 1: Open the connector palette
 
@@ -32,11 +32,11 @@ In the project overview, select **Add Artifact**, then under **Other Artifacts**
 
 ![PayPal Orders connector palette open with search field before any selection](/img/connectors/catalog/finance-accounting/paypal.orders/paypal_orders_screenshot_01_palette.png)
 
-### Step 2: Add an Automation entry point
+### Step 2: Add an automation entry point
 
 In the project overview, select **Add Artifact**, then select **Automation** under the Automation category, and select **Create** to add the Automation entry point. The flow canvas opens with a **Start** node and an **Error Handler** node.
 
-## Configuring the PayPal Orders connection
+## Configuring the PayPal orders connection
 
 ### Step 3: Configure connection parameters
 
@@ -60,9 +60,9 @@ In the left panel, select **Configurations** and set a value for each configurab
 - **paypalClientId** (string) : Your PayPal OAuth2 client ID from the PayPal Developer Dashboard
 - **paypalClientSecret** (string) : Your PayPal OAuth2 client secret from the PayPal Developer Dashboard
 
-## Configuring the PayPal Orders Create order operation
+## Configuring the PayPal orders create order operation
 
-### Step 6: Select and configure the Create order operation
+### Step 6: Select and configure the create order operation
 
 1. Select the **+** button on the flow canvas to open the node panel.
 2. Expand the **ordersClient** connection under **Connections** to see available operations.
@@ -84,9 +84,9 @@ Select **Save** to apply the configuration.
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/paypal.orders_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/paypal.orders_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/paypal.orders_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/paypal.orders_connector_sample)
 
 ## More code examples
 

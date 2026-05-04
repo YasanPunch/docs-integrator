@@ -97,7 +97,7 @@ check udpClient->close();
 
 ---
 
-## Connect Client
+## Connect client
 
 Sends and receives UDP data to/from a fixed remote host and port.
 

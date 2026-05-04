@@ -18,7 +18,7 @@ Before MCP, connecting AI assistants to enterprise data required custom code for
 
 All through the same protocol, with no client-specific code.
 
-## How MCP Works
+## How MCP works
 
 ```mermaid
 flowchart LR
@@ -33,7 +33,7 @@ flowchart LR
 3. **Response** -- The server executes the request and returns results
 4. **Context** -- The AI assistant incorporates the results into its reasoning
 
-## MCP Capabilities
+## MCP capabilities
 
 MCP defines three types of capabilities:
 
@@ -47,7 +47,7 @@ MCP defines three types of capabilities:
 
 WSO2 Integrator supports MCP in two directions:
 
-### As an MCP Server
+### As an MCP server
 
 Expose your integrations as tools that AI assistants can discover and call.
 
@@ -63,7 +63,7 @@ isolated function getOrderStatus(string orderId) returns json|error {
 }
 ```
 
-### As an MCP Client
+### As an MCP client
 
 Consume external MCP tools from within your agents.
 
@@ -80,7 +80,7 @@ final agent:ChatAgent myAgent = check new (
 );
 ```
 
-## Transport Options
+## Transport options
 
 | Transport | Use Case |
 |-----------|----------|
@@ -88,7 +88,7 @@ final agent:ChatAgent myAgent = check new (
 | **SSE** | Remote or web-based clients |
 | **Streamable HTTP** | Modern HTTP with streaming support |
 
-## What's Next
+## What's next
 
 - [What is RAG?](what-is-rag.md) -- Retrieval-augmented generation concepts
 - [Creating an MCP Server](/docs/genai/develop/mcp/creating-mcp-server) -- Build your own MCP server

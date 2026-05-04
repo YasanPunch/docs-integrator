@@ -68,4 +68,4 @@ The refresh token does not expire by default, but can be revoked. Store it secur
 
 ## Next steps
 
-- [Actions Reference](action-reference.md) - Available operations
+- [Actions Reference](actions.md) - Available operations

@@ -71,4 +71,4 @@ Private app tokens are simpler to set up than OAuth and work well for server-to-
 
 ## Next steps
 
-- [Actions Reference](action-reference.md) - Available operations
+- [Actions Reference](actions.md) - Available operations

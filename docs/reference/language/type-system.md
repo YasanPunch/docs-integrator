@@ -6,9 +6,9 @@ title: Type System
 
 Ballerina uses a structural type system where compatibility is determined by the structure of values rather than by declared type names. This design is particularly suited for integration scenarios where data from heterogeneous systems must be validated, transformed, and routed.
 
-## Basic Types
+## Basic types
 
-### Simple Types
+### Simple types
 
 | Type | Description | Example |
 |------|-------------|---------|
@@ -20,7 +20,7 @@ Ballerina uses a structural type system where compatibility is determined by the
 | `byte` | Integer in the range 0-255 | `byte b = 0xFF;` |
 | `nil` | The single value `()` representing absence | `() nothing = ();` |
 
-### Integer Subtypes
+### Integer subtypes
 
 Ballerina provides constrained integer types for specific ranges:
 
@@ -33,13 +33,13 @@ Ballerina provides constrained integer types for specific ranges:
 | `int:Unsigned16` | 0 to 65535 |
 | `int:Unsigned32` | 0 to 4294967295 |
 
-### String Subtypes
+### String subtypes
 
 | Subtype | Description |
 |---------|-------------|
 | `string:Char` | A single Unicode code point |
 
-## Sequence Types
+## Sequence types
 
 ### Arrays
 
@@ -61,7 +61,7 @@ Fixed-length sequences where each position can have a different type.
 [int, string...] openTuple = [1, "a", "b"]; // rest type
 ```
 
-## Structural Types
+## Structural types
 
 ### Records
 
@@ -114,7 +114,7 @@ table key(id) employees = table [
 ];
 ```
 
-## Union Types
+## Union types
 
 A value that can be one of several types. Union types are central to Ballerina's approach to error handling and data validation.
 
@@ -124,7 +124,7 @@ string|error result = doSomething();
 int|float|decimal number = 42;
 ```
 
-### Optional Types
+### Optional types
 
 The shorthand `T?` is equivalent to `T|()`, meaning the value is either of type `T` or `nil`.
 
@@ -133,7 +133,7 @@ string? optionalName = ();      // nil
 string? presentName = "Alice";  // string value
 ```
 
-## Singleton Types
+## Singleton types
 
 A type with exactly one value, often used in union types for tagged variants.
 
@@ -154,9 +154,9 @@ Status s = "OK";
 
 `anydata` is the type used for values that need to be serialized (JSON, XML, etc.), making it fundamental to integration work.
 
-## JSON and XML Types
+## JSON and XML types
 
-### JSON Type
+### JSON type
 
 `json` is a union type: `()|boolean|int|float|decimal|string|json[]|map<json>`. It represents any value that can be serialized to JSON.
 
@@ -176,7 +176,7 @@ json name = payload.name;
 json? discount = payload?.discount;
 ```
 
-### XML Type
+### XML type
 
 `xml` is a built-in sequence type for XML data, including elements, text, comments, and processing instructions.
 
@@ -198,7 +198,7 @@ xml items = catalog/<item>;
 string id = (catalog/<item>).id;
 ```
 
-## Error Type
+## Error type
 
 `error` is a distinct basic type representing error conditions. Every error carries a message (`string`), an optional cause (`error?`), and an optional detail record.
 
@@ -215,7 +215,7 @@ string msg = err.message();
 record {| string orderId; int code; |} detail = err.detail();
 ```
 
-## Type Definitions and Aliases
+## Type definitions and aliases
 
 ```ballerina
 // Type alias
@@ -226,11 +226,11 @@ type ConnectionError distinct error;
 type TimeoutError distinct error;
 ```
 
-## Type Narrowing
+## Type narrowing
 
 Ballerina supports flow-sensitive typing. After a type check, the compiler narrows the variable's type within the corresponding branch.
 
-### `is` Expression
+### `is` expression
 
 ```ballerina
 function process(int|string|error value) {
@@ -247,7 +247,7 @@ function process(int|string|error value) {
 }
 ```
 
-### Match Statement
+### Match statement
 
 ```ballerina
 function describe(json value) returns string {
@@ -260,7 +260,7 @@ function describe(json value) returns string {
 }
 ```
 
-### `check` Expression
+### `check` expression
 
 The `check` expression narrows a union type by extracting the success value. If the value is an `error`, it immediately returns the error from the enclosing function.
 
@@ -272,7 +272,7 @@ function getUser(int id) returns User|error {
 }
 ```
 
-## Type Compatibility
+## Type compatibility
 
 Because Ballerina uses structural typing, type compatibility is based on value shapes rather than type names.
 
@@ -291,7 +291,7 @@ Point p = {x: 1, y: 2};
 Coordinate c = p;  // Valid: same structure
 ```
 
-### `readonly` Types
+### `readonly` types
 
 Any value can be made deeply immutable by intersecting with `readonly`:
 
@@ -300,7 +300,7 @@ readonly & record {| string name; int age; |} person = {name: "Alice", age: 30};
 // person.name = "Bob";  // compile-time error
 ```
 
-### `never` Type
+### `never` type
 
 The `never` type has no values. It is used for functions that never return (e.g., infinite loops or guaranteed panics) and in type narrowing for impossible cases.
 

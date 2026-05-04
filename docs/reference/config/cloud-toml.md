@@ -167,7 +167,7 @@ size = "5Gi"
 | `readOnly` | boolean | No | Whether the volume is mounted as read-only. Defaults to `false`. |
 | `size` | string | No | Requested storage size (e.g., `"1Gi"`, `"500Mi"`). |
 
-## Complete Example
+## Complete example
 
 ```toml
 [container.image]

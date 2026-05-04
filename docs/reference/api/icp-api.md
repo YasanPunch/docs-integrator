@@ -18,13 +18,13 @@ The default ICP port is `9164`. The base path is configurable in the deployment 
 
 All ICP API requests require authentication. The API supports Basic Authentication and OAuth 2.0 bearer tokens.
 
-### Basic Authentication
+### Basic authentication
 
 ```bash
 curl -k -u admin:admin https://localhost:9164/api/v1/integrations
 ```
 
-### Bearer Token
+### Bearer token
 
 Obtain a token from the token endpoint, then include it in the `Authorization` header:
 
@@ -49,9 +49,9 @@ curl -k https://localhost:9164/api/v1/integrations \
 }
 ```
 
-## Integration Discovery Endpoints
+## Integration discovery endpoints
 
-### List All Integrations
+### List all integrations
 
 Returns all deployed integrations and their status.
 
@@ -85,7 +85,7 @@ GET /api/v1/integrations
 }
 ```
 
-### Get Integration Details
+### Get integration details
 
 Returns detailed information about a specific integration.
 
@@ -131,9 +131,9 @@ GET /api/v1/integrations/{name}
 }
 ```
 
-## Artifact Discovery Endpoints
+## Artifact discovery endpoints
 
-### List Services
+### List services
 
 Returns all deployed Ballerina services.
 
@@ -157,7 +157,7 @@ GET /api/v1/services
 }
 ```
 
-### List Listeners
+### List listeners
 
 Returns all active listeners across all integrations.
 
@@ -181,7 +181,7 @@ GET /api/v1/listeners
 }
 ```
 
-### List Connectors
+### List connectors
 
 Returns all external connectors (clients) in use by deployed integrations.
 
@@ -211,9 +211,9 @@ GET /api/v1/connectors
 }
 ```
 
-## Monitoring Endpoints
+## Monitoring endpoints
 
-### Health Check
+### Health check
 
 Returns the health status of the ICP server and connected runtimes.
 
@@ -232,7 +232,7 @@ GET /api/v1/health
 }
 ```
 
-### Get Metrics
+### Get metrics
 
 Returns runtime metrics for a specific integration or the entire deployment.
 
@@ -266,7 +266,7 @@ GET /api/v1/metrics/{integrationName}
 }
 ```
 
-### Get Logs
+### Get logs
 
 Retrieves log entries for an integration.
 
@@ -299,9 +299,9 @@ GET /api/v1/logs/{integrationName}
 }
 ```
 
-## Runtime Management Endpoints
+## Runtime management endpoints
 
-### Activate/Deactivate an Integration
+### Activate/Deactivate an integration
 
 ```
 PUT /api/v1/integrations/{name}/status
@@ -326,7 +326,7 @@ PUT /api/v1/integrations/{name}/status
 }
 ```
 
-## Error Responses
+## Error responses
 
 All error responses follow a consistent format:
 

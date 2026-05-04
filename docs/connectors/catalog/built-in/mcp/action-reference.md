@@ -10,7 +10,7 @@ For event-driven integration, see the [Trigger Reference](trigger-reference.md).
 
 ---
 
-## Streamable Http Client
+## Streamable HTTP client
 
 Connects to an MCP server over Streamable HTTP transport to discover and invoke tools.
 

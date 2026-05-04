@@ -4,7 +4,7 @@ title: Setup Guide
 
 # Setup Guide
 
-This guide walks you through setting up your AWS account and Amazon Redshift environment to obtain the credentials and configuration required to use the AWS Redshift Data connector.
+This guide walks you through setting up your AWS account and Amazon Redshift environment to obtain the credentials and configuration required to use the AWS Redshift data connector.
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ This guide walks you through setting up your AWS account and Amazon Redshift env
 4. Enter a user name (e.g., `ballerina-redshift-user`) and click **Next**.
 5. Under **Set permissions**, choose **Attach policies directly**.
 6. Search for and attach the following managed policies:
-    - **AmazonRedshiftDataFullAccess** — grants access to the Redshift Data API.
+    - **AmazonRedshiftDataFullAccess** — grants access to the Redshift data API.
     - **AmazonRedshiftFullAccess** — grants access to Redshift cluster resources (if using provisioned clusters).
 7. Click **Next**, then **Create user**.
 

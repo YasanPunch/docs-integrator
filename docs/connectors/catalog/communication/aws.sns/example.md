@@ -23,7 +23,7 @@ flowchart LR
 
 ## Setting up the AWS SNS integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
 ## Adding the AWS SNS connector
 
@@ -70,7 +70,7 @@ Select **Save Connection**. The `snsClient` connection node appears on the desig
 
 ## Configuring the AWS SNS publish operation
 
-### Step 6: Add an Automation entry point
+### Step 6: Add an automation entry point
 
 1. In the WSO2 Integrator panel toolbar, select **Add Artifact**.
 2. Select **Automation** from the artifact type list.
@@ -101,6 +101,6 @@ Select **Save**. The publish node is added to the flow canvas, connected to `sns
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/aws.sns_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/aws.sns_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/aws.sns_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/aws.sns_connector_sample)

@@ -98,7 +98,7 @@ After saving the `set` operation, the Automation canvas displays the complete in
 
 ## Try it yourself
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/redis-connector-sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/redis-connector-sample)
 
 ## More code examples
 

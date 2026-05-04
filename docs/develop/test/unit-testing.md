@@ -187,6 +187,6 @@ For more options — parallel execution, code coverage, and report formats — s
 ## What's next
 
 - [Data-Driven Tests](data-driven-tests.md) — parameterize tests with data providers to run the same logic against multiple inputs
-- [Test Groups](test-groups.md) — organize and selectively run tests using group tags
+- [Test Groups](groups.md) — organize and selectively run tests using group tags
 - [Mocking](mocking.md) — isolate your tests from external dependencies
 - [Execute Tests](execute-tests.md) — all options for running tests and viewing results

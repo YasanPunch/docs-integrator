@@ -6,7 +6,7 @@ title: Salesforce Events
 
 Salesforce event integrations subscribe to Change Data Capture (CDC) channels and trigger handler functions as records are created, updated, deleted, or restored in your Salesforce org. Use them for real-time CRM synchronization, audit logging, and event-driven workflows that react to Salesforce record changes without polling.
 
-## Creating a Salesforce Events service
+## Creating a Salesforce events service
 
 1. Click **+ Add Artifact** in the canvas or click **+** next to **Entry Points** in the sidebar.
 2. In the **Artifacts** panel, select **Salesforce Events** under **Event Integration**.
@@ -182,4 +182,4 @@ The CDC channel the service subscribes to is determined by the service path in B
 - [Kafka](kafka.md) — consume messages from Apache Kafka topics
 - [Azure Service Bus](azure-service-bus.md) — consume messages from Azure Service Bus queues
 - [Connections](../supporting/connections.md) — reuse Salesforce credentials across services
-- [Salesforce connector reference](../../../connectors/catalog/crm-sales/salesforce/overview.md) — full connector API reference and trigger reference
+- [Salesforce connector reference](../../../connectors/catalog/crm-sales/salesforce/connector-overview.md) — full connector API reference and trigger reference

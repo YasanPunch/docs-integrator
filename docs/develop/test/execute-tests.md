@@ -206,7 +206,7 @@ Avoid parallel execution when tests share mutable state, use the same database t
 
 ## What's next
 
-- [Code coverage and reports](code-coverage.md) -- Generate test reports, measure coverage, and configure report formats
-- [Test groups](test-groups.md) -- Organize tests with groups for selective execution
+- [Code coverage and reports](code-coverage-and-reports.md) -- Generate test reports, measure coverage, and configure report formats
+- [Test groups](groups.md) -- Organize tests with groups for selective execution
 - [Mocking](mocking.md) -- Replace external dependencies with controlled stubs
 - [Debugging](/docs/develop/debugging/editor-debugging) -- Debug failing tests step-by-step

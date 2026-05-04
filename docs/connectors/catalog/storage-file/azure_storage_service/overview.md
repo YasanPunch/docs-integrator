@@ -25,13 +25,13 @@ Actions are operations you invoke on Azure Storage from your integration — lis
 | `File Client` | File and directory CRUD, direct upload, byte-range read, list files and directories, file metadata |
 | `File Management Client` | File share create/delete, list shares, get and set file service properties |
 
-See the **[Action Reference](action-reference.md)** for the full list of operations, parameters, and sample code for each client.
+See the **[Action Reference](actions.md)** for the full list of operations, parameters, and sample code for each client.
 
 ## Documentation
 
 * **[Setup Guide](setup-guide.md)**: This guide walks you through creating an Azure Storage account and obtaining the credentials required to use the Azure Storage Service connector.
 
-* **[Action Reference](action-reference.md)**: Full reference for all clients — operations, parameters, return types, and sample code.
+* **[Action Reference](actions.md)**: Full reference for all clients — operations, parameters, return types, and sample code.
 
 ## How to contribute
 

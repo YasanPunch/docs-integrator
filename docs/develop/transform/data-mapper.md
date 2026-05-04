@@ -6,7 +6,7 @@ title: Visual Data Mapper
 
 The visual data mapper lets you transform data between source and target schemas using a drag-and-drop interface in VS Code. It generates type-safe Ballerina code from your visual mappings, keeping the source code as the single source of truth.
 
-## Opening the Data Mapper
+## Opening the data mapper
 
 There are two ways to launch the data mapper from the WSO2 Integrator VS Code extension.
 
@@ -35,7 +35,7 @@ function transform(Input input) returns Output => {
 };
 ```
 
-## Source and Target Schema Definition
+## Source and target schema definition
 
 The data mapper derives its source and target panels from Ballerina record types. Define closed records with explicit field types so the mapper can display all available fields.
 
@@ -73,7 +73,7 @@ type LineItem record {|
 |};
 ```
 
-## Field-Level Mapping
+## Field-Level mapping
 
 Click an input field and then click the corresponding output field to create a mapping connection. A solid line appears between compatible fields. If the field types match directly, no additional transformation is needed.
 
@@ -90,7 +90,7 @@ function transform(OrderRequest input) returns InternalOrder => {
 };
 ```
 
-## Conditional Mappings
+## Conditional mappings
 
 Use the expression editor to add conditional logic within a mapping. The mapper supports Ballerina's ternary operator and `match` expressions.
 
@@ -105,7 +105,7 @@ function mapLineItem(OrderLine line) returns LineItem => {
 };
 ```
 
-## Array and Collection Handling
+## Array and collection handling
 
 When mapping arrays, the data mapper uses Ballerina query expressions under the hood. You can flatten, filter, or reshape array elements.
 
@@ -127,7 +127,7 @@ function transform(OrderRequest input) returns InternalOrder => {
 };
 ```
 
-## Nested Object Mapping
+## Nested object mapping
 
 For deeply nested structures, the mapper lets you expand parent fields to reveal child fields. Connect child fields individually, or map an entire nested record at once when the structures align.
 
@@ -163,7 +163,7 @@ function flatten(SourceCustomer input) returns FlatCustomer => {
 };
 ```
 
-## Custom Transformation Functions
+## Custom transformation functions
 
 You can reference helper functions from within the data mapper. Define reusable transformation logic as separate Ballerina functions and invoke them in mapping expressions.
 
@@ -180,11 +180,11 @@ function formatPhone(string raw) returns string {
 }
 ```
 
-## Generated Code
+## Generated code
 
 Every visual mapping produces a Ballerina expression-bodied function. You can switch freely between the visual mapper and the code editor -- changes in one are reflected in the other. The generated code is the single source of truth and is always committed to version control.
 
-## What's Next
+## What's next
 
-- [AI-Assisted Data Mapping](ai-assisted-mapping.md) -- Let AI suggest mappings
-- [JSON Processing](json.md) -- JSON-specific transformations
+- [AI-Assisted Data Mapping](ai-assisted-data-mapping.md) -- Let AI suggest mappings
+- [JSON Processing](json-processing.md) -- JSON-specific transformations

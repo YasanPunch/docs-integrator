@@ -6,7 +6,7 @@ title: Type System & Records
 
 Ballerina's type system catches data mapping errors at compile time, not in production. Records, union types, optional fields, and type narrowing give you precise control over the shape of data flowing through your integrations.
 
-## Defining Record Types
+## Defining record types
 
 Records are the primary way to model structured data in Ballerina. Use closed records (`record {|...|}`) for strict schemas and open records (`record {...}`) when extra fields are acceptable.
 
@@ -42,7 +42,7 @@ type ConnectionConfig record {|
 | JSON projection | Filters unknown fields | Preserves all fields |
 | Use case | Strict internal schemas | External API responses |
 
-## Optional Fields and Nil
+## Optional fields and nil
 
 Mark fields as optional with `?` or make their type nilable with `?` suffix on the type. These are distinct concepts.
 
@@ -69,7 +69,7 @@ public function main() {
 }
 ```
 
-## Union Types
+## Union types
 
 Union types let a value be one of several types. They are essential for modeling data that varies by context.
 
@@ -103,7 +103,7 @@ function processPayment(PaymentMethod payment) returns string {
 }
 ```
 
-## Type Guards and Narrowing
+## Type guards and narrowing
 
 Ballerina's `is` expression narrows a union type within a conditional block, giving you type-safe access to fields.
 
@@ -146,7 +146,7 @@ function sides(Shape shape) returns int {
 }
 ```
 
-## Type Conversion
+## Type conversion
 
 Convert between types using `cloneWithType()`, `ensureType()`, and explicit casts.
 
@@ -203,7 +203,7 @@ public function main() {
 }
 ```
 
-## Using Types with the Data Mapper
+## Using types with the data mapper
 
 The visual data mapper in the WSO2 Integrator VS Code extension reads your record type definitions to build its source and target panels. Well-defined types produce better mapping experiences:
 
@@ -236,13 +236,13 @@ function transform(SourcePayload src) returns TargetPayload => {
 };
 ```
 
-## Best Practices
+## Best practices
 
 - **Prefer closed records** for internal data models to catch unexpected fields at compile time
 - **Use open records** for external API responses where the schema may evolve
 - **Model variants with union types** instead of optional fields when the shapes are fundamentally different
 - **Convert to typed records early** in your integration flow to benefit from compile-time checks throughout
 
-## What's Next
+## What's next
 
 - [Expressions & Functions](expressions-functions.md) -- Transform data with expressions

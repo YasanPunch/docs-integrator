@@ -68,4 +68,4 @@ Store the Client ID, Client Secret, and Refresh Token securely. Do not commit th
 
 ## Next steps
 
-- [Actions Reference](action-reference.md) - Available operations
+- [Actions Reference](actions.md) - Available operations

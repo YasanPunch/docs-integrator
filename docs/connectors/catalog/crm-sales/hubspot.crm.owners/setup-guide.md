@@ -76,4 +76,4 @@ Private App access tokens do not expire but cannot be refreshed. Store them secu
 
 ## Next steps
 
-- [Actions Reference](action-reference.md) - Available operations
+- [Actions Reference](actions.md) - Available operations

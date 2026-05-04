@@ -20,7 +20,7 @@ Before configuring the pipeline, ensure the following are in place:
 - A target deployment environment (AKS cluster, Container Apps, or VM)
 - A service connection configured in Azure DevOps for your Azure subscription
 
-## Pipeline Configuration
+## Pipeline configuration
 
 Create a file named `azure-pipelines.yml` at the root of your repository:
 
@@ -129,7 +129,7 @@ stages:
                   displayName: "Deploy to AKS"
 ```
 
-## Build Step Details
+## Build step details
 
 The build stage compiles your Ballerina source into an executable JAR. The `bal build` command resolves dependencies from Ballerina Central, compiles the code, and produces artifacts in the `target/` directory.
 
@@ -140,7 +140,7 @@ If your project uses a `Cloud.toml` file for Docker or Kubernetes artifact gener
   displayName: "Build Ballerina project"
 ```
 
-## Test Step Details
+## Test step details
 
 Running `bal test` executes all test functions in your project. Use `--code-coverage` to generate coverage reports that Azure DevOps can display in the pipeline summary.
 
@@ -151,7 +151,7 @@ Running `bal test` executes all test functions in your project. Use `--code-cove
 
 Test results are written in JUnit XML format under `target/report/`, which the `PublishTestResults` task picks up automatically.
 
-## Deploy Step Details
+## Deploy step details
 
 The deployment stage uses Kubernetes manifests stored in your repository. A minimal deployment manifest for your integration service:
 
@@ -189,7 +189,7 @@ spec:
             name: integrator-config
 ```
 
-## Secrets Management
+## Secrets management
 
 Store sensitive values such as registry credentials, database passwords, and API keys as Azure DevOps pipeline variables or variable groups. Mark variables as secret to prevent them from appearing in logs.
 
@@ -216,7 +216,7 @@ In the pipeline, pass secrets as environment variables to the container:
   displayName: "Run tests with secrets"
 ```
 
-## What's Next
+## What's next
 
 - [GitHub Actions](github-actions.md) -- CI/CD with GitHub-hosted runners
 - [GitLab CI/CD](gitlab.md) -- Pipeline configuration for GitLab

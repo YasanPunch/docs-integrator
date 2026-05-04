@@ -31,7 +31,7 @@ flowchart LR
     Message ----> Extract
 ```
 
-## When to Use It
+## When to use it
 
 - **Payment processing** -- Prevent charging a customer twice for the same transaction
 - **Order creation** -- Avoid creating duplicate orders from retried API calls
@@ -41,7 +41,7 @@ flowchart LR
 
 ## Implementation
 
-### In-Memory Idempotency (Simple)
+### In-Memory idempotency (Simple)
 
 Suitable for single-instance services during development and testing:
 
@@ -110,7 +110,7 @@ function processOrder(OrderRequest request) returns OrderResult|error {
 }
 ```
 
-### Database-Backed Idempotency (Production)
+### Database-Backed idempotency (Production)
 
 Use a database table for durable, multi-instance idempotency:
 
@@ -180,7 +180,7 @@ function recordProcessed(string messageId, OrderResult result) returns error? {
 }
 ```
 
-### Kafka Consumer with Idempotency
+### Kafka consumer with idempotency
 
 Handle duplicate messages from Kafka:
 
@@ -216,7 +216,7 @@ service on orderListener {
 }
 ```
 
-### Idempotency Key from HTTP Headers
+### Idempotency key from HTTP headers
 
 Accept an idempotency key from the client via HTTP headers (common in payment APIs):
 
@@ -271,8 +271,8 @@ function processPayment(json payload) returns OrderResult|error {
 - **Key generation** -- Choose idempotency keys carefully. UUIDs are safest. Content hashes work but may collide on legitimate different messages with identical content.
 - **Response consistency** -- Always return the same response for a duplicate as for the original processing
 
-## Related Patterns
+## Related patterns
 
 - [Guaranteed Delivery](guaranteed-delivery.md) -- Idempotent receiver is the essential companion to guaranteed delivery
 - [Message Filter](message-filter.md) -- Filters messages before processing; idempotent receiver filters duplicates specifically
-- [Circuit Breaker & Retry](circuit-breaker.md) -- Retry logic commonly produces the duplicates that idempotent receiver handles
+- [Circuit Breaker & Retry](circuit-breaker-retry.md) -- Retry logic commonly produces the duplicates that idempotent receiver handles

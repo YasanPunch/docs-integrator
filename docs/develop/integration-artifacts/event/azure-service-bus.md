@@ -6,7 +6,7 @@ title: Azure Service Bus
 
 Azure Service Bus event integrations consume messages from a queue or topic subscription and trigger event handlers as each message arrives. Use them for reliable enterprise messaging, decoupled service-to-service communication, and workflows that require ordered or transactional message delivery.
 
-## Creating an Azure Service Bus service
+## Creating an Azure service bus service
 
 1. Click **+ Add Artifact** in the canvas or click **+** next to **Entry Points** in the sidebar.
 2. In the **Artifacts** panel, select **Azure Service Bus** under **Event Integration**.

@@ -6,9 +6,9 @@ title: Runtime Security
 
 Securing your Ballerina integrations at runtime involves hardening the JVM, managing keystores and certificates, running as non-root, and applying network-level controls. This page covers production security best practices.
 
-## JVM Hardening
+## JVM hardening
 
-### Disable Unnecessary Features
+### Disable unnecessary features
 
 ```bash
 java \
@@ -19,7 +19,7 @@ java \
   -jar my_integration.jar
 ```
 
-### Recommended JVM Security Flags
+### Recommended JVM security flags
 
 | Flag | Purpose |
 |------|---------|
@@ -29,7 +29,7 @@ java \
 | `-XX:+UseContainerSupport` | Respect container memory limits |
 | `-XX:MaxRAMPercentage=75.0` | Limit heap to 75% of available RAM |
 
-### Use the Latest JDK
+### Use the latest JDK
 
 Always run on a supported, patched JDK version. Subscribe to security advisories:
 
@@ -38,103 +38,15 @@ java -version
 # Ensure JDK 17.0.x or later with latest patch
 ```
 
-## Keystores and Certificates
+## Keystores and truststores
 
-### Creating a Keystore
+Creating keystores, truststores is covered in detail in [Keystores and Truststores](keystore-truststore.md). That page covers:
 
-Generate a keystore for TLS:
+- Generating keystores and truststores using `keytool`
+- Configuring TLS and mutual TLS for HTTP and gRPC services
+- Keeping certificate paths and passwords out of source code using `Config.toml` and environment variables
 
-```bash
-keytool -genkeypair \
-  -alias integration-server \
-  -keyalg RSA \
-  -keysize 2048 \
-  -validity 365 \
-  -keystore keystore.p12 \
-  -storetype PKCS12 \
-  -storepass changeit \
-  -dname "CN=integration.example.com,O=MyOrg,L=City,ST=State,C=US"
-```
-
-### Configuring TLS in Ballerina
-
-```ballerina
-import ballerina/http;
-
-listener http:Listener secureEP = new (9443, {
-    secureSocket: {
-        key: {
-            path: "/opt/integrations/keystore.p12",
-            password: "changeit"
-        }
-    }
-});
-
-service /api on secureEP {
-    resource function get health() returns string {
-        return "OK";
-    }
-}
-```
-
-### Mutual TLS (mTLS)
-
-Enable client certificate verification:
-
-```ballerina
-listener http:Listener mtlsEP = new (9443, {
-    secureSocket: {
-        key: {
-            path: "/opt/integrations/keystore.p12",
-            password: "changeit"
-        },
-        mutualSsl: {
-            cert: {
-                path: "/opt/integrations/truststore.p12",
-                password: "changeit"
-            },
-            verifyClient: http:REQUIRE
-        }
-    }
-});
-```
-
-### Truststore Configuration
-
-Configure trusted CA certificates for outbound connections:
-
-```ballerina
-final http:Client secureClient = check new ("https://api.example.com", {
-    secureSocket: {
-        cert: {
-            path: "/opt/integrations/truststore.p12",
-            password: "changeit"
-        }
-    }
-});
-```
-
-### Certificate Rotation
-
-Automate certificate rotation using a script or cert-manager (Kubernetes):
-
-```yaml
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: integration-cert
-spec:
-  secretName: integration-tls
-  issuerRef:
-    name: letsencrypt-prod
-    kind: ClusterIssuer
-  commonName: integration.example.com
-  dnsNames:
-    - integration.example.com
-  renewBefore: 720h  # Renew 30 days before expiry
-```
-
-## Non-Root Execution
+## Non-Root execution
 
 ### Linux
 
@@ -187,7 +99,7 @@ spec:
           drop: ["ALL"]
 ```
 
-## File System Security
+## File system security
 
 | Practice | Implementation |
 |----------|---------------|
@@ -207,9 +119,9 @@ volumeMounts:
     mountPath: /tmp
 ```
 
-## Network Security
+## Network security
 
-### Restrict Listening Interfaces
+### Restrict listening interfaces
 
 Bind to specific interfaces instead of `0.0.0.0`:
 
@@ -219,7 +131,7 @@ host = "127.0.0.1"  # Only local access to metrics
 port = 9797
 ```
 
-### Kubernetes Network Policies
+### Kubernetes network policies
 
 Restrict pod-to-pod communication:
 
@@ -253,7 +165,7 @@ spec:
           port: 5432
 ```
 
-## Security Checklist
+## Security checklist
 
 | Item | Status |
 |------|--------|
@@ -268,8 +180,9 @@ spec:
 | Rotate certificates before expiry | Required |
 | Encrypt secrets in Config.toml | Required |
 
-## What's Next
+## What's next
 
+- [Keystores and Truststores](keystore-truststore.md) -- Create and configure TLS certificates, keystores, and truststores
 - [Secrets & Encryption](secrets-encryption.md) -- Manage secrets and encryption
 - [Authentication](authentication.md) -- Configure authentication for services
-- [API Security](api-security.md) -- Secure your API endpoints
+- [API Security](api-security-rate-limiting.md) -- Secure your API endpoints

@@ -8,7 +8,7 @@ title: Environment Variables
 
 Ballerina supports configuring runtime behavior through environment variables. These include variables that supply values to `configurable` declarations, variables that point to configuration files, and system-level variables used by the Ballerina runtime and build toolchain.
 
-## Configuration Environment Variables
+## Configuration environment variables
 
 ### `BAL_CONFIG_FILES`
 
@@ -42,7 +42,7 @@ export BAL_CONFIG_DATA='port=9090\nhostname="api.example.com"\nenableSSL=true'
 
 When both `BAL_CONFIG_FILES` and `BAL_CONFIG_DATA` are set, values from `BAL_CONFIG_DATA` take precedence over values from the config files.
 
-### `BAL_CONFIG_VAR_*` (Individual Variable Overrides)
+### `BAL_CONFIG_VAR_*` (Individual variable overrides)
 
 Overrides individual configurable variables using specially named environment variables. This method has the highest precedence of all configuration sources.
 
@@ -73,9 +73,9 @@ export BAL_CONFIG_VAR_BALLERINAX_MYSQL_PORT=5432
 | `string` | Plain text: `api.example.com` |
 | `decimal` | Decimal literal: `0.08` |
 
-## System Environment Variables
+## System environment variables
 
-### `BALLERINA_HOME`
+### `Ballerina_HOME`
 
 Points to the Ballerina installation directory. The runtime uses this to locate the distribution, standard libraries, and tool installations.
 
@@ -85,7 +85,7 @@ export BALLERINA_HOME="/usr/lib/ballerina"
 
 This is typically set automatically by the Ballerina installer. Override it only if you manage multiple installations or use a non-standard install path.
 
-### `JAVA_HOME`
+### `Java_HOME`
 
 Points to the Java Development Kit (JDK) installation directory. Ballerina requires a JDK (Java 21 or later) for compilation and execution.
 
@@ -93,7 +93,7 @@ Points to the Java Development Kit (JDK) installation directory. Ballerina requi
 export JAVA_HOME="/usr/lib/jvm/java-21-openjdk"
 ```
 
-### `BALLERINA_CENTRAL_ACCESS_TOKEN`
+### `Ballerina_CENTRAL_ACCESS_TOKEN`
 
 The personal access token used to authenticate with Ballerina Central when pushing or pulling packages.
 
@@ -103,7 +103,7 @@ export BALLERINA_CENTRAL_ACCESS_TOKEN="your-access-token"
 
 This token is typically stored in `~/.ballerina/Settings.toml` but can be overridden with this environment variable for CI/CD pipelines.
 
-### `BALLERINA_DEV_CENTRAL`
+### `Ballerina_DEV_CENTRAL`
 
 When set to `true`, uses the Ballerina Central staging environment instead of production. Used for development and testing.
 
@@ -128,7 +128,7 @@ Comma-separated list of hostnames or IP addresses that should bypass the proxy.
 export NO_PROXY="localhost,127.0.0.1,.example.com"
 ```
 
-## Precedence Rules
+## Precedence rules
 
 When the same configurable variable is set through multiple sources, the following precedence order applies (highest to lowest):
 
@@ -141,7 +141,7 @@ When the same configurable variable is set through multiple sources, the followi
 | 5 | Default `Config.toml` in working directory | `./Config.toml` |
 | 6 (lowest) | Default values in source code | `configurable int port = 8080;` |
 
-## Docker and Kubernetes Usage
+## Docker and Kubernetes usage
 
 In containerized environments, pass configuration through environment variables:
 
@@ -171,7 +171,7 @@ spec:
           mountPath: /config
 ```
 
-## CI/CD Pipeline Usage
+## CI/CD pipeline usage
 
 ```bash
 # GitHub Actions example

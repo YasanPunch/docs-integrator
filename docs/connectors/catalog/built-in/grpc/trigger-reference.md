@@ -55,12 +55,15 @@ import ballerina/grpc;
 listener grpc:Listener grpcListener = new (9090,
     secureSocket = {
         key: {
-            certFile: "./resources/public.crt",
-            keyFile: "./resources/private.key"
+            certFile: "/path/to/server.crt",
+            keyFile: "/path/to/server.key"
         }
     }
 );
 ```
+
+:::tip Generating certificates
+For instructions on generating certificates using `keytool`, see [Keystores and Truststores](../../../../deploy-operate/secure/keystore-truststore.md).
 
 **Listener with mutual TLS:**
 
@@ -70,12 +73,12 @@ import ballerina/grpc;
 listener grpc:Listener grpcListener = new (9090,
     secureSocket = {
         key: {
-            certFile: "./resources/public.crt",
-            keyFile: "./resources/private.key"
+            certFile: "/path/to/server.crt",
+            keyFile: "/path/to/server.key"
         },
         mutualSsl: {
             verifyClient: grpc:REQUIRE,
-            cert: "./resources/public.crt"
+            cert: "/path/to/ca.crt"
         }
     }
 );

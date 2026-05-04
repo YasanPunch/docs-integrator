@@ -75,4 +75,4 @@ Private apps are simpler to set up and are recommended for server-to-server inte
 
 ## Next steps
 
-- [Actions Reference](action-reference.md) - Available operations
+- [Actions Reference](actions.md) - Available operations

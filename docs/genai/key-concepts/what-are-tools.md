@@ -8,7 +8,7 @@ Tools are Ballerina functions that an AI agent can call during its reasoning loo
 
 The LLM sees the tool's name, description, and parameter schema, then decides whether and how to call it. The LLM **never** executes code directly; it produces a structured tool call request, and the agent runtime executes the actual function safely.
 
-## How Tools Work
+## How tools work
 
 ```ballerina
 import ballerinax/ai.agent;
@@ -26,7 +26,7 @@ isolated function getWeather(
 
 When a user asks "What's the weather in Tokyo?", the agent's LLM reads the tool description, decides to call `getWeather` with `city: "Tokyo"`, and the runtime executes the function and returns the result to the LLM for response generation.
 
-## Tool Categories
+## Tool categories
 
 | Category | Purpose | Example |
 |----------|---------|---------|
@@ -34,14 +34,14 @@ When a user asks "What's the weather in Tokyo?", the agent's LLM reads the tool 
 | **Action tools** | Perform write operations or trigger workflows | Create tickets, send notifications |
 | **Connector tools** | Wrap existing WSO2 Integrator connectors | Query Salesforce, interact with databases |
 
-## Tool Design Principles
+## Tool design principles
 
 1. **Clear descriptions** -- The description is the most important factor in whether the LLM uses the tool correctly
 2. **Typed parameters** -- Use `@agent:Param` annotations to describe each parameter
 3. **Informative errors** -- Return descriptive error messages so the LLM can reason about failures
 4. **Limited output** -- Trim large responses to prevent exceeding context window limits
 
-## Registering Tools with an Agent
+## Registering tools with an agent
 
 ```ballerina
 final agent:ChatAgent myAgent = check new (
@@ -51,8 +51,8 @@ final agent:ChatAgent myAgent = check new (
 );
 ```
 
-## What's Next
+## What's next
 
-- [What is AI Agent Memory?](what-is-agent-memory.md) -- How agents maintain context
+- [What is AI Agent Memory?](what-is-ai-agent-memory.md) -- How agents maintain context
 - [Adding Tools to an Agent](/docs/genai/develop/agents/adding-tools) -- Detailed tool patterns
 - [What is MCP?](what-is-mcp.md) -- Expose tools to external AI assistants

@@ -6,7 +6,7 @@ title: Solace
 
 Solace event integrations consume messages from a Solace PubSub+ queue or topic and trigger event handlers as each message arrives. Use them for high-performance event streaming in financial services, IoT, and real-time analytics workloads that require guaranteed or direct message delivery.
 
-## Creating a Solace Events service
+## Creating a Solace events service
 
 1. Click **+ Add Artifact** in the canvas or click **+** next to **Entry Points** in the sidebar.
 2. In the **Artifacts** panel, select **Solace** under **Event Integration**.

@@ -17,7 +17,7 @@ Key benefits:
 - **Error correlation** -- Connect errors to the specific span where they occurred
 - **Dependency mapping** -- Understand service-to-service call patterns
 
-## OpenTelemetry Integration
+## OpenTelemetry integration
 
 Ballerina integrates with OpenTelemetry for trace collection and export. Enable tracing in `Config.toml`:
 
@@ -46,7 +46,7 @@ name = "jaeger"
 version = "1.0.0"
 ```
 
-### Automatic Instrumentation
+### Automatic instrumentation
 
 Ballerina automatically creates spans for:
 
@@ -57,7 +57,7 @@ Ballerina automatically creates spans for:
 
 No code changes are required for basic tracing. Trace context (W3C Trace Context headers) is propagated automatically across HTTP calls.
 
-### Custom Spans
+### Custom spans
 
 Add custom spans for application-specific operations:
 
@@ -88,7 +88,7 @@ service /orders on new http:Listener(9090) {
 }
 ```
 
-### Adding Span Tags
+### Adding span tags
 
 Attach metadata to spans for filtering and searching in the tracing UI:
 
@@ -109,9 +109,9 @@ public function processOrder(json order) returns error? {
 }
 ```
 
-## Configuring Trace Exporters
+## Configuring trace exporters
 
-### Jaeger Exporter
+### Jaeger exporter
 
 For Jaeger, configure the agent or collector endpoint:
 
@@ -126,7 +126,7 @@ agentPort = 6831
 reporterEndpoint = "http://jaeger-collector.observability:14268/api/traces"
 ```
 
-### Zipkin Exporter
+### Zipkin exporter
 
 To export traces to Zipkin instead:
 
@@ -140,7 +140,7 @@ tracingProvider = "zipkin"
 reporterEndpoint = "http://zipkin.observability:9411/api/v2/spans"
 ```
 
-### OpenTelemetry Collector
+### OpenTelemetry collector
 
 For a vendor-neutral approach, export traces to an OpenTelemetry Collector, which can then forward to any backend:
 
@@ -185,9 +185,9 @@ service:
       exporters: [jaeger, otlp]
 ```
 
-## Jaeger Setup and Usage
+## Jaeger setup and usage
 
-### Running Jaeger Locally
+### Running Jaeger locally
 
 For local development, run Jaeger as an all-in-one container:
 
@@ -201,7 +201,7 @@ docker run -d --name jaeger \
 
 Access the Jaeger UI at `http://localhost:16686`.
 
-### Kubernetes Deployment
+### Kubernetes deployment
 
 Deploy Jaeger in your cluster using the Jaeger Operator or a Helm chart:
 
@@ -227,9 +227,9 @@ spec:
 EOF
 ```
 
-## Trace Analysis for Debugging
+## Trace analysis for debugging
 
-### Finding Slow Requests
+### Finding slow requests
 
 In the Jaeger UI:
 
@@ -238,7 +238,7 @@ In the Jaeger UI:
 3. Click **Find Traces** to see matching requests
 4. Click a trace to see the span waterfall, showing where time was spent
 
-### Correlating Traces with Logs
+### Correlating traces with logs
 
 Include the trace ID in your log messages by enabling trace context logging:
 
@@ -253,7 +253,7 @@ public function processOrder(string orderId) returns error? {
 }
 ```
 
-### Sampling Configuration
+### Sampling configuration
 
 In production, sampling reduces overhead. Configure the sampler:
 
@@ -274,7 +274,7 @@ samplerType = "ratelimiting"
 samplerParam = 2.0
 ```
 
-## What's Next
+## What's next
 
 - [Logging](logging.md) -- Configure structured logging
 - [Metrics](metrics.md) -- Monitor service health with Prometheus

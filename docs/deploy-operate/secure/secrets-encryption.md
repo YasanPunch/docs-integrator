@@ -25,7 +25,7 @@ Config.toml
 **/Config.toml
 ```
 
-## Environment Variables
+## Environment variables
 
 Pass secrets via environment variables instead of files:
 
@@ -40,7 +40,7 @@ export BAL_CONFIG_VAR_API_KEY="sk-abc123"
 bal run
 ```
 
-## Kubernetes Secrets
+## Kubernetes secrets
 
 Mount Kubernetes Secrets as files or environment variables:
 
@@ -76,7 +76,7 @@ spec:
             secretName: integration-config
 ```
 
-## HashiCorp Vault Integration
+## HashiCorp vault integration
 
 Fetch secrets from Vault at startup using a Ballerina initialization function:
 
@@ -98,7 +98,7 @@ function getSecret(string path) returns string|error {
 
 For production, use the Vault Agent sidecar pattern to inject secrets as environment variables or files.
 
-## AWS Secrets Manager
+## AWS secrets manager
 
 ```ballerina
 import ballerinax/aws.secretsmanager;
@@ -112,7 +112,7 @@ secretsmanager:Client smClient = check new ({
 string dbPassword = check smClient->getSecretValue("prod/db/password");
 ```
 
-## TLS Configuration
+## TLS configuration
 
 ### Server TLS
 
@@ -127,7 +127,7 @@ listener http:Listener secureListener = new (9443, {
 });
 ```
 
-### Client TLS (Trust Custom CA)
+### Client TLS (Trust custom CA)
 
 ```ballerina
 final http:Client secureClient = check new ("https://internal-api.example.com", {
@@ -151,7 +151,7 @@ listener http:Listener mtlsListener = new (9443, {
 });
 ```
 
-## Encryption at Rest
+## Encryption at REST
 
 For database encryption, configure at the database level:
 
@@ -160,7 +160,7 @@ For database encryption, configure at the database level:
 - **MongoDB** — Enable encryption at rest with WiredTiger
 - **AWS RDS** — Enable storage encryption in RDS settings
 
-## Best Practices
+## Best practices
 
 1. **Never hardcode secrets** in source code — always use `configurable` variables.
 2. **Never commit Config.toml** to version control.
@@ -169,8 +169,8 @@ For database encryption, configure at the database level:
 5. **Enable TLS everywhere** — all service-to-service communication should be encrypted.
 6. **Use mTLS** for sensitive internal service communication.
 
-## What's Next
+## What's next
 
 - [Authentication](authentication.md) — Secure service endpoints
-- [Compliance](compliance.md) — Audit logging and data protection
+- [Compliance](compliance-considerations.md) — Audit logging and data protection
 - [Runtime Security](runtime-security.md) — Additional runtime security measures

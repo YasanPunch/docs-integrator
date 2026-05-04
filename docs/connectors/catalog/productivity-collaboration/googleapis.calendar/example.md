@@ -20,21 +20,21 @@ flowchart LR
 
 - A Google Cloud project with OAuth2 credentials: Client ID, Client Secret, and Refresh Token.
 
-## Setting up the Google Calendar integration
+## Setting up the Google calendar integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
-## Adding the Google Calendar connector
+## Adding the Google calendar connector
 
 Select **Add Connection** in the **Connections** section of the left sidebar (or select the **+** button next to **Connections**) to open the Add Connection palette.
 
 ![Google Calendar connector palette open with search field before any selection](/img/connectors/catalog/productivity-collaboration/googleapis.calendar/googleapis_calendar_screenshot_01_palette.png)
 
-### Step 1: Search for and select the Google Calendar connector
+### Step 1: Search for and select the Google calendar connector
 
 Search for "calendar" in the palette and select the `ballerinax/googleapis.calendar` connector card to open the connection configuration form.
 
-## Configuring the Google Calendar connection
+## Configuring the Google calendar connection
 
 ### Step 2: Fill in connection parameters
 
@@ -64,9 +64,9 @@ In the left panel, select **Configurations**. Set a value for each configurable 
 - **calendarClientId** (string) : Your OAuth2 client ID from Google Cloud Console
 - **calendarClientSecret** (string) : Your OAuth2 client secret from Google Cloud Console
 
-## Configuring the Google Calendar createEvent operation
+## Configuring the Google calendar createEvent operation
 
-### Step 5: Add an Automation entry point
+### Step 5: Add an automation entry point
 
 In the left sidebar under **Entry Points**, select **+** to add a new entry point. Select **Automation** and name it `main`. The Automation flow canvas opens, showing a **Start** node and an **Error Handler** node.
 
@@ -92,6 +92,6 @@ Select **Save**. The `calendar : createEvent` node is added to the Automation fl
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/googleapis.calendar_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/googleapis.calendar_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/googleapis.calendar_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/googleapis.calendar_connector_sample)

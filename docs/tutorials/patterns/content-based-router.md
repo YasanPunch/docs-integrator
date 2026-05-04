@@ -8,10 +8,10 @@ title: Content-Based Router
 
 ## Solution
 
-## When to Use It
+## When to use it
 
 ## Implementation
 
 ## Considerations
 
-## Related Patterns
+## Related patterns

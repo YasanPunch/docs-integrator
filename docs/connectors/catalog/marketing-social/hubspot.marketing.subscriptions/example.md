@@ -20,13 +20,13 @@ flowchart LR
 
 - A HubSpot account with a valid private app access token (bearer token).
 
-## Setting up the HubSpot Marketing Subscriptions integration
+## Setting up the HubSpot marketing subscriptions integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
-## Adding the HubSpot Marketing Subscriptions connector
+## Adding the HubSpot marketing subscriptions connector
 
-### Step 1: Open the Add Connection panel
+### Step 1: Open the add connection panel
 
 In the project overview, expand **Connections** in the left panel and select **+ Add Connection**.
 
@@ -37,7 +37,7 @@ In the project overview, expand **Connections** in the left panel and select **+
 1. Search for **hubspot marketing subscriptions** in the connector search panel.
 2. Select the **HubSpot Marketing Subscriptions** connector card (`ballerinax/hubspot.marketing.subscriptions`) to open the configuration form.
 
-## Configuring the HubSpot Marketing Subscriptions connection
+## Configuring the HubSpot marketing subscriptions connection
 
 ### Step 3: Fill in the connection parameters
 
@@ -61,9 +61,9 @@ Select **Save Connection** to persist the connection. The canvas updates to show
 
 - **hubspotAuthToken** (string) : Your HubSpot private app bearer token.
 
-## Configuring the HubSpot Marketing Subscriptions getCommunicationPreferencesV4Definitions operation
+## Configuring the HubSpot marketing subscriptions getCommunicationPreferencesV4Definitions operation
 
-### Step 6: Add an Automation entry point
+### Step 6: Add an automation entry point
 
 In the left sidebar under **Entry Points**, select **+** and choose **Automation**. Name the entry point `main` and confirm. The Automation flow canvas opens showing a minimal flow: **Start** → **Error Handler** → **End**.
 
@@ -92,9 +92,9 @@ You should now see the completed flow with the operation placed between **Start*
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/hubspot.marketing.subscriptions_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/hubspot.marketing.subscriptions_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/hubspot.marketing.subscriptions_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/hubspot.marketing.subscriptions_connector_sample)
 
 ## More code examples
 

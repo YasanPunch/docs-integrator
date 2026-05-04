@@ -60,4 +60,4 @@ Note the file share name — it is used as the `fileShareName` parameter in the 
 
 ## Next steps
 
-- [Actions Reference](action-reference.md) - Available operations
+- [Actions Reference](actions.md) - Available operations

@@ -2,7 +2,7 @@
 title: Health Tool
 ---
 
-# Health tool
+# Health Tool
 
 The `bal health` tool generates Ballerina code for healthcare integrations based on FHIR (Fast Healthcare Interoperability Resources) and HL7 standards. It creates type-safe resource types, service templates, and data transformation utilities that conform to healthcare interoperability profiles, accelerating the development of clinical and administrative healthcare integrations.
 

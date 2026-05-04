@@ -6,11 +6,11 @@ title: Generate Documentation
 
 Produce professional API documentation directly from your Ballerina source code. The `bal doc` command generates HTML documentation from documentation comments (`#` comments) attached to public functions, types, services, and modules, giving consumers of your integration packages a clear reference without maintaining separate documentation.
 
-## Writing Documentation Comments
+## Writing documentation comments
 
 Ballerina uses `#` comments (not `//`) for documentation. Place them immediately above the declaration they document.
 
-### Function Documentation
+### Function documentation
 
 ```ballerina
 # Validates an incoming order request against business rules.
@@ -32,7 +32,7 @@ public function validateOrder(OrderRequest request) returns error? {
 }
 ```
 
-### Record Type Documentation
+### Record type documentation
 
 ```ballerina
 # Represents a customer order in the system.
@@ -69,7 +69,7 @@ public type OrderItem record {|
 |};
 ```
 
-### Service Documentation
+### Service documentation
 
 ```ballerina
 # Order management API service.
@@ -98,7 +98,7 @@ service /api/v1 on new http:Listener(9090) {
 }
 ```
 
-### Enum and Constant Documentation
+### Enum and constant documentation
 
 ```ballerina
 # Represents the lifecycle states of an order.
@@ -119,9 +119,9 @@ public enum OrderStatus {
 public const decimal TAX_RATE = 0.08;
 ```
 
-## Generating the Documentation
+## Generating the documentation
 
-### Basic Generation
+### Basic generation
 
 ```bash
 # Generate docs for the current package
@@ -130,7 +130,7 @@ bal doc
 # Output location: target/apidocs/
 ```
 
-### Viewing the Generated Docs
+### Viewing the generated docs
 
 ```bash
 # Open the generated documentation in a browser
@@ -140,7 +140,7 @@ open target/apidocs/index.html
 cd target/apidocs && python3 -m http.server 8000
 ```
 
-### Module Documentation (Module.md)
+### Module documentation (Module.md)
 
 Create a `Module.md` file in each module directory to provide module-level documentation.
 
@@ -170,7 +170,7 @@ The module requires the following configurable values:
 | `dbName` | Database name | `orders` |
 ```
 
-### Package Documentation (Package.md)
+### Package documentation (Package.md)
 
 Create a `Package.md` at the package root for the landing page on Ballerina Central.
 
@@ -187,7 +187,7 @@ managing inventory, and dispatching notifications.
 - Kafka-based notification dispatch
 - PostgreSQL persistence
 
-## Quick Start
+## Quick start
 
 ```ballerina
 import myorg/order_service;
@@ -196,9 +196,9 @@ import myorg/order_service;
 ```
 ```
 
-## Documentation Best Practices
+## Documentation best practices
 
-### Document Parameters and Return Types
+### Document parameters and return types
 
 Always document every parameter and the return type.
 
@@ -218,7 +218,7 @@ public function calculateShipping(
 }
 ```
 
-### Use Code Examples in Documentation
+### Use code examples in documentation
 
 Include usage examples in documentation comments.
 
@@ -238,7 +238,7 @@ public function parseCsv(string csvContent) returns record{}[]|error {
 }
 ```
 
-### Document Error Conditions
+### Document error conditions
 
 Explain when and why errors are returned.
 
@@ -257,7 +257,7 @@ public function processPayment(string orderId, decimal amount)
 }
 ```
 
-## Generating Docs for CI/CD
+## Generating docs for CI/CD
 
 Include documentation generation in your CI pipeline.
 
@@ -273,7 +273,7 @@ Include documentation generation in your CI pipeline.
     publish_dir: ./target/apidocs
 ```
 
-## Best Practices
+## Best practices
 
 - **Document all public declarations** -- every public function, type, constant, and service should have a documentation comment
 - **Write the first line as a summary** -- tools and IDEs display the first line as a brief description
@@ -282,7 +282,7 @@ Include documentation generation in your CI pipeline.
 - **Generate docs in CI** to catch missing documentation early
 - **Use Module.md and Package.md** to provide high-level context for consumers
 
-## What's Next
+## What's next
 
 - [Style Guide](style-guide.md) -- Coding conventions for consistent code
 - [Static Code Analysis](static-code-analysis.md) -- Automated code quality checks

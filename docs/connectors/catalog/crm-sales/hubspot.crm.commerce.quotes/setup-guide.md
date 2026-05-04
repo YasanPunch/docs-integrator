@@ -84,4 +84,4 @@ Private app tokens do not expire automatically but should still be stored secure
 
 ## Next steps
 
-- [Actions Reference](action-reference.md) - Available operations
+- [Actions Reference](actions.md) - Available operations

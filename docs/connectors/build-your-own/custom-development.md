@@ -161,4 +161,4 @@ Then follow the [package publishing guide](https://ballerina.io/learn/publish-pa
 
 ## What's next
 
-- [Create from OpenAPI Spec](create-from-openapi.md) — Quickly generate a connector directly in the WSO2 Integrator IDE
+- [Create from OpenAPI Spec](create-from-openapi-spec.md) — Quickly generate a connector directly in the WSO2 Integrator IDE

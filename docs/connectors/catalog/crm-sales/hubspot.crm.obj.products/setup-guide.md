@@ -54,4 +54,4 @@ The OAuth 2.0 token URL for HubSpot is `https://api.hubapi.com/oauth/v1/token`. 
 
 ## Next steps
 
-- [Actions Reference](action-reference.md) - Available operations
+- [Actions Reference](actions.md) - Available operations

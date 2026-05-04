@@ -22,11 +22,11 @@ flowchart LR
 
 ## Setting up the AWS Redshift integration
 
-> **Note:** New to WSO2 Integrator? Follow the [Create a new integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first.
+> **Note:** New to WSO2 Integrator? Follow the [Create a new integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first.
 
 ## Adding the AWS Redshift connector
 
-### Step 1: Open the Add Connection panel
+### Step 1: Open the add connection panel
 
 In the left sidebar, hover over **Connections** to reveal the toolbar and select the **Add Connection** (**+**) button to open the connector palette.
 
@@ -34,7 +34,7 @@ In the left sidebar, hover over **Connections** to reveal the toolbar and select
 
 ### Step 2: Select the AWS Redshift connector
 
-1. Enter `redshift` in the search field to filter the connectors.
+1. Enter `Redshift` in the search field to filter the connectors.
 2. Select the **AWS Redshift** connector card to open the connection configuration form.
 
 ## Configuring the AWS Redshift connection
@@ -96,9 +96,9 @@ Select **Save** to add the step to the automation flow.
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/aws.redshift_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/aws.redshift_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/aws.redshift_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/aws.redshift_connector_sample)
 
 ## More code examples
 

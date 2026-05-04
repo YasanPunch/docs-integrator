@@ -76,4 +76,4 @@ Private app tokens grant long-lived access. Keep them secure and rotate them if 
 
 ## Next steps
 
-- [Actions Reference](action-reference.md) - Available operations
+- [Actions Reference](actions.md) - Available operations

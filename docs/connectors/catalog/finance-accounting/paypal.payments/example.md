@@ -21,13 +21,13 @@ flowchart LR
 - PayPal developer account with API credentials (Client ID and Client Secret)
 - OAuth2 Client Credentials Grant configured in your PayPal developer dashboard
 
-## Setting up the PayPal Payments integration
+## Setting up the PayPal payments integration
 
-> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-new-integration.md) guide to set up your integration first, then return here to add the connector.
+> **New to WSO2 Integrator?** Follow the [Create a New Integration](../../../../develop/create-integrations/create-a-new-integration.md) guide to set up your integration first, then return here to add the connector.
 
-## Adding the PayPal Payments connector
+## Adding the PayPal payments connector
 
-### Step 1: Add the PayPal Payments connection
+### Step 1: Add the PayPal payments connection
 
 1. In the WSO2 Integrator sidebar, navigate to **Connections**.
 2. Select **Add Connection** to open the connection palette.
@@ -36,7 +36,7 @@ flowchart LR
 
 3. Search for and select the **Payments** connector from the list of available connectors.
 
-## Configuring the PayPal Payments connection
+## Configuring the PayPal payments connection
 
 ### Step 2: Fill in the connection parameters
 
@@ -60,7 +60,7 @@ In the left panel, select **Configurations** and set a value for each configurab
 - **paypalClientId** (string) : Your PayPal developer Client ID
 - **paypalClientSecret** (string) : Your PayPal developer Client Secret
 
-## Configuring the PayPal Payments show details for authorized payment operation
+## Configuring the PayPal payments show details for authorized payment operation
 
 ### Step 5: Add an automation entry point
 
@@ -91,9 +91,9 @@ In the left panel, select **Configurations** and set a value for each configurab
 
 Try this sample in WSO2 Integration Platform.
 
-[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/connectors/paypal.payments_connector_sample)
+[![Deploy to Devant](https://openindevant.choreoapps.dev/images/DeployDevant-White.svg)](https://console.devant.dev/new?gh=wso2/integration-samples/tree/main/integrator-default-profile/connectors/paypal.payments_connector_sample)
 
-[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/connectors/paypal.payments_connector_sample)
+[View source on GitHub](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/connectors/paypal.payments_connector_sample)
 
 ## More code examples
 
