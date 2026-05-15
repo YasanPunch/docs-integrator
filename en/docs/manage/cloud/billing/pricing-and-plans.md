@@ -1,10 +1,10 @@
 ---
-title: "Pricing and plans"
+title: "Pricing and Plans"
 description: "How WSO2 Cloud bills platform services such as managed databases, caches, and Kafka, and how to upgrade a service plan."
 keywords: [wso2 integrator, wso2 cloud, billing, pricing, service plan, upgrade, platform services]
 ---
 
-# Pricing and plans
+# Pricing and Plans
 
 WSO2 Cloud bills the platform services you create, such as databases, caches, or Kafka services, as part of your existing subscription. The cost depends on the service plan and the usage of each resource.
 

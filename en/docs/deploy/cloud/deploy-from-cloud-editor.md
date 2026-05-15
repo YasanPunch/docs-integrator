@@ -1,10 +1,10 @@
 ---
-title: Deploy from the cloud editor
+title: Deploy from the Cloud Editor
 description: Create and deploy an integration directly in the browser using the WSO2 Cloud editor, without installing the WSO2 Integrator IDE locally.
 keywords: [wso2 integrator, wso2 cloud, cloud editor, deploy, browser, development environment]
 ---
 
-# Deploy from the cloud editor
+# Deploy from the Cloud Editor
 
 WSO2 Cloud includes a browser-based editor where you can create and develop integrations without installing anything locally. Once your integration is ready, you can deploy it to WSO2 Cloud directly from the editor.
 
@@ -48,7 +48,7 @@ WSO2 Cloud pushes the integration to the repository, builds it, and deploys it t
 
 ## What's next
 
-- [View integrations](/docs/manage/cloud/integrations/viewing-deployed.md) — Inspect build status, deployment status, and configuration for your deployed integrations.
+- [View and manage integrations](/docs/manage/cloud/integrations.md) — Inspect build status, deployment status, and manage the lifecycle of your deployed integrations.
 - [Runtime configurations](/docs/manage/cloud/configurations/runtime-configurations.md) — Set configurable values per environment and manage reusable configuration groups.
 - [Security configurations](/docs/manage/cloud/configurations/security-configurations.md) — Secure your integration endpoints with API Key or OAuth2 authentication.
 - [Endpoint configurations](/docs/manage/cloud/configurations/endpoint-configurations.md) — Control endpoint visibility levels for integrations deployed as Integration as APIs.

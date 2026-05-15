@@ -4,7 +4,7 @@ description: "Detect anomalies and configure alerts for integrations deployed on
 keywords: [wso2 integrator, wso2 cloud, anomaly detection, alerts, observability]
 ---
 
-# Anomaly detection and alerts
+# Anomaly Detection and Alerts
 
 Alerts let you proactively monitor your integrations and respond before issues affect users. You can configure rules that trigger email notifications when latency, traffic, resource usage, or log activity crosses a defined threshold.
 

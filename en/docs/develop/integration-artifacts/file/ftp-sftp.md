@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # FTP / SFTP
 
-FTP, SFTP, and FTPS [file integrations](/docs/get-started/concepts/core#file-integrations) poll remote file servers for new files and process them as they arrive. Use them for ETL pipelines, batch processing, and B2B integrations where partners exchange data as CSV, XML, JSON, or binary files.
+FTP, SFTP, and FTPS [file integrations](/docs/get-started/concepts/core#file-integration) poll remote file servers for new files and process them as they arrive. Use them for ETL pipelines, batch processing, and B2B integrations where partners exchange data as CSV, XML, JSON, or binary files.
 
 | Protocol | Description | Transport security | Authentication |
 |---|---|---|---|
@@ -712,7 +712,7 @@ service on primaryListener, backupListener {
 </TabItem>
 </Tabs>
 
-For the general concept, see [Services and listeners](/docs/get-started/concepts/core#services-and-listeners). For the language-level details, see [Integration-specific features](../../../reference/language/integration-specific-features.md).
+For the general concept, see [Services and listeners](/docs/get-started/concepts/core#integration-as-api).
 
 ## Attaching listeners to services
 

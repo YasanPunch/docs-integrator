@@ -1,10 +1,10 @@
 ---
-title: "RAG retrieval"
+title: "RAG Retrieval"
 description: "Query a vector store in WSO2 Integration Platform to retrieve relevant chunks for RAG applications."
 keywords: [wso2 integrator, rag, retrieval, vector store, query]
 ---
 
-# RAG retrieval
+# RAG Retrieval
 
 Retrieval-augmented generation (RAG) retrieval searches a vector store for the most relevant information that answers a user query. Use it after ingestion to find supporting chunks for a response.
 

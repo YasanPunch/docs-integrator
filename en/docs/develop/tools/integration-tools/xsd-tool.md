@@ -4,7 +4,7 @@ title: XSD Tool
 description: Generate Ballerina record types from XML Schema Definition (XSD) files.
 ---
 
-# XSD tool
+# XSD Tool
 
 The `bal xsd` tool generates Ballerina record types from XML Schema Definition (XSD) files. It maps XSD complex types, simple types, enumerations, and element structures to equivalent Ballerina records with XML annotations, enabling you to serialize and deserialize XML documents with full type safety.
 

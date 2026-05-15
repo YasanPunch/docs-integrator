@@ -1,91 +1,102 @@
 ---
-title: "Setup Guide"
-description: "How to set up and configure the ballerinax/hubspot.crm.owners connector."
+title: Setup Guide
 ---
-
 # Setup Guide
 
-This guide walks you through creating a HubSpot Private App or OAuth app and obtaining the credentials required to use the HubSpot CRM Owners connector.
-
+This guide walks you through creating a HubSpot developer app and obtaining the OAuth 2.0 credentials required to use the HubSpot CRM Owners connector.
 
 ## Prerequisites
 
-- A HubSpot account with admin access. If you do not have one, [sign up for a free HubSpot account](https://app.hubspot.com/signup).
+- A HubSpot developer account. If you do not have one, [sign up for a free account](https://developers.hubspot.com/get-started).
 
-## Create a HubSpot developer account (OAuth 2.0)
+## Step 1: Log in to the HubSpot developer portal
 
-If you plan to use OAuth 2.0 authentication:
+Log in to your [HubSpot developer account](https://app.hubspot.com/).
 
-1. Go to the [HubSpot Developer Portal](https://developers.hubspot.com/).
-2. Click **Create a developer account** if you don't already have one.
-3. Log in to your developer account.
+## Step 2: Create a developer test account (optional)
 
+Developer test accounts let you test apps and integrations without affecting real HubSpot data.
 
-## Create an OAuth app
+1. Select **Test accounts** in the left sidebar.
 
-1. In your HubSpot developer account, navigate to **Apps** in the top navigation.
-2. Click **Create app**.
-3. Fill in the **App info** tab with a name and description.
-4. Go to the **Auth** tab.
-5. Under **Redirect URLs**, add your callback URL (e.g., `https://localhost/callback`).
-6. Under **Scopes**, add the following scope:
-    - `crm.objects.owners.read`
-7. Click **Save**.
-8. Copy the **Client ID** and **Client Secret** from the **Auth** tab.
+   ![Test accounts section](/img/connectors/catalog/crm-sales/hubspot.crm.owners/setup/test-account.png)
 
+2. Select **Create developer test account**.
+
+   ![Create developer test account](/img/connectors/catalog/crm-sales/hubspot.crm.owners/setup/create-test-account.png)
+
+3. Provide a name and select **Create**.
+
+   ![Name the test account](/img/connectors/catalog/crm-sales/hubspot.crm.owners/setup/create-account.png)
+
+   The new account appears in the list.
+
+   ![Test account portal](/img/connectors/catalog/crm-sales/hubspot.crm.owners/setup/test-account-portal.png)
 
 :::note
-You will need the Client ID, Client Secret, and a Refresh Token to configure the connector with OAuth 2.0.
+Developer test accounts are for development and testing only. Do not use them in production.
 :::
 
-## Obtain a refresh token
+## Step 3: Create a HubSpot app
 
-1. Construct the authorization URL, replacing `<YOUR_CLIENT_ID>` and `<YOUR_REDIRECT_URI>`:
+1. Navigate to **Apps** in the left sidebar and select **Create app**.
 
-    ```
-    https://app.hubspot.com/oauth/authorize?client_id=<YOUR_CLIENT_ID>&redirect_uri=<YOUR_REDIRECT_URI>&scope=crm.objects.owners.read
-    ```
+   ![Create app](/img/connectors/catalog/crm-sales/hubspot.crm.owners/setup/create-app.png)
 
-2. Open the URL in a browser and select the HubSpot account to authorize.
-3. After authorization, HubSpot redirects to your callback URL with a `code` query parameter. Copy the `code` value.
-4. Exchange the authorization code for tokens using a POST request:
+2. Enter a public app name and an optional description.
 
-    ```
-    POST https://api.hubapi.com/oauth/v1/token
-    Content-Type: application/x-www-form-urlencoded
+   ![App name and description](/img/connectors/catalog/crm-sales/hubspot.crm.owners/setup/app-name-desc.png)
 
-    grant_type=authorization_code
-    &code=<AUTHORIZATION_CODE>
-    &client_id=<YOUR_CLIENT_ID>
-    &client_secret=<YOUR_CLIENT_SECRET>
-    &redirect_uri=<YOUR_REDIRECT_URI>
-    ```
+## Step 4: Set up authentication
 
-5. The response contains `access_token` and `refresh_token`. Copy the `refresh_token`.
+1. Go to the **Auth** tab.
 
+   ![Configure authentication](/img/connectors/catalog/crm-sales/hubspot.crm.owners/setup/config-auth.png)
+
+2. Under **Scopes**, select **Add new scopes** and add:
+   - `crm.objects.owners.read`
+
+   ![Add scopes](/img/connectors/catalog/crm-sales/hubspot.crm.owners/setup/add-scopes.png)
+
+3. Under **Redirect URL**, add your redirect URL and select **Create App**.
+
+   ![Redirect URL](/img/connectors/catalog/crm-sales/hubspot.crm.owners/setup/redirect-url.png)
+
+## Step 5: Get the client ID and client secret
+
+In the **Auth** tab, copy the **Client ID** and **Client Secret**.
+
+![Client ID and client secret](/img/connectors/catalog/crm-sales/hubspot.crm.owners/setup/client-id-secret.png)
+
+## Step 6: Get the refresh token
+
+1. Construct the authorization URL:
+
+   ```
+   https://app.hubspot.com/oauth/authorize?client_id=<YOUR_CLIENT_ID>&scope=<YOUR_SCOPES>&redirect_uri=<YOUR_REDIRECT_URI>
+   ```
+
+2. Open the URL in a browser and select your developer test account.
+
+   ![Select account](/img/connectors/catalog/crm-sales/hubspot.crm.owners/setup/account-select.png)
+
+3. Select **Connect App**.
+
+   ![Connect app](/img/connectors/catalog/crm-sales/hubspot.crm.owners/setup/connect.png)
+
+4. Copy the authorization code from the redirect URL.
+
+5. Exchange the code for tokens:
+
+   ```bash
+   curl --request POST \
+     --url https://api.hubapi.com/oauth/v1/token \
+     --header 'content-type: application/x-www-form-urlencoded' \
+     --data 'grant_type=authorization_code&code=<CODE>&redirect_uri=<YOUR_REDIRECT_URI>&client_id=<YOUR_CLIENT_ID>&client_secret=<YOUR_CLIENT_SECRET>'
+   ```
+
+6. Copy the `refresh_token` from the response.
 
 :::tip
-Use a tool like [Postman](https://www.postman.com/) or `curl` to perform the token exchange in step 4.
+Store the client ID, client secret, and refresh token securely. Use Ballerina's `configurable` feature and a `Config.toml` file to supply them at runtime.
 :::
-
-## Alternative: create a private app
-
-If you prefer using a Private App access token instead of OAuth 2.0:
-
-1. In your HubSpot account, click the gear icon in the top navigation bar to go to **Settings**.
-2. In the left sidebar, navigate to **Integrations** > **Private Apps**.
-3. Click **Create a private app**.
-4. Enter a name and description for your app.
-5. Go to the **Scopes** tab and select the following scope:
-    - `crm.objects.owners.read`
-6. Click **Create app** and confirm.
-7. Copy the generated **Access Token**.
-
-
-:::warning
-Private App access tokens do not expire but cannot be refreshed. Store them securely and do not commit them to source control.
-:::
-
-## Next steps
-
-- [Actions Reference](actions.md) - Available operations

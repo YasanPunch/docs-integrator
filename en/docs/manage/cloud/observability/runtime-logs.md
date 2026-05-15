@@ -4,7 +4,7 @@ description: "View and filter runtime logs for integrations deployed on WSO2 Clo
 keywords: [wso2 integrator, wso2 cloud, runtime logs, observability, logs]
 ---
 
-# Runtime logs
+# Runtime Logs
 
 Runtime logs provide insights into application and gateway activity for integrations deployed on WSO2 Cloud - Integration Platform. They centralize diverse log sources to streamline debugging and troubleshooting across environments.
 

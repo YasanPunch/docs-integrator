@@ -1,9 +1,9 @@
 ---
-title: Array to array
+title: Array to Array
 description: Map between arrays using map each element, assign as is, nested iteration, and join with condition.
 ---
 
-# Array to array
+# Array to Array
 
 When both the input and the output are arrays, the data mapper offers four mapping styles. Pick the one that matches the relationship between the source and target arrays.
 

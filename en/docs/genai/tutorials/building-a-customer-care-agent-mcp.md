@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: "Build a customer care agent with MCP"
+title: "Build a Customer Care Agent with MCP"
 description: Build an AI agent that connects to a live MCP server to answer product and order questions via natural language.
 keywords: [wso2 integrator, mcp, ai agent, mcp toolkit, customer care, tutorial]
 ---
@@ -10,7 +10,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Build a customer care agent with MCP
+# Build a Customer Care Agent with MCP
 
 ## What you'll build
 
@@ -31,7 +31,7 @@ The agent receives customer messages over HTTP, reasons about which tool to call
 
 
 :::info Prerequisites
-- [WSO2 Integrator set up for AI](../getting-started/setting-up-ai.md)
+- [Model Providers for LLMs](../develop/components/model-providers.md)
 - The **ShopEasy MCP server** running locally. Clone the repo and follow its README to start it: [github.com/wso2/integration-samples](https://github.com/wso2/integration-samples/tree/main/integrator-default-profile/samples/customer-care-agent/mcp).
 :::
 
@@ -166,7 +166,7 @@ Try the following messages to exercise all three tools:
     }}
 />
 
-For more detail on using the chat panel, see [Testing chat agents](../../develop/test/built-in-try-it-tool#testing-chat-agents).
+For more detail on using the chat panel, see [Try-It experiences](../../develop/test/built-in-try-it-tool#try-it-experiences).
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">

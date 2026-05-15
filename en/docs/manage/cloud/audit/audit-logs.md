@@ -1,10 +1,10 @@
 ---
-title: "Audit logs"
+title: "Audit Logs"
 description: "View, retain, and manage access to organization-level audit logs in WSO2 Cloud."
 keywords: [wso2 integrator, wso2 cloud, audit logs, security, compliance, access control, role, group]
 ---
 
-# Audit logs
+# Audit Logs
 
 Audit logs, also called audit trails, enhance security, ensure compliance, provide operational insights, and help manage risks.
 

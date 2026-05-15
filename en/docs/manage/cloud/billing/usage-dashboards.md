@@ -1,10 +1,10 @@
 ---
-title: "Usage dashboards"
+title: "Usage Dashboards"
 description: "Analyze API traffic, errors, latency, cache, devices, and alerts on WSO2 Cloud, and generate standard or custom usage reports."
 keywords: [wso2 integrator, wso2 cloud, usage insights, dashboards, traffic, errors, latency, alerts, custom reports, billing]
 ---
 
-# Usage dashboards
+# Usage Dashboards
 
 WSO2 Cloud provides comprehensive insights into APIs created within WSO2 Cloud. Usage insights provide a range of metrics, including API traffic, error rates, and latency, allowing you to monitor and optimize API performance effectively.
 

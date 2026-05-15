@@ -4,7 +4,7 @@ title: Explore Sample Integrations
 description: Browse and open pre-built sample integrations to accelerate your development.
 ---
 
-# Explore sample integrations
+# Explore Sample Integrations
 
 WSO2 Integrator includes a curated collection of pre-built integration samples that you can download and open as ready-to-use projects. Use these samples to learn common integration patterns or as starting points for your own projects.
 

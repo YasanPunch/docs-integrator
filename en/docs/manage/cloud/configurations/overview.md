@@ -4,7 +4,7 @@ description: "Manage runtime values, build settings, endpoints, scaling, and sec
 keywords: [wso2 integrator, wso2 cloud, configuration, runtime, build, endpoints, scaling, security]
 ---
 
-# Configurations overview
+# Configurations Overview
 
 WSO2 Cloud - Integration Platform provides configuration options across several dimensions of your integration lifecycle, from how integrations are built and what values they read at runtime, to how they scale, expose endpoints, and enforce security.
 

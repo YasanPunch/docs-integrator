@@ -1,10 +1,11 @@
 ---
 sidebar_position: 3
-title: Library view
+title: Library View
 description: Build and manage reusable libraries in WSO2 Integrator.
+keywords: [wso2 integrator, ide, library view, reusable libraries, artifacts]
 ---
 
-# Library view
+# Library View
 
 The Library view is a dedicated view in WSO2 Integrator for creating utilities and shared resources that you can use across multiple integrations. Rather than building executable integrations, you use the Library view to bundle shared type definitions, utility functions, custom connections, and data mapper configurations into a centralized module that other integrations can depend on.
 
@@ -40,7 +41,7 @@ From this view, you can:
 
 - View all defined artifacts of that specific type.
 - Search for a specific artifact using the search bar.
-- Click the **+ Add [Artifact]** button (e.g., **+ Add Function**) to create a new artifact of that type directly.
+- Click the **+ Add [Artifact]** button (for example, **+ Add Function**) to create a new artifact of that type directly.
 
 ## Toolbar
 
@@ -62,5 +63,6 @@ The README section at the bottom of the Library view displays the contents of yo
 
 ## What's next
 
-- [Integration artifacts](/docs/develop/integration-artifacts): learn about the artifact types you can define in a library.
-- [Publish to Ballerina Central](/docs/connectors/build-your-own/custom-development): share your libraries.
+- [Create a library](/docs/develop/create-integrations/create-a-library) — Set up a new library package for sharing common logic across integrations.
+- [Integration artifacts](/docs/develop/integration-artifacts) — Learn about the artifact types you can define in a library.
+- [Functions](/docs/develop/integration-artifacts/supporting/functions) — Encapsulate reusable logic in function artifacts for validation and transformation.

@@ -2,72 +2,102 @@
 title: "Setup Guide"
 description: "How to set up and configure the ballerinax/hubspot.marketing.emails connector."
 ---
-
 # Setup Guide
 
-This guide walks you through creating a HubSpot app and obtaining the OAuth 2.0 credentials required to use the HubSpot Marketing Emails connector.
-
+This guide walks you through creating a HubSpot developer app and obtaining the OAuth 2.0 credentials required to use the HubSpot Marketing Emails connector.
 
 ## Prerequisites
 
-- A HubSpot developer account. If you do not have one, [sign up for free](https://developers.hubspot.com/get-started).
-- A HubSpot account with Marketing Hub access to manage marketing emails.
+- A HubSpot developer account. If you do not have one, [sign up for a free account](https://developers.hubspot.com/get-started).
 
-## Create a HubSpot developer app
+## Step 1: Log in to the HubSpot developer portal
 
-1. Log in to the [HubSpot Developer Portal](https://developers.hubspot.com/).
-2. Navigate to **Apps** in the top navigation.
-3. Click **Create app**.
-4. Fill in the **App Info** tab with a name and description for your application.
+Log in to your [HubSpot developer account](https://app.hubspot.com/).
 
+## Step 2: Create a developer test account (optional)
 
-## Configure OAuth scopes
+Developer test accounts let you test apps and integrations without affecting real HubSpot data.
 
-1. Go to the **Auth** tab of your app.
-2. Under **Scopes**, add the following required scopes:
-    - **content**; read and write access to marketing emails
-3. Note down the **Client ID** and **Client Secret** displayed at the top of the Auth tab.
+1. Select **Test accounts** in the left sidebar.
 
+   ![Developer portal](/img/connectors/catalog/marketing-social/hubspot.marketing.emails/setup/test_acc_1.png)
+
+2. Select **Create developer test account**.
+
+   ![Create test account](/img/connectors/catalog/marketing-social/hubspot.marketing.emails/setup/test_acc_2.png)
+
+3. Provide a name and select **Create**.
+
+   ![Name the test account](/img/connectors/catalog/marketing-social/hubspot.marketing.emails/setup/test_acc_3.png)
 
 :::note
-For publish and send operations, you may need additional scopes such as `marketing-email` depending on your HubSpot subscription tier.
+Developer test accounts are for development and testing only. Do not use them in production.
 :::
 
-## Install the app on your HubSpot account
+## Step 3: Create a HubSpot app
 
-1. Copy the **Install URL** from the Auth tab, or construct it manually:
+1. Navigate to **Apps** and select **Create App**.
 
-    ```
-    https://app.hubspot.com/oauth/authorize?client_id=<YOUR_CLIENT_ID>&redirect_uri=<YOUR_REDIRECT_URI>&scope=content
-    ```
+   ![Create app](/img/connectors/catalog/marketing-social/hubspot.marketing.emails/setup/create_app_1.png)
 
-2. Open the URL in a browser and select the HubSpot account to install the app on.
-3. Click **Connect app** to authorize.
-4. After authorization, HubSpot redirects to your redirect URI with a `code` query parameter. Copy the `code` value.
+2. Provide the app name and description.
 
+## Step 4: Configure authentication
 
-## Generate a refresh token
+1. Go to the **Auth** tab.
 
-Exchange the authorization code for tokens using a POST request:
+   ![Auth tab](/img/connectors/catalog/marketing-social/hubspot.marketing.emails/setup/auth_section.png)
 
-```
-POST https://api.hubapi.com/oauth/v1/token
-Content-Type: application/x-www-form-urlencoded
+2. Under **Scopes**, select **Add new scope** and add:
+   - `content` (required)
+   - `transactional-email` (optional — required for publish/unpublish endpoints)
+   - `marketing-email` (optional — required for publish/unpublish endpoints)
 
-grant_type=authorization_code
-&code=<AUTHORIZATION_CODE>
-&client_id=<YOUR_CLIENT_ID>
-&client_secret=<YOUR_CLIENT_SECRET>
-&redirect_uri=<YOUR_REDIRECT_URI>
-```
+   :::note
+   The `transactional-email` and `marketing-email` scopes require a HubSpot Enterprise account or the Transactional Email add-on.
+   :::
 
-The response contains `access_token` and `refresh_token`. Copy the `refresh_token` for use with the connector.
+   ![Add scopes](/img/connectors/catalog/marketing-social/hubspot.marketing.emails/setup/scopes.png)
 
+3. Add your redirect URI and select **Create App**.
+
+   ![Create app with redirect](/img/connectors/catalog/marketing-social/hubspot.marketing.emails/setup/create_app_final.png)
+
+## Step 5: Get the client ID and client secret
+
+In the **Auth** section, copy the **Client ID** and **Client Secret**.
+
+![Get credentials](/img/connectors/catalog/marketing-social/hubspot.marketing.emails/setup/get_credentials.png)
+
+## Step 6: Get the refresh token
+
+1. Construct the authorization URL:
+
+   ```
+   https://app.hubspot.com/oauth/authorize?client_id=<YOUR_CLIENT_ID>&scope=<YOUR_SCOPES>&redirect_uri=<YOUR_REDIRECT_URI>
+   ```
+
+2. Open the URL in a browser and select your developer test account.
+
+   ![Select account to install app](/img/connectors/catalog/marketing-social/hubspot.marketing.emails/setup/install_app.png)
+
+3. Copy the authorization code from the redirect URL.
+
+4. Exchange the code for tokens:
+
+   ```bash
+   curl --request POST \
+     --url https://api.hubapi.com/oauth/v1/token \
+     --header 'content-type: application/x-www-form-urlencoded' \
+     --data 'grant_type=authorization_code&code=<CODE>&redirect_uri=<YOUR_REDIRECT_URI>&client_id=<YOUR_CLIENT_ID>&client_secret=<YOUR_CLIENT_SECRET>'
+   ```
+
+5. Copy the `refresh_token` from the response.
 
 :::tip
-Store the Client ID, Client Secret, and Refresh Token securely. Do not commit them to source control. Use Ballerina's `configurable` feature and a `Config.toml` file to supply them at runtime.
+Store the client ID, client secret, and refresh token securely. Use Ballerina's `configurable` feature and a `Config.toml` file to supply them at runtime.
 :::
 
-## Next steps
+## What's next
 
-- [Actions Reference](actions.md) - Available operations
+- [Action reference](actions.md): Available operations

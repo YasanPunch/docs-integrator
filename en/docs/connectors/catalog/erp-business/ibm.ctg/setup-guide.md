@@ -71,3 +71,7 @@ The connector requires proprietary IBM CTG Java libraries that are not redistrib
 :::warning
 These JAR files are proprietary IBM software covered by the IBM license agreement. Do not redistribute them or include them in public source code repositories.
 :::
+
+## What's next
+
+- [Action reference](actions.md): Available operations

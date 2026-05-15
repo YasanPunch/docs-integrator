@@ -1,27 +1,21 @@
 ---
 title: "Set up WSO2 Integrator"
-description: "Get your environment ready to build integrations with WSO2 Integrator, whether you're working locally or on the cloud."
+description: "Get your environment ready to build integrations with WSO2 Integrator, whether you're working locally or in the cloud."
 keywords: [wso2 integrator, setup, installation, cloud setup, local setup]
 ---
 
 # Set up WSO2 Integrator
 
-Before you build your first integration, you need a working environment. This section walks you through everything required to install WSO2 Integrator locally or sign in to WSO2 Cloud.
+WSO2 Integrator supports two setup paths. Pick the one that fits how you want to work.
 
-Choose the setup path that fits your workflow:
+**Local setup** installs the WSO2 Integrator IDE on your machine. Use this when you want to design, build, and test integrations entirely on your own hardware before deciding where to deploy them.
 
-| Path | Best for |
-|---|---|
-| [Local setup](local-setup.md) | Developing and testing integrations on your own machine |
-| [Cloud setup](cloud-setup.md) | Running and managing integrations on WSO2 Cloud - Integration Platform |
+**Cloud setup** connects you to WSO2 Cloud Integration Platform. Use this when you want a managed environment that handles deployment, observability, and infrastructure for you.
 
-## In this section
-
-- **[Local setup](local-setup.md)** — Download and install WSO2 Integrator IDE on your machine.
-- **[Sign up for WSO2 Cloud](sign-up-sign-in.md)** — Create your WSO2 Cloud account and sign in from the IDE.
-- **[Cloud setup](cloud-setup.md)** — Provision your WSO2 Integration Platform environment.
+You can also use both. A common workflow is to develop locally and push integrations to WSO2 Cloud Integration Platform when they are ready.
 
 ## What's next
 
-- [Local setup](local-setup.md) — Install WSO2 Integrator IDE
-- [Cloud setup](cloud-setup.md) — Set up your cloud environment
+- [Local setup](local-setup.md) — install the WSO2 Integrator IDE on your machine
+- [Sign up for WSO2 Cloud](sign-up-sign-in.md) — create an account and access WSO2 Cloud Integration Platform
+- [Cloud setup](cloud-setup.md) — provision your cloud environment and connect it to the IDE

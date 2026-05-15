@@ -1,12 +1,12 @@
 ---
-title: CSV fault tolerance
+title: CSV Fault Tolerance
 description: Skip malformed CSV rows at the listener level so the handler only sees valid data and the file isn't rejected as a whole.
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# CSV fault tolerance
+# CSV Fault Tolerance
 
 Real-world CSV files rarely arrive perfectly clean. A single bad row (a stray comma, a wrong data type, a trailing blank) would normally fail the whole file. With **CSV fault tolerance** enabled, the listener treats malformed rows as a per-row issue instead of a per-file one. It skips rows that don't fit your schema and hands the rest to the handler as if nothing happened.
 

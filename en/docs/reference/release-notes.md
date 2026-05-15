@@ -15,7 +15,7 @@ Rather than walk through every change, this note focuses on the five improvement
 
 Integration development has always been iterative, but tooling rarely reflected that. Developers would write a requirement, generate some code, hit a wall, and start over. With 5.0.0, that cycle changes fundamentally.
 
-The **WSO2 Integrator Copilot** now supports multi-turn, conversational development. A developer describes a business requirement in natural language. The Copilot proposes an integration plan. The developer refines it (adding rules, OpenAPI specs, or constraints) across multiple exchanges. Once the plan is ready, the Copilot generates the full end-to-end integration, opens the visual diagram, and stays in the conversation to help with configuration, testing, and validation.
+The [**WSO2 Integrator Copilot**](../develop/copilot/overview.md) now supports multi-turn, conversational development. A developer describes a business requirement in natural language. The Copilot proposes an integration plan. The developer refines it (adding rules, OpenAPI specs, or constraints) across multiple exchanges. Once the plan is ready, the Copilot generates the full end-to-end integration, opens the visual diagram, and stays in the conversation to help with configuration, testing, and validation.
 
 This isn't prompt-and-hope — it's a genuine back-and-forth where the developer stays in control and the AI handles the heavy lifting. The result: faster development cycles and integrations that more accurately reflect the original requirement.
 
@@ -82,7 +82,7 @@ WSO2 Integrator 5.0.0 also brings enhancements to the MI profile with the releas
 - **AMQP 1.0 protocol support**, a **gRPC connector** with import support, **nested and reusable queries** in Data Services, and optimized **Ballerina-to-MI connector conversion**.
 - **Enterprise-grade security improvements** including FIPS-certified cryptography (Bouncy Castle FIPS provider), built-in OAuth 2.0 and JWT validation handlers, and post-quantum cryptography capabilities.
 
-WSO2 Integrator 5.0.0 is available now. [Install WSO2 Integrator](/docs/get-started/install) or sign up for SaaS today.
+WSO2 Integrator 5.0.0 is available now. [Install WSO2 Integrator](/docs/get-started/setup/local-setup) or sign up for SaaS today.
 
 ## Previous releases
 
@@ -90,5 +90,5 @@ See the [WSO2 documentation archive](https://docs.wso2.com) for previous product
 
 ## What's next
 
-- [Install WSO2 Integrator](/docs/get-started/install) -- Get started with the latest release
+- [Install WSO2 Integrator](/docs/get-started/setup/local-setup) -- Get started with the latest release
 - [Build an API Integration](/docs/get-started/build-api-integration) -- Build your first integration

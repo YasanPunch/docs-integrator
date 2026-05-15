@@ -1,10 +1,10 @@
 ---
-title: "Deploy and query an AI agent"
+title: "Deploy and Query an AI Agent"
 description: "Deploy an AI agent to WSO2 Integration Platform and query it using the IT helpdesk chatbot tutorial as an example."
 keywords: [wso2 integrator, rag, agent, deploy, query]
 ---
 
-# Deploy and query an AI agent
+# Deploy and Query an AI Agent
 
 This page shows how to deploy an AI agent to WSO2 Cloud - Integration Platform and query it after deployment. Use it when you want to test retrieval-augmented generation behavior from the built-in chat UI or the service API.
 

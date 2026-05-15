@@ -141,7 +141,7 @@ service /hello on new http:Listener(8080) {
 All new and modified content must comply with the [Microsoft Style Guide](https://learn.microsoft.com/en-us/style-guide/welcome/):
 
 - Active voice, present tense.
-- **Sentence case for headings** (capitalize only first word and proper nouns).
+- **Title case for the page title (`#` H1 only)**. All other headings (`##`, `###`, etc.) use sentence case (capitalize only the first word and proper nouns).
 - No decorative symbols (¶, →, ») in headings or text.
 - Numbered lists for sequential tasks, bulleted for non-sequential.
 - **Bold** for UI labels and button names (e.g., **Create**).
@@ -182,6 +182,7 @@ The only accepted exception is the **What's next** section, where em dashes sepa
 
 ## Formatting Rules
 
+- **Sidebar items must use title case** (capitalize all major words; lowercase articles, prepositions, and coordinating conjunctions unless they are the first word).
 - Use Docusaurus admonitions: `:::tip`, `:::info`, `:::warning`, `:::danger`
 - Use tables for comparisons and feature lists
 - Use `<details>` for collapsible sections (prerequisites, advanced topics)

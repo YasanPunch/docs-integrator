@@ -26,10 +26,10 @@ Project and deployment configuration files:
 
 | File                                                         | Purpose                           |
 | ------------------------------------------------------------ | --------------------------------- |
-| **[Ballerina.toml](config/ballerinatoml-reference.md)**               | Project metadata and dependencies |
+| **[Configuration management](config/configuration-management.md)**    | Configurable variables, value sources, and environment variables |
+| **[Ballerina.toml](project/ballerinatoml-reference.md)**              | Project metadata and dependencies |
 | **[Config.toml](config/configtoml-reference.md)**                     | Runtime configuration values      |
-| **[Cloud.toml](config/cloudtoml-reference.md)**                       | Cloud deployment settings         |
-| **[Environment Variables](config/environment-variables.md)** | Runtime environment configuration |
+| **[Cloud.toml](project/cloudtoml-reference.md)**                      | Cloud deployment settings         |
 
 
 ## APIs
@@ -67,4 +67,4 @@ Server and deployment configuration for WSO2 Integration Control Plane:
 - **[FAQ](faq.md)** — Frequently asked questions
 - **[Release Notes](release-notes.md)** — What's new in each release
 
-For troubleshooting and debugging, see [Debugging & Troubleshooting](../develop/debugging/troubleshooting.md).
+For troubleshooting and debugging, see [Errors and Stack Traces](../develop/troubleshooting/errors-and-stack-traces.md).

@@ -54,7 +54,7 @@ Store the token securely. Do not commit it to source control. Use Ballerina's `c
 
 ## Configuring a GitHub repository webhook
 
-If you are using the [GitHub Webhooks](../../../develop/integration-artifacts/event/github-webhooks.md) event integration, you must configure a webhook in your GitHub repository to send events to your listener endpoint.
+If you are using the [GitHub Webhooks](../../../../develop/integration-artifacts/event/github-webhooks.md) event integration, you must configure a webhook in your GitHub repository to send events to your listener endpoint.
 
 ### Prerequisites
 

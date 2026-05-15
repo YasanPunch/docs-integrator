@@ -1,11 +1,11 @@
 ---
 sidebar_position: 5
-title: Test MCP server
+title: Test MCP Server
 description: Invoke MCP tools and inspect responses using the built-in MCP Inspector in WSO2 Integrator.
 keywords: [wso2 integrator, try-it, mcp server, model context protocol, mcp inspector, test mcp tools]
 ---
 
-# Test MCP server
+# Test MCP Server
 
 The Try-It tool for MCP servers opens the MCP Inspector, an interactive interface for connecting to your server, listing its tools, and invoking them with input parameters. Use it during development to verify that each tool in your MCP server behaves correctly before connecting it to an AI agent.
 

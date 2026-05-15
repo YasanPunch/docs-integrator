@@ -1,10 +1,10 @@
 ---
-title: Custom domain
+title: Custom Domain
 description: Learn how to configure a custom domain for your organization and set custom URLs for integrations in WSO2 Cloud - Integration Platform.
 keywords: [wso2 cloud, custom domain, custom URL, CNAME, TLS certificate, Let's Encrypt, branding]
 ---
 
-# Configure a custom domain
+# Configure a Custom Domain
 
 A custom domain is essential for effective branding, discoverability, and credibility of an integration exposed as an API. WSO2 Cloud - Integration Platform lets you configure custom domains for your organization so that developers can set custom URLs for their integrations.
 

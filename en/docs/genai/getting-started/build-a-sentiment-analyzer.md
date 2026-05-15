@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: "Build a sentiment analyzer"
+title: "Build a Sentiment Analyzer"
 description: Build your first AI integration. An HTTP service that uses a direct LLM call to classify customer reviews.
 keywords: [wso2 integrator, ai, llm, direct llm call, sentiment analysis, quick start, ballerina ai]
 ---
@@ -10,7 +10,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Build a sentiment analyzer
+# Build a Sentiment Analyzer
 
 **Time:** Under 10 minutes | **What you'll build:** An HTTP service that listens on `POST /analyze`, sends a customer review to an LLM, and returns the sentiment (`POSITIVE`, `NEGATIVE`, or `NEUTRAL`) along with a confidence score.
 
@@ -18,7 +18,7 @@ A direct LLM call is the simplest way to use AI in an integration: you send a pr
 
 :::info Prerequisites
 
-- [WSO2 Integrator set up for AI](setting-up-ai.md)
+- [Model Providers for LLMs](../develop/components/model-providers.md)
 - A project to work in. If you do not have one, see [Create a new integration](../../develop/create-integrations/create-a-new-integration.md).
 :::
 
@@ -64,8 +64,18 @@ The LLM call returns one of three values. Define an enum so Ballerina can enforc
 1. In the HTTP Service Design editor, select **+ Add Resource**.
 2. Select **POST**.
 3. Set **Resource Path** to `analyze`.
-4. Select **+ Define Payload**, set the name to `AnalyzePayload`, and add a single field `text` of type `string`.
-5. Select **Save** on the payload panel, then **Save** on the resource.
+4. Select **+ Define Payload**.
+5. In the popup, select **Create Type Schema**, set the name to `AnalyzePayload`, and add a single field `text` of type `string`.
+
+<ThemedImage
+    alt="Define Payload popup with Create Type Schema selected, name set to AnalyzePayload, and a text field of type string"
+    sources={{
+        light: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/define-payload-popup.png'),
+        dark: useBaseUrl('/img/genai/getting-started/build-a-sentiment-analyzer/define-payload-popup.png'),
+    }}
+/>
+
+6. Select **Save** on the payload panel, then **Save** on the resource.
 
 <ThemedImage
     alt="POST analyze resource configured with the AnalyzePayload request body"

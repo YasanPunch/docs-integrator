@@ -4,7 +4,7 @@ description: "Configure build settings for integrations on WSO2 Cloud - Integrat
 keywords: [wso2 integrator, build configuration, wso2 cloud, unit tests, submodules]
 ---
 
-# Build configurations
+# Build Configurations
 
 You can control how your integration is built on WSO2 Cloud - Integration Platform by configuring the build settings. Both settings are enabled by default.
 

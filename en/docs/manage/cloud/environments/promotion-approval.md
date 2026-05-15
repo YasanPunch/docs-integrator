@@ -1,10 +1,10 @@
 ---
-title: "Promotion approvals"
+title: "Promotion Approvals"
 description: "Require approval before an integration is promoted to a protected environment in the WSO2 Integration Platform."
 keywords: [wso2 integrator, promotion approval, workflow, environments, wso2 cloud]
 ---
 
-# Promotion approvals
+# Promotion Approvals
 
 You can configure the **Environment Promotion** workflow to require an approval before any integration is promoted to the next environment. When the workflow is active, promotion requests are gated behind a review step, and the promotion only proceeds after an authorized reviewer approves the request.
 

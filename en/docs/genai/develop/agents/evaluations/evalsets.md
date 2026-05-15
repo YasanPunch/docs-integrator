@@ -1,11 +1,11 @@
 ---
 sidebar_position: 2
-title: Create evalsets
+title: Create Evalsets
 description: Capture conversations with your AI agent in WSO2 Integrator and export the session traces into a golden dataset you can replay against future agent builds.
 keywords: [wso2 integrator, ai agent, evalset, golden dataset, session traces]
 ---
 
-# Create evalsets
+# Create Evalsets
 
 An **evalset** is a curated set of conversation traces that act as a golden dataset. Each entry pairs a user input with the expected agent behaviour, including the tool calls the agent should make and the response it should produce. Evalsets are the input to every evaluation you run.
 

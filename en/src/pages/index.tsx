@@ -128,7 +128,7 @@ const sections: SectionCard[] = [
   },
   {
     title: 'Connectors',
-    description: 'Browse 200+ pre-built connectors for SaaS, databases, messaging, and AI.',
+    description: 'Browse 400+ pre-built connectors for SaaS, databases, messaging, and AI.',
     link: '/docs/connectors/overview',
     icon: <IconConnectors />,
     iconBg: '#F0EDFF',
@@ -303,9 +303,9 @@ function HomepageHeader(): ReactNode {
     <header className={styles.heroBanner}>
       <div className="container">
 
-        <Heading as="h1">WSO2 Integrator</Heading>
+        <Heading as="h1">WSO2 Integration Platform</Heading>
         <p className={styles.heroSubtitle}>
-          Build integrations with low-code simplicity and pro-code power.
+          Build and deploy integrations with low-code simplicity and pro-code power.
         </p>
         <SearchBar />
         <div className={styles.buttons}>

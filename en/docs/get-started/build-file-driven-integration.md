@@ -1,6 +1,6 @@
 ---
 sidebar_position: 9
-title: "Build a file-driven integration"
+title: "Build a File-Driven Integration"
 description: Build a Local Files listener in WSO2 Integrator to detect file modifications and log them.
 keywords: [wso2 integrator, file integration, local files, onModify, quick start, ballerina file]
 ---
@@ -10,47 +10,34 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Build a file-driven integration
+# Build a File-Driven Integration
 
 **Time:** Under 10 minutes | **What you'll build:** A file integration that adds an `onModify` handler to track file changes and uses `printInfo` to log file modification events.
 
 File integrations are ideal for batch uploads, scheduled file processing, and ETL workflows triggered by files appearing in a folder or FTP server.
 
-<ThemedImage
-    alt="File-driven integration diagram"
-    sources={{
-        light: useBaseUrl('/img/get-started/build-file-driven-integration/file-diagram-light.svg'),
-        dark: useBaseUrl('/img/get-started/build-file-driven-integration/file-diagram-dark.svg'),
-    }}
-/>
-
-
 :::info Prerequisites
 
 - [WSO2 Integrator installed](setup/local-setup.md)
-- A test file at the listener path (created with the command below).
+- A file at the listener path to watch. Create one if you don't have one:
 
-The `onModify` handler only fires when a file that already exists changes. Skip the command below if a file already exists at the listener path.
+  <Tabs groupId="os">
+  <TabItem value="unix" label="macOS / Linux" default>
 
-<Tabs groupId="os">
-<TabItem value="unix" label="macOS / Linux" default>
+  ```bash
+  echo "test" > /tmp/testfile.txt
+  ```
 
-```bash
-echo "test" > /tmp/testfile.txt
-```
+  </TabItem>
+  <TabItem value="windows" label="Windows">
 
-</TabItem>
-<TabItem value="windows" label="Windows">
+  ```bat
+  mkdir C:\tmp 2>nul
+  echo test > C:\tmp\testfile.txt
+  ```
 
-```bat
-mkdir C:\tmp
-echo test > C:\tmp\testfile.txt
-```
-
-Skip `mkdir C:\tmp` if the folder already exists.
-
-</TabItem>
-</Tabs>
+  </TabItem>
+  </Tabs>
 
 :::
 
@@ -60,52 +47,62 @@ Skip `mkdir C:\tmp` if the folder already exists.
 ## Step 1: Create the project
 
 1. Open WSO2 Integrator.
-2. Select **Create New Integration**.
-3. Set **Integration Name** to `FileTracker` and **Project Name** to `QuickStart`.
-4. Select **Browse**.
-5. Select the project location and select **Open**.
-6. Select **Create Integration**.
+2. Select the **Create New Integration** card.
+3. Set **Integration Name** to `FileTracker`.
+4. Set **Project Name** to `file-integration`.
+5. Select **Create Integration**.
 
 <ThemedImage
-    alt="Create the Project"
+    alt="Create Integration form with Integration Name set to FileTracker and Project Name set to file-integration"
     sources={{
-        light: useBaseUrl('/img/get-started/build-file-driven-integration/create-the-project-light.gif'),
-        dark: useBaseUrl('/img/get-started/build-file-driven-integration/create-the-project-dark.gif'),
+        light: useBaseUrl('/img/get-started/build-file-driven-integration/create-the-project-light.png'),
+        dark: useBaseUrl('/img/get-started/build-file-driven-integration/create-the-project-light.png'),
     }}
 />
 
 ## Step 2: Add a file integration artifact
 
-1. Select **FileTracker**.
+1. Select **FileTracker** from Project Overview Canvas.
 2. In the design view, select **+ Add Artifact**.
 3. Select **Local Files** under **File Integration**.
 4. Set **Path** to `/tmp` (macOS/Linux) or `C:\tmp` (Windows). Select **Create**.
 
 <ThemedImage
-    alt="Add a File Integration Artifact"
+    alt="Create Local Files form with Path set to /tmp and Recursive set to False"
     sources={{
-        light: useBaseUrl('/img/get-started/build-file-driven-integration/add-a-file-integration-artifact-light.gif'),
-        dark: useBaseUrl('/img/get-started/build-file-driven-integration/add-a-file-integration-artifact-dark.gif'),
+        light: useBaseUrl('/img/get-started/build-file-driven-integration/add-a-file-integration-artifact-light.png'),
+        dark: useBaseUrl('/img/get-started/build-file-driven-integration/add-a-file-integration-artifact-light.png'),
     }}
 />
 
-## Step 3: Track modified files
+## Step 3: Add `onModify` event handler
 
-1. Select **+ Add Handler**, then select **onModify** from the side panel.
-2. Select the **onModify** handler to open the **Flow Designer**.
-3. Select **+** in the flow diagram.
-4. Search for `printInfo` and select **printInfo**.
-5. Set **Msg** to `File modified` and select **Save**.
+1. In the service designer view, select **+ Add Handler**.
+2. Select **onModify**.
 
 <ThemedImage
-    alt="Tracking modified files"
+    alt="Select Handler to Add panel showing onCreate, onDelete, and onModify options"
     sources={{
-        light: useBaseUrl('/img/get-started/build-file-driven-integration/tracking-modified-files-light.gif'),
-        dark: useBaseUrl('/img/get-started/build-file-driven-integration/tracking-modified-files-dark.gif'),
+        light: useBaseUrl('/img/get-started/build-file-driven-integration/add-handler-light.png'),
+        dark: useBaseUrl('/img/get-started/build-file-driven-integration/add-handler-light.png'),
     }}
 />
 
-## Step 4: Run and test
+## Step 4: Add file tracking logic
+
+1. Select **+** in the flow diagram.
+2. Search for `printInfo` and select **printInfo**.
+3. Set **Msg** to `File modified` and select **Save**.
+
+<ThemedImage
+    alt="Flow Designer showing the onModify handler with printInfo configured to log File modified"
+    sources={{
+        light: useBaseUrl('/img/get-started/build-file-driven-integration/tracking-modified-files-light.png'),
+        dark: useBaseUrl('/img/get-started/build-file-driven-integration/tracking-modified-files-light.png'),
+    }}
+/>
+
+## Step 5: Run and test
 
 1. Select **Run** in the toolbar.
 2. Run the modify command in your terminal to trigger the handler:
@@ -127,17 +124,15 @@ Skip `mkdir C:\tmp` if the folder already exists.
    </TabItem>
    </Tabs>
 
-   <ThemedImage
-       alt="Run and Test"
-       sources={{
-           light: useBaseUrl('/img/get-started/build-file-driven-integration/run-and-test-light.gif'),
-           dark: useBaseUrl('/img/get-started/build-file-driven-integration/run-and-test-dark.gif'),
-       }}
-   />
-
 3. Confirm the run terminal shows the log line `File modified`.
 
-   ![Run terminal showing the "File modified" log line emitted by printInfo](/img/get-started/build-file-driven-integration/expected-output.png)
+<ThemedImage
+    alt="Flow designer showing the integration running with log:printInfo emitting File modified"
+    sources={{
+        light: useBaseUrl('/img/get-started/build-file-driven-integration/run-and-test-light.gif'),
+        dark: useBaseUrl('/img/get-started/build-file-driven-integration/run-and-test-light.gif'),
+    }}
+/>
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
@@ -193,8 +188,7 @@ Confirm the run terminal shows the log line `File modified`.
 
 ## What's next
 
-- [Automation](build-automation.md) — Build a scheduled job
-- [AI agent](build-ai-agent.md) — Build an intelligent agent
-- [Integration as API](build-api-integration.md) — Build an HTTP service
-- [Event-driven integration](build-event-driven-integration.md) — React to messages from brokers
 - [Local files](../develop/integration-artifacts/file/local-files.md) — Full Local Files listener reference (events, recursive watching, file handlers)
+- [FTP/SFTP](../develop/integration-artifacts/file/ftp-sftp.md) — Watch and process files on remote FTP or SFTP servers
+- [Streaming large files](../develop/integration-artifacts/file/streaming-large-files.md) — Process large files without loading them fully into memory
+- [CSV fault tolerance](../develop/integration-artifacts/file/csv-fault-tolerance.md) — Handle errors and partial failures when processing CSV files

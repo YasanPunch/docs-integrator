@@ -1,11 +1,11 @@
 ---
 sidebar_position: 4
-title: Test Chat agent
+title: Test Chat Agent
 description: Test AI chat agents through the conversational chat panel in WSO2 Integrator.
 keywords: [wso2 integrator, try-it, chat agent, test ai agent, conversational testing, tracing]
 ---
 
-# Test Chat agent
+# Test Chat Agent
 
 AI chat agents respond to natural language rather than structured HTTP requests, so testing them requires a conversational interface. The **Chat** panel lets you send messages to your agent and inspect its responses directly from WSO2 Integrator, without deploying or setting up a separate client.
 

@@ -1,9 +1,9 @@
 ---
-title: Generic type mappings
+title: Generic Type Mappings
 description: Map between generic JSON or XML payloads by pasting a sample structure and letting the data mapper generate compatible record types.
 ---
 
-# Generic type mappings
+# Generic Type Mappings
 
 When the input or output is a generic JSON or XML payload, paste a sample structure into the canvas. The data mapper generates compatible record types from the sample, and you map the fields visually.
 

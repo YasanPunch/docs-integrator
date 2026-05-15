@@ -541,7 +541,7 @@ intercom:Ticket ticket = check intercomClient->/tickets.post({
 
 | Field | Type | Required | Description |
 |---|---|---|---|
-| `ticketTypeId` | `string` | Yes | ID of the ticket type (see [Setup guide](setup-guide.md#step-6-optional-find-your-ticket-type-id)) |
+| `ticketTypeId` | `string` | Yes | ID of the ticket type (see [Setup guide](setup-guide.md)) |
 | `contacts` | `CreateTicketRequestContacts[]` | Yes | Contacts associated with the ticket |
 | `companyId` | `string` | No | Company to associate with the ticket |
 
@@ -699,4 +699,3 @@ HTTP errors (4xx/5xx) are returned as `http:ApplicationResponseError` and includ
 
 - [Setup guide](setup-guide.md): Create an Intercom app and configure authentication
 - [Intercom connector overview](connector-overview.md): Learn about all supported features
-- [Connector error handling](../../../error-handling-per.md): General error handling patterns for connectors

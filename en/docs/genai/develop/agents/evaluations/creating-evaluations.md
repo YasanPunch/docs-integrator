@@ -1,11 +1,11 @@
 ---
 sidebar_position: 3
-title: Create evaluations
+title: Create Evaluations
 description: Create AI agent evaluations in WSO2 Integrator. Fill the AI Evaluation form, pick an evalset to score against, and refine the checks in the visual designer.
 keywords: [wso2 integrator, ai agent, evaluation, visual designer, llm-as-judge]
 ---
 
-# Create evaluations
+# Create Evaluations
 
 An **evaluation** is the function that scores agent behaviour against an evalset. You start by filling a short form, and WSO2 Integrator opens the rest of the configuration in the visual designer.
 

@@ -19,6 +19,8 @@ Provides operations to interact with a Redis server or cluster for data storage 
 
 ### Configuration
 
+The client is configured with a `ConnectionConfig` record.
+
 | Field | Type | Default | Description |
 |-------|------|---------|-------------|
 | `connection` | `ConnectionUri\|ConnectionParams` | `"redis://localhost:6379"` | Redis connection URI string or a `ConnectionParams` record with host, port, username, password, and options. |
@@ -86,8 +88,8 @@ Client certificate and private key (used for mutual TLS).
 
 | Field | Type | Default | Description |
 |-------|------|---------|-------------|
-| `certFile` | `string` | (required) | Path to the certificate file. |
-| `keyFile` | `string` | (required) | Path to the private key file in PKCS8 format. |
+| `certFile` | `string` | Required | Path to the certificate file. |
+| `keyFile` | `string` | Required | Path to the private key file in PKCS8 format. |
 | `keyPassword` | `string?` | `()` | Password of the private key, if encrypted. |
 
 #### `SslVerifyMode`

@@ -1,10 +1,11 @@
 ---
 sidebar_position: 2
-title: Integrator view
+title: Integrator View
 description: Work with the Integrator view to build and manage individual integrations.
+keywords: [wso2 integrator, ide, integrator view, design canvas, deployment]
 ---
 
-# Integrator view
+# Integrator View
 
 The Integrator view is the primary development interface in WSO2 Integrator. Use it to build, test, and deploy a single integration. It combines a project explorer, a visual design canvas, and deployment options in one unified workspace.
 
@@ -39,9 +40,7 @@ You can also scroll to zoom and drag to pan across the canvas.
 
 ### Generate with AI
 
-Click the **Generate** button at the top of the canvas to create integration logic using AI. Describe what you want in natural language, and WSO2 Integrator generates the entry points, connections, and logic for you.
-
-The AI generation creates a working starting point that you can refine in the visual designer or code editor.
+Click the **Generate with AI** button at the top of the canvas to open the [WSO2 Integrator Copilot](/docs/develop/wso2-integrator-copilot/getting-started). Describe what you want in natural language, and WSO2 Integrator Copilot generates the integration with the appropriate entry points, connections, and logic.
 
 ### Add artifact
 
@@ -75,10 +74,10 @@ The deployment options panel appears on the right sidebar and provides shortcuts
 
 | Option | Target |
 |---|---|
-| [**Deploy to WSO2 Integration Platform**](/docs/deploy-operate/deploy/devant) | Fully managed cloud platform. |
-| [**Deploy with Docker**](/docs/deploy-operate/deploy/docker-kubernetes) | Container orchestration platforms such as Kubernetes and OpenShift. |
-| [**Deploy on a VM**](/docs/deploy-operate/deploy/vm-based) | Virtual machines or bare-metal servers. |
-| [**Integration Control Plane (ICP)**](/docs/deploy-operate/observe/icp) | Centralized observability and management for deployed integrations. |
+| [**Deploy to WSO2 Cloud**](/docs/deploy/cloud/overview) | Fully managed cloud platform for hosting and running integrations. |
+| [**Deploy with Docker**](/docs/deploy/self-hosted/kubernetes) | Build Docker images and deploy integrations to Kubernetes clusters. |
+| [**Deploy on a VM**](/docs/deploy-operate/deploy/vm-based-deployment) | Run integrations as standalone JAR files on virtual machines. |
+| [**Integration Control Plane (ICP)**](/docs/deploy-operate/observe/integration-control-plane-icp) | Monitor and manage running integrations from a centralized dashboard. |
 
 Select **Enable ICP monitoring** to activate ICP for this integration, or expand **Publish to local ICP** to push the integration to a local Integration Control Plane instance.
 
@@ -92,6 +91,6 @@ Click **Edit** to modify the README directly. You can also click **Generate with
 
 ## What's next
 
-- [Design integration logic](/docs/develop/design-logic/overview): build logic using the visual designer.
-- [Integration artifacts](/docs/develop/integration-artifacts): learn about artifact types and their configuration.
-- [Deploy to WSO2 Integration Platform](/docs/deploy-operate/deploy/devant): deploy your integration to the cloud.
+- [Flow Diagram editor](/docs/develop/understand-ide/editors/flow-diagram-editor/) — Build logic using the visual designer.
+- [Integration artifacts](/docs/develop/integration-artifacts) — Learn about artifact types and their configuration.
+- [Deploy to WSO2 Cloud](/docs/deploy/cloud/overview) — Deploy your integration to the cloud.

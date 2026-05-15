@@ -1,12 +1,12 @@
 ---
-title: Streaming large files
+title: Streaming Large Files
 description: Process large CSV and binary files row-by-row or in byte chunks without loading the entire file into memory.
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Streaming large files
+# Streaming Large Files
 
 By default, a file handler loads the whole file into memory before it runs. For files in the hundreds of megabytes or larger, that can exhaust the integration's memory budget. Enabling **Stream (Large Files)** when configuring a handler changes how files are processed, delivering data row by row (CSV) or in chunks (RAW) so memory usage stays constant regardless of file size.
 

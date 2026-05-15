@@ -1,10 +1,10 @@
 ---
-title: CI/CD overview
+title: CI/CD Overview
 description: Learn how WSO2 Cloud - Integration Platform supports continuous integration and deployment through Git repository connections and configurable deployment pipelines.
 keywords: [wso2 cloud, cicd, ci/cd, deployment pipeline, git, continuous deployment]
 ---
 
-# CI/CD overview
+# CI/CD Overview
 
 WSO2 Cloud - Integration Platform supports a continuous deployment model built around two concepts: Git-triggered deployments and deployment pipelines. Together, these let you automate how integrations move from development to production.
 

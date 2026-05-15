@@ -1,86 +1,94 @@
 ---
-title: "Setup Guide"
-description: "How to set up and configure the ballerinax/hubspot.crm.lists connector."
+title: Setup Guide
 ---
-
 # Setup Guide
 
-This guide walks you through creating a HubSpot app and obtaining the OAuth 2.0 credentials required to use the HubSpot CRM Lists connector.
-
+This guide walks you through creating a HubSpot developer app and obtaining the OAuth 2.0 credentials required to use the HubSpot CRM Lists connector.
 
 ## Prerequisites
 
-- A HubSpot account with a Developer Portal. If you do not have one, [sign up for a free HubSpot developer account](https://app.hubspot.com/signup-hubspot/developers).
+- A HubSpot developer account. If you do not have one, [sign up for a free account](https://developers.hubspot.com/get-started).
 
-## Create a HubSpot app
+## Step 1: Log in to the HubSpot developer portal
 
-1. Log in to the [HubSpot Developer Portal](https://app.hubspot.com/developer).
-2. Click **Apps** in the top navigation, then click **Create app**.
-3. Fill in the **App Info** tab with a name and description for your app.
+Log in to your [HubSpot developer account](https://app.hubspot.com/).
 
+## Step 2: Create a developer test account (optional)
 
-## Configure OAuth scopes
+Developer test accounts let you test apps and integrations without affecting real HubSpot data.
 
-1. Navigate to the **Auth** tab of your app.
-2. Under **Scopes**, add the following required scopes:
-    - `crm.lists.read`
-    - `crm.lists.write`
-    - `cms.membership.access_groups.write`
-3. Set the **Redirect URL** to `https://localhost` (or your own callback URL).
-4. Note down the **Client ID** and **Client Secret** displayed on this page.
+1. Select **Test accounts** in the left sidebar.
 
+   ![Developer portal](/img/connectors/catalog/crm-sales/hubspot.crm.lists/setup/test_acc_1.png)
+
+2. Select **Create developer test account**.
+
+   ![Create test account](/img/connectors/catalog/crm-sales/hubspot.crm.lists/setup/test_acc_2.png)
+
+3. Provide a name and select **Create**.
+
+   ![Name the test account](/img/connectors/catalog/crm-sales/hubspot.crm.lists/setup/test_acc_3.png)
 
 :::note
-If you plan to manage contact list memberships, you may also need the `crm.objects.contacts.read` and `crm.objects.contacts.write` scopes.
+Developer test accounts are for development and testing only. Do not use them in production.
 :::
 
-## Obtain a refresh token
+## Step 3: Create a HubSpot app
 
-1. Construct the following authorization URL, replacing the placeholders:
+1. Navigate to **Apps** and select **Create App**.
 
-    ```
-    https://app.hubspot.com/oauth/authorize?client_id=<YOUR_CLIENT_ID>&redirect_uri=<YOUR_REDIRECT_URL>&scope=crm.lists.read%20crm.lists.write%20cms.membership.access_groups.write
-    ```
+   ![Create app](/img/connectors/catalog/crm-sales/hubspot.crm.lists/setup/create_app_1.png)
 
-2. Open the URL in a browser and select the HubSpot account to authorize.
-3. After authorization, HubSpot redirects to your redirect URL with a `code` query parameter. Copy the `code` value.
-4. Exchange the code for tokens using a POST request:
+2. Provide the app name and description.
 
-    ```
-    POST https://api.hubapi.com/oauth/v1/token
-    Content-Type: application/x-www-form-urlencoded
+## Step 4: Configure authentication
 
-    grant_type=authorization_code
-    &code=<AUTHORIZATION_CODE>
-    &client_id=<YOUR_CLIENT_ID>
-    &client_secret=<YOUR_CLIENT_SECRET>
-    &redirect_uri=<YOUR_REDIRECT_URL>
-    ```
+1. Go to the **Auth** tab.
 
-5. The response contains `access_token` and `refresh_token`. Copy the `refresh_token`.
+   ![Auth tab](/img/connectors/catalog/crm-sales/hubspot.crm.lists/setup/create_app_2.png)
 
+2. Under **Scopes**, select **Add new scope** and add:
+   - `crm.lists.read`
+   - `crm.lists.write`
+   - `cms.membership.access_groups.write`
+
+   ![Set scope](/img/connectors/catalog/crm-sales/hubspot.crm.lists/setup/scope_set.png)
+
+3. Add your redirect URI and select **Create App**.
+
+   ![Create app with redirect](/img/connectors/catalog/crm-sales/hubspot.crm.lists/setup/create_app_final.png)
+
+## Step 5: Get the client ID and client secret
+
+In the **Auth** section, copy the **Client ID** and **Client Secret**.
+
+![Get credentials](/img/connectors/catalog/crm-sales/hubspot.crm.lists/setup/get_credentials.png)
+
+## Step 6: Get the refresh token
+
+1. Construct the authorization URL:
+
+   ```
+   https://app.hubspot.com/oauth/authorize?client_id=<YOUR_CLIENT_ID>&scope=<YOUR_SCOPES>&redirect_uri=<YOUR_REDIRECT_URI>
+   ```
+
+2. Open the URL in a browser and select your developer test account.
+
+   ![Install app](/img/connectors/catalog/crm-sales/hubspot.crm.lists/setup/install_app.png)
+
+3. Copy the authorization code from the redirect URL.
+
+4. Exchange the code for tokens:
+
+   ```bash
+   curl --request POST \
+     --url https://api.hubapi.com/oauth/v1/token \
+     --header 'content-type: application/x-www-form-urlencoded' \
+     --data 'grant_type=authorization_code&code=<CODE>&redirect_uri=<YOUR_REDIRECT_URI>&client_id=<YOUR_CLIENT_ID>&client_secret=<YOUR_CLIENT_SECRET>'
+   ```
+
+5. Copy the `refresh_token` from the response.
 
 :::tip
-Use a tool like [Postman](https://www.postman.com/) or `curl` to perform the token exchange in step 4.
+Store the client ID, client secret, and refresh token securely. Use Ballerina's `configurable` feature and a `Config.toml` file to supply them at runtime.
 :::
-
-## Alternative: use a private app (API key)
-
-If you prefer API key authentication instead of OAuth 2.0:
-
-1. In your HubSpot account, go to **Settings > Integrations > Private Apps**.
-2. Click **Create a private app**.
-3. Give it a name and under **Scopes**, add:
-    - `crm.lists.read`
-    - `crm.lists.write`
-    - `cms.membership.access_groups.write`
-4. Click **Create app** and copy the generated **Access Token**.
-
-
-:::tip
-Store credentials securely. Use Ballerina's `configurable` feature and a `Config.toml` file to supply them at runtime.
-:::
-
-## Next steps
-
-- [Actions Reference](actions.md): Available operations

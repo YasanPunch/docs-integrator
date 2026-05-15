@@ -4,7 +4,7 @@ description: "Set up scheduled RAG ingestion in WSO2 Integration Platform to loa
 keywords: [wso2 integrator, rag, ingestion, vector store, knowledge base]
 ---
 
-# RAG ingestion
+# RAG Ingestion
 
 Retrieval-augmented generation (RAG) improves LLM answers by using relevant external data. RAG has two core stages: ingestion and retrieval. This page explains how to configure scheduled ingestion in WSO2 Cloud - Integration Platform.
 

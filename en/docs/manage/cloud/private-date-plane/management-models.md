@@ -1,10 +1,10 @@
 ---
-title: Private data plane management models
+title: Private Data Plane Management Models
 description: Compare the WSO2-managed and customer-managed models for private data plane infrastructure and operations.
 keywords: [wso2 cloud, wso2 integration platform, private data plane, management model, pdp]
 ---
 
-# Private data plane management models
+# Private Data Plane Management Models
 
 WSO2 Cloud - Integration Platform manages the full lifecycle of your integrations, from development through deployment. The data plane is the runtime environment where those integrations run. When you use a private data plane, you own and control that environment, which introduces a choice: how much of the infrastructure and platform management do you want to own?
 

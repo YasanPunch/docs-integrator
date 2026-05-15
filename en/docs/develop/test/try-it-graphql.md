@@ -1,11 +1,11 @@
 ---
 sidebar_position: 3
-title: Test GraphQL service
+title: Test GraphQL Service
 description: Test GraphQL queries and mutations using the built-in GraphiQL editor in WSO2 Integrator.
 keywords: [wso2 integrator, try-it, graphql, graphiql, test graphql service]
 ---
 
-# Test GraphQL service
+# Test GraphQL Service
 
 The Try-It tool for GraphQL services opens a built-in GraphiQL editor where you can browse your schema, write queries and mutations, and execute them against your running service. Use it during development to verify your GraphQL operations before writing automated tests.
 

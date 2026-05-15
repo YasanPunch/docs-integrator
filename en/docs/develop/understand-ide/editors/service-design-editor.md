@@ -1,10 +1,10 @@
 ---
 sidebar_position: 2
-title: Service Design editor
+title: Service Design Editor
 description: Design HTTP, gRPC, and event-driven service entry points visually.
 ---
 
-# Service Design editor
+# Service Design Editor
 
 The Service Design editor, also known as the **service designer**, is the editor you open for any service entry point in WSO2 Integrator. It lists every resource or handler the service exposes and gives you one place to add, edit, remove, try out, and export them.
 

@@ -1,84 +1,91 @@
 ---
-title: "Setup Guide"
-description: "How to set up and configure the ballerinax/hubspot.crm.pipelines connector."
+title: Setup Guide
 ---
-
 # Setup Guide
 
 This guide walks you through creating a HubSpot developer app and obtaining the OAuth 2.0 credentials required to use the HubSpot CRM Pipelines connector.
 
-
 ## Prerequisites
 
-- A HubSpot developer account. If you do not have one, [sign up at the HubSpot Developer Portal](https://developers.hubspot.com/get-started).
+- A HubSpot developer account. If you do not have one, [sign up for a free account](https://developers.hubspot.com/get-started).
 
-## Create a HubSpot developer account and test account
+## Step 1: Log in to the HubSpot developer portal
 
-1. Go to the [HubSpot Developer Portal](https://developers.hubspot.com/get-started) and sign up or log in.
-2. Once logged in, navigate to **Test accounts** in the left sidebar and create a developer test account if you don't already have one. This provides a sandbox environment for testing.
+Log in to your [HubSpot developer account](https://app.hubspot.com/).
 
+## Step 2: Create a developer test account (optional)
 
-:::tip
-A developer test account lets you test API integrations without affecting production data.
-:::
+Developer test accounts let you test apps and integrations without affecting real HubSpot data.
 
-## Create a HubSpot app
+1. Select **Test accounts** in the left sidebar.
 
-1. In the HubSpot Developer Portal, navigate to **Apps** in the left sidebar.
-2. Click **Create app**.
-3. Enter an **App name** (e.g., `Ballerina Pipelines Connector`).
-4. Go to the **Auth** tab.
-5. Under **Redirect URLs**, add a redirect URI (e.g., `http://localhost:9090` for development).
-6. Under **Scopes**, add the required scopes for the Pipelines API. Common scopes include:
-    - `crm.objects.orders.read`
-    - `crm.schemas.orders.write`
-    - `crm.objects.deals.read`
-    - `crm.objects.deals.write`
-7. Click **Save**.
-8. Copy the **Client ID** and **Client Secret** from the Auth tab.
+   ![Developer portal](/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/setup/test_acc_1.png)
 
+2. Select **Create developer test account**.
+
+   ![Create test account](/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/setup/test_acc_2.png)
+
+3. Provide a name and select **Create**.
+
+   ![Name the test account](/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/setup/test_acc_3.png)
 
 :::note
-The exact scopes required depend on which object types (deals, tickets, orders) you plan to manage pipelines for. Add the appropriate read and write scopes for each object type.
+Developer test accounts are for development and testing only. Do not use them in production.
 :::
 
-## Generate a refresh token
+## Step 3: Create a HubSpot app
 
-Use the HubSpot OAuth 2.0 Authorization Code flow to obtain a refresh token:
+1. Navigate to **Apps** and select **Create App**.
 
-1. Construct the following authorization URL, replacing the placeholders:
+   ![Create app](/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/setup/create_app_1.png)
 
-    ```
-    https://app.hubspot.com/oauth/authorize?client_id=<YOUR_CLIENT_ID>&scope=<SCOPES>&redirect_uri=<YOUR_REDIRECT_URI>
-    ```
+2. Provide the app name and description.
 
-2. Open the URL in a browser and log in with your HubSpot credentials.
-3. Select the test account (or target account) when prompted and authorize the app.
-4. After authorization, HubSpot redirects to your redirect URI with a `code` query parameter. Copy the `code` value.
-5. Exchange the authorization code for tokens using a POST request:
+## Step 4: Configure authentication
 
-    ```
-    POST https://api.hubapi.com/oauth/v1/token
-    Content-Type: application/x-www-form-urlencoded
+1. Go to the **Auth** tab.
 
-    grant_type=authorization_code
-    &code=<AUTHORIZATION_CODE>
-    &client_id=<YOUR_CLIENT_ID>
-    &client_secret=<YOUR_CLIENT_SECRET>
-    &redirect_uri=<YOUR_REDIRECT_URI>
-    ```
+   ![Auth tab](/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/setup/create_app_2.png)
 
-6. The response contains `access_token` and `refresh_token`. Copy the `refresh_token`.
+2. Under **Scopes**, select **Add new scope** and add:
+   - `crm.pipelines.orders.read`
+   - `crm.pipelines.orders.write`
 
+   ![Set scope](/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/setup/scope.png)
+
+3. Add your redirect URI and select **Create App**.
+
+   ![Create app with redirect](/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/setup/create_app_final.png)
+
+## Step 5: Get the client ID and client secret
+
+In the **Auth** section, copy the **Client ID** and **Client Secret**.
+
+![Get credentials](/img/connectors/catalog/crm-sales/hubspot.crm.pipelines/setup/get_credentials.png)
+
+## Step 6: Get the refresh token
+
+1. Construct the authorization URL:
+
+   ```text
+   https://app.hubspot.com/oauth/authorize?client_id=<YOUR_CLIENT_ID>&scope=<YOUR_SCOPES>&redirect_uri=<YOUR_REDIRECT_URI>
+   ```
+
+2. Open the URL in a browser and select your developer test account.
+
+3. Copy the authorization code from the redirect URL.
+
+4. Exchange the code for tokens:
+
+   ```bash
+   curl --request POST \
+     --url https://api.hubapi.com/oauth/v1/token \
+     --header 'content-type: application/x-www-form-urlencoded' \
+     --data 'grant_type=authorization_code&code=<CODE>&redirect_uri=<YOUR_REDIRECT_URI>&client_id=<YOUR_CLIENT_ID>&client_secret=<YOUR_CLIENT_SECRET>'
+   ```
+
+5. Copy the `refresh_token` from the response.
 
 :::tip
-Use a tool like [Postman](https://www.postman.com/) or `curl` to perform the token exchange in step 5.
+Store the client ID, client secret, and refresh token securely. Use Ballerina's `configurable` feature and a `Config.toml` file to supply them at runtime.
 :::
-
-:::warning
-Store the Client ID, Client Secret, and Refresh Token securely. Do not commit them to source control. Use Ballerina's `configurable` feature and a `Config.toml` file to supply them at runtime.
-:::
-
-## Next steps
-
-- [Actions Reference](actions.md) - Available operations

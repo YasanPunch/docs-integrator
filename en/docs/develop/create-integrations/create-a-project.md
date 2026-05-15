@@ -3,7 +3,7 @@ title: Create a Project
 description: Create a project workspace to organize multiple integrations and libraries.
 ---
 
-# Create a project
+# Create a Project
 
 A project is a workspace that organizes multiple integrations and libraries in a single repository with shared dependencies. Use projects when you need to manage related packages together.
 
@@ -53,7 +53,7 @@ After creation, WSO2 Integrator opens the [project view](../understand-ide/views
 You have several entry points into the **Add New Integration** or **Add New Library** dialog:
 
 - **Add Integration or Library** in the **Integrations & Libraries** card.
-- **Generate with AI** in the same card to scaffold an integration from a natural-language prompt.
+- **Generate with AI** in the same card to scaffold an integration from a natural-language prompt using [WSO2 Integrator Copilot](../copilot/overview.md).
 - **Create Integration or Library** in the sidebar.
 
 The empty project also includes a **README** card that links to **Add a README** so you can document the project, integrations, and libraries.

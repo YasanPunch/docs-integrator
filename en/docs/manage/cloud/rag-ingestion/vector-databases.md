@@ -1,10 +1,10 @@
 ---
-title: "Managed PostgreSQL and vector databases"
+title: "Managed PostgreSQL and Vector Databases"
 description: "Create and manage PostgreSQL and vector databases in WSO2 Integration Platform."
 keywords: [wso2 integrator, wso2 integration platform, managed database, postgresql, vector database]
 ---
 
-# Managed PostgreSQL and vector databases
+# Managed PostgreSQL and Vector Databases
 
 WSO2 Cloud - Integration Platform provides fully managed PostgreSQL databases and managed PostgreSQL vector databases for efficient vector similarity search. You can provision services on AWS, Azure, GCP, and DigitalOcean.
 

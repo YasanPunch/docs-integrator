@@ -1,12 +1,12 @@
 ---
-title: File dependency and trigger conditions
+title: File Dependency and Trigger Conditions
 description: Control when files are processed using file name patterns, age filters, and dependency conditions that wait for related files before triggering.
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# File dependency and trigger conditions
+# File Dependency and Trigger Conditions
 
 By default, an FTP/SFTP listener triggers as soon as it detects a new file. In production, you often need more control: process only `.csv` files, skip files that are still being uploaded, or wait for a companion file (like a `.done` marker) before processing.
 

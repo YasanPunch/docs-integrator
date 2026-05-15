@@ -1,10 +1,10 @@
 ---
 sidebar_position: 3
-title: Deploy to Devant (WSO2 iPaaS)
+title: Deploy to Devant (WSO2 IPaaS)
 description: Deploy integrations to WSO2 Devant cloud platform.
 ---
 
-# Deploy to Devant (WSO2 iPaaS)
+# Deploy to Devant (WSO2 IPaaS)
 
 WSO2 Devant is a fully managed integration platform as a service (iPaaS) that hosts and runs your WSO2 Integrator projects in the cloud without requiring you to manage infrastructure.
 
@@ -221,6 +221,6 @@ Devant triggers a build and deployment whenever a push is detected on the config
 
 ## What's next
 
-- [Run Locally](run-locally.md) -- Develop and test before deploying
+- [Run Locally](../../deploy/self-hosted/run-locally.md) -- Develop and test before deploying
 - [Environments](environments.md) -- Manage Dev, Test, and Prod configurations
 - [Deploy to AWS / Azure / GCP](aws-azure-gcp.md) -- Self-managed cloud deployments

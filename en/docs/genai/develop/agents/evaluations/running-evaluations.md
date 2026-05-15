@@ -1,11 +1,11 @@
 ---
 sidebar_position: 4
-title: Run evaluations
+title: Run Evaluations
 description: Run AI agent evaluations in WSO2 Integrator and review per-run reports, score trends, and code changes that influenced each result.
 keywords: [wso2 integrator, ai agent, evaluation, report, run history, regression]
 ---
 
-# Run evaluations
+# Run Evaluations
 
 Once an evaluation is [configured](creating-evaluations.md), you can run it and review the results in the **Evaluation Report**. Run history is preserved so you can track quality over time and see exactly which code changes affected each run.
 

@@ -1,10 +1,10 @@
 ---
-title: Configure enterprise login
+title: Configure Enterprise Login
 description: Learn how to configure enterprise login for your organization in WSO2 Cloud - Integration Platform using an external identity provider (IdP).
 keywords: [wso2 cloud, enterprise login, identity provider, IdP, SSO, Asgardeo, RBAC]
 ---
 
-# Configure enterprise login
+# Configure Enterprise Login
 
 WSO2 Cloud - Integration Platform lets you configure enterprise login so that users from an external identity provider (IdP) can sign in to WSO2 Cloud without changing their credentials.
 

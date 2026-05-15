@@ -1,10 +1,10 @@
 ---
-title: "Managed databases and caches"
+title: "Managed Databases and Caches"
 description: "Managed PostgreSQL, MySQL, and cache services on WSO2 Cloud - Integration Platform: how to create them, connect to them, plan for high availability, and add them to the Marketplace."
 keywords: [wso2 integrator, wso2 cloud, managed database, postgresql, mysql, cache, redis, vector database, marketplace]
 ---
 
-# Managed databases and caches
+# Managed Databases and Caches
 
 WSO2 Cloud - Integration Platform lets you create PostgreSQL and MySQL databases and Managed Cache instances on AWS, Azure, GCP, and DigitalOcean as fully managed platform services. These databases and caches can be provisioned to provide persistence and caching for your integrations. Service plans range from smaller instances for development purposes to production-grade databases with automatic backups and high-availability multi-node deployments.
 

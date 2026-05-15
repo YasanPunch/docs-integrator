@@ -25,7 +25,7 @@ my-integration/
 
 ## Step 2: Open the terminal at the project root
 
-In VS Code, open the integrated terminal (`` Ctrl+` ``) and confirm you are in the project root — the directory that contains `Ballerina.toml`:
+In VS Code, open the integrated terminal (`` Ctrl+` ``) and confirm that you are in the project root directory containing the `Ballerina.toml` file:
 
 ```bash
 ls Ballerina.toml
@@ -122,14 +122,14 @@ Click any handler row (for example, `getOrder`) to open its **flow designer view
 ![Flow designer for the getOrder remote function](../../../../static/img/develop/integration-artifacts/service/grpc-service/step-flow.png)
 
 :::note
-Not all gRPC service configuration options are available through the visual designer. For full control — including listener configuration and descriptor settings — use Ballerina code directly.
+Not all gRPC service configuration options are available through the visual designer. For full control including listener configuration and descriptor settings, use Ballerina code directly.
 :::
 
 ---
 
 ## Regenerating after proto changes
 
-Re-run the same command whenever the `.proto` file changes — the generated files are overwritten automatically:
+Re-run the same command whenever the `.proto` file changes. The generated files are overwritten automatically:
 
 ```bash
 bal grpc --input resources/order_service.proto --mode service --output .

@@ -1,23 +1,23 @@
 ---
-sidebar_position: 15
-title: Observe metrics, traces and logs using Moesif
-description: See how Ballerina supports observability by exposing itself via metrics, traces and logs to Moesif.
+sidebar_position: 4
+title: Moesif
+description: Observe metrics, traces, and logs from WSO2 Integrator using Moesif API analytics.
 ---
 
-# Observe metrics, traces and logs using Moesif
+# Moesif
 
 Users can observe service integrations with [Moesif](https://www.moesif.com/), which is a powerful API analytics and monetization platform that helps businesses understand, debug, and monetize their API usage. It provides comprehensive API observability with real-time monitoring, behavioral analytics, and AI-powered insights to track customer API adoption and usage patterns.
 
 Follow the steps given below to view integration metrics, traces and logs in Moesif.
 
-## Step 1 - Create a Moesif account and get an application ID
+## Step 1: Create a Moesif Account and Get an Application ID
 
 After you log into Moesif Portal, get your `Moesif Application ID` during the onboarding steps.
 `Application ID` can be accessed by following the below steps from Moesif Portal after logging in.
 
 > Go to Account -> Settings -> API keys -> Collector Application ID.
 
-## Step 2 - Set up a service integration for publishing traces and metrics to Moesif
+## Step 2: Set Up a Service Integration
 
 1. In your integration, Navigate to file explorer.
 2. Open the `main.bal` file in the Ballerina package and add the following imports.
@@ -87,7 +87,7 @@ The table below provides the descriptions of each configuration option and possi
 
 These configurations enable traces and metrics publishing for the Ballerina application and configure the Moesif exporter.
 
-## Step 3 - Publish integration logs to Moesif
+## Step 3: Publish Integration Logs to Moesif
 
 This setup leverages `Fluent Bit` to forward logs to an `OTEL Collector`, which then sends the logs to Moesif's log endpoint.
 
@@ -290,12 +290,12 @@ This setup leverages `Fluent Bit` to forward logs to an `OTEL Collector`, which 
    path = "/path/to/your/ballerina/logs/app.log"
    ```
 
-## Step 4 - Run the Integration
+## Step 4: Run the Integration
 
 When observability is enabled, the runtime collects metrics, logs, and traces.
 
 
-## Step 5 - Send requests
+## Step 5: Send Requests
 
 Send requests as below to the service.
 
@@ -328,8 +328,14 @@ curl -X POST http://localhost:8090/shop/order \
 curl -X GET http://localhost:8090/shop/order/0
 ```
 
-## Step 6 - Visualize the observability data in Moesif dashboards
+## Step 6: Visualize Observability Data in Moesif Dashboards
 
 Traces, metrics, and logs are published to Moesif as events and can be explored in the Live Event Log for real-time monitoring.
 Moesif provides a set of pre-built dashboards that help visualize and analyze this data effectively. 
 In addition, custom dashboards can be created to gain deeper, domain-specific insights.
+
+## What's next
+
+- [New Relic](new-relic-integration.md) — Alternative full-stack observability platform
+- [Datadog](recipe-datadog-setup.md) — Full-stack observability with Datadog
+- [Overview](observability-overview.md) — Full observability architecture

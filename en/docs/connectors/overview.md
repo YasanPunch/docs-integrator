@@ -1,9 +1,9 @@
 ---
-title: "Connectors overview"
+title: "Connectors Overview"
 description: "Understand what connectors, connections, actions, and triggers are before building your first integration."
 ---
 
-# Connectors overview
+# Connectors Overview
 
 Send a Slack notification when an order ships. Read customer records from Salesforce. Write results to a Google Sheet. Query a database and return the data in an API response.
 
@@ -80,7 +80,5 @@ Not everything in the connector catalog is a client connector. Some packages are
 ## What's next
 
 - [Connector catalog](catalog/index.mdx): Browse all available connectors
-- [Connection configuration](connection-configuration.md): Configure credentials and endpoint settings
 - [Connections](../develop/integration-artifacts/supporting/connections.md): Create and manage connections in your integration
-- [Error handling](error-handling-per.md): Handle failures and retries in connector calls
 - [Build your own connector](build-your-own/build-own.md): Create a custom connector for a service not in the catalog

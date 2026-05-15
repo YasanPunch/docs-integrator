@@ -4,7 +4,7 @@ description: "Configure integration settings per environment on WSO2 Cloud - Int
 keywords: [wso2 integrator, wso2 cloud, configuration, config groups, environment config]
 ---
 
-# Runtime configurations
+# Runtime Configurations
 
 WSO2 Cloud - Integration Platform lets you configure each integration's runtime values per environment. For values shared across multiple integrations, you can define configuration groups at the organization level and link them directly to your integrations.
 

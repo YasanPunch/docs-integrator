@@ -1,10 +1,10 @@
 ---
-title: Deployment pipelines
+title: Deployment Pipelines
 description: Learn how to create and manage deployment pipelines in WSO2 Cloud - Integration Platform to control the promotion flow of integrations across environments.
 keywords: [wso2 cloud, deployment pipeline, cd pipeline, promotion, environments]
 ---
 
-# Manage deployment pipelines
+# Manage Deployment Pipelines
 
 A deployment pipeline defines the ordered sequence of environments through which an integration is promoted. WSO2 Cloud - Integration Platform provides a default pipeline and lets you create additional pipelines to match different promotion strategies across your projects.
 

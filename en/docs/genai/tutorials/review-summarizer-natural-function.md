@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: Customer review analyzer with Natural Function
+title: Customer Review Analyzer with Natural Function
 description: Step-by-step tutorial that builds an HTTP service using a Natural Function to analyze customer reviews and return structured feedback with sentiment, topics, churn risk, and a suggested action.
 keywords: [wso2 integrator, genai, natural functions, tutorial, customer review, sentiment analysis]
 ---
@@ -8,7 +8,7 @@ keywords: [wso2 integrator, genai, natural functions, tutorial, customer review,
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Customer review analyzer with Natural Function
+# Customer Review Analyzer with Natural Function
 
 This tutorial walks through building an **HTTP service that uses a Natural Function to analyze a customer review** and return structured feedback. It is the end-to-end scenario for the [Natural Functions](/docs/genai/develop/natural-functions/overview) feature.
 

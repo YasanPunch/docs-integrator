@@ -331,7 +331,7 @@ The ICP reference is split across the following pages under `en/docs/manage/icp/
 
 ### Page: Error Codes
 
-**File:** `en/docs/reference/error-codes.md`
+**File:** `en/docs/reference/error-code.md`
 
 **What to cover:**
 

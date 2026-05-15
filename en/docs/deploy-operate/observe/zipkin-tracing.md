@@ -1,10 +1,10 @@
 ---
-sidebar_position: 10
-title: Zipkin Tracing
-description: Set up Zipkin for distributed tracing of Ballerina integrations.
+sidebar_position: 2
+title: Zipkin
+description: Set up Zipkin for distributed tracing of WSO2 Integrator services.
 ---
 
-# Zipkin Tracing
+# Zipkin
 
 Zipkin is an open-source distributed tracing platform that helps troubleshoot latency problems in service architectures. WSO2 Integrator provides built-in Zipkin support, publishing tracing data in OpenTelemetry format.
 
@@ -15,7 +15,7 @@ Zipkin is an open-source distributed tracing platform that helps troubleshoot la
 | Zipkin | Version 2.24 or later |
 | Network | Integration must reach the Zipkin agent endpoint |
 
-## Step 1 -- start Zipkin
+## Step 1: Start Zipkin
 
 Run Zipkin using Docker:
 
@@ -29,7 +29,7 @@ The Zipkin UI is available at `http://localhost:9411`.
 There are many possible ways to deploy Zipkin. For more information, see [Zipkin Quickstart](https://zipkin.io/pages/quickstart).
 :::
 
-## Step 2 -- import the Zipkin extension
+## Step 2: Import the Zipkin Extension
 
 To include the Zipkin extension in the executable, import the `ballerinax/zipkin` module in your project's `main.bal` file.
 
@@ -42,7 +42,7 @@ import ballerinax/zipkin as _;
 
 The Zipkin extension includes a **Zipkin Span Exporter** that pushes tracing data as batches to the Zipkin server endpoint (default: `http://localhost:9411`) in Zipkin format.
 
-## Step 3 -- configure Ballerina for Zipkin
+## Step 3: Configure Ballerina for Zipkin
 
 Open `Ballerina.toml` by navigating file explorer and edit as follows
 
@@ -83,7 +83,7 @@ reporterBufferSize = 10000
 | `reporterBufferSize` | int | `10000` | Queue size of the Zipkin client. |
 
 
-## Step 4 -- send requests
+## Step 4: Send Requests
 
 Run the service and send requests to your service to generate trace data. Example cURL commands:
 
@@ -103,7 +103,7 @@ curl -X POST http://localhost:8090/shop/order \
   -d '{"productId": 1, "quantity": 1}'
 ```
 
-## Step 5 -- view traces
+## Step 5: View Traces
 
 1. Open the Zipkin UI at `http://localhost:9411`.
 2. Select the service for which you need tracing information.
@@ -122,6 +122,6 @@ Zipkin displays traces as a timeline of spans:
 
 ## What's next
 
-- [Jaeger](jaeger-distributed-tracing.md) -- Alternative distributed tracing with Jaeger
-- [Elastic Stack](elastic-stack-elk.md) -- Use Elasticsearch for trace storage and log aggregation
-- [Observability Overview](observability-overview.md) -- Full observability architecture
+- [Jaeger](jaeger-distributed-tracing.md) — Alternative distributed tracing with Jaeger
+- [Logging](logging-overview.md) — Configure structured logging
+- [Overview](observability-overview.md) — Full observability architecture

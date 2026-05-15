@@ -24,6 +24,24 @@ jobs:
           cd en/
           npm ci
 
+      - name: Enforce title case
+        run: |
+          cd en/
+          set -o pipefail
+          node scripts/enforce-title-case.mjs --dry-run 2>&1 | tee title-case.log || {
+            {
+              echo "## Title-case violations"
+              echo ""
+              echo "The following values need title-case corrections."
+              echo "Run \`node en/scripts/enforce-title-case.mjs\` locally and commit the result."
+              echo ""
+              echo '```'
+              cat title-case.log
+              echo '```'
+            } >> "${GITHUB_STEP_SUMMARY:-/dev/null}"
+            exit 1
+          }
+
       - name: Build Docusaurus site
         id: build
         run: |

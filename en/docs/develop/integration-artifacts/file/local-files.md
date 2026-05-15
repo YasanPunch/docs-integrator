@@ -1,12 +1,12 @@
 ---
-title: Local files
+title: Local Files
 description: Monitor a local directory for file system events and process files as they arrive using onCreate, onModify, and onDelete handlers.
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Local files
+# Local Files
 
 Local file services monitor a directory on the local file system and trigger event handlers when files are created, modified, or deleted. Use them for on-premises batch processing, development workflows, and integrations that consume files dropped into a watched directory.
 

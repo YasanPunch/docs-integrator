@@ -87,72 +87,20 @@ const config: Config = {
       },
     },
     navbar: {
-      title: 'WSO2 Integrator',
+      title: 'WSO2 Integration Platform',
       logo: {
-        alt: 'WSO2 Integrator Logo',
+        alt: 'WSO2 Integration Platform Logo',
         src: 'img/logo.svg',
         srcDark: 'img/logo-dark.svg',
         href: '/',
       },
       items: [
         {
-          to: '/docs/get-started/overview-and-architecture',
-          label: 'Get started',
-          position: 'left',
-          activeBaseRegex: '/docs/get-started(/|$)',
-        },
-        {
-          to: '/docs/develop/overview',
-          label: 'Develop',
-          position: 'left',
-          activeBaseRegex: '/docs/develop(/|$)',
-        },
-        {
-          to: '/docs/connectors/overview',
-          label: 'Connectors',
-          position: 'left',
-          activeBaseRegex: '/docs/connectors(/|$)',
-        },
-        {
-          to: '/docs/genai/overview',
-          label: 'AI Integrations',
-          position: 'left',
-          activeBaseRegex: '/docs/genai(/|$)',
-        },
-        {
-          to: '/docs/guides/overview',
-          label: 'Guides',
-          position: 'left',
-          activeBaseRegex: '/docs/guides(/|$)',
-        },
-        {
-          to: '/docs/deploy/overview',
-          label: 'Deploy',
-          position: 'left',
-          // Match both the new /docs/deploy/* tree and the legacy
-          // /docs/deploy-operate/* tree until the content migration is
-          // complete (those pages still live under deploy-operate/ in
-          // sidebars.ts).
-          activeBaseRegex: '/docs/(deploy|deploy-operate)(/|$)',
-        },
-        {
-          to: '/docs/manage/overview',
-          label: 'Manage',
-          position: 'left',
-          activeBaseRegex: '/docs/manage(/|$)',
-        },
-        {
-          to: '/docs/reference/overview',
-          label: 'Reference',
-          position: 'left',
-          activeBaseRegex: '/docs/reference(/|$)',
-        },
-        {
           href: 'https://github.com/wso2/docs-integrator',
           label: 'GitHub',
           position: 'right',
-        },
-      ],
+        }
+      ]
     },
     footer: {
       style: 'dark',
@@ -160,8 +108,8 @@ const config: Config = {
         {
           title: 'Get started',
           items: [
-            { label: 'Overview', to: '/docs/get-started/overview-and-architecture' },
-            { label: 'Install', to: '/docs/get-started/install' },
+            { label: 'Overview', to: '/docs/get-started/introduction' },
+            { label: 'Install', to: '/docs/get-started/setup/local-setup' },
             { label: 'Quick starts', to: '/docs/get-started/build-automation' },
           ],
         },
@@ -169,8 +117,8 @@ const config: Config = {
           title: 'Develop',
           items: [
             { label: 'Integration artifacts', to: '/docs/develop/integration-artifacts' },
-            { label: 'Transform', to: '/docs/develop/transform/data-mapper' },
-            { label: 'Test', to: '/docs/develop/test/try-it' },
+            { label: 'Transform', to: '/docs/develop/integration-artifacts/supporting/data-mapper/' },
+            { label: 'Test', to: '/docs/develop/test/built-in-try-it-tool' },
             { label: 'Connectors', to: '/docs/connectors/overview' },
             { label: 'AI Integrations', to: '/docs/genai/overview' },
           ],
@@ -178,7 +126,7 @@ const config: Config = {
         {
           title: 'Deploy',
           items: [
-            { label: 'Docker and Kubernetes', to: '/docs/deploy-operate/deploy/docker-kubernetes' },
+            { label: 'Docker and Kubernetes', to: '/docs/deploy/self-hosted/kubernetes' },
             { label: 'CI/CD', to: '/docs/deploy-operate/cicd/github-actions' },
             { label: 'Observe', to: '/docs/deploy-operate/observe/observability-overview' },
             { label: 'Secure', to: '/docs/deploy-operate/secure/authentication' },

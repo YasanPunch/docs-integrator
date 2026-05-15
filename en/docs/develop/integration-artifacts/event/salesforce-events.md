@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # Salesforce Events
 
-Salesforce event integrations subscribe to Change Data Capture (CDC) channels and trigger handler functions as records are created, updated, deleted, or restored in your Salesforce org. Use them for real-time CRM synchronization, audit logging, and event-driven workflows that react to Salesforce record changes without polling.
+Salesforce event integrations subscribe to Change Data Capture (CDC) channels and trigger handler functions as records are created, updated, deleted, or restored in your Salesforce organization. Use them for real-time CRM synchronization, audit logging, and event-driven workflows that react to Salesforce record changes without polling.
 
 ## Creating a Salesforce events service
 
@@ -16,14 +16,14 @@ Salesforce event integrations subscribe to Change Data Capture (CDC) channels an
 <TabItem value="ui" label="Visual Designer" default>
 
 1. Click **+ Add Artifact** in the canvas or click **+** next to **Entry Points** in the sidebar.
-2. In the **Artifacts** panel, select **Salesforce Events** under **Event Integration**.
+2. In the **Artifacts** panel, select **Salesforce** under **Event Integration**.
 3. In the creation form, fill in the following fields:
 
    ![Salesforce Events creation form](/img/develop/integration-artifacts/event/salesforce-events/step-creation-form.png)
 
    | Field | Description |
    |---|---|
-   | **Auth** | Credentials for connecting to Salesforce. Accepts a record expression with `username` and `password` fields. Required. |
+   | **Auth** | Credentials for connecting to Salesforce. Accepts a record expression with `username` and `password` fields. Required. By default, the listener uses SOAP-based authentication. You can change the auth type after creation under [Listener Configuration](#listener-configuration). |
 
    Expand **Advanced Configurations** to set the listener name.
 
@@ -95,9 +95,7 @@ In the **Service Designer**, click the **Configure** icon in the header to open 
 | Field | Description | Default |
 |---|---|---|
 | **Name** | Identifier for the listener. | `salesforceListener` |
-| **Auth** | Authentication credentials. Accepts a record expression with `username` and `password` fields for SOAP-based authentication. | Required |
-
-Click **+ Attach Listener** to attach an additional listener to the same service.
+| **Auth** | Authentication credentials. SOAP-based authentication accepts a record expression with `username` and `password` fields. REST-based authentication is also supported. Select one of **Bearer Token**, **Password Grant**, **Refresh Token**, or **Client Credentials**. | Required |
 
 Click **Save Changes** to apply updates.
 
@@ -165,7 +163,7 @@ When a Salesforce Events service is created, WSO2 Integrator adds all four handl
 | `onRestore` | A deleted record is restored (undeleted) | Recovering soft-deleted records in downstream systems |
 
 :::note
-You do not need to implement logic in all four handlers. Delete or leave empty any handlers that are not relevant to your use case.
+You do not need to implement logic in all four handlers. Leave empty any handlers that are not relevant to your use case.
 :::
 
 ### Event data type

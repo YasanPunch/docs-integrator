@@ -1,10 +1,10 @@
 ---
-title: Create an environment
+title: Create an Environment
 description: Learn how to create a new environment in your WSO2 Cloud - Integration Platform organization to support additional stages in your deployment pipeline.
 keywords: [wso2 cloud, create environment, production environment]
 ---
 
-# Create an environment
+# Create an Environment
 
 WSO2 Cloud - Integration Platform provides **Development** and **Production** environments by default. You can create additional environments, such as a staging or regional environment, to match your release pipeline.
 

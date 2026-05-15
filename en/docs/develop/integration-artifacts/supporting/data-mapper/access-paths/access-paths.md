@@ -1,9 +1,9 @@
 ---
-title: Access paths
+title: Access Paths
 description: Open the data mapper as a reusable artifact or inline from a flow node.
 ---
 
-# Access paths
+# Access Paths
 
 You can open the data mapper in two ways:
 

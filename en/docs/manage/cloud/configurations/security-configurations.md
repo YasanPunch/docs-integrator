@@ -4,7 +4,7 @@ description: "Configure API Key and OAuth2 security schemes for integrations dep
 keywords: [wso2 integrator, api security, api key, oauth2, integration as api, wso2 cloud]
 ---
 
-# Security configurations
+# Security Configurations
 
 The WSO2 Integration Platform lets you configure authentication for integrations deployed as Integration as APIs or AI Agents. You can secure each endpoint with an API Key scheme, an OAuth2 scheme, or both at the same time.
 

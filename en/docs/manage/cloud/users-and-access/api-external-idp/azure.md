@@ -1,10 +1,10 @@
 ---
-title: Configure Azure Active Directory as an external IdP
+title: Configure Azure Active Directory as an External IdP
 description: Learn how to configure Microsoft Azure Active Directory as an external identity provider in WSO2 Cloud - Integration Platform to manage API access control.
 keywords: [wso2 cloud, azure active directory, azure AD, microsoft entra, external IdP, identity provider, API access control]
 ---
 
-# Configure Azure Active Directory as an external IdP
+# Configure Azure Active Directory as an External IdP
 
 Organizations that use Microsoft Azure Active Directory (Azure AD) for identity and access management can integrate it with WSO2 Cloud - Integration Platform to enable API access control. This uses API scopes to restrict API access to designated user groups.
 

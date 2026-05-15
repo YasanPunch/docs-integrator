@@ -3,95 +3,63 @@ title: Setup Guide
 ---
 # Setup Guide
 
-This guide walks you through setting up a MongoDB instance and obtaining the connection details required to use the MongoDB connector.
-
+This guide walks you through setting up a MongoDB instance and obtaining the connection string required to use the MongoDB connector.
 
 ## Prerequisites
 
-- A running MongoDB instance (v3.6 or later). You can use [MongoDB Atlas](https://www.mongodb.com/atlas) for a cloud-hosted instance, or install MongoDB Community Edition locally.
+- A MongoDB instance (v3.6 or later). You can use [MongoDB Atlas](https://www.mongodb.com/atlas) for a cloud-hosted instance or install MongoDB Community Edition locally.
 
-## Step 1: Set up a MongoDB instance
+## Step 1: Set up a MongoDB server locally
 
-**Option A: MongoDB Atlas (Cloud)**
+1. Download and install MongoDB Community Edition from the [MongoDB download center](https://www.mongodb.com/try/download/community).
+2. Follow the [installation instructions](https://www.mongodb.com/docs/manual/administration/install-community/) for your operating system to start the MongoDB server.
 
-1. Go to [MongoDB Atlas](https://www.mongodb.com/atlas) and sign up or log in.
-2. Create a new project (or use an existing one).
-3. Click **Build a Database** and select your preferred tier (the free M0 Shared tier works for development).
-4. Choose a cloud provider and region, then click **Create Cluster**.
-5. Wait for the cluster to provision (typically 1–3 minutes).
-
-**Option B: Local MongoDB**
-
-1. Download and install MongoDB Community Edition from the [official download page](https://www.mongodb.com/try/download/community).
-2. Start the `mongod` service using the default settings (localhost:27017).
-
-## Step 2: Create a database user
-
-**For MongoDB Atlas:**
-
-1. In the Atlas dashboard, navigate to **Database Access** under the **Security** section.
-2. Click **Add New Database User**.
-3. Choose **Password** as the authentication method.
-4. Enter a username and a strong password.
-5. Under **Database User Privileges**, select **Read and write to any database** (or assign specific roles as needed).
-6. Click **Add User**.
-
-**For local MongoDB:**
-
-1. Connect to MongoDB using `mongosh`.
-2. Switch to the `admin` database and create a user:
-
-    ```javascript
-    use admin
-    db.createUser({
-      user: "myUser",
-      pwd: "myPassword",
-      roles: [{ role: "readWrite", db: "myDatabase" }]
-    })
-    ```
-
-## Step 3: Configure network access
-
-**For MongoDB Atlas:**
-
-1. Navigate to **Network Access** under the **Security** section.
-2. Click **Add IP Address**.
-3. Add your application's IP address, or click **Allow Access from Anywhere** (`0.0.0.0/0`) for development purposes.
-4. Click **Confirm**.
-
-**For local MongoDB:**
-
-Ensure that MongoDB is listening on the appropriate network interface. By default, it binds to `localhost`. To allow remote connections, update the `bindIp` setting in your `mongod.conf` file.
-
-:::warning
-Allowing access from all IP addresses (0.0.0.0/0) is suitable for development only. In production, restrict access to specific IP addresses or CIDR ranges.
+:::note
+This guide uses MongoDB Community Edition. The Enterprise Edition can also be used.
 :::
 
-## Step 4: Get the connection string
+## Step 2: Set up a MongoDB Atlas cluster
 
-**For MongoDB Atlas:**
+If you prefer a cloud-hosted instance:
 
-1. In the Atlas dashboard, go to **Database** and click **Connect** on your cluster.
-2. Select **Drivers** as the connection method.
-3. Copy the connection string. It looks like:
+1. Sign up for a free account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register).
+2. Follow the [Atlas documentation](https://docs.atlas.mongodb.com/getting-started/) to create a new cluster.
+3. Navigate to your MongoDB Atlas cluster.
+4. Select **Database** from the left navigation pane under the **Deployment** section and select **Connect** to open the connection instructions.
 
-    ```text
-    mongodb+srv://<username>:<password>@<cluster-host>/?retryWrites=true&w=majority
-    ```
+   ![MongoDB Atlas database page](/img/connectors/catalog/database/mongodb/setup/mongodb-atlas-database-page.png)
 
-4. Replace `<username>` and `<password>` with the credentials created in the previous step.
+5. Add your IP address to the IP access list, or select **Allow access from anywhere** to allow all IP addresses.
 
-**For local MongoDB:**
+   ![MongoDB Atlas IP access list](/img/connectors/catalog/database/mongodb/setup/mongodb-atlas-ip-access-list.png)
 
-The default connection string is:
+6. Select **Choose a connection method** and select **Drivers** under **Connect your application** to find the connection string.
 
-```text
+   ![MongoDB Atlas connection method](/img/connectors/catalog/database/mongodb/setup/mongodb-atlas-connection-method.png)
+
+:::warning
+Allowing access from all IP addresses (`0.0.0.0/0`) is suitable for development only. In production, restrict access to specific IP addresses or CIDR ranges.
+:::
+
+## Step 3: Get the connection string
+
+**For MongoDB Atlas**, copy the connection string from the **Drivers** connection method page. It follows this format:
+
+```
+mongodb+srv://<username>:<password>@<cluster-host>/?retryWrites=true&w=majority
+```
+
+Replace `<username>` and `<password>` with your database user credentials.
+
+**For local MongoDB**, the default connection string is:
+
+```
 mongodb://localhost:27017
 ```
 
 If authentication is enabled:
 
-```text
+```
 mongodb://myUser:myPassword@localhost:27017/?authSource=admin
 ```
 

@@ -1,10 +1,10 @@
 ---
-sidebar_position: 9
-title: Jaeger Distributed Tracing
-description: Set up Jaeger for distributed tracing of Ballerina integrations.
+sidebar_position: 1
+title: Jaeger
+description: Set up Jaeger for distributed tracing of WSO2 Integrator services.
 ---
 
-# Jaeger Distributed Tracing
+# Jaeger
 
 Jaeger is an open-source distributed tracing platform that helps you monitor and troubleshoot request flows across your integration services. WSO2 Integrator provides built-in Jaeger support through the OpenTelemetry protocol.
 
@@ -16,7 +16,7 @@ Jaeger is an open-source distributed tracing platform that helps you monitor and
 | Ballerina | Built with `--observability-included` |
 | Network | Integration must reach the Jaeger agent or collector |
 
-## Step 1 -- start Jaeger
+## Step 1: Start Jaeger
 
 Run the Jaeger OpenTelemetry all-in-one image for development and testing:
 
@@ -36,7 +36,7 @@ docker run -d --name jaeger \
 
 For production deployments with higher throughput, use the dedicated Jaeger collector and agent components.
 
-## Step 2 -- configure Ballerina for Jaeger
+## Step 2: Configure Ballerina for Jaeger
 
 ### Import the Jaeger extension
 
@@ -113,7 +113,7 @@ samplerParam = 0.1   # Sample 10% of traces
 
 This configuration samples 10% of traces in production to reduce overhead while maintaining visibility into your system.
 
-## Step 3 -- view traces
+## Step 3: View Traces
 
 Run the service and Open the Jaeger UI at `http://localhost:16686`:
 
@@ -123,6 +123,6 @@ Run the service and Open the Jaeger UI at `http://localhost:16686`:
 
 ## What's next
 
-- [Zipkin](zipkin-tracing.md) -- Alternative distributed tracing with Zipkin
-- [Metrics Overview](metrics-overview.md) -- Collect and monitor metrics alongside traces
-- [Observability Overview](observability-overview.md) -- Full observability architecture
+- [Zipkin](zipkin-tracing.md) — Alternative distributed tracing with Zipkin
+- [Metrics](metrics-overview.md) — Collect and monitor metrics alongside traces
+- [Overview](observability-overview.md) — Full observability architecture

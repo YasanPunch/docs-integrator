@@ -1,10 +1,10 @@
 ---
-title: Connect a Git repository
+title: Connect a Git Repository
 description: Learn how to connect a GitHub, Bitbucket, GitLab, or Azure DevOps repository to WSO2 Cloud - Integration Platform to enable Git-triggered deployments.
 keywords: [wso2 cloud, git, github, bitbucket, gitlab, azure devops, git-triggered deploy, repository, CI/CD]
 ---
 
-# Connect a Git repository to WSO2 Cloud
+# Connect a Git Repository to WSO2 Cloud
 
 WSO2 Cloud - Integration Platform lets you develop integrations by connecting your GitHub, Bitbucket, GitLab, or Azure DevOps repository. You can connect an existing repository or start with an empty repository and commit your source code later. Connecting a repository enables automatic deployments and workflow automation directly within WSO2 Cloud - Integration Platform.
 

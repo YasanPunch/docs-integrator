@@ -1,5 +1,5 @@
 ---
-title: TCP service
+title: TCP Service
 description: Handle raw TCP connections and implement custom binary or text-based protocols in WSO2 Integrator.
 keywords: [wso2 integrator, tcp service, tcp listener, connection service, onConnect, onBytes]
 ---
@@ -9,7 +9,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# TCP service
+# TCP Service
 
 TCP services handle raw TCP connections and are suitable for custom binary or text-based protocol implementations where HTTP overhead is not acceptable. WSO2 Integrator generates a service with a pre-defined `onConnect` handler that returns a connection service instance to manage per-connection lifecycle events.
 

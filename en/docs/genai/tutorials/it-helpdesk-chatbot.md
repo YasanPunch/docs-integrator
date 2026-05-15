@@ -30,7 +30,7 @@ In this tutorial, you will learn how to:
 
 Before getting started, ensure that the following requirements are met:
 
-- Install the [WSO2 Integrator VS Code extension](/docs/get-started/install)
+- Install the [WSO2 Integrator VS Code extension](/docs/get-started/setup/local-setup)
 - Set up an MSSQL database for agent memory persistence
 - Have a basic understanding of memory configuration concepts. For more information, refer to [Memory](/docs/genai/develop/agents/memory)
 
@@ -149,7 +149,7 @@ final ai:Agent itHelpDeskAgent = check new (
 
 ### Step 5: Add a tool to the agent
 
-Add the following tool to the agent by following the instructions in [Create custom tool — hand-crafted definitions](genai/develop/agents/tools.md#4-create-custom-tool--hand-crafted-definitions).
+Add the following tool to the agent by following the instructions in [Create custom tool](/docs/genai/develop/agents/tools#4-create-custom-tool).
 
 <Tabs>
 <TabItem value="code" label="Ballerina Code">

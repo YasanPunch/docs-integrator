@@ -1,11 +1,11 @@
 ---
 sidebar_position: 1
-title: Direct LLM calls
+title: Direct LLM Calls
 description: Single-page reference for direct LLM calls in WSO2 Integrator, model providers, the generate node, prompts, and typed responses.
 keywords: [wso2 integrator, genai, direct llm, generate node, prompts, typed responses]
 ---
 
-# Direct LLM calls
+# Direct LLM Calls
 
 A **direct LLM call** is the simplest way to use AI in WSO2 Integrator. You add a node to a flow, write a prompt, and get a typed response back. No agent loop, no memory, no tools. One round-trip.
 

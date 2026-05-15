@@ -1,9 +1,9 @@
 ---
-title: Mapping capabilities
+title: Mapping Capabilities
 description: Map fields one-to-one, combine multiple inputs, write inline expressions, convert primitive types, and delegate complex transformations to functions.
 ---
 
-# Mapping capabilities
+# Mapping Capabilities
 
 The data mapper supports a set of mapping capabilities for the most common transformation patterns. Use the canvas to draw connections between fields, and use the inline tools when types do not match directly.
 

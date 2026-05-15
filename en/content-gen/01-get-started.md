@@ -8,9 +8,8 @@
 
 ---
 
-## Page: Overview and architecture
-
-**File:** `en/docs/get-started/overview-and-architecture.md`
+## Page: Introduction
+**File:** `en/docs/get-started/introduction.md`
 **Status:** EXISTS — review and enhance if needed
 
 **What to cover:**

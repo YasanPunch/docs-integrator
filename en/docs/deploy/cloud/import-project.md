@@ -1,12 +1,16 @@
 ---
-title: Import a project to WSO2 Cloud
+title: Import a Project to WSO2 Cloud
 description: Import an existing WSO2 Integrator project from a Git repository into WSO2 Cloud.
 keywords: [wso2 integrator, wso2 cloud, import, project, git, github, gitlab, azure devops, deploy]
 ---
 
-# Import a project
+# Import a Project
 
 If you have an existing project created with the WSO2 Integrator IDE in a Git repository, you can import it directly into WSO2 Cloud. During import, you configure each integration in the project and WSO2 Cloud creates them all at once.
+
+:::tip
+If you don't have an existing project and would like to get started on a new project, see [Managing projects](/docs/manage/cloud/projects.md) on WSO2 Cloud.
+:::
 
 :::info Prerequisites
 - A project created with the WSO2 Integrator IDE and pushed to a remote Git repository (GitHub, GitLab, Bitbucket, or Azure DevOps).
@@ -44,7 +48,8 @@ WSO2 Cloud creates all the integrations and navigates you to the newly created p
 
 ## What's next
 
-- [View integrations](/docs/manage/cloud/integrations/viewing-deployed.md) — Inspect build status, deployment status, and configuration for your deployed integrations.
+- [View and manage integrations](/docs/manage/cloud/integrations.md) — Inspect build status, deployment status, and manage the lifecycle of your deployed integrations.
+- [View and manage projects](/docs/manage/cloud/projects.md) — Create, view, edit, and delete projects on WSO2 Cloud.
 - [Runtime configurations](/docs/manage/cloud/configurations/runtime-configurations.md) — Set configurable values per environment and manage reusable configuration groups.
 - [Security configurations](/docs/manage/cloud/configurations/security-configurations.md) — Secure your integration endpoints with API Key or OAuth2 authentication.
 - [Endpoint configurations](/docs/manage/cloud/configurations/endpoint-configurations.md) — Control endpoint visibility levels for integrations deployed as Integration as APIs.

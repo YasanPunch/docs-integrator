@@ -7,17 +7,9 @@ description: Generate Ballerina services and clients from OpenAPI specifications
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# OpenAPI tool
+# OpenAPI Tool
 
 The `bal openapi` tool bridges OpenAPI specifications and Ballerina code. It generates type-safe Ballerina service stubs and client connectors from OpenAPI (Swagger) YAML or JSON files, and can also export an OpenAPI specification from an existing Ballerina service. This ensures your integrations conform to API contracts and eliminates boilerplate.
-
-## Prerequisites
-
-The OpenAPI tool is included with the Ballerina distribution. Verify it is available:
-
-```bash
-bal openapi --help
-```
 
 ## Generating a Ballerina service from OpenAPI
 
@@ -339,4 +331,4 @@ Once your service is built, export its OpenAPI specification and share it with c
 
 - [GraphQL Tool](graphql-tool.md) — Generate GraphQL services from SDL schemas
 - [gRPC Tool](grpc-tool.md) — Generate gRPC services from Protocol Buffer definitions
-- [Visual flow designer](/docs/develop/design-logic/visual-flow-designer) — Build logic visually on top of generated stubs
+- [Flow Diagram editor](/docs/develop/understand-ide/editors/flow-diagram-editor/) — Build logic visually on top of generated stubs

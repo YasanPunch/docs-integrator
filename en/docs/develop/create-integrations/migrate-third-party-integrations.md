@@ -7,7 +7,7 @@ description: Migrate existing TIBCO BusinessWorks and MuleSoft integrations to W
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Migrate third-party integrations
+# Migrate Third-Party Integrations
 
 WSO2 Integrator provides built-in migration tools to help you convert existing integration projects from other platforms (such as TIBCO BusinessWorks and MuleSoft) into a WSO2 Integrator project. These tools analyze your source project, generate equivalent Ballerina code, and provide a detailed migration summary.
 

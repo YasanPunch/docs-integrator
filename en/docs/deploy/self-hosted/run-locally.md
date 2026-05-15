@@ -1,10 +1,10 @@
 ---
-title: Run locally
+title: Run Locally
 description: Run a WSO2 Integrator project using the Ballerina CLI, both on your local machine and on a remote VM.
 keywords: [wso2 integrator, bal run, run locally, vm deployment, ballerina cli]
 ---
 
-# Run your integration locally
+# Run Your Integration Locally
 
 This page explains how to run a WSO2 Integrator project using the Ballerina CLI. You can run it directly on your local machine during development or on a remote virtual machine for a self-hosted deployment.
 

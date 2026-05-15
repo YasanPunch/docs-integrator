@@ -15,9 +15,9 @@ This guide walks you through setting up AWS IAM credentials with the necessary p
 
 1. Sign in to the [AWS Management Console](https://console.aws.amazon.com/).
 2. Navigate to **IAM** (Identity and Access Management).
-3. In the left sidebar, click **Users**, then click **Create user**.
+3. In the left sidebar, select **Users**, then select **Create user**.
 4. Enter a **User name** (e.g., `ballerina-secrets-connector`).
-5. Click **Next**.
+5. Select **Next**.
 
 ## Step 2: Attach permissions for secrets manager
 
@@ -26,7 +26,7 @@ This guide walks you through setting up AWS IAM credentials with the necessary p
     - `secretsmanager:DescribeSecret`
     - `secretsmanager:GetSecretValue`
     - `secretsmanager:BatchGetSecretValue`
-3. Click **Next**, review the configuration, and click **Create user**.
+3. Select **Next**, review the configuration, and select **Create user**.
 
 :::tip
 For production use, follow the principle of least privilege and grant only the specific permissions your integration requires.
@@ -34,11 +34,11 @@ For production use, follow the principle of least privilege and grant only the s
 
 ## Step 3: Generate access keys
 
-1. From the **Users** list, click on the user you just created.
+1. From the **Users** list, select on the user you just created.
 2. Go to the **Security credentials** tab.
-3. Under **Access keys**, click **Create access key**.
+3. Under **Access keys**, select **Create access key**.
 4. Select **Application running outside AWS** as the use case.
-5. Click **Next**, then **Create access key**.
+5. Select **Next**, then **Create access key**.
 6. Copy the **Access key ID** and **Secret access key**.
 
 :::warning
@@ -73,3 +73,7 @@ can use IAM role-based authentication instead of static access keys:
 :::note
 IAM role-based auth and default credentials are recommended for production workloads running on AWS, as they eliminate the need to manage static credentials.
 :::
+
+## What's next
+
+- [Action reference](actions.md): Available operations

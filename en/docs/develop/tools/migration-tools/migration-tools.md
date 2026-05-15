@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Migration tools
+title: Migration Tools
 description: Migrate integrations from MuleSoft, TIBCO BusinessWorks, and Azure Logic Apps to WSO2 Integrator.
 ---
 

@@ -1,11 +1,11 @@
 ---
 sidebar_position: 1
-title: Integration artifacts
+title: Integration Artifacts
 description: Choose the right artifact type to expose APIs, react to events, process files, run scheduled jobs, or power AI agents in WSO2 Integrator.
 keywords: [wso2 integrator, integration artifacts, http service, event handler, automation, file integration]
 ---
 
-# Integration artifacts
+# Integration Artifacts
 
 Integration artifacts are the building blocks of every integration. Each type is designed for a specific trigger and communication pattern: receiving HTTP requests, reacting to messages, processing files, running on a schedule, or serving AI agent tools. Choosing the right artifact for the job keeps your integration logic focused and your project easy to navigate.
 
@@ -17,7 +17,7 @@ Run integration logic on a schedule or manually, without a network listener.
 
 | Artifact | Description |
 |---|---|
-| [Automation](automation/automation.md) | Runs on a cron schedule or manually. Use for data sync, report generation, and routine maintenance jobs. |
+| [Automation](automation.md) | Runs on a cron schedule or manually. Use for data sync, report generation, and routine maintenance jobs. |
 
 ### AI integrations
 
@@ -82,7 +82,7 @@ Reusable building blocks shared across multiple integrations in the same project
 
 ## What's next
 
-- [Automation](automation/automation.md) — run scheduled or on-demand integration jobs
+- [Automation](automation.md) — run scheduled or on-demand integration jobs
 - [HTTP service](service/http.md) — the most common starting point for integration APIs
 - [Kafka](event/kafka.md) — consume and process messages from Apache Kafka
 - [FTP/SFTP](file/ftp-sftp.md) — process files from remote file servers

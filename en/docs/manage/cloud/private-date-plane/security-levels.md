@@ -1,10 +1,10 @@
 ---
-title: Private data plane security levels
+title: Private Data Plane Security Levels
 description: Compare the basic, standard, and premium security tiers available for WSO2 Integration Platform private data planes.
 keywords: [wso2 integrator, wso2 integration platform, private data plane, security, pdp, cloud]
 ---
 
-# Private data plane security levels
+# Private Data Plane Security Levels
 
 The WSO2 Integration Platform private data plane supports three security tiers: basic, standard, and premium. Each tier adds capabilities on top of the previous one, so you can choose the level of protection that matches your compliance requirements and risk profile.
 

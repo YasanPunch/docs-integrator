@@ -1,11 +1,11 @@
 ---
 sidebar_position: 8
-title: Execute tests
+title: Execute Tests
 description: Run, filter, rerun, and parallelize tests using the bal test CLI in WSO2 Integrator.
 keywords: [wso2 integrator, execute tests, bal test, parallel tests, rerun failed, test groups]
 ---
 
-# Execute tests
+# Execute Tests
 
 The `bal test` command discovers and runs all tests in the current package. Filtering by group, function name, or data case lets you focus on what matters during development, while CI runs the full suite before merge.
 

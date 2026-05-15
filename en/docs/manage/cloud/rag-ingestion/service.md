@@ -1,10 +1,10 @@
 ---
-title: "RAG service"
+title: "RAG Service"
 description: "Use the RAG service API to programmatically ingest, chunk, and retrieve documents in WSO2 - Clouf Integration Platform."
 keywords: [wso2 integrator, rag, api, service, ingestion]
 ---
 
-# RAG service
+# RAG Service
 
 WSO2 Cloud - Integration Platform exposes RESTful API endpoints to support RAG workflows. Use these endpoints to ingest files, parse and chunk content, and retrieve relevant chunks programmatically.
 
