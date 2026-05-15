@@ -189,7 +189,7 @@ const quickLinks = [
   { label: 'Build an Automation', to: '/get-started/build-automation' },
   { label: 'Build an AI Agent', to: '/get-started/build-ai-agent' },
   { label: 'Build an API Integration', to: '/get-started/build-api-integration' },
-  { label: 'Connector catalog', to: '/connectors' },
+  { label: 'Connector catalog', to: '/connectors/overview' },
 ];
 
 /* ------------------------------------------------------------------ */
