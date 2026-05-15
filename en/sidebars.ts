@@ -1977,14 +1977,9 @@ const sidebars: SidebarsConfig = {
           link: { type: 'doc', id: 'manage/cloud/overview' },
           items: [
             // Integrations
-            {
-              type: 'category',
-              label: 'Integrations',
-              items: [
-                'manage/cloud/integrations/viewing-deployed',
-                'manage/cloud/integrations/lifecycle',
-              ],
-            },
+            'manage/cloud/integrations',
+            // Projects
+            'manage/cloud/projects',
             // Configuration Management
             {
               type: 'category',
