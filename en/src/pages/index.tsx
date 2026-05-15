@@ -111,7 +111,7 @@ const sections: SectionCard[] = [
   {
     title: 'Get started',
     description: 'Install, set up, and build your first integration in under 10 minutes.',
-    link: '/docs/get-started/introduction',
+    link: '/get-started/introduction',
     icon: <IconGetStarted />,
     iconBg: '#ECFDF5',
     iconBgDark: 'rgba(5, 150, 105, 0.15)',
@@ -120,7 +120,7 @@ const sections: SectionCard[] = [
   {
     title: 'Develop',
     description: 'Build services, transform data, and test integrations on your machine.',
-    link: '/docs/develop/overview',
+    link: '/develop/overview',
     icon: <IconDevelop />,
     iconBg: '#EFF6FF',
     iconBgDark: 'rgba(37, 99, 235, 0.15)',
@@ -129,7 +129,7 @@ const sections: SectionCard[] = [
   {
     title: 'Connectors',
     description: 'Browse 400+ pre-built connectors for SaaS, databases, messaging, and AI.',
-    link: '/docs/connectors/overview',
+    link: '/connectors/overview',
     icon: <IconConnectors />,
     iconBg: '#F0EDFF',
     iconBgDark: 'rgba(124, 58, 237, 0.15)',
@@ -138,7 +138,7 @@ const sections: SectionCard[] = [
   {
     title: 'AI Integrations',
     description: 'Build AI-powered integrations with agents, RAG, and MCP servers.',
-    link: '/docs/genai/overview',
+    link: '/genai/overview',
     icon: <IconGenAI />,
     iconBg: '#FDF4FF',
     iconBgDark: 'rgba(168, 85, 247, 0.15)',
@@ -147,7 +147,7 @@ const sections: SectionCard[] = [
   {
     title: 'Guides',
     description: 'End-to-end tutorials and integration patterns.',
-    link: '/docs/guides/overview',
+    link: '/guides/overview',
     icon: <IconTutorials />,
     iconBg: '#FFF8EB',
     iconBgDark: 'rgba(217, 119, 6, 0.15)',
@@ -156,7 +156,7 @@ const sections: SectionCard[] = [
   {
     title: 'Deploy',
     description: 'Docker, Kubernetes, CI/CD, observability, and production security.',
-    link: '/docs/deploy/overview',
+    link: '/deploy/overview',
     icon: <IconDeploy />,
     iconBg: '#ECFEFF',
     iconBgDark: 'rgba(8, 145, 178, 0.15)',
@@ -165,7 +165,7 @@ const sections: SectionCard[] = [
   {
     title: 'Manage',
     description: 'Centralized control and observability via the Integration Control Plane (ICP).',
-    link: '/docs/manage/overview',
+    link: '/manage/overview',
     icon: <IconManage />,
     iconBg: '#EEF2FF',
     iconBgDark: 'rgba(79, 70, 229, 0.15)',
@@ -174,7 +174,7 @@ const sections: SectionCard[] = [
   {
     title: 'Reference',
     description: 'Language reference, configuration keys, CLI commands, and error codes.',
-    link: '/docs/reference/overview',
+    link: '/reference/overview',
     icon: <IconReference />,
     iconBg: '#F1F5F9',
     iconBgDark: 'rgba(100, 116, 139, 0.15)',
@@ -186,10 +186,10 @@ const sections: SectionCard[] = [
 /*  Quick-links shown when the search input is focused but empty       */
 /* ------------------------------------------------------------------ */
 const quickLinks = [
-  { label: 'Build an Automation', to: '/docs/get-started/build-automation' },
-  { label: 'Build an AI Agent', to: '/docs/get-started/build-ai-agent' },
-  { label: 'Build an API Integration', to: '/docs/get-started/build-api-integration' },
-  { label: 'Connector catalog', to: '/docs/connectors' },
+  { label: 'Build an Automation', to: '/get-started/build-automation' },
+  { label: 'Build an AI Agent', to: '/get-started/build-ai-agent' },
+  { label: 'Build an API Integration', to: '/get-started/build-api-integration' },
+  { label: 'Connector catalog', to: '/connectors/overview' },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -311,7 +311,7 @@ function HomepageHeader(): ReactNode {
         <div className={styles.buttons}>
           <Link
             className={styles.heroBtn}
-            to="/docs/get-started/build-automation">
+            to="/get-started/build-automation">
             Build your first integration
             <svg
               width="16"
@@ -374,7 +374,7 @@ function WhatsNew(): ReactNode {
     <section className={styles.whatsNew}>
       <div className="container">
         <Link
-          to="/docs/reference/release-notes"
+          to="/reference/release-notes"
           className={styles.whatsNewLink}>
           <span className={styles.whatsNewBadge}>New</span>
           Check out the latest release notes
