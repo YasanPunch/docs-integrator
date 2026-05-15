@@ -244,7 +244,7 @@ Ballerina by Example (BBE) is a collection of over 200 runnable code examples th
 | Example | Description |
 |---------|-------------|
 | **[Crypto](https://ballerina.io/learn/by-example/security-crypto/)** | Cryptographic operations |
-| **[JWT Issue/Validate](https://ballerina.io/learn/by-example/security-jwt-issue-validate/))** | JWT token operations |
+| **[JWT Issue/Validate](https://ballerina.io/learn/by-example/security-jwt-issue-validate/)** | JWT token operations |
 | **[Encoding](https://ballerina.io/learn/by-example/url-encode-decode/)** | URL encoding/decoding |
 
 ### Testing
