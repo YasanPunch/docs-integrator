@@ -440,7 +440,7 @@ code {
   border-radius: var(--ifm-code-border-radius);
   border: 1px solid #CBD5E1;
   background-color: #F1F5F9 !important;
-  padding: 1rem;
+  padding: 1rem !important;
   line-height: 1.5;
 }
 
