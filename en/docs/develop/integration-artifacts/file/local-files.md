@@ -208,9 +208,9 @@ In the **Service Designer**, open the handler and build the flow with two nodes:
 
 ![Add fileReadString function](/img/develop/integration-artifacts/file/local-files/add-file-read-string-function.png)
 
-3. Click **+** after the Variable, pick **Log** → **Log Info**, switch the **Msg** field to **Expression** mode, and enter `content`. Save the node.
+3. Click **+** after the Call Function node, pick **Log** → **Log Info**, switch the **Msg** field to **Expression** mode, and enter `content`. Save the node.
 
-![Handler canvas showing the Declare Variable and Log Info nodes wired up to read and log file content](/img/develop/integration-artifacts/file/local-files/step-read-flow.png)
+![Handler canvas showing the Call Function and Log Info nodes wired up to read and log file content](/img/develop/integration-artifacts/file/local-files/step-read-flow.png)
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
@@ -258,9 +258,9 @@ Use a **Call Function** node to invoke an `io` write function, then add a **Log*
 
 ![Add file write string function](/img/develop/integration-artifacts/file/local-files/add-file-write-function.png)
 
-3. Click **+** after the Variable, pick **Log** → **Log Info**, and enter a confirmation message such as `"Output written"`. Save the node.
+3. Click **+** after the Call Function node, pick **Log** → **Log Info**, and enter a confirmation message such as `"Output written"`. Save the node.
 
-![Handler canvas showing the Declare Variable and Log Info nodes wired up to write a file and log a confirmation](/img/develop/integration-artifacts/file/local-files/step-write-flow.png)
+![Handler canvas showing the Call Function and Log Info nodes wired up to write a file and log a confirmation](/img/develop/integration-artifacts/file/local-files/step-write-flow.png)
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
