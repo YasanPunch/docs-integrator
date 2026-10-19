@@ -189,8 +189,8 @@ A blob handler is a `remote function` that WSO2 Integrator calls for each event 
 
 | Handler | Trigger |
 |---|---|
-| **On Blob Created** (`onBlobText` / `onBlobJson` / `onBlobXml` / `onBlobCsv` / `onBlob`) | A blob was created or replaced in a container the subscription covers. The function name depends on the content type, one typed variant per format, with `onBlob` as the raw-bytes catch-all. The listener fetches the blob's content before calling the handler. |
-| **On Blob Deleted** (`onBlobDeleted`) | A blob was deleted. The handler receives the event only; there is no content to fetch. |
+| **On Create** (`onBlobText` / `onBlobJson` / `onBlobXml` / `onBlobCsv` / `onBlob`) | A blob was created or replaced in a container the subscription covers. The function name depends on the content type, one typed variant per format, with `onBlob` as the raw-bytes catch-all. The listener fetches the blob's content before calling the handler. |
+| **On Delete** (`onBlobDeleted`) | A blob was deleted. The handler receives the event only; there is no content to fetch. |
 | **On Error** (`onError`) | A poll of the queue failed, a message could not be parsed as an event, a blob's content could not be fetched, or the content could not be bound to a typed handler's parameter, for example a JSON handler receiving malformed JSON. A binding failure arrives as a `blob:ContentBindingError` naming the blob. |
 
 At least one blob handler is required; a service with only an `onError` handler is not valid.
@@ -202,10 +202,10 @@ Creation and replacement are the same event, so overwriting an existing blob fir
 <Tabs>
 <TabItem value="ui" label="Visual Designer" default>
 
-1. Open the service view (select the service under **Entry Points**) and click **+ Add Handler**. The **Select Handler to Add** panel offers **On Blob Created**, **On Blob Deleted**, and **On Error**; select **On Blob Created**.
+1. Open the service view (select the service under **Entry Points**) and click **+ Add Handler**. The **Select Handler to Add** panel offers **On Create**, **On Delete**, and **On Error**; select **On Create**.
 
    <ThemedImage
-       alt="Handler picker with the On Blob Created handler"
+       alt="Handler picker with the On Create handler"
        sources={{
            light: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.blob/azure_blob_trigger_screenshots_03_add_handler_panel.png'),
            dark: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.blob/azure_blob_trigger_screenshots_03_add_handler_panel.png'),
@@ -222,7 +222,7 @@ Creation and replacement are the same event, so overwriting an existing blob fir
    | **Advanced Configurations** | **Blob Event (event)** adds the `blob:BlobEvent` parameter, carrying the container, path, URL, and the rest of the event. **Azure Blob Storage Connection (caller)** adds the `blob:Caller` parameter, a client bound to the event's container. |
 
    <ThemedImage
-       alt="On Blob Created handler configuration with the JSON format"
+       alt="On Create handler configuration with the JSON format"
        sources={{
            light: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.blob/azure_blob_trigger_screenshots_04_handler_config.png'),
            dark: useBaseUrl('/img/connectors/catalog/storage-file/azure.storage.blob/azure_blob_trigger_screenshots_04_handler_config.png'),
@@ -239,7 +239,7 @@ Creation and replacement are the same event, so overwriting an existing blob fir
        }}
    />
 
-Add **On Blob Deleted** and **On Error** the same way. The **On Error** handler's optional **Blob Event (event)** and **Azure Blob Storage Connection (caller)** parameters are nilable, because a failed poll carries neither.
+Add **On Delete** and **On Error** the same way. The **On Error** handler's optional **Blob Event (event)** and **Azure Blob Storage Connection (caller)** parameters are nilable, because a failed poll carries neither.
 
 </TabItem>
 <TabItem value="code" label="Ballerina Code">
@@ -318,7 +318,7 @@ The trailing parameters are optional. A content handler declares its content par
 
 ### Content types
 
-The format chosen on an On Blob Created handler determines the function name and the type of the `content` parameter. Created events are routed to handlers by the blob name's extension, compared ignoring case:
+The format chosen on an On Create handler determines the function name and the type of the `content` parameter. Created events are routed to handlers by the blob name's extension, compared ignoring case:
 
 | Format | Handler function | Routed extension | Content type | Use when |
 |---|---|---|---|---|
