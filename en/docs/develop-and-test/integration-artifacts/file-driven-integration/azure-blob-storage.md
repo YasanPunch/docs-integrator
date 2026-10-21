@@ -190,7 +190,7 @@ A blob handler is a `remote function` that WSO2 Integrator calls for each event 
 | Handler | Trigger |
 |---|---|
 | **On Create** (`onBlobText` / `onBlobJson` / `onBlobXml` / `onBlobCsv` / `onBlob`) | A blob was created or replaced in a container the subscription covers. The function name depends on the content type, one typed variant per format, with `onBlob` as the raw-bytes catch-all. The listener fetches the blob's content before calling the handler. |
-| **On Delete** (`onBlobDeleted`) | A blob was deleted. The handler receives the event only; there is no content to fetch. |
+| **On Delete** (`onBlobDelete`) | A blob was deleted. The handler receives the event only; there is no content to fetch. |
 | **On Error** (`onError`) | A poll of the queue failed, a message could not be parsed as an event, a blob's content could not be fetched, or the content could not be bound to a typed handler's parameter, for example a JSON handler receiving malformed JSON. A binding failure arrives as a `blob:ContentBindingError` naming the blob. |
 
 At least one blob handler is required; a service with only an `onError` handler is not valid.
@@ -294,7 +294,7 @@ isolated remote function onBlob(byte[] content, blob:BlobEvent event) returns er
 **Deleted blob handler:**
 
 ```ballerina
-isolated remote function onBlobDeleted(blob:BlobEvent event) returns error? {
+isolated remote function onBlobDelete(blob:BlobEvent event) returns error? {
     // event.path names the blob that was deleted
 }
 ```
@@ -311,7 +311,7 @@ isolated remote function onError(blob:Error err, blob:BlobEvent? event, blob:Cal
 }
 ```
 
-The trailing parameters are optional. A content handler declares its content parameter first, then either, both, or neither of `blob:BlobEvent` and `blob:Caller`; the accepted shapes are `(content)`, `(content, BlobEvent)`, `(content, Caller)`, and `(content, BlobEvent, Caller)`; when both are present, `BlobEvent` must precede `Caller`. `onBlobDeleted` accepts `(BlobEvent)` or `(BlobEvent, Caller)`. `onError` accepts `(error)`, `(error, BlobEvent?)`, `(error, Caller?)`, or `(error, BlobEvent?, Caller?)`, with the event and caller declared nilable. Every handler returns `error?`.
+The trailing parameters are optional. A content handler declares its content parameter first, then either, both, or neither of `blob:BlobEvent` and `blob:Caller`; the accepted shapes are `(content)`, `(content, BlobEvent)`, `(content, Caller)`, and `(content, BlobEvent, Caller)`; when both are present, `BlobEvent` must precede `Caller`. `onBlobDelete` accepts `(BlobEvent)` or `(BlobEvent, Caller)`. `onError` accepts `(error)`, `(error, BlobEvent?)`, `(error, Caller?)`, or `(error, BlobEvent?, Caller?)`, with the event and caller declared nilable. Every handler returns `error?`.
 
 </TabItem>
 </Tabs>
@@ -372,7 +372,7 @@ Delivery is at least once. A received message stays invisible to other consumers
 | `()` | The event is acknowledged and the message deleted from the queue. |
 | Any other error, or a panic | The message becomes visible again after the service's **Redelivery Delay** and the event is redelivered. At **Maximum Delivery Count** deliveries it moves to the poison queue. |
 | `blob:DeadLetterError` | The message moves to the poison queue at once, skipping the remaining deliveries. Return it for a failure that retrying cannot fix. |
-| `blob:RetryError` | The message is redelivered after the error's `delaySeconds` instead of the service's delay. A retry still counts toward the delivery count. |
+| `blob:RetryError` | The message is redelivered after the error's `delay` instead of the service's delay. A retry still counts toward the delivery count. |
 
 ```ballerina
 isolated remote function onBlobJson(Order 'order, blob:BlobEvent event) returns error? {
@@ -381,7 +381,7 @@ isolated remote function onBlobJson(Order 'order, blob:BlobEvent event) returns 
     }
     boolean ready = check downstreamIsReady();
     if !ready {
-        return error blob:RetryError("downstream not ready", delaySeconds = 300);
+        return error blob:RetryError("downstream not ready", delay = 300);
     }
     check processOrder('order);
 }
@@ -542,7 +542,7 @@ The required `@blob:ServiceConfig` annotation names the queue the service consum
     queueName: "invoice-events",
     poisonQueueName: "invoice-events-failed",
     batchSize: 8,
-    redeliveryDelaySeconds: 30,
+    redeliveryDelay: 30,
     maxDeliveryCount: 3
 }
 isolated service on blobListener {
@@ -560,8 +560,8 @@ isolated service on blobListener {
 | `poisonQueueName` | `string?` | `{queueName}-poison` | The queue failed messages move to. Must differ from `queueName`. |
 | `batchSize` | `int` | `16` | How many messages one receive fetches, 1 to 32. |
 | `newBatchThreshold` | `int?` | Half of `batchSize` | The number of events still being handled at which the next batch is fetched, 0 to `batchSize`. |
-| `maxPollingIntervalSeconds` | `decimal` | `60` | The longest wait between polls of an empty queue. An empty queue is polled on a randomized exponential backoff that rises to this ceiling, so a busy queue is drained continuously while an idle one is probed sparsely. |
-| `redeliveryDelaySeconds` | `decimal` | `0` | How long a message stays invisible after its handler fails, 0 to 604,800 seconds. |
+| `maxPollingInterval` | `decimal` | `60` | The longest wait between polls of an empty queue. An empty queue is polled on a randomized exponential backoff that rises to this ceiling, so a busy queue is drained continuously while an idle one is probed sparsely. |
+| `redeliveryDelay` | `decimal` | `0` | How long a message stays invisible after its handler fails, 0 to 604,800 seconds. |
 | `maxDeliveryCount` | `int` | `5` | How many deliveries a message gets before it moves to the poison queue, at least 1. |
 
 The ranges are validated at compile time when the values are literals, and when the service is attached otherwise.
