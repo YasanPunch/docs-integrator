@@ -191,7 +191,7 @@ A blob handler is a `remote function` that WSO2 Integrator calls for each event 
 |---|---|
 | **On Create** (`onBlobText` / `onBlobJson` / `onBlobXml` / `onBlobCsv` / `onBlob`) | A blob was created or replaced in a container the subscription covers. The function name depends on the content type, one typed variant per format, with `onBlob` as the raw-bytes catch-all. The listener fetches the blob's content before calling the handler. |
 | **On Delete** (`onBlobDelete`) | A blob was deleted. The handler receives the event only; there is no content to fetch. |
-| **On Error** (`onError`) | A poll of the queue failed, a message could not be parsed as an event, a blob's content could not be fetched, or the content could not be bound to a typed handler's parameter, for example a JSON handler receiving malformed JSON. A binding failure arrives as a `blob:ContentBindingError` naming the blob. |
+| **On Error** (`onError`) | A poll of the queue failed, a message could not be parsed as an event, a blob's content could not be fetched, the content could not be bound to a typed handler's parameter, for example a JSON handler receiving malformed JSON, a message arrived past its delivery limit, the `Caller` for the event's container could not be built, or a move to the poison queue failed. A binding failure arrives as a `blob:ContentBindingError` naming the blob. |
 
 At least one blob handler is required; a service with only an `onError` handler is not valid.
 
@@ -299,7 +299,7 @@ isolated remote function onBlobDelete(blob:BlobEvent event) returns error? {
 }
 ```
 
-**Error handler**, which fires on every listener-side failure: a failed poll, an unparseable message, a blob whose content could not be fetched, and a typed handler's content-binding failure. Poll and fetch failures arrive as the mapped typed error, such as a `blob:AuthorizationError`. A binding failure arrives as a `blob:ContentBindingError`, whose detail carries the blob's `containerName` and `path` and, when the content had been read before binding failed, its raw `content`:
+**Error handler**, which fires on every listener-side failure: a failed poll, an unparseable message, a blob whose content could not be fetched, a typed handler's content-binding failure, a message received past its delivery limit, a `Caller` that could not be built, and a failed move to the poison queue. Poll and fetch failures arrive as the mapped typed error, such as a `blob:AuthorizationError`. A binding failure arrives as a `blob:ContentBindingError`, whose detail carries the blob's `containerName` and `path` and, when the content had been read before binding failed, its raw `content`:
 
 ```ballerina
 isolated remote function onError(blob:Error err, blob:BlobEvent? event, blob:Caller? caller) returns error? {
@@ -393,7 +393,7 @@ Duplicates are always possible, so handlers must be idempotent. The event's `seq
 
 ### The poison queue
 
-Messages the service cannot process move to its poison queue: `<queue name>-poison` by default, or the **Poison Queue Name** you set. The listener creates it when a message first moves there. A message moves there when its deliveries are exhausted, when a handler returns `blob:DeadLetterError`, when a message cannot be parsed as an event, when a created blob is archived, when its content does not bind to the handler's type, or when a redelivery would land too close to the message's expiry on the queue. Every move logs an error naming the source queue, the message id, the blob path, the delivery count, and the reason.
+Messages the service cannot process move to its poison queue: `<queue name>-poison` by default, or the **Poison Queue Name** you set. The listener creates it when a message first moves there. A message moves there when its deliveries are exhausted, when a handler returns `blob:DeadLetterError`, when a handler asks for a retry on the final delivery, when a message arrives already past its delivery limit, when a message cannot be parsed as an event, when a created blob is archived, when its content does not bind to the handler's type, or when a redelivery would land too close to the message's expiry on the queue. Every move logs an error naming the source queue, the message id, the new poison message id, the blob path, the delivery count, and the reason.
 
 The move copies the message body verbatim, so a poison message can be replayed by moving it back to the source queue. Storage queues have no native dead-letter facility; this is the connector's convention. Azure Monitor's queue metrics have no per-queue dimension, so watch a poison queue's approximate message count instead.
 
@@ -440,7 +440,7 @@ isolated remote function onBlob(stream<byte[], error?> content, blob:BlobEvent e
 }
 ```
 
-A stream reads the blob in ranged chunks, holding no connection between chunks, and is locked to the version of the blob it first read; a blob replaced mid-read fails the next chunk, and the returned error retries the message. A content value that does not match the declared parameter type is a `blob:ContentBindingError`, delivered to `onError`. To relax the record binding, treating a null value as an optional field and an absent field as a nilable field, enable **Relaxed Data Binding** on the [listener configuration](#listener-configuration).
+A stream reads the blob in ranged chunks, holding no connection between chunks, and is locked to the version of the blob it first read; a blob replaced mid-read fails the next chunk, and the returned error retries the message. A content value that does not match the declared parameter type is a `blob:ContentBindingError`, delivered to `onError`. To relax the record binding, treating a null value as an optional field and an absent field as a nilable field in JSON and CSV content and tolerating undeclared elements in XML, enable **Relaxed Data Binding** on the [listener configuration](#listener-configuration).
 
 ### BlobEvent
 
@@ -577,7 +577,7 @@ The listener controls **how** to connect: the credential, the data-binding mode,
 |---|---|---|
 | **Name** | Identifier for the listener. Required. | |
 | **Auth** | The authentication record, one of the five credential kinds. See [Creating an Azure Blob Storage service](#creating-an-azure-blob-storage-service). Required. | |
-| **Lax Data Binding** | Relaxed data binding for the typed content handlers: JSON, XML, and CSV record binding treat a null value as an optional field and an absent field as a nilable field. | `false` |
+| **Relaxed Data Binding** | Relaxed data binding for the typed content handlers: JSON and CSV record binding treat a null value as an optional field and an absent field as a nilable field, and XML record binding tolerates undeclared elements. | `false` |
 | **Retry Config** | Retry behaviour for service requests. | Connector defaults |
 | **Transport Config** | HTTP transport settings: proxy, connection pool, and TLS. | Defaults |
 | **Queue Service Url** | The queue service endpoint, including the scheme. Omit to derive it from the credential's blob endpoint or account name. Required for a custom domain or an emulator address. | Derived |
@@ -599,8 +599,8 @@ listener blob:Listener blobListener = check new (
 | Field | Type | Default | Description |
 |---|---|---|---|
 | `auth` | `blob:AuthConfig` | Required | The authentication configuration, one credential record. A SAS credential must be an account SAS spanning the queue and blob services. |
-| `laxDataBinding` | `boolean` | `false` | Relaxed data binding for the typed content handlers. Applies to every service of the listener. |
-| `retryConfig` | `blob:RetryConfig?` | Connector defaults | Retry behaviour for service requests; the secondary host, if given, serves the blob requests only. |
+| `laxDataBinding` | `boolean` | `false` | Relaxed data binding for the typed content handlers: null and absent fields in JSON and CSV, undeclared elements in XML. Applies to every service of the listener. |
+| `retryConfig` | `blob:RetryConfig` | Connector defaults | Retry behaviour for service requests; the secondary host, if given, serves the blob requests only. |
 | `transportConfig` | `blob:TransportConfig` | `{}` | HTTP transport settings (proxy, connection pool, TLS), shared by every service and `Caller` of the listener. |
 | `queueServiceUrl` | `string?` | Derived | The queue service endpoint URL, including the scheme. |
 
